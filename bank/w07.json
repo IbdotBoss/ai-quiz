@@ -4,11 +4,11 @@
   "week": 7,
   "topic": "Network structure",
   "type": "single",
-  "q": "An example network has 2 inputs, 2 perceptrons in a hidden middle layer and 2 perceptrons in the last layer. What can be said about this design?",
+  "q": "An example network has 2 inputs, 2 perceptrons in a hidden middle layer and 2 perceptrons in the last layer. Which statement about backpropagation and the size of this network is correct?",
   "options": [
    "It is the only size that backpropagation can handle",
    "Backpropagation needs the hidden layer to be larger than the input layer",
-   "It is only an example, and the same process scales to a network of any size",
+   "It is only an example, and the method works at any size",
    "The last layer must always be smaller than the hidden layer"
   ],
   "answer": [
@@ -23,9 +23,9 @@
   "week": 7,
   "topic": "Network structure",
   "type": "single",
-  "q": "In the example network, where does the hidden layer sit?",
+  "q": "A network has input nodes, one hidden layer and a last layer of perceptrons. Where does the hidden layer sit?",
   "options": [
-   "In the middle, between the input layer and the last layer of perceptrons",
+   "Between the input layer and the last layer",
    "After the last layer, to store the results",
    "Before the input layer, to clean the data",
    "It is the same layer as the output layer"
@@ -47,7 +47,7 @@
    "It updates every weight using the error",
    "It sends the error from the output back to the inputs",
    "It tests the finished network on unseen data",
-   "It moves from the input layers toward the output layer to produce a prediction"
+   "It runs from the inputs to the outputs to make a prediction"
   ],
   "answer": [
    3
@@ -83,10 +83,10 @@
   "week": 7,
   "topic": "Forward pass",
   "type": "single",
-  "q": "In the example network, what is the logistic activation function applied to?",
+  "q": "In a forward pass, what is the logistic activation function applied to?",
   "options": [
    "The total error, to give the weight update",
-   "The total net input of a neuron, to give that neuron's output",
+   "A neuron's total net input, to give its output",
    "The learning rate, to keep it small",
    "The target value, to turn it into a label"
   ],
@@ -125,10 +125,10 @@
   "type": "single",
   "q": "The example network has two output neurons, each with its own target. How is the total error formed?",
   "options": [
-   "By combining the errors of the output neurons into one value for the network",
+   "By combining the output neurons' errors into one value",
    "From the first output neuron only, because it comes first",
-   "From the hidden neurons only",
-   "From the average of the input values"
+   "From the errors of the hidden neurons only",
+   "From the average of the input values alone"
   ],
   "answer": [
    0
@@ -142,7 +142,7 @@
   "week": 7,
   "topic": "Backpropagation",
   "type": "multi",
-  "q": "What is the aim of the backward pass?",
+  "q": "Which statements give the aim of the backward pass?",
   "options": [
    "To produce the first prediction of the network",
    "To update each weight so predictions move closer to the targets",
@@ -185,15 +185,15 @@
   "type": "single",
   "q": "A weight in the example network does not touch the error directly. Why is the chain rule needed to find its effect on the total error?",
   "options": [
-   "The chain rule decides which weights should be updated first in each layer",
-   "The chain rule sets a suitable learning rate separately for each layer",
-   "The chain rule turns the total error into a probability for each class",
-   "The weight affects the error only through the neuron's net input and output, so the effects form a chain"
+   "Updates must follow a fixed order within each layer",
+   "Each layer needs its own learning rate",
+   "The total error must become a probability for each class",
+   "The weight reaches the error only through intermediate steps"
   ],
   "answer": [
    3
   ],
-  "explain": "The weight changes the net input, which changes the output, which changes the error. The chain rule joins these steps. It does not order updates, set rates or create probabilities.",
+  "explain": "The weight changes the net input, which changes the output, which changes the error. The chain rule joins these steps. It does not order updates, set learning rates or create probabilities.",
   "source": "Week 7 lecture, slide 34",
   "flag": ""
  },
@@ -228,7 +228,7 @@
    "The other neuron's error is always exactly zero",
    "That weight has no effect on the other output neuron's error",
    "Errors from different neurons cancel each other out",
-   "The other neuron sits in a hidden layer"
+   "The other neuron's error is only added in at the next epoch"
   ],
   "answer": [
    1
@@ -263,7 +263,7 @@
   "type": "single",
   "q": "What does the learning rate do in the weight update?",
   "options": [
-   "It scales how large a step the weight takes opposite to the gradient",
+   "It scales how big a step each weight update takes",
    "It sets how many perceptrons are in each layer",
    "It decides which weights are included in the update",
    "It measures how far the prediction is from the target"
@@ -282,10 +282,10 @@
   "type": "single",
   "q": "During training the error of a network bounces up and down and never settles. Which change to the learning rate is most likely to help?",
   "options": [
-   "Increase it, so larger steps settle faster",
-   "Set it to zero so that the weights stabilise",
-   "Make it change sign every epoch",
-   "Reduce it, because steps that are too large overshoot the minimum"
+   "Increase it, because larger steps settle faster",
+   "Set it to zero, because then the weights stabilise",
+   "Leave it, because bouncing is normal late in training",
+   "Reduce it, because large steps overshoot the minimum"
   ],
   "answer": [
    3
@@ -299,12 +299,12 @@
   "week": 7,
   "topic": "Gradient descent",
   "type": "multi",
-  "q": "Which statements about updating the weights across a network are correct?",
+  "q": "Which statements about updating the weights and biases across a network are correct?",
   "options": [
    "The same process is used for every weight and bias",
-   "It applies across all layers and perceptrons",
+   "The process applies across all layers and perceptrons",
    "Only the weights of the output layer are ever updated",
-   "Each update moves the parameter in the direction that reduces the cost"
+   "Each update moves a parameter to lower the cost"
   ],
   "answer": [
    0,
@@ -320,10 +320,10 @@
   "week": 7,
   "topic": "Backpropagation",
   "type": "single",
-  "q": "A network has several layers, and the prediction error is measured only at the output. What does backpropagation allow?",
+  "q": "A network has several layers, and the prediction error is measured only at the output. What does backpropagation do about this?",
   "options": [
    "It lets the hidden layers skip the forward pass",
-   "It propagates the error back so the weights and biases of every layer can be adjusted",
+   "It sends the error back to adjust every layer",
    "It removes the need for a cost function",
    "It makes the output layer ignore earlier layers"
   ],
@@ -364,13 +364,13 @@
   "options": [
    "The network is tested on unseen data",
    "The weights are reset to random values",
-   "Another forward pass runs with the new weights, starting the next epoch",
+   "A new forward pass runs with the new weights",
    "The cost function is replaced by a new type"
   ],
   "answer": [
    2
   ],
-  "explain": "Training repeats the loop with the improved weights until convergence or the epoch limit. Testing comes only when training is finished.",
+  "explain": "Training repeats the loop with the improved weights, which starts the next epoch, until convergence or the epoch limit. Testing comes only when training is finished.",
   "source": "Week 7 lecture, slide 9 and 41",
   "flag": ""
  },
@@ -381,7 +381,7 @@
   "type": "single",
   "q": "Is the following statement correct?\n\"A forward pass changes the weights so that the next prediction is better.\"",
   "options": [
-   "Incorrect, a forward pass only produces a prediction and the weights are changed afterwards",
+   "Incorrect, a forward pass only makes a prediction",
    "Correct, the forward pass is where the learning happens",
    "Correct, because the forward pass includes gradient descent",
    "Incorrect, because forward passes only happen when testing"

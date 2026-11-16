@@ -6,7 +6,7 @@
   "type": "single",
   "q": "How does a machine learning system differ from a program built on hand-crafted rules?",
   "options": [
-   "It learns patterns from data, usually historical, instead of following rules a person wrote",
+   "It learns patterns from data instead of following written rules",
    "It follows fixed rules but runs them much faster than a person could",
    "It stores every past example and replays the matching answer",
    "It needs a person to write a new rule for every case"
@@ -14,7 +14,7 @@
   "answer": [
    0
   ],
-  "explain": "Machine learning improves performance on a task by learning from data. Hand-written rules are exactly what it tries to avoid.",
+  "explain": "Machine learning improves at a task by learning from data, usually historical. Hand-written rules are what it replaces.",
   "source": "Week 2 lecture, slide 3",
   "flag": ""
  },
@@ -23,7 +23,7 @@
   "week": 2,
   "topic": "Machine learning basics",
   "type": "single",
-  "q": "An agent learns to play a game by trying moves and receiving rewards or penalties. Which paradigm is this?",
+  "q": "An agent learns to play a game by trying moves and receiving rewards or penalties. Which type of machine learning is this?",
   "options": [
    "Supervised learning",
    "Reinforcement learning",
@@ -62,7 +62,7 @@
  {
   "id": "w02-004",
   "week": 2,
-  "topic": "Why ML",
+  "topic": "When to use machine learning",
   "type": "single",
   "q": "Spammers and fraudsters keep changing their behaviour. Why does machine learning cope better than fixed rules?",
   "options": [
@@ -74,14 +74,14 @@
   "answer": [
    2
   ],
-  "explain": "Concept drift means behaviour changes over time, and retraining adapts the model. Rules can be edited but a growing rule set becomes unmanageable.",
+  "explain": "Behaviour that changes over time is called concept drift, and retraining adapts the model to it. Rules can be edited, but a growing rule set becomes hard to manage.",
   "source": "Week 2 lecture, slide 5",
   "flag": ""
  },
  {
   "id": "w02-005",
   "week": 2,
-  "topic": "Why ML",
+  "topic": "When to use machine learning",
   "type": "multi",
   "q": "In which situations is a simple rule or a verified algorithm better than machine learning?",
   "options": [
@@ -107,17 +107,17 @@
   "week": 2,
   "topic": "Supervised learning",
   "type": "single",
-  "q": "A bank wants to predict whether a new applicant will default within 12 months. What kind of task is it?",
+  "q": "A bank wants to predict whether a new applicant will default within 12 months, yes or no. What kind of task is this?",
   "options": [
-   "Regression, because default is a risk score",
-   "Regression, because applicants are numbered",
+   "Regression, because default risk is a score",
+   "Regression, because the bank holds numeric data on applicants",
    "Clustering, because applicants form natural groups",
    "Classification, because the outcome is a category"
   ],
   "answer": [
    3
   ],
-  "explain": "Default or no default is a discrete class. Regression predicts a continuous value such as a price or a time.",
+  "explain": "Default or no default is a category, so this is classification. Regression predicts a continuous value such as a price or a time.",
   "source": "Week 2 lecture, slide 12 and 14",
   "flag": ""
  },
@@ -131,7 +131,7 @@
    "Predicting wheat yield in tonnes per hectare",
    "Forecasting a journey time in minutes",
    "Deciding from a chest X-ray whether pneumonia is present",
-   "Placing each customer in new, active or churn-risk",
+   "Labelling each customer as new, active or at risk of leaving",
    "Identifying a dog's breed from a photo"
   ],
   "answer": [
@@ -165,33 +165,33 @@
  {
   "id": "w02-009",
   "week": 2,
-  "topic": "Classification",
+  "topic": "Classification thresholds",
   "type": "single",
   "q": "A classifier outputs a probability for each class. How is this turned into a final label?",
   "options": [
    "The model always picks the class seen most often in training",
-   "A threshold is chosen, balancing the real-world costs of false positives and false negatives",
+   "A threshold is chosen to balance the cost of false alarms and misses",
    "The probabilities are averaged over all the training examples",
    "A person reviews every prediction and picks the label"
   ],
   "answer": [
    1
   ],
-  "explain": "The threshold is a decision made after the model. Moving it trades false alarms against missed cases.",
+  "explain": "The threshold is a decision made after the model produces its probabilities. Moving it trades false alarms against missed cases.",
   "source": "Week 2 lecture, slide 16",
   "flag": ""
  },
  {
   "id": "w02-010",
   "week": 2,
-  "topic": "Evaluation",
+  "topic": "Evaluating classifiers",
   "type": "single",
   "q": "A fraud team has few investigators and wants most of its flagged cases to be real fraud. Which measure should it watch most closely?",
   "options": [
    "Recall",
    "Mean squared error",
    "Precision",
-   "Number of features"
+   "Accuracy"
   ],
   "answer": [
    2
@@ -203,7 +203,7 @@
  {
   "id": "w02-011",
   "week": 2,
-  "topic": "Evaluation",
+  "topic": "Evaluating classifiers",
   "type": "single",
   "q": "A hospital screening test must catch as many ill patients as possible, even at the cost of extra checks. Which measure matters most?",
   "options": [
@@ -222,7 +222,7 @@
  {
   "id": "w02-012",
   "week": 2,
-  "topic": "Evaluation",
+  "topic": "Evaluating classifiers",
   "type": "single",
   "q": "A model on a heavily imbalanced dataset always predicts the majority class. What will its accuracy look like?",
   "options": [
@@ -241,7 +241,7 @@
  {
   "id": "w02-013",
   "week": 2,
-  "topic": "Evaluation",
+  "topic": "Evaluating classifiers",
   "type": "multi",
   "q": "Which statements about the confusion matrix are correct?",
   "options": [
@@ -264,26 +264,26 @@
  {
   "id": "w02-014",
   "week": 2,
-  "topic": "Evaluation",
+  "topic": "Evaluating classifiers",
   "type": "single",
   "q": "What does the F1 score combine?",
   "options": [
    "Accuracy and specificity, using the arithmetic mean",
    "Precision and recall, using the harmonic mean",
-   "Precision and the number of classes, using the mode",
-   "Recall and training loss, using the harmonic mean"
+   "Precision and specificity, using the median",
+   "Recall and specificity, using the harmonic mean"
   ],
   "answer": [
    1
   ],
-  "explain": "F1 gives one balanced number from precision and recall. It is useful when classes are imbalanced.",
+  "explain": "F1 is the harmonic mean of precision and recall, so it gives one balanced number. It is useful when classes are imbalanced.",
   "source": "Week 2 lecture, slide 24",
   "flag": ""
  },
  {
   "id": "w02-015",
   "week": 2,
-  "topic": "Evaluation",
+  "topic": "Evaluating classifiers",
   "type": "single",
   "q": "What does an ROC curve plot as the decision threshold is varied?",
   "options": [
@@ -295,14 +295,14 @@
   "answer": [
    2
   ],
-  "explain": "Each point on the curve is one threshold, and AUC summarises how well the model ranks positives above negatives.",
+  "explain": "Each point on the curve is one threshold. AUC, the area under the curve, summarises how well the model ranks positives above negatives.",
   "source": "Week 2 lecture, slide 25",
   "flag": ""
  },
  {
   "id": "w02-016",
   "week": 2,
-  "topic": "Algorithms",
+  "topic": "Classification algorithms",
   "type": "multi",
   "q": "Which of the following correctly pair a classification algorithm with its description?",
   "options": [
@@ -317,7 +317,7 @@
    2,
    4
   ],
-  "explain": "Decision trees give if then rules and support vector machines use the kernel trick. k-NN does very little work until it is asked to predict.",
+  "explain": "A single tree of if then rules describes a decision tree, not a support vector machine, which uses the kernel trick. k-NN does very little work until it is asked to predict.",
   "source": "Week 2 lecture, slide 26 and 35",
   "flag": ""
  },
@@ -331,7 +331,7 @@
    "The distance measure changes whenever k changes",
    "The training labels are rewritten for each new value of k",
    "The model is retrained from scratch for every value of k",
-   "A different set of neighbours is counted, so the majority vote can change"
+   "A different set of neighbours is counted, so the vote can change"
   ],
   "answer": [
    3
@@ -347,7 +347,7 @@
   "type": "single",
   "q": "k-NN is called a lazy learner. What does this mean?",
   "options": [
-   "It does little work in training and does most of its work when asked to predict",
+   "It does little work in training and most work when predicting",
    "It learns very slowly and needs many passes over the data",
    "It ignores some training examples to save effort",
    "It makes predictions without comparing to any examples"
@@ -355,7 +355,7 @@
   "answer": [
    0
   ],
-  "explain": "There is no real training phase, which suits real-time use. The cost appears at prediction time when distances are computed.",
+  "explain": "There is no real training phase. The cost comes at prediction time, when distances to the training points are computed.",
   "source": "Week 2 lecture, slide 35",
   "flag": ""
  },
@@ -369,12 +369,12 @@
    "It takes a majority vote among the k nearest neighbours",
    "It averages the values of the k nearest neighbours",
    "It fits a straight line through all the training points",
-   "It picks the single furthest neighbour as the answer"
+   "It averages the values of all training points, not just the nearest"
   ],
   "answer": [
    1
   ],
-  "explain": "Classification uses a vote, and regression uses an average of neighbour values. Both use the nearest points.",
+  "explain": "Classification uses a majority vote and regression uses an average of the neighbours' values. Both use the k nearest points.",
   "source": "Week 2 lecture, slide 36",
   "flag": ""
  },
@@ -387,13 +387,13 @@
   "options": [
    "Age dominates the distance, because it is the smaller number",
    "Both features count equally, because distance ignores units",
-   "Income dominates the distance, so age has little influence on which points are nearest",
+   "Income dominates the distance, so age has little influence",
    "The model cannot be fitted until the features are scaled"
   ],
   "answer": [
    2
   ],
-  "explain": "Distance is driven by the feature with the largest numeric range. Scaling puts features on a comparable footing.",
+  "explain": "Distance is driven by the feature with the largest numeric range, here income in pounds. Scaling puts features on a comparable footing.",
   "source": "Week 2 lecture, slide 36 and 39",
   "flag": "The slides state that k-NN is sensitive to irrelevant features and the Week 1 slides mention scaling for distance models. The unscaled income example is standard textbook knowledge."
  },
@@ -415,7 +415,7 @@
    2,
    4
   ],
-  "explain": "k-NN works for classification and regression, and it is non-parametric, so it assumes no particular data distribution.",
+  "explain": "The two wrong options fail because k-NN works for classification and regression, and because it is non-parametric it assumes no particular data distribution.",
   "source": "Week 2 lecture, slide 35 and 39",
   "flag": ""
  },
@@ -429,12 +429,12 @@
    "Always use k equal to one, because it matches the closest point",
    "Use the value that gives the best result on the training data",
    "Pick the value that makes the number of votes even",
-   "Compare several values on validation data, optionally with cross-validation, and keep the best"
+   "Compare several values on validation data and keep the best"
   ],
   "answer": [
    3
   ],
-  "explain": "Using validation data shows how each k performs on unseen examples. Judging on training data would favour k equal to one, which memorises the training set.",
+  "explain": "Validation data shows how each k performs on unseen examples, and cross-validation makes the comparison more reliable. Judging on training data would favour k equal to one, which memorises the training set.",
   "source": "Week 2 lecture, slide 37",
   "flag": ""
  },
@@ -445,7 +445,7 @@
   "type": "single",
   "q": "What does Gini impurity measure in a node of a decision tree?",
   "options": [
-   "How mixed the classes are, where zero means all samples share one class",
+   "How mixed the classes in the node are",
    "How many features are left to split on",
    "How deep the node sits in the tree",
    "How many samples the node contains"
@@ -453,7 +453,7 @@
   "answer": [
    0
   ],
-  "explain": "It is the chance of mislabelling a random sample if labelled by the node's class mix. A pure node has an impurity of zero.",
+  "explain": "Gini impurity is the chance of mislabelling a random sample if it is labelled by the node's class mix. A pure node, where all samples share one class, has an impurity of zero.",
   "source": "Week 2 lecture, slide 42",
   "flag": ""
  },
@@ -462,7 +462,7 @@
   "week": 2,
   "topic": "Decision trees",
   "type": "single",
-  "q": "At the root, a tree finds that splitting on Windy gives purer child nodes than splitting on Outlook. Which does it choose?",
+  "q": "In a weather dataset, a decision tree at the root finds that splitting on Windy gives purer child nodes than splitting on Outlook. Which does it choose?",
   "options": [
    "Outlook, because it has more possible values",
    "Windy, because it gives the larger reduction in impurity",
@@ -472,7 +472,7 @@
   "answer": [
    1
   ],
-  "explain": "The tree tries each split and keeps the one with the greatest gain, meaning the largest drop in weighted impurity. The number of values does not decide this.",
+  "explain": "The tree tries each split and keeps the one with the greatest gain, meaning the largest drop in weighted impurity. The number of values a feature has does not decide this.",
   "source": "Week 2 lecture, slide 44",
   "flag": ""
  },
@@ -484,7 +484,7 @@
   "q": "Which of the following are valid reasons for a decision tree to stop splitting?",
   "options": [
    "The training data has been shuffled",
-   "The k nearest neighbours agree",
+   "The node still contains more than one class",
    "No features remain to split on",
    "A maximum depth has been reached",
    "The node is pure",
@@ -496,7 +496,7 @@
    4,
    5
   ],
-  "explain": "Stopping rules are purity, no features left or limits such as depth and sample size. The other options are unrelated to tree growth.",
+  "explain": "A tree stops when a node is pure, no features remain, or a limit such as maximum depth or minimum samples is reached. Shuffling the data and a node that still holds several classes are not reasons to stop.",
   "source": "Week 2 lecture, slide 46",
   "flag": ""
  },
@@ -509,13 +509,13 @@
   "options": [
    "No prediction, because only pure leaves can predict",
    "The minority class, to be cautious about the majority",
-   "The majority class, with a probability estimated from the leaf's class mix",
+   "The majority class, with a probability from the class mix",
    "A class chosen at random from the examples in the leaf"
   ],
   "answer": [
    2
   ],
-  "explain": "An impure leaf still predicts its majority class, and the share of that class gives an estimated probability.",
+  "explain": "An impure leaf still predicts its majority class. The share of that class gives an estimated probability.",
   "source": "Week 2 lecture, slide 45 to 47",
   "flag": ""
  },
@@ -538,12 +538,12 @@
  {
   "id": "w02-028",
   "week": 2,
-  "topic": "Why ML",
+  "topic": "When to use machine learning",
   "type": "explain",
   "q": "Explain why machine learning is sometimes better than rule-based approaches, and describe when it should not be used.",
   "model": "Machine learning is better when patterns are complex, there are many edge cases, data changes over time or inputs are noisy. It can capture nonlinear interactions and be retrained as behaviour drifts instead of rewriting rules. It should not be used with tiny or poor data, where it will overfit. It is also unsuitable when exact rules exist, in safety critical work where errors are unacceptable, and when clear auditable reasoning is required.",
   "points": [
-   "Complex patterns, many edge cases or changing data favour ML",
+   "Complex patterns, many edge cases or changing data favour machine learning",
    "Retraining adapts to concept drift",
    "Tiny or poor data causes overfitting",
    "Deterministic, safety critical or transparent needs favour rules"
@@ -570,7 +570,7 @@
  {
   "id": "w02-030",
   "week": 2,
-  "topic": "Classification",
+  "topic": "Classification thresholds",
   "type": "explain",
   "q": "Explain how a classification model turns its output into a decision and why the threshold matters.",
   "model": "A classification model learns patterns that separate the categories and outputs a probability for each class. To get a final label, a threshold is applied to those probabilities. The threshold is chosen to balance the real-world costs of mistakes. Lowering it catches more positives but raises false positives. Raising it does the opposite, so the choice depends on whether false alarms or missed cases are more costly.",
@@ -586,7 +586,7 @@
  {
   "id": "w02-031",
   "week": 2,
-  "topic": "Evaluation",
+  "topic": "Evaluating classifiers",
   "type": "explain",
   "q": "Compare precision and recall and say when each matters most.",
   "model": "Precision asks, of the items predicted positive, how many are truly positive. It matters when false positives are costly, for example fraud investigations where staff time is limited. Recall asks, of all the real positives, how many were caught. It matters when missing a positive is costly, for example disease screening. The F1 score combines the two when a balance is needed.",
@@ -602,7 +602,7 @@
  {
   "id": "w02-032",
   "week": 2,
-  "topic": "Evaluation",
+  "topic": "Evaluating classifiers",
   "type": "explain",
   "q": "Explain why accuracy can be misleading on imbalanced data and what you could use instead.",
   "model": "Accuracy is the share of all predictions that are correct. When one class is far more common, a model can predict that class every time and still score high accuracy while finding none of the rare cases. This hides poor performance on the class that usually matters. Better choices are precision, recall and the F1 score, and the confusion matrix shows where the mistakes fall.",

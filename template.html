@@ -77,7 +77,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}legend{padding:0}
 .how{display:block;font-size:var(--t-s);color:var(--ink-2);font-weight:400;margin-bottom:12px}
 .o{display:grid;grid-template-columns:22px minmax(0,1fr) 24px;gap:0 12px;align-items:start;padding:12px 0;border-top:1px solid var(--hair);cursor:pointer}
 .o input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--ink);cursor:pointer}
-.o input:disabled{cursor:default}
+.o input:disabled{cursor:default;opacity:1}
 .o small{display:block;font-weight:700;font-size:var(--t-xs);color:var(--wrong)}.o small.ok{color:var(--right)}
 .o .mk{width:22px;height:22px;margin-top:2px}
 .row{display:flex;flex-wrap:wrap;gap:4px 24px}.row .o{border:0;grid-template-columns:22px auto;padding:8px 0}
@@ -121,7 +121,7 @@ dialog .nav{margin-top:20px}
 </head>
 <body>
 <main id="app"></main>
-<dialog id="dlg" aria-labelledby="dlg-t"><p id="dlg-t"></p><div class="nav"><button id="dlg-no">Keep working</button><button class="p" id="dlg-yes">Hand in</button></div></dialog>
+<dialog id="dlg" aria-labelledby="dlg-t"><p id="dlg-t"></p><div class="nav"><button id="dlg-no">Keep answering</button><button class="p" id="dlg-yes">Hand in the paper</button></div></dialog>
 <noscript><p style="padding:20px">This practice page needs JavaScript switched on.</p></noscript>
 <script>
 const DATA = /*DATA*/;
@@ -224,7 +224,7 @@ function home() {
     <thead><tr><th scope="col"><span class="vh">Week</span></th><th scope="col">Multiple choice</th><th scope="col">Written answer</th></tr></thead>
     <tbody>${weeksPresent.map(w => `<tr><th scope="row"><button class="wk" data-week="${w}" aria-label="Week ${w}, ${esc(WEEKS[w] || "")}. Open notes and questions."><b>${w}</b><span>${esc(WEEKS[w] || "")}</span></button></th>${td(w, false)}${td(w, true)}</tr>`).join("")}</tbody>
   </table>
-  <div class="key"><span>0%</span><span class="sw" aria-hidden="true">${VIR.map(c => `<i style="background:${c}"></i>`).join("")}</span><span>100% of the questions right</span><span class="nw" aria-hidden="true"></span><span>not started</span></div>
+  <div class="key"><span>Colour of a square, from 0%</span><span class="sw" aria-hidden="true">${VIR.map(c => `<i style="background:${c}"></i>`).join("")}</span><span>to 100% of its questions right</span><span class="nw" aria-hidden="true"></span><span>no question tried yet</span></div>
   <p class="s">Press a square to practise that week and question type, starting with the questions you get wrong. Press a week name for its notes and to ask about it.</p>
   <h2>Other ways to practise</h2>
   <div class="papers">
@@ -238,7 +238,7 @@ function home() {
     <p class="s">Each question can open in an assistant, with the question and your answer already filled in.</p>
     <div class="row">${Object.entries(AI).map(([k, t]) => `<label class="o"><input type="radio" name="ai" value="${k}" ${st.ai === k ? "checked" : ""}><span>${t.name}</span></label>`).join("")}</div>
   </fieldset>
-  ${last.length ? `<h2>Recent marks</h2><table class="t"><tr><th scope="col">Paper</th><th scope="col">Date</th><th scope="col" class="num">Mark</th></tr>${last.map(h => `<tr><td>${esc(h.title)}</td><td>${new Date(h.at).toLocaleDateString()}</td><td class="num">${h.score} of ${h.total}</td></tr>`).join("")}</table>` : ""}
+  ${last.length ? `<h2>Your last sets and their marks</h2><table class="t"><tr><th scope="col">Set</th><th scope="col">Date</th><th scope="col" class="num">Mark</th></tr>${last.map(h => `<tr><td>${esc(h.title)}</td><td>${new Date(h.at).toLocaleDateString()}</td><td class="num">${h.score} of ${h.total}</td></tr>`).join("")}</table>` : ""}
   ${FOOT}`;
   if (!first) focusOn("h1"); first = false;
   app.querySelectorAll(".wk").forEach(b => b.onclick = () => { week(+b.dataset.week); window.scrollTo(0, 0); });
@@ -262,7 +262,7 @@ function home() {
 function start(o) {
   const order = {};
   o.ids.forEach(id => { const q = BYID[id]; if (!isEx(q)) order[id] = shuffle([...q.options.keys()]); });
-  st.run = {title:o.title, ids:o.ids, exam:!!o.exam, limit:o.limit || 0, t0:Date.now(), i:0, ans:{}, text:{}, pts:{}, checked:{}, order, done:false};
+  st.run = {title:o.title, ids:o.ids, exam:!!o.exam, limit:o.limit || 0, t0:Date.now(), i:0, ans:{}, text:{}, pts:{}, auto:{}, checked:{}, order, done:false};
   save(); show(); window.scrollTo(0, 0);
 }
 function show() { const r = st.run; if (!r) return home(); r.done ? results() : question(); }
@@ -272,20 +272,30 @@ const answered = (r, id) => isEx(BYID[id]) ? !!(r.text[id] || "").trim() : !!(r.
 const got = (r, q) => isEx(q) ? (r.pts[q.id] || []).length : (same(r.ans[q.id] || [], q.answer) ? 1 : 0);
 function record(r, q) { st.seen[q.id] = (st.seen[q.id] || 0) + 1; st.sc[q.id] = got(r, q) / marks(q); }
 
+// Key terms of a marking point: its content words, cut to a rough stem so "clusters" matches "cluster".
+const STOP = new Set("about above after again also and another any are because been before being between both but can cannot could does doing done each either every for from given gives have having how into its itself just like made make makes many may more most much must need needs not one only other over same should some such than that the their them then there these they this those through too under until used uses using very was were what when where which while who why will with within without would your says say said states state mentions mention describes describe names name gives explains explain identifies identify links link notes note valid correct correctly example sensible suitable clear least".split(" "));
+const stemWord = w => w.replace(/(ations?|ising|izing|ised|ized|ing|ies|ed|es|s)$/, "");
+const terms = text => [...new Set((text.toLowerCase().match(/[a-z][a-z-]{2,}/g) || []).filter(w => !STOP.has(w)).map(stemWord).filter(w => w.length > 2))];
+// Which points does the answer seem to cover? A point counts when at least half of its key terms appear.
+function autoTick(q, text) {
+  const mine = new Set(terms(text));
+  return q.points.map((p, i) => { const t = terms(p), hit = t.filter(w => mine.has(w)); return t.length && hit.length >= Math.max(1, Math.ceil(t.length / 2)) ? i : -1; }).filter(i => i >= 0);
+}
 const stateOf = (q, k, picked) => q.answer.includes(k) ? (picked.includes(k) ? "right" : "missed") : (picked.includes(k) ? "wrong" : "");
 function optRow(q, k, sel, state, locked) {
-  const label = {right:"Right", missed:"Missed", wrong:"Wrong"}[state] || "";
+  const label = {right:"Your answer. Right.", missed:q.type === "multi" ? "Right answer. You did not choose it." : "This is the right answer.", wrong:"Your answer. Wrong."}[state] || "";
   return `<label class="o"><input type="${q.type === "multi" ? "checkbox" : "radio"}" name="o" value="${k}" ${sel ? "checked" : ""} ${locked ? "disabled" : ""}>
-    <span>${esc(q.options[k])}${label ? `<small${state === "right" ? ' class="ok"' : ""}>${label}</small>` : ""}</span>
-    ${state === "right" ? TICK : state ? CROSS : "<span></span>"}</label>`;
+    <span>${esc(q.options[k])}${label ? `<small${state === "wrong" ? "" : ' class="ok"'}>${label}</small>` : ""}</span>
+    ${state === "wrong" ? CROSS : state ? TICK : "<span></span>"}</label>`;
 }
-const srcLine = q => `<p class="s">${esc(q.source)}</p>${q.flag ? `<p class="flag"><b>Note.</b> ${esc(q.flag)}</p>` : ""}`;
+const srcLine = q => `<p class="s">${esc(q.source)}</p>${q.flag ? `<p class="flag"><b>Note on this question.</b> ${esc(q.flag)}</p>` : ""}`;
 // The model answer with its marking points. live lets the points be ticked.
 function modelBlock(q, r, live, h) {
   const mine = r.pts[q.id] || [];
   return `<${h} class="sub">Model answer</${h}><p>${esc(q.model)}</p>
     <fieldset class="pts" data-id="${q.id}"><legend><${h} class="sub">Tick each point your answer made</${h}></legend>
-    ${q.points.map((p, i) => `<label class="o"><input type="checkbox" value="${i}" ${mine.includes(i) ? "checked" : ""} ${live ? "" : "disabled"}><span>${esc(p)}</span><span></span></label>`).join("")}</fieldset>${srcLine(q)}`;
+    <p class="s">${(r.auto[q.id] || []).length ? `The page has ticked ${r.auto[q.id].length} of ${q.points.length} because their key terms appear in your answer. It matches words and cannot judge meaning, so check each one.` : (r.text[q.id] || "").trim() ? "The page found too few key terms from any point in your answer, so nothing is ticked yet. Tick the points you did make." : "You did not write an answer, so nothing is ticked."}</p>
+    ${q.points.map((p, i) => `<label class="o"><input type="checkbox" value="${i}" ${mine.includes(i) ? "checked" : ""} ${live ? "" : "disabled"}><span>${esc(p)}${(r.auto[q.id] || []).includes(i) ? `<small class="ok">Key terms found in your answer</small>` : ""}</span><span></span></label>`).join("")}</fieldset>${srcLine(q)}`;
 }
 
 function question() {
@@ -301,16 +311,16 @@ function question() {
     ${aiRow([["mark", ex ? `Ask ${aiName()} to mark it` : `Ask ${aiName()} about this`]])}</div>`;
   const n2 = r.ids.filter(id => answered(r, id)).length;
   app.innerHTML = `
-  <div class="top"><button class="l" id="quit">${r.exam ? "Save and leave" : "Leave this set"}</button><b>${esc(r.title)}</b>${r.limit ? `<span class="timer" id="tm" role="timer" aria-label="Time left"></span>` : `<span>Question ${r.i + 1} of ${n}</span>`}</div>
+  <div class="top"><button class="l" id="quit">${r.exam ? "Save and leave the paper" : "Leave this set"}</button><b>${esc(r.title)}</b>${r.limit ? `<span class="timer" id="tm" role="timer" aria-label="Time left"></span>` : `<span>Question ${r.i + 1} of ${n}</span>`}</div>
   <div class="meta"><span>Week ${q.week}, ${esc(q.topic)}</span><span>${checked ? `${got(r, q)} of ${marks(q)} ${marks(q) === 1 ? "mark" : "marks"}` : `${marks(q)} ${marks(q) === 1 ? "mark" : "marks"}`}</span></div>
   ${body}${fb}
   ${ex && !checked && !r.exam ? aiRow([["hint", `Get a hint from ${aiName()}`]]) : ""}
   <div class="nav">
-    <button id="prev" ${r.i ? "" : "disabled"}>Previous</button>
-    ${r.exam ? (r.i < n - 1 ? `<button class="p" id="next">Next</button>` : `<button class="p" id="fin">Hand in</button>`)
-      : (checked ? `<button class="p" id="next">${r.i < n - 1 ? "Next" : "See marks"}</button>` : `<button class="p" id="chk">${ex ? "Show model answer" : "Check"}</button>`)}
+    <button id="prev" ${r.i ? "" : "disabled"}>Previous question</button>
+    ${r.exam ? (r.i < n - 1 ? `<button class="p" id="next">Next question</button>` : `<button class="p" id="fin">Hand in the paper</button>`)
+      : (checked ? `<button class="p" id="next">${r.i < n - 1 ? "Next question" : "See my marks for this set"}</button>` : `<button class="p" id="chk">${ex ? "Show the model answer" : "Check my answer"}</button>`)}
   </div>
-  ${r.exam ? `<details open><summary>Go to a question. ${n2} of ${n} answered.</summary><div class="grid">${r.ids.map((id, i) => `<button data-i="${i}" class="${answered(r, id) ? "done" : ""} ${i === r.i ? "cur" : ""}" aria-label="Question ${i + 1}, ${answered(r, id) ? "answered" : "not answered"}"${i === r.i ? ' aria-current="true"' : ""}>${i + 1}</button>`).join("")}</div><button id="fin2">Hand in</button></details>` : ""}`;
+  ${r.exam ? `<details open><summary>Go to a question. ${n2} of ${n} answered.</summary><div class="grid">${r.ids.map((id, i) => `<button data-i="${i}" class="${answered(r, id) ? "done" : ""} ${i === r.i ? "cur" : ""}" aria-label="Question ${i + 1}, ${answered(r, id) ? "answered" : "not answered"}"${i === r.i ? ' aria-current="true"' : ""}>${i + 1}</button>`).join("")}</div><button id="fin2">Hand in the paper</button></details>` : ""}`;
 
   const ta = document.getElementById("ans");
   if (ta) ta.oninput = () => { r.text[q.id] = ta.value; save(); };
@@ -325,7 +335,7 @@ function question() {
   on("quit", () => { if (!r.exam) st.run = null; save(); home(); window.scrollTo(0, 0); });
   on("prev", () => go(r.i - 1));
   on("next", () => r.i < n - 1 ? go(r.i + 1) : finish());
-  on("chk", () => { r.checked[q.id] = true; record(r, q); save(); question(); });
+  on("chk", () => { r.checked[q.id] = true; if (ex) { r.auto[q.id] = autoTick(q, r.text[q.id] || ""); r.pts[q.id] = r.auto[q.id].slice(); } record(r, q); save(); question(); });
   const fin = () => {
     const left = r.ids.filter(id => !answered(r, id)).length;
     if (!left) return finish();
@@ -348,7 +358,7 @@ function finish() {
   clearInterval(tick);
   const r = st.run;
   r.done = true; r.took = Math.floor((Date.now() - r.t0) / 1000);
-  if (r.exam) r.ids.forEach(id => record(r, BYID[id]));
+  if (r.exam) r.ids.forEach(id => { const q = BYID[id]; if (isEx(q)) { r.auto[id] = autoTick(q, r.text[id] || ""); r.pts[id] = r.auto[id].slice(); } record(r, q); });
   st.hist.push({title:r.title, score:0, total:0, at:Date.now()}); st.hist = st.hist.slice(-30);
   tally(); save(); results(); window.scrollTo(0, 0);
 }
@@ -362,8 +372,8 @@ function tally() {
 function results() {
   const r = st.run, toMark = r.exam && r.ids.some(id => isEx(BYID[id]));
   const line = () => `${r.score} of ${r.total} marks`;
-  app.innerHTML = `<div class="top"><button class="l" id="back">Back to the start</button><b>${esc(r.title)}</b><span></span></div>
-  <h1 style="margin-top:24px">${toMark ? "Mark your paper" : "Your marks"}</h1>
+  app.innerHTML = `<div class="top"><button class="l" id="back">Back to the home page</button><b>${esc(r.title)}</b><span></span></div>
+  <h1 style="margin-top:24px">${toMark ? "Mark your paper" : "Your marks for this set"}</h1>
   <p class="total" id="tot" aria-live="polite">${line()}</p>
   <p class="s">${r.ids.length} questions in ${fmt(r.took)}${r.limit && r.took >= r.limit ? ". Time ran out" : ""}.${toMark ? " Read each model answer and tick the points you made. The total updates as you tick." : ""}</p>
   ${r.ids.map((id, i) => {
@@ -371,7 +381,7 @@ function results() {
     return `<section class="rev"><div class="meta"><span>Question ${i + 1}. Week ${q.week}, ${esc(q.topic)}</span><span data-got="${id}">${got(r, q)} of ${marks(q)} ${marks(q) === 1 ? "mark" : "marks"}</span></div><h2 class="stem">${esc(q.q)}</h2>
     ${isEx(q) ? `<h3>Your answer</h3><p class="yours">${esc(r.text[id] || "No answer written.")}</p>${modelBlock(q, r, true, "h3")}` : `${r.order[id].map(k => optRow(q, k, pk.includes(k), stateOf(q, k, pk), true)).join("")}<p>${esc(q.explain)}</p>${srcLine(q)}`}</section>`;
   }).join("")}
-  <div class="nav"><span></span><button class="p" id="back2">Back to the start</button></div>${FOOT}`;
+  <div class="nav"><span></span><button class="p" id="back2">Back to the home page</button></div>${FOOT}`;
   app.querySelectorAll(".pts").forEach(fs => fs.onchange = () => {
     const id = fs.dataset.id, q = BYID[id];
     r.pts[id] = [...fs.querySelectorAll("input:checked")].map(x => +x.value); st.sc[id] = got(r, q) / marks(q); tally(); save();
@@ -388,7 +398,7 @@ function week(w) {
   const sheets = DATA.notes.filter(n => (BYDECK[n.deck] || 0) === w);
   const topics = [...new Set(Q.filter(q => q.week === w).map(q => q.topic))];
   const line = ex => { const c = cell(w, ex); return c.tried ? `${Math.round(c.frac * 100)}% right, ${c.tried} of ${c.qs.length} tried` : `${c.qs.length} questions, not started`; };
-  app.innerHTML = `<div class="top"><button class="l" id="back">Back to the start</button><b>Week ${w}</b><span></span></div>
+  app.innerHTML = `<div class="top"><button class="l" id="back">Back to the home page</button><b>Week ${w}</b><span></span></div>
   <h1 style="margin-top:24px">Week ${w}, ${esc(WEEKS[w] || "")}</h1>
   <div class="papers" style="margin-top:20px">
     <button id="w-mc"><b>Multiple choice</b><span>10 questions, starting with the ones you get wrong.</span><i>${line(false)}</i></button>
@@ -414,7 +424,7 @@ function week(w) {
 
 function notes(deck) {
   const n = DATA.notes.find(x => x.deck === deck) || DATA.notes[0];
-  app.innerHTML = `<div class="top"><button class="l" id="back">Back to the start</button><b>Revision notes</b><span></span></div>
+  app.innerHTML = `<div class="top"><button class="l" id="back">Back to the home page</button><b>Revision notes</b><span></span></div>
   <p style="margin-top:20px"><label for="sheet" class="s" style="display:block;margin-bottom:4px">Lecture deck</label><select id="sheet">${DATA.notes.map(x => `<option value="${x.deck}" ${x === n ? "selected" : ""}>${esc(DECKS[x.deck] || x.deck)}</option>`).join("")}</select></p>
   <div class="notes">${n ? n.html : "<p>No notes yet.</p>"}</div>${FOOT}`;
   document.getElementById("sheet").onchange = e => { notes(e.target.value); document.getElementById("sheet").focus(); };
@@ -422,6 +432,7 @@ function notes(deck) {
 }
 
 if (st.run && !st.run.ids.every(id => BYID[id])) st.run = null;
+if (st.run && !st.run.auto) st.run.auto = {};
 home();
 </script>
 </body>

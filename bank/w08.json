@@ -6,7 +6,7 @@
   "type": "single",
   "q": "Why do traditional fully connected networks cope poorly with images?",
   "options": [
-   "They are not designed to exploit local groups of neighbouring pixels that form shapes",
+   "They do not use local groups of neighbouring pixels that form shapes",
    "They cannot apply a nonlinear function to neuron outputs",
    "They cannot be trained using backpropagation at all",
    "They only accept grayscale images with a single channel"
@@ -25,10 +25,10 @@
   "type": "single",
   "q": "What does a channel refer to in a digital image?",
   "options": [
-   "One hidden layer that sits between the input and the output of a network",
-   "One class label that the network can assign to the whole picture",
-   "One colour component of the image, held as its own 2D matrix of pixel values",
-   "One filter position as the kernel slides across the width of an image"
+   "A hidden layer between the input and the output of a network",
+   "A class label that the network can assign to a picture",
+   "A colour component of the image, stored as a 2D matrix",
+   "A filter position as the kernel slides across the image"
   ],
   "answer": [
    2
@@ -45,9 +45,9 @@
   "q": "In a convolutional layer, what is the job of a filter, also called a kernel?",
   "options": [
    "It randomly switches off outputs to stop the network memorising",
-   "It is a small 2D array of weights that slides over the input to detect a feature such as an edge",
+   "It slides over the input to detect features such as edges",
    "It converts feature values into probabilities that sum to one",
-   "It rescales pixel values so that all features share a similar magnitude"
+   "It rescales pixel values so that features share a similar size"
   ],
   "answer": [
    1
@@ -87,10 +87,10 @@
   "type": "single",
   "q": "A kernel is moved across an image with a stride of 2 instead of 1. What is the effect?",
   "options": [
-   "The kernel doubles in size, so it covers more of the image at every step",
-   "The border of the image is filled with zeros before the kernel is applied",
-   "Each kernel weight is multiplied by two, so features become stronger",
-   "The kernel shifts two positions each step, so it visits fewer positions and the output is smaller"
+   "The kernel doubles in size and covers more of the image",
+   "The border of the image is filled with zeros first",
+   "Each kernel weight is doubled, so features get stronger",
+   "The kernel moves two positions per step, so the output is smaller"
   ],
   "answer": [
    3
@@ -106,15 +106,15 @@
   "type": "single",
   "q": "Why is padding added around the border of an image before convolution?",
   "options": [
-   "To make the kernel larger so it can detect bigger shapes",
+   "To enlarge the kernel so it can detect bigger shapes",
    "To convert a colour image into a single channel image",
-   "To handle the pixels at the edges, which the kernel would otherwise cover less well",
+   "To handle edge pixels, which the kernel would otherwise cover less",
    "To increase the stride so the kernel moves faster"
   ],
   "answer": [
    2
   ],
-  "explain": "Edge pixels are treated unusually by a sliding kernel, so a border is added. Padding does not change the kernel size, the number of channels or the stride.",
+  "explain": "A sliding kernel treats pixels at the edges differently from the rest, so a border is added. Padding does not change the kernel size, the number of channels or the stride.",
   "source": "Week 8 lecture, slide 15",
   "flag": ""
  },
@@ -143,14 +143,14 @@
  {
   "id": "w08-008",
   "week": 8,
-  "topic": "Convolutional layer",
+  "topic": "Convolution",
   "type": "single",
   "q": "How do the filters of a CNN become useful feature detectors?",
   "options": [
-   "They start with random values and are refined over many rounds of feedforward and backpropagation",
-   "They are designed by hand to match edges and corners before training",
-   "They are copied from the pooling layer once training has finished",
-   "They stay at their random starting values while later layers do the learning"
+   "They start random and are refined by feedforward and backpropagation",
+   "They are designed by hand to match edges and corners",
+   "They are copied from the pooling layer after training",
+   "They stay at their random starting values during training"
   ],
   "answer": [
    0
@@ -166,10 +166,10 @@
   "type": "single",
   "q": "A max pooling layer is added after a convolutional layer. What is its main job?",
   "options": [
-   "To increase the spatial size so that finer detail can be recovered",
-   "To turn the feature maps into a single vector for classification",
+   "To enlarge the feature maps so finer detail is recovered",
+   "To turn the feature maps into a single vector",
    "To randomly ignore some outputs so the network cannot memorise",
-   "To reduce the spatial size of the feature maps while keeping the dominant features"
+   "To shrink the feature maps while keeping the dominant features"
   ],
   "answer": [
    3
@@ -226,15 +226,15 @@
   "type": "single",
   "q": "What does an activation layer do in a CNN?",
   "options": [
-   "It acts as a gate between a neuron's inputs and its output, deciding whether the output is activated",
+   "It gates a neuron's output, deciding whether it is activated",
    "It slides a kernel over the image to extract local features",
-   "It averages groups of neighbouring values to shrink the feature map",
+   "It averages groups of neighbouring values to shrink the map",
    "It flattens the feature maps into one long vector"
   ],
   "answer": [
    0
   ],
-  "explain": "An activation function is a mathematical gate that decides the output of a neuron, and in a CNN it works across two dimensions like a screen. ReLU is the most popular choice.",
+  "explain": "An activation function is a gate that decides what a neuron outputs. In a CNN it is applied across the two dimensions of each feature map. ReLU is the most popular choice.",
   "source": "Week 8 lecture, slide 22 and 23",
   "flag": ""
  },
@@ -246,14 +246,14 @@
   "q": "Why are input features scaled to a similar range, such as 0 to 1?",
   "options": [
    "So that the output layer produces probabilities that sum to one",
-   "So that the image dimensions shrink before pooling is applied",
-   "So that the size of the contribution each feature makes to prediction is about the same",
+   "So that the image shrinks before pooling is applied",
+   "So that each feature contributes about equally to the prediction",
    "So that neurons can be dropped at random during training"
   ],
   "answer": [
    2
   ],
-  "explain": "Normalisation makes feature magnitudes comparable, so one large valued feature does not dominate. Producing probabilities is softmax, and dropping neurons is dropout.",
+  "explain": "Normalisation makes feature sizes comparable, so one feature with large values does not dominate. Producing probabilities is softmax, and dropping neurons is dropout.",
   "source": "Week 8 lecture, slide 24",
   "flag": ""
  },
@@ -262,17 +262,17 @@
   "week": 8,
   "topic": "Batch normalisation",
   "type": "single",
-  "q": "Two batches from a dataset look very different from each other and training keeps lurching between them. What is this problem called?",
+  "q": "Batches from a dataset look very different from each other, and training keeps swinging between them. What is this problem called?",
   "options": [
    "Overfitting, where training error is tiny but error on new data is large",
-   "Covariate shift, a large change in the data distribution between batches",
-   "Vanishing gradient, where early layers barely update at all",
-   "Zero padding, where image borders are filled with zeros"
+   "Covariate shift, a large change in data distribution between batches",
+   "Underfitting, where training error stays high however long training runs",
+   "Vanishing gradient, where early layers barely update at all"
   ],
   "answer": [
    1
   ],
-  "explain": "When batches differ a lot the network keeps changing its weights towards each odd distribution, which slows training. Batch normalisation is used to reduce this. Overfitting is about memorising the training set instead.",
+  "explain": "When batches differ a lot, the network keeps changing its weights towards each odd distribution, which slows training. Batch normalisation reduces this. Overfitting is about memorising the training set instead.",
   "source": "Week 8 lecture, slide 25",
   "flag": ""
  },
@@ -283,7 +283,7 @@
   "type": "multi",
   "q": "Which statements about batch normalisation are correct?",
   "options": [
-   "It works on feature maps across a mini batch of a set size",
+   "It works on the feature maps of a mini batch",
    "It generally speeds up learning and leads to faster convergence",
    "For each feature it subtracts the mini batch mean and divides by the mini batch standard deviation",
    "It chooses the largest value from each patch of the feature map",
@@ -328,7 +328,7 @@
    "It permanently deletes the weakest neurons after the first pass",
    "It normalises each feature using the mini batch mean and variance",
    "It reduces the spatial size of the feature maps in each layer",
-   "It randomly ignores some layer outputs, so the layer looks different on each pass"
+   "It randomly ignores some layer outputs, so the layer differs on each pass"
   ],
   "answer": [
    3
@@ -345,9 +345,9 @@
   "q": "Is the following statement correct?\n\"Dropout is used so that a network can memorise the whole training set.\"",
   "options": [
    "Yes, because dropout stores the training examples inside the layer",
-   "Yes, because dropping outputs makes the layer more accurate on the training data only",
-   "No, dropout is a regularisation technique that stops the network memorising the training set",
-   "No, dropout is only used to shrink the spatial size of feature maps"
+   "Yes, because dropping outputs makes the layer more accurate on training data only",
+   "No, because dropout is a regularisation technique that stops memorising",
+   "No, because dropout is only used to shrink the size of feature maps"
   ],
   "answer": [
    2
@@ -363,10 +363,10 @@
   "type": "single",
   "q": "What are the two main stages of a CNN?",
   "options": [
-   "A feature stage of convolution, pooling and dropout, then fully connected layers that predict the label",
-   "A fully connected stage that finds features, then a convolutional stage that labels the image",
-   "A normalisation stage that scales the image, then a dropout stage that predicts the label",
-   "A pooling stage that finds features, then a convolutional stage that predicts the label"
+   "Convolution and pooling to find features, then fully connected layers to predict the label",
+   "Fully connected layers to find features, then convolution and pooling to predict the label",
+   "Normalisation to prepare the image, then pooling to predict the label",
+   "Pooling to find features, then convolution to predict the label"
   ],
   "answer": [
    0
@@ -385,7 +385,7 @@
    "It gives the final probability for each label using softmax",
    "It applies a filter to detect edges in the image",
    "It randomly drops outputs to prevent overfitting",
-   "It turns the output of the earlier layers into a single vector that can feed the next stage"
+   "It turns the earlier output into one vector for the next stage"
   ],
   "answer": [
    3
@@ -402,7 +402,7 @@
   "q": "What is the purpose of the softmax function in the output layer?",
   "options": [
    "It flattens feature maps into a single vector",
-   "It turns the raw feature values, called logits, into probabilities that sum to one",
+   "It turns raw values, called logits, into probabilities summing to one",
    "It decides which neuron outputs to drop at random",
    "It scales each feature to the range 0 to 1 across a mini batch"
   ],
@@ -438,7 +438,7 @@
  {
   "id": "w08-023",
   "week": 8,
-  "topic": "Convolutional layer",
+  "topic": "Convolution",
   "type": "multi",
   "q": "Which statements about convolution are correct?",
   "options": [
@@ -463,12 +463,12 @@
   "topic": "CNN motivation",
   "type": "explain",
   "q": "Explain why a traditional fully connected network does not scale well to images and what a CNN assumes instead.",
-  "model": "The meaning of an image sits in groups of neighbouring pixels that together form a shape, and a traditional network is not designed to use these local features. It treats pixels as separate inputs, so it is good at classifying but poor at extracting features. A CNN assumes the input is an image. This lets the architecture encode visual features and use local patterns, which boosts feature extraction and makes the deep network more efficient.",
+  "model": "The meaning of an image sits in groups of neighbouring pixels that together form a shape, and a traditional network is not designed to use these local features. It treats pixels as separate inputs, so it is good at classifying but poor at extracting features. A CNN assumes the input is an image. This lets the architecture encode visual features and use local patterns, so it extracts features better and runs more efficiently.",
   "points": [
-   "Image meaning comes from correlated local groups of pixels",
-   "Traditional networks do not exploit local features and are weak at feature extraction",
-   "A CNN explicitly assumes the input is an image",
-   "This lets it use local features and work more efficiently"
+   "Image meaning comes from groups of neighbouring pixels",
+   "Traditional networks do not use local features and are weak at feature extraction",
+   "A CNN assumes the input is an image",
+   "So a CNN uses local features and works more efficiently"
   ],
   "source": "Week 8 lecture, slide 5 and 6",
   "flag": ""
@@ -482,9 +482,9 @@
   "model": "Convolution slides a small 2D array of weights, called a filter or kernel, over the image and multiplies it with each patch of input. This is a linear operation that extracts and keeps local features. Different filters pick out different features such as edges or corners. The result is a smaller output that is easier to process without losing features that matter for prediction. The filters begin random and are improved by training.",
   "points": [
    "A filter or kernel is a 2D array of weights applied across the input",
-   "It is a linear multiplication of weights and input patches",
+   "It multiplies the weights with each patch of input in a linear operation",
    "Different filters detect different features such as edges and corners",
-   "It reduces output size while keeping critical features",
+   "The output is smaller but keeps the features that matter",
    "Filters start random and are learned in training"
   ],
   "source": "Week 8 lecture, slide 8 to 11 and 19",
@@ -549,7 +549,7 @@
    "Different batches cause covariate shift",
    "Covariate shift slows training because the network bounces between distributions",
    "It subtracts the mini batch mean and divides by the standard deviation for each feature",
-   "Result is faster learning and convergence"
+   "Learning is faster and converges sooner"
   ],
   "source": "Week 8 lecture, slide 24 to 26",
   "flag": ""

@@ -2,14 +2,14 @@
  {
   "id": "w04-001",
   "week": 4,
-  "topic": "Supervised or unsupervised",
+  "topic": "Supervised and unsupervised learning",
   "type": "single",
   "q": "What is the main difference between supervised and unsupervised learning?",
   "options": [
-   "Unsupervised learning uses unlabelled data to find structure, supervised learning uses labelled data to predict",
-   "Unsupervised learning uses labelled data to predict, supervised learning finds structure",
-   "Unsupervised learning needs rewards from an environment, supervised learning does not",
-   "Unsupervised learning only predicts numbers, supervised learning only predicts classes"
+   "Unsupervised learning finds patterns in unlabelled data and supervised learning predicts from labelled data",
+   "Unsupervised learning predicts from labelled data and supervised learning finds patterns in unlabelled data",
+   "Unsupervised learning needs rewards from an environment and supervised learning does not",
+   "Unsupervised learning only predicts numbers and supervised learning only predicts classes"
   ],
   "answer": [
    0
@@ -21,7 +21,7 @@
  {
   "id": "w04-002",
   "week": 4,
-  "topic": "Supervised or unsupervised",
+  "topic": "Supervised and unsupervised learning",
   "type": "single",
   "q": "A chemistry dataset describes wines by their measured properties but has no column giving the wine type. Which task is the data suited to?",
   "options": [
@@ -40,7 +40,7 @@
  {
   "id": "w04-003",
   "week": 4,
-  "topic": "Algorithm families",
+  "topic": "Unsupervised learning methods",
   "type": "multi",
   "q": "Which of these are common unsupervised learning methods?",
   "options": [
@@ -91,7 +91,7 @@
    "Market basket analysis using clustering",
    "Regression to forecast next month's sales",
    "Customer segmentation using clustering",
-   "Dimensionality reduction to remove customers"
+   "Dimensionality reduction of the customer data"
   ],
   "answer": [
    2
@@ -103,7 +103,7 @@
  {
   "id": "w04-006",
   "week": 4,
-  "topic": "Unsupervised examples",
+  "topic": "Unsupervised learning applications",
   "type": "single",
   "q": "A supermarket wants to discover which products are often bought together. What is this application called?",
   "options": [
@@ -145,10 +145,10 @@
   "type": "single",
   "q": "K-means is run twice on the same data with the same k and returns different clusters. What is the most likely cause?",
   "options": [
-   "The data changed between runs because k-means edits its own input",
+   "K-means moves the data points a little on every pass through the data",
    "The starting cluster centres were chosen at random and were different each time",
    "K-means randomly changes the number of clusters on each run",
-   "The algorithm stopped before assigning points to any centre"
+   "The distance measure changes at random from one run to the next"
   ],
   "answer": [
    1
@@ -179,28 +179,28 @@
  {
   "id": "w04-010",
   "week": 4,
-  "topic": "Choosing k",
+  "topic": "Choosing k in k-means",
   "type": "single",
   "q": "Why can you not simply pick the value of k that gives the lowest inertia?",
   "options": [
-   "Inertia is always the same whatever value of k is used",
-   "Inertia rises as k grows, so the smallest k always wins",
-   "Inertia can only be calculated when k is exactly two",
-   "Inertia keeps falling as k grows, so it cannot show which k is the right one alone"
+   "Inertia is the same whatever value of k is used, so it cannot compare them",
+   "Inertia rises as k grows, so the smallest k would always be chosen",
+   "Inertia can only be worked out when k is two, so other values give no result",
+   "Inertia keeps falling as k grows, so the lowest value is always the largest k"
   ],
   "answer": [
    3
   ],
-  "explain": "Inertia generally decreases as more clusters are added. This is why the elbow, where improvement drops sharply, is used to choose k instead of the minimum.",
+  "explain": "Inertia keeps falling as more clusters are added, so the lowest value would always point to the largest k. This is why the elbow, where improvement drops sharply, is used to choose k instead of the minimum.",
   "source": "Week 4 lecture, slide 29 and 31",
   "flag": "The slide says inertia falls as k rises, the conclusion about not using the minimum is a standard reading."
  },
  {
   "id": "w04-011",
   "week": 4,
-  "topic": "Choosing k",
+  "topic": "Choosing k in k-means",
   "type": "single",
-  "q": "On a plot of inertia against k, what marks a good choice of k in the elbow method?",
+  "q": "On a plot of inertia against k, which point marks a good choice of k in the elbow method?",
   "options": [
    "The point after which the rate of improvement drops drastically",
    "The point where inertia first becomes zero",
@@ -219,7 +219,7 @@
   "week": 4,
   "topic": "Silhouette score",
   "type": "single",
-  "q": "A point has a silhouette value close to 0. What does this say about it?",
+  "q": "A point has a silhouette value close to 0. What does this say about the point?",
   "options": [
    "It is very well clustered and far from other clusters",
    "It lies on the boundary between two clusters",
@@ -262,10 +262,10 @@
   "type": "single",
   "q": "How is the silhouette score used to choose the number of clusters?",
   "options": [
-   "Pick the k where the average score is closest to minus one",
-   "Pick the largest k that was tried, because more clusters are always better",
-   "Run k-means for several values of k and pick the k with the highest average score",
-   "Pick the k at which the score first drops below zero"
+   "Try several values of k and pick the one with the average score closest to minus one",
+   "Try several values of k and pick the largest, because more clusters are always better",
+   "Try several values of k and pick the one with the highest average score",
+   "Try several values of k and pick the one where the score first drops below zero"
   ],
   "answer": [
    2
@@ -338,14 +338,14 @@
  {
   "id": "w04-018",
   "week": 4,
-  "topic": "PCA",
+  "topic": "Principal component analysis",
   "type": "single",
   "q": "What does principal component analysis do to a dataset?",
   "options": [
    "It groups the points into a set number of clusters",
    "It projects the data onto directions that capture the greatest variance",
    "It predicts a label for each point from known examples",
-   "It rewards the directions that lead to a goal state"
+   "It deletes the points that lie furthest from the mean"
   ],
   "answer": [
    1
@@ -376,30 +376,30 @@
  {
   "id": "w04-020",
   "week": 4,
-  "topic": "PCA",
+  "topic": "Principal component analysis",
   "type": "single",
-  "q": "In principal component analysis, what does a large eigenvalue of the covariance matrix indicate?",
+  "q": "In principal component analysis, each eigenvalue of the covariance matrix belongs to one direction in the data. What does a large eigenvalue say about that direction?",
   "options": [
-   "The matching feature should be removed because it is noisy",
-   "The matching point is an outlier that belongs to its own cluster",
-   "The matching component is the label the model must predict",
-   "The matching principal component captures a large share of the variance"
+   "The direction is noisy, so it should be removed",
+   "The direction contains outliers that form a cluster of their own",
+   "The direction is the label that the model must predict",
+   "The direction captures a large share of the variance in the data"
   ],
   "answer": [
    3
   ],
-  "explain": "Eigenvalues show how strongly the data stretches along each eigenvector direction, and this is what the explained variance ratio is built from. Large ones are the components worth keeping.",
+  "explain": "Each eigenvalue shows how much the data varies along its direction, which is what the explained variance ratio is built from. Directions with large eigenvalues are the components worth keeping.",
   "source": "Week 4 lecture, slide 39 to 42",
   "flag": "The link from eigenvalue size to explained variance is standard textbook linear algebra, the slides show it only through the explained variance ratio."
  },
  {
   "id": "w04-021",
   "week": 4,
-  "topic": "PCA",
+  "topic": "Principal component analysis",
   "type": "single",
-  "q": "After principal component analysis, the first one or two components explain almost all the variance in a dataset with four features. What does this suggest?",
+  "q": "A dataset has four features. After principal component analysis, the first one or two components explain almost all the variance. What does this suggest?",
   "options": [
-   "The original features contain a lot of redundancy and can be summarised in fewer dimensions",
+   "The features overlap a lot, so fewer dimensions can summarise them",
    "The four original features were all unrelated to each other",
    "The data must contain exactly one or two natural clusters",
    "The remaining components must be the most important ones"
@@ -457,15 +457,15 @@
  {
   "id": "w04-024",
   "week": 4,
-  "topic": "Supervised and unsupervised",
+  "topic": "Supervised and unsupervised learning",
   "type": "explain",
   "q": "Compare supervised and unsupervised learning in terms of the data they use and what they aim to do.",
   "model": "Supervised learning uses labelled data, which are input and output pairs, and aims to predict outcomes for new data. Linear regression, decision trees and neural networks are examples. Unsupervised learning uses unlabelled data and aims to find inherent structure or patterns. K-means, principal component analysis and autoencoders are examples. For instance, supervised learning could predict house prices from past sales, while unsupervised learning could group customers by behaviour without any predefined groups.",
   "points": [
-   "States that supervised learning uses labelled data and unsupervised uses unlabelled data",
-   "States that supervised aims to predict and unsupervised aims to find structure",
+   "States that supervised learning uses labelled data and unsupervised learning uses unlabelled data",
+   "States that supervised learning aims to predict and unsupervised learning aims to find structure",
    "Names a correct algorithm for each",
-   "Gives a sensible example of the contrast"
+   "Gives a correct example of each, such as predicting prices and grouping customers"
   ],
   "source": "Week 4 lecture, slide 6",
   "flag": ""
@@ -506,12 +506,12 @@
  {
   "id": "w04-027",
   "week": 4,
-  "topic": "Choosing k",
+  "topic": "Choosing k in k-means",
   "type": "explain",
   "q": "Explain how the elbow method helps you choose the number of clusters in k-means.",
   "model": "Inertia is the sum of squared distances from each point to its cluster centre, and smaller values mean tighter clusters. Inertia falls as k increases. The elbow method plots inertia against k and looks for the point where the rate of improvement drops sharply. That bend is the elbow and suggests a good value of k, because adding more clusters beyond it gives little benefit. The elbow can be hard to see on some plots, so another measure may be needed.",
   "points": [
-   "Defines inertia as squared distance to the cluster centre",
+   "Defines inertia as the sum of squared distances to the cluster centre",
    "Says inertia decreases as k grows",
    "Identifies the elbow as where improvement drops sharply",
    "Notes the elbow can be hard to see"
@@ -546,7 +546,7 @@
    "Describes k-means as centre and distance based with k chosen by the user",
    "Describes DBSCAN as density based",
    "Says DBSCAN finds arbitrary shaped clusters",
-   "Gives a clear situation for choosing each"
+   "Gives one situation where each method would be chosen"
   ],
   "source": "Week 4 lecture, slide 13 and 19",
   "flag": "The point that k-means favours compact round groups is standard knowledge, the slide only says DBSCAN suits arbitrary shapes."
@@ -570,7 +570,7 @@
  {
   "id": "w04-031",
   "week": 4,
-  "topic": "PCA",
+  "topic": "Principal component analysis",
   "type": "explain",
   "q": "Describe the main steps of principal component analysis and what the result is used for.",
   "model": "First the data is centred by subtracting the mean of each feature. Next the covariance matrix is calculated to show how features vary together. Eigen-decomposition of this matrix gives eigenvectors, which are the principal components, and eigenvalues, which show how much variance each carries. The data is then projected onto the chosen components. Keeping only the first few components gives a smaller summary that keeps most of the variance, which helps visualisation and can be useful before clustering.",

@@ -15,7 +15,7 @@ Your revision is a plot from the practicals. The home page is a heatmap of what 
 
 The week name in each row opens that week's page, with its notes, both question sets and a box for sending your own question to an assistant.
 
-Signature: a table of weeks by question type where each square is coloured on the viridis colormap by the share of questions answered right. Each square is also the button that starts practice for that week. Squares never tried are hatched and say "new".
+Signature: a table of weeks by question type where each square is coloured on the viridis colormap by the share of questions answered right. Each square is also the button that starts practice for that week. Squares never tried are hatched and say "not started".
 
 ## References
 
@@ -65,7 +65,7 @@ None.
 - **A colour per week.** Colour has one job here, which is the score.
 - **Dark mode, progress bars and stat tiles.**
 
-The three comps are in `comps/index.html`.
+The three comps are in `comps/index.html`. A second round of three, drawn from Monkeytype, Duolingo and carrot.tech, is in `comps/round2.html`. Stage has not chosen between them and the current look.
 
 ## Overrides
 

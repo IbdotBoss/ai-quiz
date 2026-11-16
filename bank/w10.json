@@ -14,7 +14,7 @@
   "answer": [
    0
   ],
-  "explain": "In translation the order of the words changes the meaning, so history matters. Flower measurements are independent examples with no temporal behaviour.",
+  "explain": "In translation the order of the words changes the meaning, so history matters. Flower measurements are independent examples with no time order.",
   "source": "Week 10 lecture, slide 3 and 4",
   "flag": ""
  },
@@ -27,7 +27,7 @@
   "options": [
    "They use different words, so a model must learn each word separately",
    "They have different lengths, so a model needs padding",
-   "They use the same words but the order changes the meaning completely",
+   "They use the same words, but the order changes the meaning",
    "They are both too short for a model to classify"
   ],
   "answer": [
@@ -63,10 +63,10 @@
   "type": "single",
   "q": "To predict which way a ball is moving, why is a sequence of frames better than a single frame?",
   "options": [
-   "One frame is always too small to contain a ball",
-   "A single frame cannot be turned into a number",
-   "More frames make the colours easier to separate",
-   "Without knowing where the ball has been, one frame lacks enough data to show its direction"
+   "One frame cannot be fed into a neural network",
+   "Extra frames make the colours easier to tell apart",
+   "One frame has too few pixels to show a ball",
+   "One frame cannot show where the ball has been"
   ],
   "answer": [
    3
@@ -82,9 +82,9 @@
   "type": "single",
   "q": "In an RNN, what is the hidden state?",
   "options": [
-   "The final label that the network predicts for the sequence",
-   "The set of weights that never change during training",
-   "A representation of previous inputs that is passed forward through the loop",
+   "The label that the network predicts for the sequence",
+   "The weights that never change during training",
+   "A representation of previous inputs, passed forward through the loop",
    "A copy of the input image kept for reference"
   ],
   "answer": [
@@ -97,7 +97,7 @@
  {
   "id": "w10-006",
   "week": 10,
-  "topic": "Sequential problems",
+  "topic": "Sequential data",
   "type": "multi",
   "q": "Which of these are problems where the order of the data matters?",
   "options": [
@@ -124,7 +124,7 @@
   "type": "single",
   "q": "At a given time step, what does the hidden layer of an RNN receive?",
   "options": [
-   "The current input combined with the hidden state from the previous step",
+   "The current input and the previous hidden state",
    "Only the current input, with no earlier information",
    "Only the final output from the whole sequence",
    "The class labels of all future steps"
@@ -139,7 +139,7 @@
  {
   "id": "w10-008",
   "week": 10,
-  "topic": "RNN hidden node",
+  "topic": "RNN architecture",
   "type": "multi",
   "q": "Which statements describe what happens in an RNN hidden node?",
   "options": [
@@ -184,15 +184,15 @@
   "type": "single",
   "q": "What does the vanishing gradient problem mean for training an RNN?",
   "options": [
-   "Gradients grow too large, so the weights become unstable",
-   "Gradients shrink as they pass backwards, so early steps barely learn and the network forgets older information",
+   "Gradients grow too large as they pass back, so weights become unstable",
+   "Gradients shrink as they pass back, so early steps barely learn",
    "Gradients are lost only at the output layer, so predictions are random",
-   "Gradients disappear because the learning rate was set to zero"
+   "Gradients vanish because the learning rate was set to zero"
   ],
   "answer": [
    1
   ],
-  "explain": "Each step makes the adjustment smaller than the one before it, so the earliest layers hardly change. This gives the RNN its short term memory.",
+  "explain": "Each step makes the adjustment smaller than the one before it, so the earliest layers hardly change. That is why an RNN has short term memory.",
   "source": "Week 10 lecture, slide 17 to 19",
   "flag": ""
  },
@@ -221,14 +221,14 @@
  {
   "id": "w10-012",
   "week": 10,
-  "topic": "BPTT",
+  "topic": "Backpropagation through time",
   "type": "single",
   "q": "What is computed at the end of the forward pass when training an RNN with backpropagation through time?",
   "options": [
-   "The total loss, which measures the difference between the true and estimated labels",
-   "The partial derivative of every weight",
-   "The new cell state of the network",
-   "The mask of the final output"
+   "The total loss between true and estimated labels",
+   "The partial derivative of the loss for every weight",
+   "The updated weights for every layer in the network",
+   "The learning rate to use in the next epoch"
   ],
   "answer": [
    0
@@ -240,13 +240,13 @@
  {
   "id": "w10-013",
   "week": 10,
-  "topic": "BPTT",
+  "topic": "Backpropagation through time",
   "type": "single",
   "q": "What happens in the backward pass of backpropagation through time?",
   "options": [
-   "The input is processed through the hidden state to estimate a label",
+   "The input passes through the hidden states to estimate a label",
    "The hidden state is reset to zero at every time step",
-   "The total loss is propagated back, and the change for each weight is found using partial derivatives and the chain rule",
+   "The loss is sent back and the weight changes come from the chain rule",
    "The window of time steps is made longer after each epoch"
   ],
   "answer": [
@@ -259,12 +259,12 @@
  {
   "id": "w10-014",
   "week": 10,
-  "topic": "Truncated BPTT",
+  "topic": "Truncated backpropagation",
   "type": "single",
   "q": "How does truncated backpropagation through time tackle the vanishing gradient problem?",
   "options": [
    "It adds a gate that deletes the oldest hidden state",
-   "It only looks back over a moving window of time steps instead of the entire sequence",
+   "It looks back over only a moving window of time steps",
    "It replaces the RNN with a feedforward network",
    "It raises the size of the gradients at each step"
   ],
@@ -278,7 +278,7 @@
  {
   "id": "w10-015",
   "week": 10,
-  "topic": "Truncated BPTT",
+  "topic": "Truncated backpropagation",
   "type": "multi",
   "q": "Which statements about truncated backpropagation through time are correct?",
   "options": [
@@ -304,10 +304,10 @@
   "type": "single",
   "q": "A model must finish the sentence \"I grew up in France and I speak fluent ...\". Why can truncated backpropagation struggle here?",
   "options": [
-   "The word France is too short to be encoded as a hidden state",
-   "The window deletes the most recent word first",
-   "The sentence must be fed in reverse order",
-   "The clue about France may lie further back than the window, so the link cannot be learned"
+   "The word France is too short to be stored as a hidden state",
+   "The window always drops the most recent word first",
+   "The sentence has to be fed into the network in reverse order",
+   "The word France may fall outside the window, so the link is not learned"
   ],
   "answer": [
    3
@@ -323,15 +323,15 @@
   "type": "single",
   "q": "What is the cell state in an LSTM?",
   "options": [
-   "A gate that decides what to forget",
+   "A gate that decides what information to forget",
    "A layer that flattens the input into a vector",
-   "A line running along the whole chain, like a conveyor belt, with only minor linear changes",
-   "A copy of the loss used during training"
+   "A line running along the chain, like a conveyor belt",
+   "A copy of the loss kept during training"
   ],
   "answer": [
    2
   ],
-  "explain": "The cell state carries information straight along the chain. Gates carefully add to or remove from it. The forget gate is one of those gates, not the cell state.",
+  "explain": "The cell state carries information straight along the chain with only minor linear changes. Gates carefully add to or remove from it. The forget gate is one of those gates, not the cell state.",
   "source": "Week 10 lecture, slide 26",
   "flag": ""
  },
@@ -380,7 +380,7 @@
   "week": 10,
   "topic": "LSTM gates",
   "type": "multi",
-  "q": "Which describe the step where an LSTM stores new information in the cell state?",
+  "q": "Which parts belong to the step where an LSTM stores new information in the cell state?",
   "options": [
    "The output gate chooses what to send to the next layer",
    "The hidden state of the previous step is reset to zero",
@@ -402,10 +402,10 @@
   "type": "single",
   "q": "What does the output step of an LSTM produce?",
   "options": [
-   "A raw copy of the whole cell state",
-   "A new set of candidate values for the cell state",
-   "A list of the values the forget gate threw away",
-   "A filtered version of the cell state, formed by a tanh and a sigmoid gate"
+   "An unfiltered copy of the whole cell state",
+   "A new set of candidate values to add to the cell state",
+   "A list of values that the forget gate threw away",
+   "A filtered version of the cell state, passed through tanh"
   ],
   "answer": [
    3
@@ -464,9 +464,9 @@
   "model": "In a task that is not sequence based, each example is independent and there is no temporal behaviour, so order and history do not matter. Predicting an iris flower type from its four measurements is an example. In other tasks the order carries meaning and earlier or later information changes the answer. Machine translation, speech recognition, video prediction and time series are examples. The cat and dog sentences use the same words but have opposite meanings.",
   "points": [
    "Non sequence tasks have independent examples and no history",
-   "Example such as iris flower classification",
+   "Gives an example such as iris flower classification",
    "Sequence tasks depend on order and context",
-   "Example such as translation, speech or time series"
+   "Gives a sequence example such as translation, speech or time series"
   ],
   "source": "Week 10 lecture, slide 3 and 4",
   "flag": ""
@@ -522,10 +522,10 @@
  {
   "id": "w10-028",
   "week": 10,
-  "topic": "BPTT",
+  "topic": "Backpropagation through time",
   "type": "explain",
   "q": "Describe the forward and backward passes of backpropagation through time.",
-  "model": "Training an RNN uses a loss function that measures the error between the true label and the predicted label. In the forward pass the input goes through the hidden states and the estimated label is calculated. The loss is computed at each step and the total loss L finishes the pass. In the backward pass the total loss is propagated back through the network. Partial derivatives and the chain rule measure how much each weight should change.",
+  "model": "Training an RNN uses a loss function that measures the error between the true label and the predicted label. In the forward pass the input goes through the hidden states and the estimated label is calculated. The loss is computed at each step, and the total loss is the result of the pass. In the backward pass the total loss is propagated back through the network. Partial derivatives and the chain rule measure how much each weight should change.",
   "points": [
    "Loss function measures error between true and predicted label",
    "Forward pass runs input through hidden states and computes total loss",
@@ -538,7 +538,7 @@
  {
   "id": "w10-029",
   "week": 10,
-  "topic": "Truncated BPTT",
+  "topic": "Truncated backpropagation",
   "type": "explain",
   "q": "Explain the benefit and the drawback of truncated backpropagation through time.",
   "model": "Normal backpropagation through time goes back through the whole sequence, which makes gradients vanish. Truncated backpropagation only considers a moving window of time steps. This is much faster and less complex, because gradients from faraway steps are not included. The drawback is that dependencies longer than the window length cannot be learned. For example the clue France may sit too far back to help predict the word French.",
