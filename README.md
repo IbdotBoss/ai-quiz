@@ -6,10 +6,11 @@ Practice questions and revision notes for the MOD004553 Artificial Intelligence 
 
 ## What it does
 
-- 372 questions drafted from the lecture slides for Weeks 1 to 10. 266 are choice questions and 106 are explain questions.
-- An explain question gives you a box to type in. You then see a model answer and tick the marking points your answer made.
+- 372 questions drafted from the lecture slides for Weeks 1 to 10. 266 are multiple choice and 106 are written-answer questions.
+- A written-answer question gives you a box to type in. You then see a model answer and tick the marking points your answer made.
 - The home page is a heatmap. Each square shows the share of that week's questions you have right, and starts a short set from that week.
-- A timed paper gives 8 explain questions in 50 minutes. The real format is not published yet, so this is a guess.
+- Each week has its own page with its notes and a box for sending your own question to an assistant.
+- A timed paper gives 8 written-answer questions in 50 minutes. The real format is not published yet, so this is a guess.
 - Each question can open in Claude, ChatGPT, Perplexity or Gemini with the question and your answer filled in.
 - Progress is saved in your browser. Nothing is sent anywhere.
 

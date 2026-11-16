@@ -13,6 +13,8 @@
 
 Your revision is a plot from the practicals. The home page is a heatmap of what you know.
 
+The week name in each row opens that week's page, with its notes, both question sets and a box for sending your own question to an assistant.
+
 Signature: a table of weeks by question type where each square is coloured on the viridis colormap by the share of questions answered right. Each square is also the button that starts practice for that week. Squares never tried are hatched and say "new".
 
 ## References
@@ -70,6 +72,8 @@ The three comps are in `comps/index.html`.
 - `ui-skills` bans gradients. The hatched "new" square uses a repeating gradient as a pattern, so the unstarted state does not rely on colour alone. The colour key is ten flat swatches.
 - `ui-skills` assumes Tailwind and a component library. This is one static file with native inputs and a native `dialog`.
 - `web-quality` asks each shipped colour scheme to pass. One scheme ships.
+- Hallmark's linter asks for a tinted ground in place of pure white. White stays, because a matplotlib figure sits on white.
+- Hallmark's stamp comment is left out. Hallmark did not build this page. Its linter ran on 16 Nov 2026 and every other finding was fixed.
 - Viridis steps 3 and 4 give white text 4.3:1 and above only at large text size, which is why the numbers are 1.2rem bold.
 
 ## Stack
