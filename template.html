@@ -109,7 +109,8 @@ table.t{border-collapse:collapse;width:100%;font-size:var(--t-s);margin-top:8px;
 .notes{overflow-wrap:break-word}
 .notes h1{font-size:var(--t-xl);margin-top:28px}
 .notes h2{border-top:1px solid var(--hair);padding-top:16px;margin-top:28px}
-.notes h3{font-size:var(--t-l);margin-top:28px}
+.notes h3{font-size:var(--t-m);margin-top:24px}
+.notes h2{font-size:var(--t-l)}
 .notes h4{font-size:var(--t-m);margin:20px 0 0;border-top:1px solid var(--hair);padding-top:12px}
 .notes table{display:block;overflow-x:auto;border-collapse:collapse;margin:12px 0;font-size:var(--t-s);font-variant-numeric:tabular-nums}
 .notes td,.notes th{border-bottom:1px solid var(--hair);padding:8px 16px 8px 0;text-align:left;vertical-align:top}
@@ -132,7 +133,7 @@ const VIR = ["#440154","#482878","#3e4a89","#31688e","#26828e","#1f9e89","#35b77
 const Q = DATA.questions, BYID = Object.fromEntries(Q.map(q => [q.id, q]));
 const BYDECK = Object.fromEntries(Q.map(q => [q.deck, q.week]));
 const LS = "ai-quiz-v1";
-let st = {sc:{}, seen:{}, run:null, hist:[], ai:"claude"};
+let st = {sc:{}, seen:{}, run:null, hist:[], ai:"claude", aiTemp:false};
 try { Object.assign(st, JSON.parse(localStorage.getItem(LS) || "{}")); } catch(e) {}
 const save = () => { try { localStorage.setItem(LS, JSON.stringify(st)); } catch(e) {} };
 const app = document.getElementById("app");
@@ -156,8 +157,8 @@ const FOOT = `<footer class="foot"><p>Created by <a href="https://www.ibrahimuth
 // No key and no backend. The question goes to the assistant as a prefilled prompt and is also copied,
 // because prefill support differs between assistants and changes without notice.
 const AI = {
-  claude:{name:"Claude", url:q => "https://claude.ai/new?q=" + encodeURIComponent(q)},
-  chatgpt:{name:"ChatGPT", url:q => "https://chatgpt.com/?q=" + encodeURIComponent(q)},
+  claude:{name:"Claude", url:q => "https://claude.ai/new?q=" + encodeURIComponent(q), priv:q => "https://claude.ai/new?incognito=true&q=" + encodeURIComponent(q)},
+  chatgpt:{name:"ChatGPT", url:q => "https://chatgpt.com/?q=" + encodeURIComponent(q), priv:q => "https://chatgpt.com/?temporary-chat=true&q=" + encodeURIComponent(q)},
   perplexity:{name:"Perplexity", url:q => "https://www.perplexity.ai/search?q=" + encodeURIComponent(q)},
   gemini:{name:"Gemini", url:null, open:"https://gemini.google.com/app"}
 };
@@ -184,7 +185,8 @@ async function sendAi(text, out) {
   const t = AI[st.ai] || AI.claude, copied = await copy(text);
   {
     const fits = t.url && encodeURIComponent(text).length < 6000;
-    if (fits) { window.open(t.url(text), "_blank", "noopener,noreferrer"); out.textContent = copied ? `Opened ${t.name}. The prompt is also copied, so paste it if the box is empty.` : `Opened ${t.name}.`; }
+    const temp = st.aiTemp && t.priv;
+    if (fits) { window.open((temp ? t.priv : t.url)(text), "_blank", "noopener,noreferrer"); out.textContent = `Opened ${t.name}${temp ? " in a temporary chat" : ""}.${copied ? " The prompt is also copied, so paste it if the box is empty." : ""}`; }
     else if (copied) { out.innerHTML = `Prompt copied. <a href="${t.open || t.url("").split("?")[0]}" target="_blank" rel="noopener noreferrer">Open ${t.name}</a> and paste it.`; }
     else out.textContent = "Copying failed in this browser. Choose a different assistant on the home page.";
   }
@@ -232,11 +234,12 @@ function home() {
     <button id="m-timed"><b>Timed written paper</b><span>Written-answer questions from 8 different weeks. You mark it against the model answers after handing in. The tutor has not published the real format yet.</span><i>8 questions, 50 min</i></button>
     <button id="m-mixed"><b>Mixed set from every week</b><span>10 multiple choice and 5 written-answer questions, starting with the ones you get wrong.</span><i>15 questions</i></button>
     <button id="m-weak" ${weak ? "" : "disabled"}><b>Questions to redo</b><span>${weak ? "Questions where you lost a mark last time." : "Nothing here until you miss a mark."}</span><i>${weak} to redo</i></button>
-    <button id="m-notes"><b>Revision notes</b><span>One sheet of notes per lecture deck.</span><i>${DATA.notes.length} sheets</i></button>
+    <button id="m-notes"><b>Revision notes</b><span>One sheet of notes per lecture deck, with a box to ask about that deck.</span><i>${DATA.notes.length} sheets</i></button>
   </div>
   <fieldset><legend><h2>Assistant for the Ask AI buttons</h2></legend>
-    <p class="s">Each question can open in an assistant, with the question and your answer already filled in.</p>
+    <p class="s">Each question, week page and notes sheet has a button that opens this assistant with the question already filled in. Gemini cannot be filled in from a link, so for Gemini the text is copied for you to paste.</p>
     <div class="row">${Object.entries(AI).map(([k, t]) => `<label class="o"><input type="radio" name="ai" value="${k}" ${st.ai === k ? "checked" : ""}><span>${t.name}</span></label>`).join("")}</div>
+    <label class="o" style="border:0;grid-template-columns:22px minmax(0,1fr)"><input type="checkbox" id="ai-temp" ${st.aiTemp ? "checked" : ""}><span>Open in a temporary chat, which the assistant does not keep in your chat history. Claude calls this incognito. It works for Claude and ChatGPT, and the other two open a normal chat.</span></label>
   </fieldset>
   ${last.length ? `<h2>Your last sets and their marks</h2><table class="t"><tr><th scope="col">Set</th><th scope="col">Date</th><th scope="col" class="num">Mark</th></tr>${last.map(h => `<tr><td>${esc(h.title)}</td><td>${new Date(h.at).toLocaleDateString()}</td><td class="num">${h.score} of ${h.total}</td></tr>`).join("")}</table>` : ""}
   ${FOOT}`;
@@ -247,6 +250,7 @@ function home() {
     start({title:`Week ${w}, ${ex ? "written answers" : "multiple choice"}`, ids:weakest(c.qs).slice(0, ex ? 5 : 10).map(q => q.id)});
   });
   app.querySelectorAll("input[name=ai]").forEach(e => e.onchange = () => { st.ai = e.value; save(); });
+  document.getElementById("ai-temp").onchange = e => { st.aiTemp = e.target.checked; save(); };
   on("resume", () => show());
   on("m-timed", () => {
     const ex = Q.filter(isEx), ids = [];
@@ -393,6 +397,21 @@ function results() {
   on("back", back); on("back2", back);
 }
 
+// A box for the student's own question. about names the subject, covers lists its topics.
+const askBox = (about, example) => `<h2><label for="ask">Ask ${aiName()} about ${esc(about)}</label></h2>
+  <p class="s" id="ask-h">Type your own question. ${(AI[st.ai] || AI.claude).url ? `Send opens ${aiName()}${st.aiTemp && (AI[st.ai] || AI.claude).priv ? " in a temporary chat" : ""} with your question and the topics of ${esc(about)} filled in.` : `Gemini cannot be filled in from a link, so Send copies your question and the topics of ${esc(about)} for you to paste into Gemini.`}</p>
+  <textarea id="ask" class="short" aria-describedby="ask-h ask-st" placeholder="For example, ${esc(example)}"></textarea>
+  <div class="ai"><button class="p" id="ask-go">Send to ${aiName()}</button><span class="s" id="ask-st" role="status"></span></div>`;
+function wireAsk(about, topics) {
+  on("ask-go", () => {
+    const mine = document.getElementById("ask").value.trim(), out = document.getElementById("ask-st");
+    if (!mine) { out.textContent = "Type a question first."; document.getElementById("ask").focus(); return; }
+    sendAi([INTRO, "", `The question is about ${about} of the module. It covers ${topics.join(", ")}.`, "", "MY QUESTION", mine, "",
+      "Answer it directly, then ask me one follow-up question that checks I understand."].join("\n"), out);
+  });
+}
+const EXAMPLES = {1:"what is the difference between weak AI and strong AI?", 2:"when should I look at recall instead of accuracy?", 3:"why does squaring errors punish large mistakes more?", 4:"why does k-means need the number of clusters in advance?", 5:"what does the Q-table store?", 6:"why can a single perceptron not learn XOR?", 7:"why does backpropagation need the chain rule?", 8:"what does pooling do to a feature map?", 9:"how is segmentation different from object detection?", 10:"why does an LSTM remember longer than a simple RNN?"};
+
 function week(w) {
   clearInterval(tick);
   const sheets = DATA.notes.filter(n => (BYDECK[n.deck] || 0) === w);
@@ -404,29 +423,24 @@ function week(w) {
     <button id="w-mc"><b>Multiple choice</b><span>10 questions, starting with the ones you get wrong.</span><i>${line(false)}</i></button>
     <button id="w-ex"><b>Written answers</b><span>5 questions. Type a paragraph, then mark it against a model answer.</span><i>${line(true)}</i></button>
   </div>
-  <h2><label for="ask">Ask ${aiName()} about Week ${w}</label></h2>
-  <p class="s" id="ask-h">Type your own question. Send opens ${aiName()} with your question and this week's topics filled in.</p>
-  <textarea id="ask" class="short" aria-describedby="ask-h ask-st" placeholder="For example, why does k-means need the number of clusters in advance?"></textarea>
-  <div class="ai"><button class="p" id="ask-go">Send to ${aiName()}</button><span class="s" id="ask-st" role="status"></span></div>
+  ${askBox("Week " + w, EXAMPLES[w] || "")}
   <h2>Notes for Week ${w}</h2>
   <div class="notes">${sheets.map(n => n.html.replace(/<(\/?)h2/g, "<$1h4").replace(/<(\/?)h1/g, "<$1h3")).join("") || "<p>No notes for this week yet.</p>"}</div>${FOOT}`;
   focusOn("h1");
   on("back", () => { home(); window.scrollTo(0, 0); });
   const go = ex => start({title:`Week ${w}, ${ex ? "written answers" : "multiple choice"}`, ids:weakest(cell(w, ex).qs).slice(0, ex ? 5 : 10).map(q => q.id)});
   on("w-mc", () => go(false)); on("w-ex", () => go(true));
-  on("ask-go", () => {
-    const mine = document.getElementById("ask").value.trim(), out = document.getElementById("ask-st");
-    if (!mine) { out.textContent = "Type a question first."; document.getElementById("ask").focus(); return; }
-    sendAi([INTRO, "", `The question is about Week ${w} of the module, ${WEEKS[w]}. That week covers ${topics.join(", ")}.`, "", "MY QUESTION", mine, "",
-      "Answer it directly, then ask me one follow-up question that checks I understand."].join("\n"), out);
-  });
+  wireAsk(`Week ${w}, ${WEEKS[w]},`, topics);
 }
 
 function notes(deck) {
   const n = DATA.notes.find(x => x.deck === deck) || DATA.notes[0];
   app.innerHTML = `<div class="top"><button class="l" id="back">Back to the home page</button><b>Revision notes</b><span></span></div>
-  <p style="margin-top:20px"><label for="sheet" class="s" style="display:block;margin-bottom:4px">Lecture deck</label><select id="sheet">${DATA.notes.map(x => `<option value="${x.deck}" ${x === n ? "selected" : ""}>${esc(DECKS[x.deck] || x.deck)}</option>`).join("")}</select></p>
-  <div class="notes">${n ? n.html : "<p>No notes yet.</p>"}</div>${FOOT}`;
+  <h1 style="margin-top:24px">Revision notes</h1>
+  <p style="margin-top:16px"><label for="sheet" class="s" style="display:block;margin-bottom:4px">Lecture deck</label><select id="sheet">${DATA.notes.map(x => `<option value="${x.deck}" ${x === n ? "selected" : ""}>${esc(DECKS[x.deck] || x.deck)}</option>`).join("")}</select></p>
+  ${n ? askBox(DECKS[n.deck] || n.deck, EXAMPLES[BYDECK[n.deck]] || "") : ""}
+  <div class="notes">${n ? n.html.replace(/<(\/?)h2/g, "<$1h3").replace(/<(\/?)h1/g, "<$1h2") : "<p>No notes yet.</p>"}</div>${FOOT}`;
+  if (n) wireAsk(DECKS[n.deck] || n.deck, [...new Set(Q.filter(q => q.deck === n.deck).map(q => q.topic))]);
   document.getElementById("sheet").onchange = e => { notes(e.target.value); document.getElementById("sheet").focus(); };
   on("back", () => { home(); window.scrollTo(0, 0); });
 }
