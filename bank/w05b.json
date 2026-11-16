@@ -1,0 +1,431 @@
+[
+ {
+  "id": "w05b-001",
+  "week": 5,
+  "topic": "GA basics",
+  "type": "single",
+  "q": "What natural process do genetic algorithms imitate?",
+  "options": [
+   "Biological evolution through natural selection and survival of the fittest",
+   "The way neurons in the brain pass signals to each other",
+   "The way an animal learns by being rewarded for its actions",
+   "The way light is sorted into groups by its wavelength"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "Genetic algorithms are inspired by evolution. A population of solutions changes over generations, and the fitter ones are more likely to pass on their features.",
+  "source": "Week 5 genetic algorithms lecture, slide 1 and 6",
+  "flag": ""
+ },
+ {
+  "id": "w05b-002",
+  "week": 5,
+  "topic": "GA basics",
+  "type": "single",
+  "q": "Is the following statement correct?\n\"A genetic algorithm improves one single solution step by step until it is good enough.\"",
+  "options": [
+   "Correct, because each generation contains only the single best solution",
+   "Incorrect, because it repeatedly generates and modifies a whole population of solutions",
+   "Incorrect, because it never improves any solution and only picks at random",
+   "Correct, because crossover needs only one parent solution"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "A genetic algorithm works on a population. It selects parents from the current population by fitness and uses them to produce children for the next generation.",
+  "source": "Week 5 genetic algorithms lecture, slide 7",
+  "flag": ""
+ },
+ {
+  "id": "w05b-003",
+  "week": 5,
+  "topic": "GA terms",
+  "type": "single",
+  "q": "When a genetic algorithm represents a candidate solution as a bitstring, what does the whole bitstring correspond to?",
+  "options": [
+   "A gene, which is one complete candidate solution",
+   "A mutation, which is one complete candidate solution",
+   "A chromosome, which is one complete candidate solution",
+   "A fitness value, which scores one candidate solution"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "A chromosome is the full string and each gene is one position in it, a 0 or a 1 in the bitstring example. Fitness is the score of the chromosome, not the string itself.",
+  "source": "Week 5 genetic algorithms lecture, slide 2 and 14",
+  "flag": ""
+ },
+ {
+  "id": "w05b-004",
+  "week": 5,
+  "topic": "GA terms",
+  "type": "single",
+  "q": "In the bitstring example, what is a single gene?",
+  "options": [
+   "The whole six bit string that represents a candidate",
+   "The numeric result of the equation being minimised",
+   "The pair of parents chosen for crossover",
+   "One bit in the chromosome, with a value of 0 or 1"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "Genes are the blocks that make up a chromosome. In the example each gene is a single bit.",
+  "source": "Week 5 genetic algorithms lecture, slide 2 and 14",
+  "flag": ""
+ },
+ {
+  "id": "w05b-005",
+  "week": 5,
+  "topic": "GA terms",
+  "type": "single",
+  "q": "In a genetic algorithm, what does the fitness of a chromosome tell you?",
+  "options": [
+   "How good that solution is at solving the problem",
+   "How many genes the chromosome contains",
+   "How different the chromosome is from its parents",
+   "How many generations the algorithm has run so far"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "Fitness is the measure of success, which in biology is how well an organism does and here is how good a solution is. It is used to decide which solutions are kept.",
+  "source": "Week 5 genetic algorithms lecture, slide 2 and 15",
+  "flag": ""
+ },
+ {
+  "id": "w05b-006",
+  "week": 5,
+  "topic": "GA operators",
+  "type": "single",
+  "q": "Which operation in a genetic algorithm combines parts of two parent chromosomes to make a new one?",
+  "options": [
+   "Mutation",
+   "Crossover",
+   "Fitness testing",
+   "Encoding"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "Crossover is the recombination of genes from parents. Mutation instead changes bits at random in one chromosome.",
+  "source": "Week 5 genetic algorithms lecture, slide 2, 4 and 16",
+  "flag": ""
+ },
+ {
+  "id": "w05b-007",
+  "week": 5,
+  "topic": "GA operators",
+  "type": "single",
+  "q": "What does mutation do to a chromosome in a genetic algorithm?",
+  "options": [
+   "It joins it with a second parent to make a child",
+   "It deletes the weakest chromosomes from the population",
+   "It randomly changes part of it, such as flipping a bit",
+   "It scores it against the equation being minimised"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "Mutation is a random change to the DNA or bitstring, like a copying error. It adds variety that crossover alone might not give.",
+  "source": "Week 5 genetic algorithms lecture, slide 5 and 16",
+  "flag": "The purpose of adding variety is standard knowledge, the slides define mutation as a random change."
+ },
+ {
+  "id": "w05b-008",
+  "week": 5,
+  "topic": "GA steps",
+  "type": "single",
+  "q": "How does a genetic algorithm start?",
+  "options": [
+   "By differentiating the equation and finding where the gradient is zero",
+   "By choosing the single best solution from a stored list",
+   "By crossing over two parents chosen by hand",
+   "By creating an initial population of random candidate solutions"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "The first step generates a set of random solutions, encoded for example as bitstrings, and then tests how good each one is.",
+  "source": "Week 5 genetic algorithms lecture, slide 13 and 14",
+  "flag": ""
+ },
+ {
+  "id": "w05b-009",
+  "week": 5,
+  "topic": "GA steps",
+  "type": "multi",
+  "q": "Which actions are part of the repeating loop of a genetic algorithm?",
+  "options": [
+   "Remove some of the bad solutions",
+   "Replace the whole population with new random solutions every time",
+   "Test and rank each solution by how good it is",
+   "Duplicate some of the good solutions",
+   "Make small changes to the good solutions"
+  ],
+  "answer": [
+   0,
+   2,
+   3,
+   4
+  ],
+  "explain": "The loop tests, removes weak solutions, duplicates strong ones and varies them until the best is good enough. Restarting at random each time would throw away what has been learned.",
+  "source": "Week 5 genetic algorithms lecture, slide 13",
+  "flag": ""
+ },
+ {
+  "id": "w05b-010",
+  "week": 5,
+  "topic": "GA steps",
+  "type": "single",
+  "q": "When does the genetic algorithm loop stop?",
+  "options": [
+   "When the best solution is good enough",
+   "After exactly one generation",
+   "When every chromosome has been mutated once",
+   "When the population is reduced to one gene"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "The process repeats until the proposed solution is good enough, rather than after a fixed single pass.",
+  "source": "Week 5 genetic algorithms lecture, slide 13 and 15",
+  "flag": ""
+ },
+ {
+  "id": "w05b-011",
+  "week": 5,
+  "topic": "Analytical limits",
+  "type": "multi",
+  "q": "Which are problems with solving an optimisation problem by differentiating an equation?",
+  "options": [
+   "It is not suitable for complex real-world problems with many variables",
+   "Differentiation can only find maxima and never minima",
+   "It always needs a population of random solutions first",
+   "The relationship may have several minima",
+   "Not every relationship can be written as an equation"
+  ],
+  "answer": [
+   0,
+   3,
+   4
+  ],
+  "explain": "The analytical method needs an equation, can be confused by several minima and does not scale to complex problems. It can find minima, and it does not need a population.",
+  "source": "Week 5 genetic algorithms lecture, slide 11",
+  "flag": ""
+ },
+ {
+  "id": "w05b-012",
+  "week": 5,
+  "topic": "Numerical limits",
+  "type": "single",
+  "q": "What is the main weakness of blind generate and test as a numerical method?",
+  "options": [
+   "It can only be used when the relationship is an exact equation",
+   "Guesses are not guided by earlier results, so convergence may take too long",
+   "It always finds a perfect solution but needs too much memory",
+   "It cannot test how good a solution is"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "Blind guessing is basic trial and error, so it can be slow and can be misled by several minima. A genetic algorithm does better by building on good solutions.",
+  "source": "Week 5 genetic algorithms lecture, slide 11 to 13",
+  "flag": ""
+ },
+ {
+  "id": "w05b-013",
+  "week": 5,
+  "topic": "GA versus blind search",
+  "type": "single",
+  "q": "Why can a genetic algorithm do better than blind trial and error?",
+  "options": [
+   "It tests only one solution, so it needs less computation",
+   "It tests every possible solution, so it cannot miss the best",
+   "It keeps and varies good solutions, so each generation builds on earlier results",
+   "It ignores the quality of solutions, so it avoids bias"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "Ranking, removing bad solutions, duplicating good ones and making small changes steers the search towards better answers instead of guessing blindly.",
+  "source": "Week 5 genetic algorithms lecture, slide 13",
+  "flag": ""
+ },
+ {
+  "id": "w05b-014",
+  "week": 5,
+  "topic": "Reformulation",
+  "type": "single",
+  "q": "Why are problems often reformulated as minimisation problems before using a genetic algorithm?",
+  "options": [
+   "Because a genetic algorithm cannot handle maximisation in any form",
+   "Because minima are always easier to find than maxima by hand",
+   "Because the fitness of a solution cannot be measured otherwise",
+   "Genetic algorithm solutions usually involve finding the minimum of something"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "The usual set up is to look for a minimum, which corresponds to an acceptable limit, so other problems are rewritten to fit.",
+  "source": "Week 5 genetic algorithms lecture, slide 8",
+  "flag": "The slide gives this as the usual set up, the stronger claim about maximisation is not made, so only the slide wording is used."
+ },
+ {
+  "id": "w05b-015",
+  "week": 5,
+  "topic": "Where GA is used",
+  "type": "multi",
+  "q": "Which problems suit a genetic algorithm well?",
+  "options": [
+   "Sorting a short list of numbers",
+   "Route optimisation",
+   "Scheduling",
+   "Finance",
+   "Reading an exact answer from a known formula"
+  ],
+  "answer": [
+   1,
+   2,
+   3
+  ],
+  "explain": "Genetic algorithms are most successful on large search spaces such as scheduling, route optimisation and finance. A short list or a known formula needs no search.",
+  "source": "Week 5 genetic algorithms lecture, slide 1",
+  "flag": ""
+ },
+ {
+  "id": "w05b-016",
+  "week": 5,
+  "topic": "GA trade-offs",
+  "type": "single",
+  "q": "What is a main disadvantage of genetic algorithms?",
+  "options": [
+   "It can be difficult to represent a problem as a genetic problem",
+   "They cannot find an approximate solution to any problem",
+   "They need the problem to be written as a differentiable equation",
+   "They can only work on problems with exactly one minimum"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "Approximate solutions can usually be found, but the problem has to be encoded as chromosomes, which is not always easy. They do not need an equation and can cope with several minima.",
+  "source": "Week 5 genetic algorithms lecture, slide 18",
+  "flag": ""
+ },
+ {
+  "id": "w05b-017",
+  "week": 5,
+  "topic": "GA terms",
+  "type": "multi",
+  "q": "Which statements about genetic algorithm terms are correct?",
+  "options": [
+   "Fitness is how successful or good an individual is",
+   "Mutation is a random change, like an error in copying a gene",
+   "A gene is the complete string that represents one candidate solution",
+   "Crossover recombines genes from parents"
+  ],
+  "answer": [
+   0,
+   1,
+   3
+  ],
+  "explain": "Crossover mixes parent genes, mutation is a random change and fitness measures success. The complete string is the chromosome, and a gene is one block within it.",
+  "source": "Week 5 genetic algorithms lecture, slide 2, 4 and 5",
+  "flag": ""
+ },
+ {
+  "id": "w05b-018",
+  "week": 5,
+  "topic": "Genetic algorithms",
+  "type": "explain",
+  "q": "Explain what a genetic algorithm is and the main steps it follows.",
+  "model": "A genetic algorithm solves optimisation problems by imitating biological evolution. It starts with a population of random candidate solutions, often encoded as bitstrings called chromosomes. Each solution is tested for fitness and ranked. The poor ones are removed and the good ones are duplicated and changed by crossover and mutation to form the next generation. This loop repeats over many generations until the best solution is good enough, so the population evolves towards an optimum.",
+  "points": [
+   "Says it imitates biological evolution",
+   "Starts with a random population of encoded solutions",
+   "Describes testing for fitness and selecting the better solutions",
+   "Describes creating new solutions with crossover and mutation and repeating until good enough"
+  ],
+  "source": "Week 5 genetic algorithms lecture, slide 6, 7, 13 and 14",
+  "flag": ""
+ },
+ {
+  "id": "w05b-019",
+  "week": 5,
+  "topic": "GA terms",
+  "type": "explain",
+  "q": "Describe the biological terms chromosome, gene and fitness and say what each means in a genetic algorithm.",
+  "model": "In biology a chromosome is a string of DNA and a gene is a block of DNA that decides some feature of the organism. Fitness is how successful the organism is. In a genetic algorithm a chromosome is a candidate solution, often a bitstring. A gene is one position in it, such as a single bit with a value of 0 or 1. Fitness is how good the candidate solution is, and it decides which chromosomes are kept to produce the next generation.",
+  "points": [
+   "Defines a chromosome as the string that represents a candidate solution",
+   "Defines a gene as a unit within the chromosome such as one bit",
+   "Defines fitness as how successful or good a solution is",
+   "Links the terms back to the biological meaning"
+  ],
+  "source": "Week 5 genetic algorithms lecture, slide 2 and 14",
+  "flag": ""
+ },
+ {
+  "id": "w05b-020",
+  "week": 5,
+  "topic": "GA operators",
+  "type": "explain",
+  "q": "Compare crossover and mutation and explain why a genetic algorithm uses both.",
+  "model": "Crossover combines genes from two parent chromosomes to make a child, in the same way that parents pass on a mixture of their DNA. Mutation makes a small random change, such as flipping one bit, like an error in copying a gene. Crossover mixes the good features that already exist in the population. Mutation introduces new variety that the existing solutions may not contain. Using both lets the algorithm keep what works while still exploring new possibilities.",
+  "points": [
+   "Describes crossover as recombining genes from parents",
+   "Describes mutation as a random change to a gene or bit",
+   "Explains that crossover mixes existing features while mutation adds new variety"
+  ],
+  "source": "Week 5 genetic algorithms lecture, slide 4, 5 and 16",
+  "flag": "The reason for using both is standard knowledge, the slides define each operator and use both in step 3."
+ },
+ {
+  "id": "w05b-021",
+  "week": 5,
+  "topic": "Analytical and numerical limits",
+  "type": "explain",
+  "q": "Explain why finding the minimum of a function by differentiation may not work for real problems, and how a genetic algorithm helps.",
+  "model": "Differentiation needs the relationship to be written as an equation, and many real relationships cannot be. Some problems have several minima and many variables, which makes the analytical method unsuitable. Blind trial and error can work but may take too long and does not learn from earlier guesses. A genetic algorithm starts with random solutions, ranks them, drops poor ones, copies good ones and makes small changes. This guided search can find a good approximate answer without needing an equation.",
+  "points": [
+   "Says not all relationships can be written as an equation",
+   "Mentions multiple minima or complex multivariable problems",
+   "Says blind generate and test can be too slow",
+   "Says a genetic algorithm gives a guided search and approximate answers"
+  ],
+  "source": "Week 5 genetic algorithms lecture, slide 9 to 13",
+  "flag": ""
+ },
+ {
+  "id": "w05b-022",
+  "week": 5,
+  "topic": "GA terms",
+  "type": "explain",
+  "q": "Describe how a candidate solution can be represented in a genetic algorithm, using the bitstring example.",
+  "model": "A candidate solution is encoded as a string of bits, which forms a chromosome. Each bit is a gene with a value of 0 or 1. In the example a six bit string stands for a number x between 0 and 63, and the algorithm looks for the x that gives the lowest value of the equation. The initial population is a set of random bitstrings. Each is decoded to a number and tested to measure its fitness.",
+  "points": [
+   "Says the solution is encoded as a bitstring or chromosome",
+   "Says each bit is a gene with value 0 or 1",
+   "Says the string is decoded to a value that is tested for fitness",
+   "Mentions a random initial population"
+  ],
+  "source": "Week 5 genetic algorithms lecture, slide 14 and 15",
+  "flag": ""
+ },
+ {
+  "id": "w05b-023",
+  "week": 5,
+  "topic": "GA trade-offs",
+  "type": "explain",
+  "q": "Give one advantage and one disadvantage of genetic algorithms and say what kind of problem suits them.",
+  "model": "An advantage is that approximate solutions can usually be found, even where no equation exists. A disadvantage is that it can be hard to represent a problem as a genetic problem, since it must first be encoded as chromosomes with a fitness measure. Genetic algorithms are most successful on large search spaces, such as scheduling, route optimisation and finance, where checking every option would be impractical.",
+  "points": [
+   "States the advantage of finding approximate solutions",
+   "States the difficulty of encoding a problem",
+   "Names large search spaces and gives an example such as scheduling or routes"
+  ],
+  "source": "Week 5 genetic algorithms lecture, slide 1 and 18",
+  "flag": ""
+ }
+]

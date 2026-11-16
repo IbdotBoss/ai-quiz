@@ -1,0 +1,534 @@
+[
+ {
+  "id": "w07-001",
+  "week": 7,
+  "topic": "Network structure",
+  "type": "single",
+  "q": "An example network has 2 inputs, 2 perceptrons in a hidden middle layer and 2 perceptrons in the last layer. What can be said about this design?",
+  "options": [
+   "It is the only size that backpropagation can handle",
+   "Backpropagation needs the hidden layer to be larger than the input layer",
+   "It is only an example, and the same process scales to a network of any size",
+   "The last layer must always be smaller than the hidden layer"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "The example is small so the working can be followed, and it can be scaled to any size. Backpropagation has no such size rules.",
+  "source": "Week 7 lecture, slide 12",
+  "flag": ""
+ },
+ {
+  "id": "w07-002",
+  "week": 7,
+  "topic": "Network structure",
+  "type": "single",
+  "q": "In the example network, where does the hidden layer sit?",
+  "options": [
+   "In the middle, between the input layer and the last layer of perceptrons",
+   "After the last layer, to store the results",
+   "Before the input layer, to clean the data",
+   "It is the same layer as the output layer"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "The hidden layer is the middle layer of perceptrons between the inputs and the last layer. It is neither the entry nor the exit of the network.",
+  "source": "Week 7 lecture, slide 12",
+  "flag": ""
+ },
+ {
+  "id": "w07-003",
+  "week": 7,
+  "topic": "Forward pass",
+  "type": "single",
+  "q": "What does the forward pass do?",
+  "options": [
+   "It updates every weight using the error",
+   "It sends the error from the output back to the inputs",
+   "It tests the finished network on unseen data",
+   "It moves from the input layers toward the output layer to produce a prediction"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "The forward pass runs from input to output and gives the prediction. Sending the error back is the backward pass, and weight updates come afterwards.",
+  "source": "Week 7 lecture, slide 9 and 13",
+  "flag": ""
+ },
+ {
+  "id": "w07-004",
+  "week": 7,
+  "topic": "Forward pass",
+  "type": "multi",
+  "q": "Which statements about computing a neuron's output in the forward pass are correct?",
+  "options": [
+   "First the total net input of the neuron is calculated",
+   "The error of the neuron is worked out before its net input",
+   "Then an activation function is applied to that net input",
+   "The outputs of one layer feed the next layer",
+   "The weights are changed before the output is produced"
+  ],
+  "answer": [
+   0,
+   2,
+   3
+  ],
+  "explain": "Each neuron finds its total net input and then applies the activation function, and its output feeds the next layer. Error and weight changes come later in the loop.",
+  "source": "Week 7 lecture, slide 13 to 16",
+  "flag": ""
+ },
+ {
+  "id": "w07-005",
+  "week": 7,
+  "topic": "Forward pass",
+  "type": "single",
+  "q": "In the example network, what is the logistic activation function applied to?",
+  "options": [
+   "The total error, to give the weight update",
+   "The total net input of a neuron, to give that neuron's output",
+   "The learning rate, to keep it small",
+   "The target value, to turn it into a label"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "The forward pass calculates the total net input of a neuron and then applies the logistic function to get its output. The error, learning rate and targets are not passed through it.",
+  "source": "Week 7 lecture, slide 13",
+  "flag": ""
+ },
+ {
+  "id": "w07-006",
+  "week": 7,
+  "topic": "Initialisation",
+  "type": "multi",
+  "q": "Which statements describe the network straight after random initialisation?",
+  "options": [
+   "The first prediction is essentially random",
+   "Nothing has been optimised yet",
+   "The first prediction already matches the target",
+   "Training must adjust the weights and biases to improve it"
+  ],
+  "answer": [
+   0,
+   1,
+   3
+  ],
+  "explain": "Random weights give a random prediction, nothing has been optimised, and training has to adjust the parameters. A matching prediction would need no training.",
+  "source": "Week 7 lecture, slide 11",
+  "flag": ""
+ },
+ {
+  "id": "w07-007",
+  "week": 7,
+  "topic": "Cost function",
+  "type": "single",
+  "q": "The example network has two output neurons, each with its own target. How is the total error formed?",
+  "options": [
+   "By combining the errors of the output neurons into one value for the network",
+   "From the first output neuron only, because it comes first",
+   "From the hidden neurons only",
+   "From the average of the input values"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "Each output neuron has a target and a prediction, and together they give the total error. Hidden neurons and inputs have no targets of their own.",
+  "source": "Week 7 lecture, slide 32 and 33",
+  "flag": ""
+ },
+ {
+  "id": "w07-008",
+  "week": 7,
+  "topic": "Backpropagation",
+  "type": "multi",
+  "q": "What is the aim of the backward pass?",
+  "options": [
+   "To produce the first prediction of the network",
+   "To update each weight so predictions move closer to the targets",
+   "To reduce the error for each output neuron",
+   "To label unseen test data",
+   "To reduce the error of the network as a whole"
+  ],
+  "answer": [
+   1,
+   2,
+   4
+  ],
+  "explain": "The backward pass updates the weights to push predictions towards the targets, lowering the error for each output and for the whole network. Predicting and testing are other stages.",
+  "source": "Week 7 lecture, slide 33",
+  "flag": ""
+ },
+ {
+  "id": "w07-009",
+  "week": 7,
+  "topic": "Backpropagation",
+  "type": "single",
+  "q": "In the backward pass, what does the partial derivative of the total error with respect to a weight tell us?",
+  "options": [
+   "How many epochs remain before training stops",
+   "What the target value should be",
+   "How much a change in that weight would change the total error",
+   "Which activation function the neuron uses"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "The partial derivative shows how sensitive the total error is to one weight. It says nothing about epochs, targets or activation choice.",
+  "source": "Week 7 lecture, slide 33",
+  "flag": ""
+ },
+ {
+  "id": "w07-010",
+  "week": 7,
+  "topic": "Chain rule",
+  "type": "single",
+  "q": "A weight in the example network does not touch the error directly. Why is the chain rule needed to find its effect on the total error?",
+  "options": [
+   "The chain rule decides which weights should be updated first in each layer",
+   "The chain rule sets a suitable learning rate separately for each layer",
+   "The chain rule turns the total error into a probability for each class",
+   "The weight affects the error only through the neuron's net input and output, so the effects form a chain"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "The weight changes the net input, which changes the output, which changes the error. The chain rule joins these steps. It does not order updates, set rates or create probabilities.",
+  "source": "Week 7 lecture, slide 34",
+  "flag": ""
+ },
+ {
+  "id": "w07-011",
+  "week": 7,
+  "topic": "Chain rule",
+  "type": "multi",
+  "q": "Applying the chain rule, the effect of one weight on the total error is built from which pieces?",
+  "options": [
+   "How much the learning rate changes with the epoch count",
+   "How much the total error changes with the neuron's output",
+   "How much the neuron's output changes with its total net input",
+   "How much the neuron's total net input changes with the weight"
+  ],
+  "answer": [
+   1,
+   2,
+   3
+  ],
+  "explain": "The three pieces follow the path from weight to net input to output to error. The learning rate is not part of the derivative.",
+  "source": "Week 7 lecture, slide 34 to 37",
+  "flag": ""
+ },
+ {
+  "id": "w07-012",
+  "week": 7,
+  "topic": "Chain rule",
+  "type": "single",
+  "q": "A weight feeds one output neuron. When the total error is differentiated with respect to that weight, the error contributed by the other output neuron drops out as zero. Why?",
+  "options": [
+   "The other neuron's error is always exactly zero",
+   "That weight has no effect on the other output neuron's error",
+   "Errors from different neurons cancel each other out",
+   "The other neuron sits in a hidden layer"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "A term vanishes when the weight does not influence it. The other output neuron is unaffected by this weight, so its error does not contribute.",
+  "source": "Week 7 lecture, slide 35",
+  "flag": "The slide text lost its symbols. The answer relies on the standard worked example this slide follows."
+ },
+ {
+  "id": "w07-013",
+  "week": 7,
+  "topic": "Gradient descent",
+  "type": "single",
+  "q": "After the gradient of the error with respect to a weight is known, in which direction does gradient descent adjust the weight?",
+  "options": [
+   "Along the gradient, so the error increases",
+   "Towards zero, whatever the gradient says",
+   "Opposite to the gradient, so the error decreases",
+   "Randomly, then it keeps whichever result is better"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "Gradient descent subtracts the scaled gradient from the current weight, which moves the weight opposite to the gradient. Moving along it would raise the error.",
+  "source": "Week 7 lecture, slide 38",
+  "flag": ""
+ },
+ {
+  "id": "w07-014",
+  "week": 7,
+  "topic": "Learning rate",
+  "type": "single",
+  "q": "What does the learning rate do in the weight update?",
+  "options": [
+   "It scales how large a step the weight takes opposite to the gradient",
+   "It sets how many perceptrons are in each layer",
+   "It decides which weights are included in the update",
+   "It measures how far the prediction is from the target"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "The gradient is multiplied by the learning rate before it is subtracted from the weight, so the rate sets the step size. Layer size, weight choice and error belong elsewhere.",
+  "source": "Week 7 lecture, slide 38",
+  "flag": "The slide only mentions a learning rate of 0.5 being applied. Its role as the step size is standard knowledge."
+ },
+ {
+  "id": "w07-015",
+  "week": 7,
+  "topic": "Learning rate",
+  "type": "single",
+  "q": "During training the error of a network bounces up and down and never settles. Which change to the learning rate is most likely to help?",
+  "options": [
+   "Increase it, so larger steps settle faster",
+   "Set it to zero so that the weights stabilise",
+   "Make it change sign every epoch",
+   "Reduce it, because steps that are too large overshoot the minimum"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "Large steps jump past the minimum and back again, so smaller steps help. A rate of zero would stop learning altogether.",
+  "source": "Week 7 lecture, slide 38",
+  "flag": "Effects of a too large learning rate are standard textbook knowledge and are not stated on the slides."
+ },
+ {
+  "id": "w07-016",
+  "week": 7,
+  "topic": "Gradient descent",
+  "type": "multi",
+  "q": "Which statements about updating the weights across a network are correct?",
+  "options": [
+   "The same process is used for every weight and bias",
+   "It applies across all layers and perceptrons",
+   "Only the weights of the output layer are ever updated",
+   "Each update moves the parameter in the direction that reduces the cost"
+  ],
+  "answer": [
+   0,
+   1,
+   3
+  ],
+  "explain": "The same working is repeated for all weights and biases in every layer, each moved to reduce the cost. Updating only the output layer would leave earlier layers untrained.",
+  "source": "Week 7 lecture, slide 38 and 39",
+  "flag": ""
+ },
+ {
+  "id": "w07-017",
+  "week": 7,
+  "topic": "Backpropagation",
+  "type": "single",
+  "q": "A network has several layers, and the prediction error is measured only at the output. What does backpropagation allow?",
+  "options": [
+   "It lets the hidden layers skip the forward pass",
+   "It propagates the error back so the weights and biases of every layer can be adjusted",
+   "It removes the need for a cost function",
+   "It makes the output layer ignore earlier layers"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "Backpropagation systematically sends the error back to the weights and biases of the network. It still relies on the cost function and on the forward pass.",
+  "source": "Week 7 lecture, slide 29",
+  "flag": ""
+ },
+ {
+  "id": "w07-018",
+  "week": 7,
+  "topic": "Forward and backward passes",
+  "type": "multi",
+  "q": "Which statements compare the forward pass and the backward pass correctly?",
+  "options": [
+   "The forward pass changes the weights, and the backward pass produces the prediction",
+   "The forward pass runs from inputs to outputs, and the backward pass runs from the error back through the layers",
+   "Both passes only run after training has finished",
+   "The forward pass produces a prediction, and the backward pass works out how to change the weights",
+   "The backward pass needs no cost function"
+  ],
+  "answer": [
+   1,
+   3
+  ],
+  "explain": "The forward pass predicts from inputs to outputs, and the backward pass uses the error to work out weight changes. Both happen during training and both depend on the cost.",
+  "source": "Week 7 lecture, slide 9, 13 and 33",
+  "flag": ""
+ },
+ {
+  "id": "w07-019",
+  "week": 7,
+  "topic": "Training loop",
+  "type": "single",
+  "q": "The weights have just been updated at the end of one round of training. What happens next if the stopping condition is not met?",
+  "options": [
+   "The network is tested on unseen data",
+   "The weights are reset to random values",
+   "Another forward pass runs with the new weights, starting the next epoch",
+   "The cost function is replaced by a new type"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "Training repeats the loop with the improved weights until convergence or the epoch limit. Testing comes only when training is finished.",
+  "source": "Week 7 lecture, slide 9 and 41",
+  "flag": ""
+ },
+ {
+  "id": "w07-020",
+  "week": 7,
+  "topic": "Forward pass",
+  "type": "single",
+  "q": "Is the following statement correct?\n\"A forward pass changes the weights so that the next prediction is better.\"",
+  "options": [
+   "Incorrect, a forward pass only produces a prediction and the weights are changed afterwards",
+   "Correct, the forward pass is where the learning happens",
+   "Correct, because the forward pass includes gradient descent",
+   "Incorrect, because forward passes only happen when testing"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "The forward pass moves inputs to outputs using the current weights. The weights change in the update that follows the backward pass.",
+  "source": "Week 7 lecture, slide 9 and 38",
+  "flag": ""
+ },
+ {
+  "id": "w07-021",
+  "week": 7,
+  "topic": "Forward pass",
+  "type": "explain",
+  "q": "Describe what happens during the forward pass in the example network with two inputs, two hidden perceptrons and two output perceptrons.",
+  "model": "The input values enter the input layer and move towards the output layer. For each perceptron in the hidden layer the total net input is calculated from the inputs, the weights on the incoming connections and a bias. The logistic activation function turns that net input into the output of the perceptron. These outputs then feed the two perceptrons in the last layer, which repeat the same two steps. The outputs of the last layer are the prediction of the network.",
+  "points": [
+   "Inputs move from the input layer towards the output layer",
+   "Each perceptron finds its total net input",
+   "The logistic activation function gives its output",
+   "The last layer produces the prediction"
+  ],
+  "source": "Week 7 lecture, slide 12 to 16",
+  "flag": ""
+ },
+ {
+  "id": "w07-022",
+  "week": 7,
+  "topic": "Cost function",
+  "type": "explain",
+  "q": "Explain how the total error is found for a network with two outputs, and why it is needed before the backward pass.",
+  "model": "Each output neuron has a target value and a prediction. The cost function measures how far each prediction is from its target, and the errors of the output neurons are combined into one total error for the network. This single number shows how wrong the network is. The backward pass needs it because the aim is to change the weights so that this error becomes smaller, and gradient descent needs a quantity to minimise.",
+  "points": [
+   "Each output neuron has a target and a prediction",
+   "The errors are combined into one total error",
+   "The total error shows how wrong the network is",
+   "The backward pass tries to reduce this error"
+  ],
+  "source": "Week 7 lecture, slide 17, 32 and 33",
+  "flag": ""
+ },
+ {
+  "id": "w07-023",
+  "week": 7,
+  "topic": "Backpropagation",
+  "type": "explain",
+  "q": "Describe the goal of the backward pass and what a partial derivative of the error tells us.",
+  "model": "The goal is to update every weight in the network so that the predicted outputs move closer to the targets. This reduces the error for each output neuron and for the network as a whole. To do this we ask how much a small change in a particular weight would change the total error. That is the partial derivative of the total error with respect to the weight. A larger value means the weight has a stronger effect on the error.",
+  "points": [
+   "The goal is to update the weights",
+   "Predictions should move closer to the targets",
+   "A partial derivative shows how a weight changes the total error"
+  ],
+  "source": "Week 7 lecture, slide 33",
+  "flag": ""
+ },
+ {
+  "id": "w07-024",
+  "week": 7,
+  "topic": "Chain rule",
+  "type": "explain",
+  "q": "Explain why the chain rule is used in backpropagation.",
+  "model": "A weight does not change the total error directly. It changes the total net input of a neuron, which changes the output of that neuron, and that output changes the error. The chain rule lets us multiply the effect of each link, so the effect of the weight on the error is built from smaller pieces. Each piece is simple to work out, which makes the whole calculation manageable.",
+  "points": [
+   "A weight affects the error only indirectly",
+   "The effect passes through net input then output then error",
+   "The chain rule combines the effect of each link"
+  ],
+  "source": "Week 7 lecture, slide 34 to 37",
+  "flag": ""
+ },
+ {
+  "id": "w07-025",
+  "week": 7,
+  "topic": "Gradient descent",
+  "type": "explain",
+  "q": "Explain how gradient descent updates a weight and what the learning rate does.",
+  "model": "Gradient descent takes the gradient of the error with respect to the weight and moves the weight in the opposite direction, which means the gradient is subtracted from the current weight. The learning rate scales this gradient, so it controls how big each step is. A suitable learning rate lets the error fall steadily. The same rule is applied to the weights and biases in every layer.",
+  "points": [
+   "The weight moves opposite to the gradient",
+   "The scaled gradient is subtracted from the current weight",
+   "The learning rate sets the step size"
+  ],
+  "source": "Week 7 lecture, slide 38 and 39",
+  "flag": "The role of the learning rate as step size is standard knowledge, since the slide only applies an example rate."
+ },
+ {
+  "id": "w07-026",
+  "week": 7,
+  "topic": "Learning rate",
+  "type": "explain",
+  "q": "Compare the effect of a learning rate that is too large with one that is too small.",
+  "model": "A learning rate that is too large makes each step big, so the weights can overshoot the minimum and the error may bounce around or even grow. A learning rate that is too small makes each step tiny, so training is very slow and may need many epochs to reach a low error. A good value sits between the two and lets the error fall steadily without overshooting.",
+  "points": [
+   "Too large causes overshooting and unstable error",
+   "Too small makes training slow",
+   "A middle value gives steady improvement"
+  ],
+  "source": "Week 7 lecture, slide 38",
+  "flag": "Effects of poor learning rates are standard textbook knowledge and are not stated on the slides."
+ },
+ {
+  "id": "w07-027",
+  "week": 7,
+  "topic": "Backpropagation",
+  "type": "explain",
+  "q": "Explain why backpropagation is needed in a network with many layers.",
+  "model": "The cost function measures the error only at the output, but the weights and biases of every layer influence that error. We need to know how each parameter contributes before we can correct it. Backpropagation systematically sends the prediction error back through the network to every weight and bias. Without it we would have no systematic way to adjust the earlier layers, so the whole network could not be trained.",
+  "points": [
+   "The error is measured only at the output",
+   "Every layer influences the error",
+   "Backpropagation sends the error back to every weight and bias"
+  ],
+  "source": "Week 7 lecture, slide 29",
+  "flag": ""
+ },
+ {
+  "id": "w07-028",
+  "week": 7,
+  "topic": "Forward and backward passes",
+  "type": "explain",
+  "q": "Compare the forward pass and the backward pass.",
+  "model": "The forward pass moves from the input layer to the output layer and produces a prediction using the current weights and biases. The backward pass starts from the error at the output and moves back through the layers, using partial derivatives and the chain rule to work out how each weight affects the error. The forward pass changes nothing about the network, while the backward pass leads to the weight updates that reduce the error. Training repeats both passes many times.",
+  "points": [
+   "Forward pass runs input to output and gives a prediction",
+   "Backward pass runs from the error back through the layers",
+   "Backward pass uses partial derivatives and the chain rule",
+   "Both are repeated during training"
+  ],
+  "source": "Week 7 lecture, slide 9, 13 and 33",
+  "flag": ""
+ },
+ {
+  "id": "w07-029",
+  "week": 7,
+  "topic": "Gradient descent",
+  "type": "explain",
+  "q": "Explain how the same process is extended to all the weights and biases in a network.",
+  "model": "The calculation worked out for one weight is repeated for every other weight and bias. The same chain of pieces is used, and the same rule subtracts a scaled gradient from the current value. This applies in every layer and to every perceptron. That is why the small example with two inputs, two hidden perceptrons and two outputs can be scaled to a network of any size.",
+  "points": [
+   "The same calculation is repeated for every weight and bias",
+   "It applies in all layers and perceptrons",
+   "The method scales to any network size"
+  ],
+  "source": "Week 7 lecture, slide 12, 38 and 39",
+  "flag": ""
+ }
+]

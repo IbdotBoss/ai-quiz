@@ -1,0 +1,602 @@
+[
+ {
+  "id": "w10-001",
+  "week": 10,
+  "topic": "Sequential data",
+  "type": "single",
+  "q": "Which task needs a model that uses the order of the data?",
+  "options": [
+   "Translating a sentence from one language to another",
+   "Predicting a flower type from four fixed measurements",
+   "Deciding the species of a plant from one photo",
+   "Sorting a table of unrelated records by one column"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "In translation the order of the words changes the meaning, so history matters. Flower measurements are independent examples with no temporal behaviour.",
+  "source": "Week 10 lecture, slide 3 and 4",
+  "flag": ""
+ },
+ {
+  "id": "w10-002",
+  "week": 10,
+  "topic": "Sequential data",
+  "type": "single",
+  "q": "Why do the sentences \"The cat killed the dog\" and \"The dog killed the cat\" show that order matters?",
+  "options": [
+   "They use different words, so a model must learn each word separately",
+   "They have different lengths, so a model needs padding",
+   "They use the same words but the order changes the meaning completely",
+   "They are both too short for a model to classify"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "The words are identical and only the order differs, yet the meaning is opposite. A model that ignores order cannot tell them apart.",
+  "source": "Week 10 lecture, slide 4",
+  "flag": ""
+ },
+ {
+  "id": "w10-003",
+  "week": 10,
+  "topic": "RNN architecture",
+  "type": "single",
+  "q": "What extra type of connection does an RNN have compared with an ordinary feedforward network or CNN?",
+  "options": [
+   "A connection that skips every second layer",
+   "A recurrent connection that forms a cycle",
+   "A connection that links every input pixel to every output",
+   "A connection that copies the filter to the next layer"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "Feedforward networks and CNNs only connect one layer to the next. An RNN adds a recurrent connection that feeds information back in a loop.",
+  "source": "Week 10 lecture, slide 6",
+  "flag": ""
+ },
+ {
+  "id": "w10-004",
+  "week": 10,
+  "topic": "Sequential memory",
+  "type": "single",
+  "q": "To predict which way a ball is moving, why is a sequence of frames better than a single frame?",
+  "options": [
+   "One frame is always too small to contain a ball",
+   "A single frame cannot be turned into a number",
+   "More frames make the colours easier to separate",
+   "Without knowing where the ball has been, one frame lacks enough data to show its direction"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "Direction depends on earlier positions. A sequence of snapshots gives that history, which is the idea behind sequential memory in an RNN.",
+  "source": "Week 10 lecture, slide 7",
+  "flag": ""
+ },
+ {
+  "id": "w10-005",
+  "week": 10,
+  "topic": "Hidden state",
+  "type": "single",
+  "q": "In an RNN, what is the hidden state?",
+  "options": [
+   "The final label that the network predicts for the sequence",
+   "The set of weights that never change during training",
+   "A representation of previous inputs that is passed forward through the loop",
+   "A copy of the input image kept for reference"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "The loop passes prior information forward and this information is the hidden state. It gives the network a form of memory of what came before.",
+  "source": "Week 10 lecture, slide 8",
+  "flag": ""
+ },
+ {
+  "id": "w10-006",
+  "week": 10,
+  "topic": "Sequential problems",
+  "type": "multi",
+  "q": "Which of these are problems where the order of the data matters?",
+  "options": [
+   "Time series forecasting",
+   "Video sequence prediction",
+   "Handwriting recognition",
+   "Speech recognition",
+   "Labelling iris flowers from four measurements"
+  ],
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "explain": "Speech, handwriting, video and time series all depend on what came before or after. Iris flower labelling treats each row as independent.",
+  "source": "Week 10 lecture, slide 3 and 4",
+  "flag": ""
+ },
+ {
+  "id": "w10-007",
+  "week": 10,
+  "topic": "RNN architecture",
+  "type": "single",
+  "q": "At a given time step, what does the hidden layer of an RNN receive?",
+  "options": [
+   "The current input combined with the hidden state from the previous step",
+   "Only the current input, with no earlier information",
+   "Only the final output from the whole sequence",
+   "The class labels of all future steps"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "The hidden layer combines the input at time t with the hidden state from the step before, which itself depends on earlier inputs. This is how history is carried forward.",
+  "source": "Week 10 lecture, slide 10 and 11",
+  "flag": ""
+ },
+ {
+  "id": "w10-008",
+  "week": 10,
+  "topic": "RNN hidden node",
+  "type": "multi",
+  "q": "Which statements describe what happens in an RNN hidden node?",
+  "options": [
+   "The output is sent onwards to the output layer",
+   "The result is passed through an activation function",
+   "A copy of the output is forwarded to the next step as working memory",
+   "The current input is concatenated with the working memory from the previous step"
+  ],
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "explain": "The node joins the new input to the old memory, applies an activation and sends the result both onwards and forwards in time. All four statements are correct.",
+  "source": "Week 10 lecture, slide 13",
+  "flag": ""
+ },
+ {
+  "id": "w10-009",
+  "week": 10,
+  "topic": "Sequence classification",
+  "type": "single",
+  "q": "An RNN reads a sentence word by word and its final output is passed to a feedforward layer. What is this used for?",
+  "options": [
+   "To undo the effect of the hidden state",
+   "To split the sentence back into single words",
+   "To choose which filters to apply to the text",
+   "To classify something such as the intent of the sentence"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "By the final step the RNN has encoded information from all earlier words, so its output can be used to classify the intent.",
+  "source": "Week 10 lecture, slide 15 and 16",
+  "flag": ""
+ },
+ {
+  "id": "w10-010",
+  "week": 10,
+  "topic": "Vanishing gradient",
+  "type": "single",
+  "q": "What does the vanishing gradient problem mean for training an RNN?",
+  "options": [
+   "Gradients grow too large, so the weights become unstable",
+   "Gradients shrink as they pass backwards, so early steps barely learn and the network forgets older information",
+   "Gradients are lost only at the output layer, so predictions are random",
+   "Gradients disappear because the learning rate was set to zero"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "Each step makes the adjustment smaller than the one before it, so the earliest layers hardly change. This gives the RNN its short term memory.",
+  "source": "Week 10 lecture, slide 17 to 19",
+  "flag": ""
+ },
+ {
+  "id": "w10-011",
+  "week": 10,
+  "topic": "Vanishing gradient",
+  "type": "multi",
+  "q": "Which statements about the vanishing gradient problem are correct?",
+  "options": [
+   "Earlier layers are barely adjusted because the gradients are tiny",
+   "Gradients shrink exponentially as they are backpropagated",
+   "It only affects the output layer",
+   "It is common in very deep fully connected networks and in RNNs",
+   "Gradients grow without limit and cause overflow"
+  ],
+  "answer": [
+   0,
+   1,
+   3
+  ],
+  "explain": "Small adjustments in later layers lead to even smaller ones earlier on, so early layers fail to learn. It is a problem of shrinking, not growing, gradients.",
+  "source": "Week 10 lecture, slide 18 and 19",
+  "flag": ""
+ },
+ {
+  "id": "w10-012",
+  "week": 10,
+  "topic": "BPTT",
+  "type": "single",
+  "q": "What is computed at the end of the forward pass when training an RNN with backpropagation through time?",
+  "options": [
+   "The total loss, which measures the difference between the true and estimated labels",
+   "The partial derivative of every weight",
+   "The new cell state of the network",
+   "The mask of the final output"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "The forward pass takes the input through the hidden states and works out the loss. Partial derivatives come later, in the backward pass.",
+  "source": "Week 10 lecture, slide 20 and 21",
+  "flag": ""
+ },
+ {
+  "id": "w10-013",
+  "week": 10,
+  "topic": "BPTT",
+  "type": "single",
+  "q": "What happens in the backward pass of backpropagation through time?",
+  "options": [
+   "The input is processed through the hidden state to estimate a label",
+   "The hidden state is reset to zero at every time step",
+   "The total loss is propagated back, and the change for each weight is found using partial derivatives and the chain rule",
+   "The window of time steps is made longer after each epoch"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "The backward pass sends the loss back through the network and uses the chain rule to work out how much each weight should change.",
+  "source": "Week 10 lecture, slide 22",
+  "flag": ""
+ },
+ {
+  "id": "w10-014",
+  "week": 10,
+  "topic": "Truncated BPTT",
+  "type": "single",
+  "q": "How does truncated backpropagation through time tackle the vanishing gradient problem?",
+  "options": [
+   "It adds a gate that deletes the oldest hidden state",
+   "It only looks back over a moving window of time steps instead of the entire sequence",
+   "It replaces the RNN with a feedforward network",
+   "It raises the size of the gradients at each step"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "Normal backpropagation goes through the whole sequence, which makes gradients vanish. Limiting the window avoids far away steps.",
+  "source": "Week 10 lecture, slide 23",
+  "flag": ""
+ },
+ {
+  "id": "w10-015",
+  "week": 10,
+  "topic": "Truncated BPTT",
+  "type": "multi",
+  "q": "Which statements about truncated backpropagation through time are correct?",
+  "options": [
+   "Dependencies longer than the window cannot be learned",
+   "It still passes backwards through the entire sequence",
+   "It is less complex because far away steps add no gradient",
+   "It can learn dependencies that are longer than the window",
+   "It is much faster than normal backpropagation through time"
+  ],
+  "answer": [
+   0,
+   2,
+   4
+  ],
+  "explain": "Using a window saves time and complexity but cuts off long range links. That limit is its main drawback.",
+  "source": "Week 10 lecture, slide 23",
+  "flag": ""
+ },
+ {
+  "id": "w10-016",
+  "week": 10,
+  "topic": "Long term dependencies",
+  "type": "single",
+  "q": "A model must finish the sentence \"I grew up in France and I speak fluent ...\". Why can truncated backpropagation struggle here?",
+  "options": [
+   "The word France is too short to be encoded as a hidden state",
+   "The window deletes the most recent word first",
+   "The sentence must be fed in reverse order",
+   "The clue about France may lie further back than the window, so the link cannot be learned"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "The nearby words only show that a language is coming. The word France is needed to pick the language, and a long gap can put it outside the window.",
+  "source": "Week 10 lecture, slide 24",
+  "flag": ""
+ },
+ {
+  "id": "w10-017",
+  "week": 10,
+  "topic": "LSTM",
+  "type": "single",
+  "q": "What is the cell state in an LSTM?",
+  "options": [
+   "A gate that decides what to forget",
+   "A layer that flattens the input into a vector",
+   "A line running along the whole chain, like a conveyor belt, with only minor linear changes",
+   "A copy of the loss used during training"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "The cell state carries information straight along the chain. Gates carefully add to or remove from it. The forget gate is one of those gates, not the cell state.",
+  "source": "Week 10 lecture, slide 26",
+  "flag": ""
+ },
+ {
+  "id": "w10-018",
+  "week": 10,
+  "topic": "LSTM gates",
+  "type": "multi",
+  "q": "Which statements about an LSTM gate are correct?",
+  "options": [
+   "It is built from a sigmoid layer and a pointwise multiplication",
+   "It outputs values between minus one and one",
+   "A value of one lets everything through",
+   "A value of zero lets nothing through"
+  ],
+  "answer": [
+   0,
+   2,
+   3
+  ],
+  "explain": "A sigmoid outputs values between zero and one, which say how much of each component to let through. Minus one to one is the range of tanh.",
+  "source": "Week 10 lecture, slide 27 and 31",
+  "flag": ""
+ },
+ {
+  "id": "w10-019",
+  "week": 10,
+  "topic": "LSTM gates",
+  "type": "single",
+  "q": "What is the job of the forget gate in an LSTM?",
+  "options": [
+   "It decides which information to throw away from the cell state",
+   "It creates candidate values to add to the cell state",
+   "It decides which part of the cell state to output",
+   "It resets the hidden state of the previous step"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "The forget gate outputs a number between 0 and 1 for each value in the cell state. A 1 means keep it completely and a 0 means get rid of it.",
+  "source": "Week 10 lecture, slide 28",
+  "flag": ""
+ },
+ {
+  "id": "w10-020",
+  "week": 10,
+  "topic": "LSTM gates",
+  "type": "multi",
+  "q": "Which describe the step where an LSTM stores new information in the cell state?",
+  "options": [
+   "The output gate chooses what to send to the next layer",
+   "The hidden state of the previous step is reset to zero",
+   "A second layer builds a vector of new candidate values",
+   "A sigmoid input gate decides which values to update"
+  ],
+  "answer": [
+   2,
+   3
+  ],
+  "explain": "Storing new information has two parts, an input gate that picks which values to update and a layer that creates candidates. Output filtering is a separate, later step.",
+  "source": "Week 10 lecture, slide 29",
+  "flag": ""
+ },
+ {
+  "id": "w10-021",
+  "week": 10,
+  "topic": "LSTM gates",
+  "type": "single",
+  "q": "What does the output step of an LSTM produce?",
+  "options": [
+   "A raw copy of the whole cell state",
+   "A new set of candidate values for the cell state",
+   "A list of the values the forget gate threw away",
+   "A filtered version of the cell state, formed by a tanh and a sigmoid gate"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "A sigmoid layer decides which parts to output and the cell state is pushed through tanh to lie between minus one and one. The two are multiplied, so only chosen parts leave.",
+  "source": "Week 10 lecture, slide 31",
+  "flag": ""
+ },
+ {
+  "id": "w10-022",
+  "week": 10,
+  "topic": "LSTM",
+  "type": "single",
+  "q": "How does the internal structure of an LSTM differ from a standard RNN?",
+  "options": [
+   "A standard RNN has four interacting layers, while an LSTM has a single layer",
+   "A standard RNN has a single layer, while an LSTM has four interacting layers",
+   "A standard RNN has no hidden state, while an LSTM has one",
+   "A standard RNN has gates, while an LSTM has none"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "The repeating module of an LSTM is more elaborate, with several interacting layers that make up the gates. A plain RNN uses just one.",
+  "source": "Week 10 lecture, slide 25",
+  "flag": ""
+ },
+ {
+  "id": "w10-023",
+  "week": 10,
+  "topic": "GRU",
+  "type": "multi",
+  "q": "Which statements about a gated recurrent unit are correct?",
+  "options": [
+   "It is a simplified variant of the LSTM",
+   "It has more gates than an LSTM",
+   "It has an update gate and a reset gate",
+   "It needs less computational power than an LSTM",
+   "It removes the recurrent connection altogether"
+  ],
+  "answer": [
+   0,
+   2,
+   3
+  ],
+  "explain": "A GRU keeps the gating idea but uses fewer gates, so it still models temporal patterns with less computation.",
+  "source": "Week 10 lecture, slide 32",
+  "flag": ""
+ },
+ {
+  "id": "w10-024",
+  "week": 10,
+  "topic": "Sequential data",
+  "type": "explain",
+  "q": "Explain the difference between tasks that are not sequence based and tasks where sequence matters, with one example of each.",
+  "model": "In a task that is not sequence based, each example is independent and there is no temporal behaviour, so order and history do not matter. Predicting an iris flower type from its four measurements is an example. In other tasks the order carries meaning and earlier or later information changes the answer. Machine translation, speech recognition, video prediction and time series are examples. The cat and dog sentences use the same words but have opposite meanings.",
+  "points": [
+   "Non sequence tasks have independent examples and no history",
+   "Example such as iris flower classification",
+   "Sequence tasks depend on order and context",
+   "Example such as translation, speech or time series"
+  ],
+  "source": "Week 10 lecture, slide 3 and 4",
+  "flag": ""
+ },
+ {
+  "id": "w10-025",
+  "week": 10,
+  "topic": "RNN",
+  "type": "explain",
+  "q": "Describe how a recurrent neural network remembers earlier inputs.",
+  "model": "An RNN adds a recurrent connection that forms a cycle, so information from one step can be passed to the next. This passed on information is the hidden state, a representation of previous inputs. At each time step the current input is combined with the previous hidden state and sent through an activation function. The result goes to the output layer and a copy is passed to the next step as working memory. This gives the network sequential memory.",
+  "points": [
+   "A recurrent connection forms a cycle",
+   "The hidden state represents previous inputs",
+   "Current input is combined with the previous hidden state",
+   "A copy of the output is passed forward as working memory"
+  ],
+  "source": "Week 10 lecture, slide 6 to 13",
+  "flag": ""
+ },
+ {
+  "id": "w10-026",
+  "week": 10,
+  "topic": "RNN",
+  "type": "explain",
+  "q": "Explain how an RNN reads a sentence word by word and then uses it to classify an intent.",
+  "model": "The sentence is broken into a sequence of words. The RNN encodes the first word and produces an output. The next word is then fed in together with the hidden state from the previous step. This repeats until the final word. By then the hidden state holds information from all the earlier words. The final output is therefore built from the whole sequence, and it can be passed to a feedforward layer to classify the intent.",
+  "points": [
+   "Sentence is split into words fed in one at a time",
+   "Each step uses the previous hidden state",
+   "Final step has encoded information from all words",
+   "Final output goes to a feedforward layer to classify intent"
+  ],
+  "source": "Week 10 lecture, slide 15 and 16",
+  "flag": ""
+ },
+ {
+  "id": "w10-027",
+  "week": 10,
+  "topic": "Vanishing gradient",
+  "type": "explain",
+  "q": "Explain the vanishing gradient problem and why it gives an RNN short term memory.",
+  "model": "In backpropagation each layer works out its gradient from the layer after it. If the adjustments there are already small, the adjustment for the current layer is even smaller, so gradients shrink exponentially as they travel back. The earliest layers or steps then receive tiny gradients and barely learn. In an RNN this means information from early steps is hard to retain over long sequences, which is the short term memory problem.",
+  "points": [
+   "Each layer's gradient depends on the one after it",
+   "Gradients shrink exponentially going backwards",
+   "Early layers barely adjust and fail to learn",
+   "RNN struggles to retain information from earlier steps"
+  ],
+  "source": "Week 10 lecture, slide 17 to 19",
+  "flag": ""
+ },
+ {
+  "id": "w10-028",
+  "week": 10,
+  "topic": "BPTT",
+  "type": "explain",
+  "q": "Describe the forward and backward passes of backpropagation through time.",
+  "model": "Training an RNN uses a loss function that measures the error between the true label and the predicted label. In the forward pass the input goes through the hidden states and the estimated label is calculated. The loss is computed at each step and the total loss L finishes the pass. In the backward pass the total loss is propagated back through the network. Partial derivatives and the chain rule measure how much each weight should change.",
+  "points": [
+   "Loss function measures error between true and predicted label",
+   "Forward pass runs input through hidden states and computes total loss",
+   "Backward pass propagates the loss back",
+   "Partial derivatives and the chain rule give weight changes"
+  ],
+  "source": "Week 10 lecture, slide 20 to 22",
+  "flag": ""
+ },
+ {
+  "id": "w10-029",
+  "week": 10,
+  "topic": "Truncated BPTT",
+  "type": "explain",
+  "q": "Explain the benefit and the drawback of truncated backpropagation through time.",
+  "model": "Normal backpropagation through time goes back through the whole sequence, which makes gradients vanish. Truncated backpropagation only considers a moving window of time steps. This is much faster and less complex, because gradients from faraway steps are not included. The drawback is that dependencies longer than the window length cannot be learned. For example the clue France may sit too far back to help predict the word French.",
+  "points": [
+   "Normal version goes through the whole sequence and gradients vanish",
+   "Truncated uses a moving window",
+   "It is faster and less complex",
+   "It cannot learn dependencies longer than the window"
+  ],
+  "source": "Week 10 lecture, slide 23 and 24",
+  "flag": ""
+ },
+ {
+  "id": "w10-030",
+  "week": 10,
+  "topic": "LSTM",
+  "type": "explain",
+  "q": "Explain why an LSTM handles long sequences better than a simple recurrent network.",
+  "model": "An LSTM is a special kind of RNN designed to remember information for long periods. Its key is the cell state, which runs straight along the chain like a conveyor belt with only minor linear changes. Information is added to or removed from the cell state under the control of gates. Because the important information can travel along this line with little change, an LSTM can learn long term dependencies where a simple RNN with a single layer fades.",
+  "points": [
+   "LSTM is designed to learn long term dependencies",
+   "Cell state runs along the chain like a conveyor belt",
+   "Gates control what is added or removed",
+   "Simple RNN has a single layer and forgets over long gaps"
+  ],
+  "source": "Week 10 lecture, slide 25 and 26",
+  "flag": "The explanation of why the cell state helps with vanishing gradients is standard textbook reasoning. The slides only describe the cell state as a conveyor belt with minor linear interactions."
+ },
+ {
+  "id": "w10-031",
+  "week": 10,
+  "topic": "LSTM gates",
+  "type": "explain",
+  "q": "Describe the three gate steps of an LSTM cell.",
+  "model": "Gates use a sigmoid layer and pointwise multiplication to let a chosen amount through, with zero meaning nothing and one meaning everything. The forget gate decides which information to throw away from the cell state. The input gate decides which values to update, while another layer builds candidate values, and together they update the cell state. The output step runs the cell state through tanh and multiplies it by a sigmoid gate, so only the chosen parts are output.",
+  "points": [
+   "Gates are sigmoid layers with pointwise multiplication giving values from zero to one",
+   "Forget gate removes information from the cell state",
+   "Input gate and candidate values add new information",
+   "Output step filters the cell state using tanh and a sigmoid gate"
+  ],
+  "source": "Week 10 lecture, slide 27 to 31",
+  "flag": ""
+ },
+ {
+  "id": "w10-032",
+  "week": 10,
+  "topic": "GRU",
+  "type": "explain",
+  "q": "Compare a gated recurrent unit with an LSTM.",
+  "model": "A gated recurrent unit is a simplified variant of the LSTM. It keeps the idea of gates but has fewer of them, using an update gate and a reset gate. It can still model temporal patterns efficiently. Because it is simpler it needs less computational power. An LSTM has more gates and a separate cell state, so it is more elaborate and costs more to run.",
+  "points": [
+   "GRU is a simplified LSTM",
+   "It has update and reset gates",
+   "It needs less computational power",
+   "LSTM has more gates and is more elaborate"
+  ],
+  "source": "Week 10 lecture, slide 32",
+  "flag": "The final comparison about a separate cell state is textbook knowledge. The slide only gives the one line description of the GRU."
+ }
+]

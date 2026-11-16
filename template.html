@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Practice questions and revision notes for the MOD004553 Artificial Intelligence in-class test.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='16' height='16' fill='%23440154'/%3E%3Crect x='16' width='16' height='16' fill='%2326828e'/%3E%3Crect y='16' width='16' height='16' fill='%2335b779'/%3E%3Crect x='16' y='16' width='16' height='16' fill='%23fde725'/%3E%3C/svg%3E">
+<title>AI Test Practice</title>
+<style>
+@font-face{font-family:"Atkinson Next";src:url(data:font/woff2;base64,/*FONT*/) format("woff2");font-weight:200 800;font-display:swap}
+:root{
+  --paper:#fff;--ink:#1b1424;--ink-2:#4b4357;--hair:#dedbe4;--tint:#f4f2f7;
+  --right:#18794e;--wrong:#b3261e;--focus:#3e4a89;
+  --t-xs:.84rem;--t-s:.94rem;--t-m:1.0625rem;--t-l:1.375rem;--t-xl:2.25rem;
+  --r:6px;
+}
+*{box-sizing:border-box}
+html{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 var(--t-m)/1.5 "Atkinson Next",Verdana,Arial,sans-serif}
+main{max-width:720px;margin:0 auto;padding:24px 20px 72px;min-height:100dvh}
+@media (min-width:800px){main{padding:56px 20px 96px}}
+h1,h2,h3{text-wrap:balance;margin:0}
+h1{font-size:var(--t-xl);font-weight:800;line-height:1.02}
+h2{font-size:var(--t-l);font-weight:700;line-height:1.25;margin-top:40px}
+h3{font-size:var(--t-m);font-weight:700;margin-top:20px}
+h1:focus,h2:focus,.fb:focus{outline:none}
+p{margin:8px 0;text-wrap:pretty}
+.s{font-size:var(--t-s);color:var(--ink-2)}
+a{color:var(--ink)}
+svg{display:block}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+button,select{font:700 1rem/1.2 "Atkinson Next",Verdana,sans-serif;color:var(--ink);background:var(--paper);border:1.5px solid var(--ink);border-radius:var(--r);padding:11px 18px;min-height:44px;cursor:pointer}
+button.p{background:var(--ink);color:var(--paper)}
+button.l{border:0;padding:11px 0;text-decoration:underline;font-weight:400;font-size:var(--t-s)}
+button:disabled{color:#767676;border-color:#767676;background:var(--paper);cursor:default}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1.5px solid var(--ink);font-size:var(--t-s)}
+.timer{font-variant-numeric:tabular-nums;font-weight:700}
+.timer.low{color:var(--wrong)}
+
+/* the heatmap */
+.plot{border-collapse:separate;border-spacing:3px 3px;width:100%;margin:12px 0 0 -3px;width:calc(100% + 6px)}
+.plot th{font-weight:400;text-align:left;padding:0}
+.plot thead th{font-size:var(--t-xs);color:var(--ink-2);text-align:center;vertical-align:bottom;width:64px}
+.plot thead th:first-child{width:auto}
+.plot tbody th{border-top:1px solid var(--hair);padding:9px 8px 9px 0;font-size:var(--t-s);line-height:1.3}
+.plot tbody th{display:flex;gap:4px}
+.plot tbody th b{font-weight:800;flex:0 0 1.7em;font-variant-numeric:tabular-nums}
+select{max-width:100%;text-overflow:ellipsis}
+.plot td{padding:0;height:1px}
+.plot td button{width:100%;height:100%;min-height:48px;border:0;border-radius:0;padding:0;font-size:1.2rem;font-weight:800;font-variant-numeric:tabular-nums}
+.plot td button.new{background:repeating-linear-gradient(135deg,var(--paper) 0 5px,#d9d5e0 5px 6.5px);color:var(--ink-2);font-size:var(--t-xs);font-weight:400}
+.plot td button:hover{outline:2px solid var(--ink);outline-offset:1px}
+.key{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:var(--t-xs);color:var(--ink-2);flex-wrap:wrap}
+.key .sw{display:flex}.key .sw i{width:16px;height:12px;display:block}
+.key .nw{width:16px;height:12px;background:repeating-linear-gradient(135deg,var(--paper) 0 3px,#d9d5e0 3px 4.5px);border:1px solid var(--hair);margin-left:10px}
+
+.papers{border-top:1.5px solid var(--ink);margin-top:12px}
+.papers button{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 16px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--hair);border-radius:0;padding:14px 0;font-weight:400}
+.papers button b{font-size:var(--t-l);font-weight:700}
+.papers button span{grid-column:1;color:var(--ink-2);font-size:var(--t-s);line-height:1.4}
+.papers button i{grid-row:1/3;grid-column:2;align-self:center;font-style:normal;font-size:var(--t-s);font-variant-numeric:tabular-nums;white-space:nowrap}
+.papers button:hover:not(:disabled) b{text-decoration:underline}
+.papers button:disabled b{color:#767676}
+
+fieldset{border:0;margin:0;padding:0;min-width:0}legend{padding:0}
+.meta{display:flex;justify-content:space-between;gap:12px;margin-top:24px;font-size:var(--t-s);color:var(--ink-2)}
+.stem{font-size:var(--t-l);font-weight:700;line-height:1.3;margin:6px 0 4px;white-space:pre-wrap;text-wrap:balance;display:block}
+.how{display:block;font-size:var(--t-s);color:var(--ink-2);font-weight:400;margin-bottom:12px}
+.o{display:grid;grid-template-columns:22px minmax(0,1fr) 24px;gap:0 12px;align-items:start;padding:12px 0;border-top:1px solid var(--hair);cursor:pointer}
+.o input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--ink);cursor:pointer}
+.o input:disabled{cursor:default}
+.o small{display:block;font-weight:700;font-size:var(--t-xs);color:var(--wrong)}.o small.ok{color:var(--right)}
+.o .mk{width:22px;height:22px;margin-top:2px}
+.row{display:flex;flex-wrap:wrap;gap:4px 24px}.row .o{border:0;grid-template-columns:22px auto;padding:8px 0}
+textarea{display:block;width:100%;min-height:168px;resize:vertical;font:400 var(--t-m)/1.5 "Atkinson Next",Verdana,sans-serif;color:var(--ink);background:var(--paper);border:1.5px solid var(--ink);border-radius:var(--r);padding:12px}
+.yours{white-space:pre-wrap;background:var(--tint);padding:12px;border-radius:var(--r);overflow-wrap:break-word}
+.fb{margin-top:20px;border-top:1.5px solid var(--ink);padding-top:4px;overflow-wrap:break-word}
+.flag{background:var(--tint);padding:10px 12px;border-radius:var(--r);font-size:var(--t-s);margin-top:12px}
+.nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:28px}
+.ai{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:16px}
+.ai button{font-weight:400;font-size:var(--t-s);padding:9px 14px}
+
+details{margin-top:28px;border-top:1px solid var(--hair)}
+summary{cursor:pointer;padding:12px 0;font-size:var(--t-s)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:6px;margin:4px 0 16px}
+.grid button{padding:0;min-height:44px;font-size:var(--t-s);font-weight:400;font-variant-numeric:tabular-nums}
+.grid .done{background:var(--ink);color:var(--paper);font-weight:700}
+.grid .cur{outline:3px solid var(--focus);outline-offset:2px}
+
+.total{font-size:var(--t-xl);font-weight:800;line-height:1.1;margin:16px 0 4px;font-variant-numeric:tabular-nums}
+table.t{border-collapse:collapse;width:100%;font-size:var(--t-s);margin-top:8px}
+.t td,.t th{border-bottom:1px solid var(--hair);padding:8px 10px 8px 0;text-align:left;vertical-align:top}
+.t th{border-bottom:1.5px solid var(--ink);font-weight:700}
+.t .num{text-align:right;font-variant-numeric:tabular-nums;padding-right:0;white-space:nowrap}
+.rev{border-top:1.5px solid var(--ink);margin-top:32px}
+.foot{margin-top:64px;border-top:1px solid var(--hair);padding-top:16px;font-size:var(--t-s);color:var(--ink-2)}
+.foot .gh{display:inline-flex;align-items:center;gap:6px;vertical-align:bottom;min-height:24px}
+.notes{overflow-wrap:break-word}
+.notes h1{font-size:var(--t-xl);margin-top:28px}
+.notes h2{border-top:1px solid var(--hair);padding-top:16px;margin-top:28px}
+.notes table{display:block;overflow-x:auto;border-collapse:collapse;margin:10px 0;font-size:var(--t-s)}
+.notes td,.notes th{border-bottom:1px solid var(--hair);padding:7px 14px 7px 0;text-align:left;vertical-align:top}
+.notes li{margin:4px 0}
+dialog{border:1.5px solid var(--ink);border-radius:var(--r);padding:20px;max-width:min(420px,calc(100% - 40px));color:var(--ink)}
+dialog::backdrop{background:#1b142499}
+dialog .nav{margin-top:20px}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<dialog id="dlg" aria-labelledby="dlg-t"><p id="dlg-t"></p><div class="nav"><button id="dlg-no">Keep working</button><button class="p" id="dlg-yes">Hand in</button></div></dialog>
+<noscript><p style="padding:20px">This practice page needs JavaScript switched on.</p></noscript>
+<script>
+const DATA = /*DATA*/;
+const WEEKS = {1:"Introduction to AI, data and EDA",2:"Classification",3:"Regression",4:"Clustering and PCA",5:"Reinforcement learning and genetic algorithms",6:"Neural network basics",7:"Backpropagation",8:"Convolutional networks",9:"Segmentation and object detection",10:"Recurrent networks"};
+const DECKS = {w01a:"Week 1, Introduction to AI",w01b:"Week 1, Data and EDA",w02:"Week 2, Classification",w03:"Week 3, Regression",w04:"Week 4, Clustering and PCA",w05a:"Week 5, Reinforcement learning",w05b:"Week 5, Genetic algorithms",w06:"Week 6, Neural network basics",w07:"Week 7, Backpropagation",w08:"Week 8, Convolutional networks",w09:"Week 9, Segmentation and detection",w10:"Week 10, Recurrent networks"};
+// Viridis in ten steps, the default colormap of the plots in the practicals. Dark text from step 5 up.
+const VIR = ["#440154","#482878","#3e4a89","#31688e","#26828e","#1f9e89","#35b779","#6ece58","#b5de2b","#fde725"];
+const Q = DATA.questions, BYID = Object.fromEntries(Q.map(q => [q.id, q]));
+const LS = "ai-quiz-v1";
+let st = {sc:{}, seen:{}, run:null, hist:[], ai:"claude"};
+try { Object.assign(st, JSON.parse(localStorage.getItem(LS) || "{}")); } catch(e) {}
+const save = () => { try { localStorage.setItem(LS, JSON.stringify(st)); } catch(e) {} };
+const app = document.getElementById("app");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const isEx = q => q.type === "explain";
+const marks = q => isEx(q) ? q.points.length : 1;
+const same = (a, b) => a.length === b.length && a.every(x => b.includes(x));
+const weeksPresent = [...new Set(Q.map(q => q.week))].sort((a, b) => a - b);
+let tick = null, first = true;
+const focusOn = sel => { const e = app.querySelector(sel); if (e) { e.tabIndex = -1; e.focus({preventScroll:true}); } };
+const on = (id, f) => { const e = document.getElementById(id); if (e) e.onclick = f; };
+// Weakest first: never tried, then lowest score, then least seen.
+const weakest = qs => shuffle(qs).sort((a, b) => ((st.sc[a.id] ?? -1) - (st.sc[b.id] ?? -1)) || ((st.seen[a.id] || 0) - (st.seen[b.id] || 0)));
+
+const TICK = `<svg class="mk" viewBox="0 0 22 22" aria-hidden="true"><path d="M4 12l5 5L18 6" fill="none" stroke="var(--right)" stroke-width="3"/></svg>`;
+const CROSS = `<svg class="mk" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 5l12 12M17 5L5 17" fill="none" stroke="var(--wrong)" stroke-width="3"/></svg>`;
+const FOOT = `<footer class="foot"><p>Created by <a href="https://www.ibrahimuthman.me/">Ibrahim Uthman</a>. If it helped, <a class="gh" href="https://github.com/IbdotBoss/ai-quiz">star it on GitHub<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg></a>.</p></footer>`;
+
+/* ---------- asking an AI assistant ---------- */
+// No key and no backend. The question goes to the assistant as a prefilled prompt and is also copied,
+// because prefill support differs between assistants and changes without notice.
+const AI = {
+  claude:{name:"Claude", url:q => "https://claude.ai/new?q=" + encodeURIComponent(q)},
+  chatgpt:{name:"ChatGPT", url:q => "https://chatgpt.com/?q=" + encodeURIComponent(q)},
+  perplexity:{name:"Perplexity", url:q => "https://www.perplexity.ai/search?q=" + encodeURIComponent(q)},
+  gemini:{name:"Gemini", url:null, open:"https://gemini.google.com/app"}
+};
+const INTRO = "I am revising for a university Artificial Intelligence in-class test. The questions are descriptive, test basic understanding and need no calculations. Use plain language and keep your reply under 200 words.";
+function prompt(q, mode, mine) {
+  const L = [INTRO, "", "QUESTION", q.q, ""];
+  if (isEx(q)) {
+    if (mode === "hint") return L.concat(mine ? ["MY ANSWER SO FAR", mine, ""] : [], "Do not give me the full answer. Give me one hint that points me towards what a good answer covers, then ask me to try again.").join("\n");
+    return L.concat("MY ANSWER", mine || "I did not write an answer.", "", "MODEL ANSWER", q.model, "", "POINTS A MARKER LOOKS FOR", q.points.map(p => "- " + p).join("\n"), "",
+      "Mark my answer against those points. Say which points I made, which I missed, and correct anything I got wrong. Then ask me one follow-up question that checks I understand the idea.").join("\n");
+  }
+  const letter = i => String.fromCharCode(65 + i), list = a => a.map(i => letter(i) + ". " + q.options[i]).join("\n") || "Nothing";
+  const ok = same(mine, q.answer);
+  return L.concat("OPTIONS", list(q.options.map((_, i) => i)), "", "CORRECT", list(q.answer), "", "I CHOSE", list(mine), "",
+    ok ? "I got this right. Explain the idea behind it one level deeper, then ask me one follow-up question that checks I understand it."
+       : "I got this wrong. Explain what I was probably thinking, why the correct answer is right, and the one idea to remember. Then ask me one follow-up question.").join("\n");
+}
+async function copy(text) {
+  try { await navigator.clipboard.writeText(text); return true; }
+  catch(e) { try { const ta = document.createElement("textarea"); ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); const ok = document.execCommand("copy"); ta.remove(); return ok; } catch(e2) { return false; } }
+}
+const aiRow = buttons => `<div class="ai">${buttons.map(([mode, text]) => `<button data-ai="${mode}">${text}</button>`).join("")}<span class="s" id="ai-st" role="status"></span></div>`;
+function wireAi(q, getMine) {
+  const t = AI[st.ai] || AI.claude, out = document.getElementById("ai-st");
+  app.querySelectorAll("[data-ai]").forEach(b => b.onclick = async () => {
+    const text = prompt(q, b.dataset.ai, getMine()), copied = await copy(text);
+    const fits = t.url && encodeURIComponent(text).length < 6000;
+    if (fits) { window.open(t.url(text), "_blank", "noopener,noreferrer"); out.textContent = copied ? `Opened ${t.name}. The prompt is also copied, so paste it if the box is empty.` : `Opened ${t.name}.`; }
+    else if (copied) { out.innerHTML = `Prompt copied. <a href="${t.open || t.url("").split("?")[0]}" target="_blank" rel="noopener noreferrer">Open ${t.name}</a> and paste it.`; }
+    else out.textContent = "Copying failed in this browser. Choose a different assistant on the home page.";
+  });
+}
+const aiName = () => (AI[st.ai] || AI.claude).name;
+
+/* ---------- home ---------- */
+function cell(week, ex) {
+  const qs = Q.filter(q => q.week === week && isEx(q) === ex), tried = qs.filter(q => q.id in st.sc);
+  const frac = qs.length ? tried.reduce((s, q) => s + st.sc[q.id], 0) / qs.length : 0;
+  return {qs, tried:tried.length, frac};
+}
+function home() {
+  clearInterval(tick);
+  const weak = Q.filter(q => q.id in st.sc && st.sc[q.id] < 1).length;
+  const resume = st.run && !st.run.done;
+  const last = st.hist.slice(-5).reverse();
+  const td = (w, ex) => {
+    const c = cell(w, ex), kind = ex ? "explain" : "choice";
+    if (!c.qs.length) return "<td></td>";
+    const pct = Math.round(c.frac * 100), bin = Math.min(9, Math.floor(c.frac * 10));
+    return c.tried
+      ? `<td><button data-w="${w}" data-ex="${ex ? 1 : 0}" style="background:${VIR[bin]};color:${bin > 4 ? "var(--ink)" : "#fff"}" aria-label="Week ${w}, ${kind} questions. ${pct} percent right, ${c.tried} of ${c.qs.length} tried. Practise.">${pct}</button></td>`
+      : `<td><button class="new" data-w="${w}" data-ex="${ex ? 1 : 0}" aria-label="Week ${w}, ${kind} questions. Not started, ${c.qs.length} questions. Practise.">new</button></td>`;
+  };
+  app.innerHTML = `
+  <header>
+    <p class="s">MOD004553</p>
+    <h1>Artificial Intelligence test practice</h1>
+    <p>Fifty minutes of descriptive questions. Type each answer in your own words, then check it against a model answer.</p>
+  </header>
+  <h2 id="hm">What you know so far</h2>
+  <table class="plot" aria-labelledby="hm">
+    <thead><tr><th scope="col"><span class="vh">Week</span></th><th scope="col">Choice</th><th scope="col">Explain</th></tr></thead>
+    <tbody>${weeksPresent.map(w => `<tr><th scope="row"><b>${w}</b><span>${esc(WEEKS[w] || "")}</span></th>${td(w, false)}${td(w, true)}</tr>`).join("")}</tbody>
+  </table>
+  <div class="key"><span>0%</span><span class="sw" aria-hidden="true">${VIR.map(c => `<i style="background:${c}"></i>`).join("")}</span><span>100% of the questions right</span><span class="nw" aria-hidden="true"></span><span>not started</span></div>
+  <p class="s">Each square starts a short set from that week, weakest questions first.</p>
+  <h2>Papers</h2>
+  <div class="papers">
+    ${resume ? `<button id="resume"><b>Resume ${esc(st.run.title.toLowerCase())}</b><span>You stopped at question ${st.run.i + 1}.</span><i>${st.run.ids.length} questions</i></button>` : ""}
+    <button id="m-timed"><b>Timed paper</b><span>Explain questions from across the weeks, marked after you hand in. The real format is not published yet.</span><i>8 questions, 50 min</i></button>
+    <button id="m-mixed"><b>Mixed practice</b><span>Choice and explain questions from every week, weakest first.</span><i>15 questions</i></button>
+    <button id="m-weak" ${weak ? "" : "disabled"}><b>Corrections</b><span>${weak ? "Questions you have not got fully right yet." : "Nothing here until you miss a mark."}</span><i>${weak} to redo</i></button>
+    <button id="m-notes"><b>Revision notes</b><span>One sheet per lecture.</span><i>${DATA.notes.length} sheets</i></button>
+  </div>
+  <fieldset><legend><h2>Ask AI with</h2></legend>
+    <p class="s">Each question can open in an assistant, with the question and your answer already filled in.</p>
+    <div class="row">${Object.entries(AI).map(([k, t]) => `<label class="o"><input type="radio" name="ai" value="${k}" ${st.ai === k ? "checked" : ""}><span>${t.name}</span></label>`).join("")}</div>
+  </fieldset>
+  ${last.length ? `<h2>Recent marks</h2><table class="t"><tr><th scope="col">Paper</th><th scope="col">Date</th><th scope="col" class="num">Mark</th></tr>${last.map(h => `<tr><td>${esc(h.title)}</td><td>${new Date(h.at).toLocaleDateString()}</td><td class="num">${h.score} of ${h.total}</td></tr>`).join("")}</table>` : ""}
+  ${FOOT}`;
+  if (!first) focusOn("h1"); first = false;
+  app.querySelectorAll(".plot button").forEach(b => b.onclick = () => {
+    const w = +b.dataset.w, ex = b.dataset.ex === "1", c = cell(w, ex);
+    start({title:`Week ${w} ${ex ? "explain" : "choice"}`, ids:weakest(c.qs).slice(0, ex ? 5 : 10).map(q => q.id)});
+  });
+  app.querySelectorAll("input[name=ai]").forEach(e => e.onchange = () => { st.ai = e.value; save(); });
+  on("resume", () => show());
+  on("m-timed", () => {
+    const ex = Q.filter(isEx), ids = [];
+    shuffle(weeksPresent).forEach(w => { const pick = weakest(ex.filter(q => q.week === w))[0]; if (pick && ids.length < 8) ids.push(pick.id); });
+    start({title:"Timed paper", ids, exam:true, limit:50 * 60});
+  });
+  on("m-mixed", () => start({title:"Mixed practice", ids:shuffle([...weakest(Q.filter(q => !isEx(q))).slice(0, 10), ...weakest(Q.filter(isEx)).slice(0, 5)]).map(q => q.id)}));
+  on("m-weak", () => start({title:"Corrections", ids:weakest(Q.filter(q => q.id in st.sc && st.sc[q.id] < 1)).slice(0, 20).map(q => q.id)}));
+  on("m-notes", () => notes(DATA.notes[0] && DATA.notes[0].deck));
+}
+
+/* ---------- a run of questions ---------- */
+function start(o) {
+  const order = {};
+  o.ids.forEach(id => { const q = BYID[id]; if (!isEx(q)) order[id] = shuffle([...q.options.keys()]); });
+  st.run = {title:o.title, ids:o.ids, exam:!!o.exam, limit:o.limit || 0, t0:Date.now(), i:0, ans:{}, text:{}, pts:{}, checked:{}, order, done:false};
+  save(); show(); window.scrollTo(0, 0);
+}
+function show() { const r = st.run; if (!r) return home(); r.done ? results() : question(); }
+const timeLeft = () => Math.max(0, st.run.limit - Math.floor((Date.now() - st.run.t0) / 1000));
+const fmt = s => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+const answered = (r, id) => isEx(BYID[id]) ? !!(r.text[id] || "").trim() : !!(r.ans[id] || []).length;
+const got = (r, q) => isEx(q) ? (r.pts[q.id] || []).length : (same(r.ans[q.id] || [], q.answer) ? 1 : 0);
+function record(r, q) { st.seen[q.id] = (st.seen[q.id] || 0) + 1; st.sc[q.id] = got(r, q) / marks(q); }
+
+const stateOf = (q, k, picked) => q.answer.includes(k) ? (picked.includes(k) ? "right" : "missed") : (picked.includes(k) ? "wrong" : "");
+function optRow(q, k, sel, state, locked) {
+  const label = {right:"Right", missed:"Missed", wrong:"Wrong"}[state] || "";
+  return `<label class="o"><input type="${q.type === "multi" ? "checkbox" : "radio"}" name="o" value="${k}" ${sel ? "checked" : ""} ${locked ? "disabled" : ""}>
+    <span>${esc(q.options[k])}${label ? `<small${state === "right" ? ' class="ok"' : ""}>${label}</small>` : ""}</span>
+    ${state === "right" ? TICK : state ? CROSS : "<span></span>"}</label>`;
+}
+const srcLine = q => `<p class="s">${esc(q.source)}</p>${q.flag ? `<p class="flag"><b>Note.</b> ${esc(q.flag)}</p>` : ""}`;
+// The model answer with its marking points. live lets the points be ticked.
+function modelBlock(q, r, live) {
+  const mine = r.pts[q.id] || [];
+  return `<h3>Model answer</h3><p>${esc(q.model)}</p>
+    <fieldset class="pts" data-id="${q.id}"><legend><h3>Tick each point your answer made</h3></legend>
+    ${q.points.map((p, i) => `<label class="o"><input type="checkbox" value="${i}" ${mine.includes(i) ? "checked" : ""} ${live ? "" : "disabled"}><span>${esc(p)}</span><span></span></label>`).join("")}</fieldset>${srcLine(q)}`;
+}
+
+function question() {
+  clearInterval(tick);
+  const r = st.run, q = BYID[r.ids[r.i]], n = r.ids.length, ex = isEx(q), checked = !r.exam && r.checked[q.id];
+  const picked = r.ans[q.id] || [];
+  const body = ex
+    ? `<label for="ans" class="stem">${esc(q.q)}</label><span class="how">Write a short paragraph in your own words.</span>
+       ${checked ? `<p class="yours">${esc(r.text[q.id] || "No answer written.")}</p>` : `<textarea id="ans" spellcheck="true">${esc(r.text[q.id] || "")}</textarea>`}`
+    : `<fieldset><legend><span class="stem">${esc(q.q)}</span><span class="how">${q.type === "multi" ? "More than one answer is right. Choose all of them." : "Choose one answer."}</span></legend>
+       ${r.order[q.id].map(k => optRow(q, k, picked.includes(k), checked ? stateOf(q, k, picked) : "", checked)).join("")}</fieldset>`;
+  const fb = !checked ? "" : `<div class="fb" role="status">${ex ? modelBlock(q, r, true) : `<p>${esc(q.explain)}</p>${srcLine(q)}`}
+    ${aiRow([["mark", ex ? `Ask ${aiName()} to mark it` : `Ask ${aiName()} about this`]])}</div>`;
+  const n2 = r.ids.filter(id => answered(r, id)).length;
+  app.innerHTML = `
+  <div class="top"><button class="l" id="quit">${r.exam ? "Save and leave" : "Leave"}</button><b>${esc(r.title)}</b>${r.limit ? `<span class="timer" id="tm" role="timer" aria-label="Time left"></span>` : `<span>${r.i + 1} of ${n}</span>`}</div>
+  <div class="meta"><span>Week ${q.week}, ${esc(q.topic)}</span><span>${checked ? `${got(r, q)} of ${marks(q)}` : `${marks(q)} ${marks(q) === 1 ? "mark" : "marks"}`}</span></div>
+  ${body}${fb}
+  ${ex && !checked && !r.exam ? aiRow([["hint", `Get a hint from ${aiName()}`]]) : ""}
+  <div class="nav">
+    <button id="prev" ${r.i ? "" : "disabled"}>Previous</button>
+    ${r.exam ? (r.i < n - 1 ? `<button class="p" id="next">Next</button>` : `<button class="p" id="fin">Hand in</button>`)
+      : (checked ? `<button class="p" id="next">${r.i < n - 1 ? "Next" : "See marks"}</button>` : `<button class="p" id="chk">${ex ? "Show model answer" : "Check"}</button>`)}
+  </div>
+  ${r.exam ? `<details open><summary>Go to a question. ${n2} of ${n} answered.</summary><div class="grid">${r.ids.map((id, i) => `<button data-i="${i}" class="${answered(r, id) ? "done" : ""} ${i === r.i ? "cur" : ""}" aria-label="Question ${i + 1}, ${answered(r, id) ? "answered" : "not answered"}"${i === r.i ? ' aria-current="true"' : ""}>${i + 1}</button>`).join("")}</div><button id="fin2">Hand in</button></details>` : ""}`;
+
+  const ta = document.getElementById("ans");
+  if (ta) ta.oninput = () => { r.text[q.id] = ta.value; save(); };
+  app.querySelectorAll("input[name=o]").forEach(e => e.onchange = () => { r.ans[q.id] = [...app.querySelectorAll("input[name=o]:checked")].map(x => +x.value); save(); });
+  app.querySelectorAll(".pts input").forEach(e => e.onchange = () => {
+    r.pts[q.id] = [...app.querySelectorAll(".pts input:checked")].map(x => +x.value); st.sc[q.id] = got(r, q) / marks(q); save();
+    app.querySelector(".meta span:last-child").textContent = `${got(r, q)} of ${marks(q)}`;
+  });
+  wireAi(q, () => ex ? (r.text[q.id] || "").trim() : (r.ans[q.id] || []));
+  focusOn(checked ? ".fb" : ex ? "#ans" : "legend");
+  const go = i => { r.i = i; save(); question(); window.scrollTo(0, 0); };
+  on("quit", () => { if (!r.exam) st.run = null; save(); home(); window.scrollTo(0, 0); });
+  on("prev", () => go(r.i - 1));
+  on("next", () => r.i < n - 1 ? go(r.i + 1) : finish());
+  on("chk", () => { r.checked[q.id] = true; record(r, q); save(); question(); });
+  const fin = () => {
+    const left = r.ids.filter(id => !answered(r, id)).length;
+    if (!left) return finish();
+    const d = document.getElementById("dlg");
+    document.getElementById("dlg-t").textContent = `${left} ${left === 1 ? "question has" : "questions have"} no answer. You cannot change answers after handing in.`;
+    document.getElementById("dlg-no").onclick = () => d.close();
+    document.getElementById("dlg-yes").onclick = () => { d.close(); finish(); };
+    d.showModal();
+  };
+  on("fin", fin); on("fin2", fin);
+  app.querySelectorAll(".grid button").forEach(b => b.onclick = () => go(+b.dataset.i));
+  if (r.limit) {
+    const tm = document.getElementById("tm");
+    const upd = () => { const s = timeLeft(); tm.textContent = fmt(s) + " left"; tm.classList.toggle("low", s < 300); if (!s) { clearInterval(tick); document.getElementById("dlg").close(); finish(); } };
+    upd(); tick = setInterval(upd, 1000);
+  }
+}
+
+function finish() {
+  clearInterval(tick);
+  const r = st.run;
+  r.done = true; r.took = Math.floor((Date.now() - r.t0) / 1000);
+  if (r.exam) r.ids.forEach(id => record(r, BYID[id]));
+  st.hist.push({title:r.title, score:0, total:0, at:Date.now()}); st.hist = st.hist.slice(-30);
+  tally(); save(); results(); window.scrollTo(0, 0);
+}
+// Explain questions in a timed paper are marked on the results page, so the total can change after finishing.
+function tally() {
+  const r = st.run, h = st.hist[st.hist.length - 1];
+  r.score = r.ids.reduce((s, id) => s + got(r, BYID[id]), 0); r.total = r.ids.reduce((s, id) => s + marks(BYID[id]), 0);
+  if (h) { h.score = r.score; h.total = r.total; }
+}
+
+function results() {
+  const r = st.run, toMark = r.exam && r.ids.some(id => isEx(BYID[id]));
+  const line = () => `${r.score} of ${r.total} marks`;
+  app.innerHTML = `<div class="top"><button class="l" id="back">Back to the start</button><b>${esc(r.title)}</b><span></span></div>
+  <h1 style="margin-top:24px">${toMark ? "Mark your paper" : "Your marks"}</h1>
+  <p class="total" id="tot" aria-live="polite">${line()}</p>
+  <p class="s">${r.ids.length} questions in ${fmt(r.took)}${r.limit && r.took >= r.limit ? ". Time ran out" : ""}.${toMark ? " Read each model answer and tick the points you made. The total updates as you tick." : ""}</p>
+  ${r.ids.map((id, i) => {
+    const q = BYID[id], pk = r.ans[id] || [];
+    return `<section class="rev"><div class="meta"><span>Question ${i + 1}. Week ${q.week}, ${esc(q.topic)}</span><span data-got="${id}">${got(r, q)} of ${marks(q)}</span></div><p class="stem">${esc(q.q)}</p>
+    ${isEx(q) ? `<h3>Your answer</h3><p class="yours">${esc(r.text[id] || "No answer written.")}</p>${modelBlock(q, r, true)}` : `${r.order[id].map(k => optRow(q, k, pk.includes(k), stateOf(q, k, pk), true)).join("")}<p>${esc(q.explain)}</p>${srcLine(q)}`}</section>`;
+  }).join("")}
+  <div class="nav"><span></span><button class="p" id="back2">Back to the start</button></div>${FOOT}`;
+  app.querySelectorAll(".pts").forEach(fs => fs.onchange = () => {
+    const id = fs.dataset.id, q = BYID[id];
+    r.pts[id] = [...fs.querySelectorAll("input:checked")].map(x => +x.value); st.sc[id] = got(r, q) / marks(q); tally(); save();
+    app.querySelector(`[data-got="${id}"]`).textContent = `${got(r, q)} of ${marks(q)}`;
+    document.getElementById("tot").textContent = line();
+  });
+  focusOn("h1");
+  const back = () => { st.run = null; save(); home(); window.scrollTo(0, 0); };
+  on("back", back); on("back2", back);
+}
+
+function notes(deck) {
+  const n = DATA.notes.find(x => x.deck === deck) || DATA.notes[0];
+  app.innerHTML = `<div class="top"><button class="l" id="back">Back to the start</button><b>Revision notes</b><span></span></div>
+  <p style="margin-top:20px"><label for="sheet" class="s" style="display:block;margin-bottom:4px">Sheet</label><select id="sheet">${DATA.notes.map(x => `<option value="${x.deck}" ${x === n ? "selected" : ""}>${esc(DECKS[x.deck] || x.deck)}</option>`).join("")}</select></p>
+  <div class="notes">${n ? n.html : "<p>No notes yet.</p>"}</div>${FOOT}`;
+  document.getElementById("sheet").onchange = e => { notes(e.target.value); document.getElementById("sheet").focus(); };
+  on("back", () => { home(); window.scrollTo(0, 0); });
+}
+
+if (st.run && !st.run.ids.every(id => BYID[id])) st.run = null;
+home();
+</script>
+</body>
+</html>

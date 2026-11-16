@@ -1,0 +1,698 @@
+[
+ {
+  "id": "w06-001",
+  "week": 6,
+  "topic": "Biological inspiration",
+  "type": "single",
+  "q": "An impulse reaches a biological neuron from its neighbours. Which part receives it first?",
+  "options": [
+   "The axon terminal",
+   "A dendrite",
+   "The axon",
+   "The nucleus"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "Dendrites receive the impulse from neighbouring neurons. It then passes through the core and axon and leaves at the axon terminal, so the terminal is the exit point and not the entry.",
+  "source": "Week 6 lecture, slide 5",
+  "flag": ""
+ },
+ {
+  "id": "w06-002",
+  "week": 6,
+  "topic": "Perceptron",
+  "type": "single",
+  "q": "What does the simplest neural network, a perceptron, consist of?",
+  "options": [
+   "Two hidden layers of neurons feeding one output",
+   "Thousands of neurons arranged in consecutive layers",
+   "A single neuron with several input nodes and one output node",
+   "A set of input nodes with no output node"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "In its simplest form a perceptron is one neuron whose output is connected to every input. Thousands of perceptrons in layers make a full network, which is the tempting wrong option.",
+  "source": "Week 6 lecture, slide 7 and 13",
+  "flag": ""
+ },
+ {
+  "id": "w06-003",
+  "week": 6,
+  "topic": "Perceptron",
+  "type": "single",
+  "q": "Each connection leaving an input node of a perceptron has a weight. What does the weight do?",
+  "options": [
+   "It controls how strongly that input contributes to the weighted sum",
+   "It decides whether the neuron fires at all",
+   "It records how many epochs have passed",
+   "It measures the error of the final prediction"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "Inputs are multiplied by their weights and summed, so a larger weight gives that input more influence. The decision to fire belongs to the activation function and not to the weight.",
+  "source": "Week 6 lecture, slide 8",
+  "flag": ""
+ },
+ {
+  "id": "w06-004",
+  "week": 6,
+  "topic": "Perceptron",
+  "type": "single",
+  "q": "In a perceptron, what happens to the weighted sum of the inputs before the activation function sees it?",
+  "options": [
+   "It is squared to measure the error",
+   "It is divided by the number of inputs",
+   "It is compared with the true label",
+   "A bias is added to it"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "The perceptron finds the weighted sum of the products and then adds a bias. Comparing with a label happens in the cost function and not inside the neuron.",
+  "source": "Week 6 lecture, slide 8 and 9",
+  "flag": ""
+ },
+ {
+  "id": "w06-005",
+  "week": 6,
+  "topic": "Activation functions",
+  "type": "single",
+  "q": "What decision does the activation function of a neuron make?",
+  "options": [
+   "Whether the output connections of the neuron should fire, given its weighted sum",
+   "Whether the weights should be updated in this epoch",
+   "How far the prediction is from the true label",
+   "Which input node has the largest weight"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "The activation function checks the weighted sum and decides whether the output connections fire. Updating weights is done by backpropagation and gradient descent, which is a separate stage of training.",
+  "source": "Week 6 lecture, slide 8",
+  "flag": ""
+ },
+ {
+  "id": "w06-006",
+  "week": 6,
+  "topic": "Activation functions",
+  "type": "single",
+  "q": "The example perceptron applies a step function to a large positive weighted sum and outputs 1. What kind of output does a step function give?",
+  "options": [
+   "Any real number that grows with the sum",
+   "A probability spread across several classes",
+   "One of two values, so the neuron either fires or does not",
+   "The error between prediction and label"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "A step function gives one of two values, shown as 0 and 1 in the example. Outputs that grow with the sum or spread across classes belong to other activation functions.",
+  "source": "Week 6 lecture, slide 9 and 10",
+  "flag": ""
+ },
+ {
+  "id": "w06-007",
+  "week": 6,
+  "topic": "Perceptron",
+  "type": "single",
+  "q": "Which kind of pattern can a single perceptron learn?",
+  "options": [
+   "Any pattern, given enough epochs",
+   "Patterns that are linearly separable",
+   "Only patterns with three or more inputs",
+   "Patterns that need several hidden layers"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "A single perceptron can only learn patterns that are linearly separable. Training for more epochs does not remove that limit.",
+  "source": "Week 6 lecture, slide 12",
+  "flag": ""
+ },
+ {
+  "id": "w06-008",
+  "week": 6,
+  "topic": "Perceptron",
+  "type": "single",
+  "q": "A single perceptron fails to learn the XOR function however long it trains. Why?",
+  "options": [
+   "XOR needs more input nodes than a perceptron allows",
+   "A step function cannot ever output the value 1",
+   "Random initialisation always starts it in the wrong place",
+   "The XOR classes are not linearly separable, and one perceptron can only learn separable patterns"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "XOR cannot be split by one straight boundary, so a single weighted sum and activation cannot separate its classes. Training longer or starting from other random weights does not remove this limit.",
+  "source": "Week 6 lecture, slide 12",
+  "flag": "The slide only says a single perceptron learns linearly separable patterns. That XOR is not linearly separable is standard textbook knowledge."
+ },
+ {
+  "id": "w06-009",
+  "week": 6,
+  "topic": "Perceptron",
+  "type": "multi",
+  "q": "Which of these happen inside a single perceptron when it produces an output?",
+  "options": [
+   "The prediction error is passed back to earlier layers",
+   "Each input is multiplied by its weight and the products are summed",
+   "The cost is averaged over the whole training set",
+   "A bias is added to the weighted sum",
+   "An activation function decides whether the neuron fires"
+  ],
+  "answer": [
+   1,
+   3,
+   4
+  ],
+  "explain": "The perceptron sums weighted inputs, adds a bias and applies an activation function. Sending error backwards and averaging the cost belong to training and not to the neuron's own calculation.",
+  "source": "Week 6 lecture, slide 8",
+  "flag": ""
+ },
+ {
+  "id": "w06-010",
+  "week": 6,
+  "topic": "Perceptron",
+  "type": "multi",
+  "q": "Which statements about the weights and biases of a network are correct?",
+  "options": [
+   "They start with random values",
+   "They are readjusted using backpropagation and gradient descent",
+   "They are fixed by hand before training and never change",
+   "Learning means finding values that minimise the error of the output"
+  ],
+  "answer": [
+   0,
+   1,
+   3
+  ],
+  "explain": "Weights and biases start random, are adjusted by backpropagation and gradient descent, and learning means finding values that minimise the output error. They are not fixed by hand.",
+  "source": "Week 6 lecture, slide 9 and 12",
+  "flag": ""
+ },
+ {
+  "id": "w06-011",
+  "week": 6,
+  "topic": "Supervised learning",
+  "type": "multi",
+  "q": "Which statements about supervised learning in neural networks are correct?",
+  "options": [
+   "The data carries no labels and the network finds groups on its own",
+   "The desired output for each input sample is known in advance",
+   "The goal is to learn a function that approximates the relationship between inputs and outputs",
+   "A cost function is not needed because the answers are known",
+   "Neural networks generally perform this kind of task"
+  ],
+  "answer": [
+   1,
+   2,
+   4
+  ],
+  "explain": "Supervised learning has known desired outputs, aims to learn the input to output relationship, and is what neural networks generally do. A cost function is still needed to measure how far predictions are from those answers.",
+  "source": "Week 6 lecture, slide 14",
+  "flag": ""
+ },
+ {
+  "id": "w06-012",
+  "week": 6,
+  "topic": "Supervised learning",
+  "type": "multi",
+  "q": "A network is trained on the iris dataset to classify the flower type. Which columns are features that the network takes as input?",
+  "options": [
+   "Sepal length",
+   "Sepal width",
+   "Petal length",
+   "Flower type",
+   "Petal width"
+  ],
+  "answer": [
+   0,
+   1,
+   2,
+   4
+  ],
+  "explain": "The four measurements form the feature set the network reads. Flower type is the label, which is the answer the network is trained to predict.",
+  "source": "Week 6 lecture, slide 20",
+  "flag": ""
+ },
+ {
+  "id": "w06-013",
+  "week": 6,
+  "topic": "Training and initialisation",
+  "type": "single",
+  "q": "Right after random initialisation and before any training, what can be said about the predictions of the network?",
+  "options": [
+   "They are close to the labels because the weights start small",
+   "They already improve with each forward pass",
+   "They are random, because nothing has been optimised yet",
+   "They match the labels for the easy classes"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "Random weights and biases give a random prediction, so garbage in gives garbage out. The labels have not yet been used to adjust anything.",
+  "source": "Week 6 lecture, slide 17",
+  "flag": ""
+ },
+ {
+  "id": "w06-014",
+  "week": 6,
+  "topic": "Training loop",
+  "type": "single",
+  "q": "Which order describes one iteration of the training loop?",
+  "options": [
+   "Backpropagation, feed forward, gradient descent, cost function",
+   "Feed forward, cost function, backpropagation, gradient descent",
+   "Cost function, gradient descent, feed forward, backpropagation",
+   "Gradient descent, backpropagation, cost function, feed forward"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "The prediction must exist before its error can be measured, the error must exist before it is sent back, and the derivatives must be known before the weights are updated. The other orders break that chain.",
+  "source": "Week 6 lecture, slide 16",
+  "flag": ""
+ },
+ {
+  "id": "w06-015",
+  "week": 6,
+  "topic": "Training loop",
+  "type": "multi",
+  "q": "Training can stop in which of these situations?",
+  "options": [
+   "Every weight has become exactly zero",
+   "The cost function has converged to a minimum",
+   "The network has seen each test sample once",
+   "A set maximum number of epochs has been reached",
+   "The first forward pass has finished"
+  ],
+  "answer": [
+   1,
+   3
+  ],
+  "explain": "Training ends when the cost converges to a minimum or a set number of epochs is reached. Zero weights or a single forward pass are not stopping rules.",
+  "source": "Week 6 lecture, slide 16 and 36",
+  "flag": ""
+ },
+ {
+  "id": "w06-016",
+  "week": 6,
+  "topic": "Training loop",
+  "type": "single",
+  "q": "In the training loop, what does the epoch counter count?",
+  "options": [
+   "Each neuron in the hidden layer",
+   "Each example in the training dataset",
+   "Each value the cost function returns",
+   "Each full round of forward pass, cost, backpropagation and gradient descent"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "The counter goes up once for each full round of the loop, and training can stop when it reaches a set maximum. A neuron or a cost value is not an epoch.",
+  "source": "Week 6 lecture, slide 16 and 33",
+  "flag": "The slide counts each loop round as an epoch. Many textbooks define an epoch as one pass over the training set, so the stem names the loop round."
+ },
+ {
+  "id": "w06-017",
+  "week": 6,
+  "topic": "Cost functions",
+  "type": "single",
+  "q": "How do a loss function and a cost function usually differ?",
+  "options": [
+   "Loss usually refers to one observation, while cost averages the loss over the whole training set",
+   "Loss averages over the whole training set, while cost refers to one observation",
+   "Loss is used for regression and cost is used for classification",
+   "Loss is used in testing and cost is used in training"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "Loss usually describes how well one observation fits, and cost averages that loss across the training set. The first wrong option simply swaps the two terms.",
+  "source": "Week 6 lecture, slide 21",
+  "flag": ""
+ },
+ {
+  "id": "w06-018",
+  "week": 6,
+  "topic": "Cost functions",
+  "type": "single",
+  "q": "What does a cost function return for the predictions of a model on a dataset?",
+  "options": [
+   "A new set of weights for each layer",
+   "A label for each unseen sample",
+   "A single real number that quantifies the error between predictions and actual labels",
+   "A list of derivatives for every neuron"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "A cost function summarises the error between predictions and actual labels as one real number. New weights come from gradient descent, not from the cost function.",
+  "source": "Week 6 lecture, slide 21",
+  "flag": ""
+ },
+ {
+  "id": "w06-019",
+  "week": 6,
+  "topic": "Cost functions",
+  "type": "single",
+  "q": "How does mean squared error treat a prediction that is very far from its target compared with one that is close?",
+  "options": [
+   "It treats both errors as the same size of mistake",
+   "It adds a massive penalty for the far prediction and only a minimal one for the close prediction",
+   "It ignores any error above a fixed threshold",
+   "It rewards the far prediction so the model learns faster"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "Squaring the distance makes far points cost much more than near points. Treating all sizes alike ignores the squaring.",
+  "source": "Week 6 lecture, slide 25",
+  "flag": "The slide says errors grow exponentially, which is more precisely quadratic growth, so the stem avoids that word."
+ },
+ {
+  "id": "w06-020",
+  "week": 6,
+  "topic": "Cost functions",
+  "type": "single",
+  "q": "One network predicts house prices and another labels emails as spam or not spam. Which pairing of cost functions fits?",
+  "options": [
+   "Binary cross entropy for the prices and mean squared error for the spam labels",
+   "Binary cross entropy for the prices and mean absolute error for the spam labels",
+   "Mean absolute error for the spam labels and binary cross entropy for the prices",
+   "Mean squared error for the prices and binary cross entropy for the spam labels"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "Prices are continuous values, so a regression cost such as mean squared error fits. Spam or not spam is a target of 0 or 1, so binary cross entropy fits. The other pairings swap these.",
+  "source": "Week 6 lecture, slide 23 and 26",
+  "flag": ""
+ },
+ {
+  "id": "w06-021",
+  "week": 6,
+  "topic": "Cost functions",
+  "type": "multi",
+  "q": "Which statements about binary cross entropy are correct?",
+  "options": [
+   "It is used when the target is either 0 or 1",
+   "It compares the true distribution with the predicted distribution",
+   "It measures how far each prediction is from the true value and averages these errors",
+   "The prediction is usually produced by a sigmoid or softmax activation"
+  ],
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "explain": "All four statements are true of binary cross entropy.",
+  "source": "Week 6 lecture, slide 26 to 28",
+  "flag": ""
+ },
+ {
+  "id": "w06-022",
+  "week": 6,
+  "topic": "Gradient descent",
+  "type": "single",
+  "q": "What is gradient descent used for during training?",
+  "options": [
+   "To make corrective updates to the weights and biases that reduce the cost",
+   "To compute the cost for the training set",
+   "To choose the activation function",
+   "To measure performance on unseen data"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "Gradient descent makes corrective updates to weights and biases to reduce the cost. The cost function only measures the error, and testing is separate from training.",
+  "source": "Week 6 lecture, slide 30 and 31",
+  "flag": ""
+ },
+ {
+  "id": "w06-023",
+  "week": 6,
+  "topic": "Gradient descent",
+  "type": "single",
+  "q": "At the current weight, the slope of the cost function is positive. What does this tell gradient descent?",
+  "options": [
+   "Increase the weight, since a positive slope means the weight is too small",
+   "Stop, because a positive slope means the minimum has been reached",
+   "Reset the weight to a new random value",
+   "Move the weight in the opposite direction, so the cost goes down"
+  ],
+  "answer": [
+   3
+  ],
+  "explain": "The sign of the slope gives the direction of the next move, and training moves in the negative direction of the derivative. Moving along a positive slope would raise the cost.",
+  "source": "Week 6 lecture, slide 31 and 33",
+  "flag": ""
+ },
+ {
+  "id": "w06-024",
+  "week": 6,
+  "topic": "Backpropagation",
+  "type": "multi",
+  "q": "Which statements about backpropagation and gradient descent are correct?",
+  "options": [
+   "Gradient descent produces the forward pass predictions",
+   "Backpropagation sends the prediction error back to each layer",
+   "Backpropagation chooses the test data",
+   "Backpropagation calculates partial derivatives using the chain rule",
+   "Gradient descent uses those derivatives to adjust weights and biases"
+  ],
+  "answer": [
+   1,
+   3,
+   4
+  ],
+  "explain": "Backpropagation carries the error back and computes partial derivatives with the chain rule, and gradient descent uses them to change weights and biases. The forward pass and test data are not their jobs.",
+  "source": "Week 6 lecture, slide 33",
+  "flag": ""
+ },
+ {
+  "id": "w06-025",
+  "week": 6,
+  "topic": "Testing and inference",
+  "type": "multi",
+  "q": "Which statements about testing a trained network are correct?",
+  "options": [
+   "The weights are updated by gradient descent on the test data",
+   "It uses new unseen data",
+   "Performance is measured on that data",
+   "The process is usually called inference"
+  ],
+  "answer": [
+   1,
+   2,
+   3
+  ],
+  "explain": "Testing uses new unseen data, measures performance and is usually called inference. The weights are not trained further on the test data.",
+  "source": "Week 6 lecture, slide 36",
+  "flag": ""
+ },
+ {
+  "id": "w06-026",
+  "week": 6,
+  "topic": "Neural networks",
+  "type": "multi",
+  "q": "Which statements about a network of perceptrons are correct?",
+  "options": [
+   "The perceptrons work together in consecutive layers",
+   "Every perceptron must start with the same weights",
+   "The layers turn the input data into predictions based on features present or absent",
+   "In the feed forward process information moves from the input layer towards the output layer",
+   "A network with layers no longer needs a cost function"
+  ],
+  "answer": [
+   0,
+   2,
+   3
+  ],
+  "explain": "Perceptrons work in consecutive layers, turn inputs into predictions based on features, and feed forward moves from input to output. Weights start random and differ, and the cost function is still needed.",
+  "source": "Week 6 lecture, slide 13 and 18",
+  "flag": ""
+ },
+ {
+  "id": "w06-027",
+  "week": 6,
+  "topic": "Biological inspiration",
+  "type": "explain",
+  "q": "Explain how an artificial neural network is inspired by the human brain.",
+  "model": "The brain is a web of interconnected neurons. Each neuron has dendrites that receive impulses from neighbours, a core and a single axon that pass the impulse on, and an axon terminal that releases it to other neurons. Researchers recreated this structure and function with artificial neurons so that a machine could learn, decide and predict in a similar way. An artificial neuron has input nodes in place of dendrites and an output in place of the axon, and many of them are joined into a network.",
+  "points": [
+   "The brain is made of interconnected neurons",
+   "Dendrites receive impulses and the axon passes them on",
+   "Artificial neurons copy this structure at a small scale",
+   "Inputs and outputs of an artificial neuron play the roles of dendrites and axon"
+  ],
+  "source": "Week 6 lecture, slide 3 to 7",
+  "flag": ""
+ },
+ {
+  "id": "w06-028",
+  "week": 6,
+  "topic": "Perceptron",
+  "type": "explain",
+  "q": "Describe how a single perceptron turns its inputs into an output.",
+  "model": "Each input value is multiplied by the weight on its connection. The products are added together to give a weighted sum, and a bias is added to that sum. The result passes to an activation function, which decides whether the neuron fires. With a step function the output is one of two values. The weights and bias start random and are adjusted during training so that the error of the output becomes smaller.",
+  "points": [
+   "Inputs are multiplied by their weights and summed",
+   "A bias is added to the sum",
+   "An activation function decides whether the neuron fires",
+   "Weights and bias are learned to reduce the output error"
+  ],
+  "source": "Week 6 lecture, slide 7 to 12",
+  "flag": ""
+ },
+ {
+  "id": "w06-029",
+  "week": 6,
+  "topic": "Activation functions",
+  "type": "explain",
+  "q": "Explain the purpose of an activation function and give one example.",
+  "model": "An activation function looks at the weighted sum produced by a neuron and decides whether the output connections should fire. The step function is the simplest example, giving one of two values depending on the sum. Sigmoid and softmax are other examples and are often used so that the output of a classification network is a probability. The choice of activation function depends on the task the network has to do.",
+  "points": [
+   "It checks the weighted sum of a neuron",
+   "It decides whether the output connections fire",
+   "A step function is a valid example",
+   "Sigmoid or softmax is a valid example"
+  ],
+  "source": "Week 6 lecture, slide 8, 10 and 27",
+  "flag": ""
+ },
+ {
+  "id": "w06-030",
+  "week": 6,
+  "topic": "Perceptron",
+  "type": "explain",
+  "q": "Explain why a single perceptron is limited and how a network of perceptrons goes further.",
+  "model": "A single perceptron can only learn patterns that are linearly separable, so it cannot solve a problem where one straight boundary cannot split the classes. XOR is a standard example. Placing thousands of perceptrons in consecutive layers lets them work together. Each layer passes its results on, and the network turns the input data into predictions based on the presence or absence of features.",
+  "points": [
+   "A single perceptron only learns linearly separable patterns",
+   "Give a sensible example such as XOR",
+   "A network uses many perceptrons in consecutive layers",
+   "Layers turn inputs into predictions based on features"
+  ],
+  "source": "Week 6 lecture, slide 12 and 13",
+  "flag": "The slides only say a network turns inputs into predictions based on features. The claim that layers overcome the linear limit is standard textbook knowledge."
+ },
+ {
+  "id": "w06-031",
+  "week": 6,
+  "topic": "Supervised learning",
+  "type": "explain",
+  "q": "Describe supervised learning using the iris dataset as an example.",
+  "model": "In supervised learning the correct output for every training sample is known in advance. In the iris dataset each sample has a feature set of sepal length, sepal width, petal length and petal width, and a label giving the flower type. The network takes the features as input and predicts a flower type. The aim is to learn a function that best approximates the relationship between the inputs and the labels so that it can predict well on new samples.",
+  "points": [
+   "Desired outputs are known in advance",
+   "Features are the four flower measurements",
+   "The label is the flower type",
+   "The goal is to learn the input to output relationship"
+  ],
+  "source": "Week 6 lecture, slide 14 and 20",
+  "flag": ""
+ },
+ {
+  "id": "w06-032",
+  "week": 6,
+  "topic": "Training loop",
+  "type": "explain",
+  "q": "Describe the steps of the training loop for a neural network.",
+  "model": "Training is iterative. First the weights and biases are set randomly. Each round then starts with a forward pass that moves from the input layer to the output layer to give a prediction. The cost function measures the error of that prediction. Backpropagation sends the error back to each layer, and gradient descent adjusts the weights and biases to reduce the error. The epoch counter goes up and the loop repeats until the cost converges or the maximum number of epochs is reached.",
+  "points": [
+   "Random initialisation of weights and biases",
+   "Forward pass to make a prediction",
+   "Cost function measures the error",
+   "Backpropagation and gradient descent update the parameters",
+   "Repeat until convergence or the epoch limit"
+  ],
+  "source": "Week 6 lecture, slide 16 and 36",
+  "flag": ""
+ },
+ {
+  "id": "w06-033",
+  "week": 6,
+  "topic": "Training and initialisation",
+  "type": "explain",
+  "q": "Explain why a network gives poor predictions straight after initialisation and what the phrase garbage in garbage out means here.",
+  "model": "Weights and biases are set randomly across every perceptron, so the first prediction is also random. Nothing has been optimised, and the network has not yet used the labels to learn anything. The phrase garbage in garbage out means that random parameters can only produce meaningless output. Training exists to improve these parameters step by step, so later predictions move closer to the true labels.",
+  "points": [
+   "Weights and biases start random",
+   "The first prediction is therefore random",
+   "Nothing has been optimised yet",
+   "Training improves the parameters over time"
+  ],
+  "source": "Week 6 lecture, slide 17",
+  "flag": ""
+ },
+ {
+  "id": "w06-034",
+  "week": 6,
+  "topic": "Cost functions",
+  "type": "explain",
+  "q": "Compare a loss function with a cost function and give one example of a regression cost and one of a classification cost.",
+  "model": "A loss function usually refers to the error for one observation, while a cost function usually refers to the average of the loss over the whole training set. Both turn the gap between prediction and true label into a single number that training tries to make small. Mean squared error is a regression example and it punishes distant predictions heavily. Binary cross entropy is a classification example for targets that are either 0 or 1, and it compares the predicted probability with the true label.",
+  "points": [
+   "Loss is for one observation",
+   "Cost is the average over the training set",
+   "A regression example such as mean squared error",
+   "A classification example such as binary cross entropy"
+  ],
+  "source": "Week 6 lecture, slide 21 to 28",
+  "flag": ""
+ },
+ {
+  "id": "w06-035",
+  "week": 6,
+  "topic": "Gradient descent",
+  "type": "explain",
+  "q": "Explain how gradient descent reduces the cost function.",
+  "model": "Gradient descent uses the derivative, which is the slope of the cost at the current point. The sign of the slope shows which direction to move. To lower the cost the parameters are moved in the negative direction of the derivative, which is the opposite direction to the gradient. Each corrective update to the weights and biases moves the model towards a better combination of parameters, and repeating the updates drives the cost towards a minimum.",
+  "points": [
+   "It uses the slope of the cost",
+   "The sign of the slope gives the direction",
+   "Parameters move in the negative direction of the derivative",
+   "Repeated updates move the cost towards a minimum"
+  ],
+  "source": "Week 6 lecture, slide 30 to 33",
+  "flag": ""
+ },
+ {
+  "id": "w06-036",
+  "week": 6,
+  "topic": "Backpropagation",
+  "type": "explain",
+  "q": "Explain how backpropagation and gradient descent work together.",
+  "model": "Backpropagation sends the prediction error from the cost function back to each layer, and it calculates partial derivatives using the chain rule of calculus. These derivatives show how each weight and bias affects the cost. Gradient descent then uses them to adjust the weights and biases so that the cost is lower in the next round of feed forward, which is the next epoch. So backpropagation finds the direction of improvement and gradient descent makes the change.",
+  "points": [
+   "Backpropagation sends the error back to each layer",
+   "It calculates partial derivatives with the chain rule",
+   "Gradient descent uses the derivatives to adjust weights and biases",
+   "The improvement shows in the next epoch"
+  ],
+  "source": "Week 6 lecture, slide 33",
+  "flag": ""
+ },
+ {
+  "id": "w06-037",
+  "week": 6,
+  "topic": "Testing and inference",
+  "type": "explain",
+  "q": "Describe how a trained network is tested.",
+  "model": "Once training has finished, either because the cost converged to a minimum or because a set number of epochs was reached, the network is tested on new unseen data. The weights are no longer being trained. The network makes predictions and its performance is measured on this data. This process is usually called inference. Testing on unseen data shows how well the learned function works beyond the training samples.",
+  "points": [
+   "Testing follows the end of training",
+   "It uses new unseen data",
+   "Performance is measured on that data",
+   "The process is called inference"
+  ],
+  "source": "Week 6 lecture, slide 36",
+  "flag": ""
+ }
+]
