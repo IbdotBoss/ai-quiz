@@ -65,7 +65,7 @@ None.
 - **A colour per week.** Colour has one job here, which is the score.
 - **Dark mode, progress bars and stat tiles.**
 
-The three comps are in `comps/index.html`. A second round of three, drawn from Monkeytype, Duolingo and carrot.tech, is in `comps/round2.html`. Stage has not chosen between them and the current look.
+The three comps are in `comps/index.html`. A second round of three, drawn from Monkeytype, Duolingo and carrot.tech, is in `comps/round2.html`. Stage saw both rounds on 16 Nov 2026 and kept the heatmap.
 
 ## Overrides
 
