@@ -8,7 +8,8 @@ Practice questions and revision notes for the MOD004553 Artificial Intelligence 
 
 - 372 questions drafted from the lecture slides for Weeks 1 to 10. 266 are multiple choice and 106 are written-answer questions.
 - A written-answer question gives you a box to type in. You then see a model answer and tick the marking points your answer made. The page ticks the points whose key terms it finds in your answer, and you correct its ticks.
-- The home page is a heatmap. Each square shows the share of that week's questions you have right, and starts a short set from that week.
+- The home page lists what to do in order: revision notes, written answers, multiple choice, questions to redo, a mixed set and a timed paper. Written answers and multiple choice each have Study and Test. Study shows every question on one page with its answer.
+- Below the list is a heatmap. Each square shows the share of that week's questions you have right, and starts a short set from that week.
 - Each week has its own page with its notes. The notes explain each idea, give an example and name what it is confused with. A box under the notes sends your own question to an assistant.
 - A timed paper gives 8 written-answer questions in 50 minutes. The real format is not published yet, so this is a guess.
 - Each question can open in Claude, ChatGPT, Perplexity or Gemini with the question and your answer filled in.
