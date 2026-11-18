@@ -610,7 +610,7 @@
   ],
   "source": "Week 6 lecture, slide 12 and 13",
   "flag": "The slides only say a network turns inputs into predictions based on features. The claim that layers overcome the linear limit is standard textbook knowledge.",
-  "core": false
+  "core": true
  },
  {
   "id": "w06-031",

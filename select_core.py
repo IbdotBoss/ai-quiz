@@ -12,6 +12,8 @@ SKIP = {
     "Uses of genetic algorithms", "Biological inspiration", "Network structure", "Images and channels",
     "YOLO backbone", "YOLO preprocessing", "Classification algorithms", "Segmentation uses",
 }
+# Written questions the first-per-topic rule leaves out but a descriptive test is likely to ask. Added by hand.
+ALSO = {"w01a-022", "w02-032", "w03-026", "w06-030"}
 total = [0, 0]
 for path in sorted(glob.glob(os.path.join(HERE, "bank", "*.json"))):
     qs = json.load(open(path, encoding="utf8"))
@@ -20,7 +22,7 @@ for path in sorted(glob.glob(os.path.join(HERE, "bank", "*.json"))):
     for q in qs:
         kind = q["type"] == "explain"
         key = (q["topic"], kind)
-        q["core"] = q["topic"] not in SKIP and key not in seen
+        q["core"] = q["id"] in ALSO or (q["topic"] not in SKIP and key not in seen)
         if q["topic"] not in SKIP:
             seen.add(key)
         n[kind] += q["core"]

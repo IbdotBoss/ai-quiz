@@ -70,6 +70,14 @@ select{max-width:100%;text-overflow:ellipsis}
 .papers button i{grid-row:1/3;grid-column:2;align-self:center;font-style:normal;font-size:var(--t-s);font-variant-numeric:tabular-nums;white-space:nowrap}
 .papers button:hover:not(:disabled) b{text-decoration:underline}
 .papers button:disabled b{color:var(--off)}
+.paper{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;align-items:center;border-bottom:1px solid var(--hair);padding:16px 0}
+.paper b{display:block;font-size:var(--t-l);font-weight:700}
+.paper span{display:block;color:var(--ink-2);font-size:var(--t-s);line-height:1.4}
+.paper .m{color:var(--ink);font-variant-numeric:tabular-nums}
+.acts{display:flex;gap:8px}.papers .acts button{display:inline-block;width:auto;border:1.5px solid var(--ink);border-radius:var(--r);padding:12px 16px;font-weight:700;text-align:center}.papers .acts button:disabled{border-color:var(--off)}
+@media (max-width:520px){.paper{grid-template-columns:minmax(0,1fr)}}
+.pl{margin:8px 0;padding-left:20px}.pl li{margin:4px 0}
+.top>b{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.top>button,.top>span{white-space:nowrap;flex:none}
 
 fieldset{border:0;margin:0;padding:0;min-width:0}legend{padding:0}
 .meta{display:flex;justify-content:space-between;gap:12px;margin-top:24px;font-size:var(--t-s);color:var(--ink-2)}
@@ -209,6 +217,7 @@ function home() {
   const weak = pool().filter(q => q.id in st.sc && st.sc[q.id] < 1).length;
   const resume = st.run && !st.run.done;
   const last = st.hist.slice(-5).reverse();
+  const exQ = pool().filter(isEx), mcQ = pool().filter(q => !isEx(q)), byId = (a, b) => a.id < b.id ? -1 : 1;
   const td = (w, ex) => {
     const c = cell(w, ex), kind = ex ? "written answer" : "multiple choice";
     if (!c.qs.length) return "<td></td>";
@@ -221,34 +230,37 @@ function home() {
   <header>
     <p class="s">MOD004553</p>
     <h1>Artificial Intelligence test practice</h1>
-    <p>The test is 50 minutes on a computer in Week 12, and the questions are mostly written answers. This page has ${Q.length} practice questions from the Week 1 to ${weeksPresent[weeksPresent.length - 1]} lectures.</p>
+    <p>50 minutes on a computer in Week 12. Mostly written answers.</p>
   </header>
   <fieldset><legend><h2>Which questions to practise</h2></legend>
     <div class="row" style="flex-direction:column;gap:0">
-      <label class="o"><input type="radio" name="core" value="1" ${st.core ? "checked" : ""}><span>Core set, ${CORE.length} questions. One multiple choice and one written question on each main topic.</span></label>
-      <label class="o"><input type="radio" name="core" value="0" ${st.core ? "" : "checked"}><span>Full bank, ${Q.length} questions. Adds more questions on each topic and some smaller topics.</span></label>
+      <label class="o"><input type="radio" name="core" value="1" ${st.core ? "checked" : ""}><span>Core set, ${CORE.length} questions on the main topics.</span></label>
+      <label class="o"><input type="radio" name="core" value="0" ${st.core ? "" : "checked"}><span>Full bank, ${Q.length} questions. Adds the smaller topics.</span></label>
     </div>
   </fieldset>
+  <h2>Study, then practise</h2>
+  <div class="papers">
+    ${resume ? paper("Resume " + st.run.title.toLowerCase(), "You stopped at question " + (st.run.i + 1) + ".", st.run.ids.length + " questions", [["resume", "Resume", 1]]) : ""}
+    ${paper("Revision notes", "One sheet per lecture deck.", DATA.notes.length + " sheets", [["m-notes", "Open", 1]])}
+    ${paper("Written answers", "Each question with its model answer and marking points.", exQ.length + " questions", [["s-ex", "Study", 1], ["m-ex", "Test"]])}
+    ${paper("Multiple choice", "Each question with the right answer marked.", mcQ.length + " questions", [["s-mc", "Study", 1], ["m-mc", "Test"]])}
+    ${paper("Questions to redo", weak ? "Questions where you lost a mark last time." : "Nothing here until you miss a mark.", weak + " to redo", [["s-weak", "Study", 0, !weak], ["m-weak", "Redo", 0, !weak]])}
+    ${paper("Mixed set", "10 multiple choice and 5 written, weakest first.", "15 questions", [["m-mixed", "Test"]])}
+    ${paper("Timed written paper", "8 written questions from different weeks. The tutor has not published the real format yet.", "8 questions, 50 min", [["m-timed", "Test"]])}
+  </div>
   <h2 id="hm">${st.core ? "Core" : "All"} questions you have right, by week</h2>
   <table class="plot" aria-labelledby="hm">
     <thead><tr><th scope="col"><span class="vh">Week</span></th><th scope="col">Multiple choice</th><th scope="col">Written answer</th></tr></thead>
     <tbody>${weeksPresent.map(w => `<tr><th scope="row"><button class="wk" data-week="${w}" aria-label="Week ${w}, ${esc(WEEKS[w] || "")}. Open notes and questions."><b>${w}</b><span>${esc(WEEKS[w] || "")}</span></button></th>${td(w, false)}${td(w, true)}</tr>`).join("")}</tbody>
   </table>
   <div class="key"><span>Colour of a square, from 0%</span><span class="sw" aria-hidden="true">${VIR.map(c => `<i style="background:${c}"></i>`).join("")}</span><span>to 100% of its questions right</span><span class="nw" aria-hidden="true"></span><span>no question tried yet</span></div>
-  <p class="s">Press a square to practise that week and question type, starting with the questions you get wrong. Press a week name for its notes. A box under the notes sends your own question to an assistant.</p>
-  <h2>Other ways to practise</h2>
-  <div class="papers">
-    ${resume ? `<button id="resume"><b>Resume ${esc(st.run.title.toLowerCase())}</b><span>You stopped at question ${st.run.i + 1}.</span><i>${st.run.ids.length} questions</i></button>` : ""}
-    <button id="m-timed"><b>Timed written paper</b><span>Written-answer questions from 8 different weeks. You mark it against the model answers after handing in. The tutor has not published the real format yet.</span><i>8 questions, 50 min</i></button>
-    <button id="m-mixed"><b>Mixed set from every week</b><span>10 multiple choice and 5 written-answer questions, starting with the ones you get wrong.</span><i>15 questions</i></button>
-    <button id="m-weak" ${weak ? "" : "disabled"}><b>Questions to redo</b><span>${weak ? "Questions where you lost a mark last time." : "Nothing here until you miss a mark."}</span><i>${weak} to redo</i></button>
-    <button id="m-notes"><b>Revision notes</b><span>One sheet of notes per lecture deck. A box under each sheet sends your own question to an assistant.</span><i>${DATA.notes.length} sheets</i></button>
-  </div>
-  <fieldset><legend><h2>Assistant for the Ask AI buttons</h2></legend>
-    <p class="s">Each question, week page and notes sheet has a button that opens this assistant with the question already filled in. Gemini cannot be filled in from a link, so for Gemini the text is copied for you to paste.</p>
+  <p class="s">Press a square to practise it. Press a week name for its notes and answers.</p>
+  <details><summary>Ask AI settings. The buttons open ${aiName()}.</summary>
+  <fieldset><legend class="vh">Assistant for the Ask AI buttons</legend>
     <div class="row">${Object.entries(AI).map(([k, t]) => `<label class="o"><input type="radio" name="ai" value="${k}" ${st.ai === k ? "checked" : ""}><span>${t.name}</span></label>`).join("")}</div>
-    <label class="o" style="border:0;grid-template-columns:22px minmax(0,1fr)"><input type="checkbox" id="ai-temp" ${st.aiTemp ? "checked" : ""}><span>Open in a temporary chat, which the assistant does not keep in your chat history. Claude calls this incognito. It works for Claude and ChatGPT, and the other two open a normal chat.</span></label>
-  </fieldset>
+    <label class="o" style="border:0;grid-template-columns:22px minmax(0,1fr)"><input type="checkbox" id="ai-temp" ${st.aiTemp ? "checked" : ""}><span>Open in a temporary chat. Works for Claude and ChatGPT.</span></label>
+    <p class="s">Gemini cannot be filled in from a link, so the text is copied for you to paste.</p>
+  </fieldset></details>
   ${last.length ? `<h2>Your last sets and their marks</h2><table class="t"><tr><th scope="col">Set</th><th scope="col">Date</th><th scope="col" class="num">Mark</th></tr>${last.map(h => `<tr><td>${esc(h.title)}</td><td>${new Date(h.at).toLocaleDateString()}</td><td class="num">${h.score} of ${h.total}</td></tr>`).join("")}</table>` : ""}
   ${FOOT}`;
   if (!first) focusOn("h1"); first = false;
@@ -258,7 +270,7 @@ function home() {
     start({title:`Week ${w}, ${ex ? "written answers" : "multiple choice"}`, ids:weakest(c.qs).slice(0, ex ? 5 : 10).map(q => q.id)});
   });
   app.querySelectorAll("input[name=core]").forEach(e => e.onchange = () => { st.core = e.value === "1"; save(); const y = window.scrollY; home(); window.scrollTo(0, y); app.querySelector("input[name=core]:checked").focus(); });
-  app.querySelectorAll("input[name=ai]").forEach(e => e.onchange = () => { st.ai = e.value; save(); });
+  app.querySelectorAll("input[name=ai]").forEach(e => e.onchange = () => { st.ai = e.value; save(); app.querySelector("details summary").textContent = `Ask AI settings. The buttons open ${aiName()}.`; });
   document.getElementById("ai-temp").onchange = e => { st.aiTemp = e.target.checked; save(); };
   on("resume", () => show());
   on("m-timed", () => {
@@ -267,8 +279,41 @@ function home() {
     start({title:"Timed written paper", ids, exam:true, limit:50 * 60});
   });
   on("m-mixed", () => start({title:"Mixed set", ids:shuffle([...weakest(pool().filter(q => !isEx(q))).slice(0, 10), ...weakest(pool().filter(isEx)).slice(0, 5)]).map(q => q.id)}));
+  const exTest = () => start({title:"Written answers", ids:weakest(exQ).slice(0, 5).map(q => q.id)});
+  const mcTest = () => start({title:"Multiple choice", ids:weakest(mcQ).slice(0, 10).map(q => q.id)});
+  const weakQ = () => pool().filter(q => q.id in st.sc && st.sc[q.id] < 1);
+  const weakTest = () => start({title:"Questions to redo", ids:weakest(weakQ()).slice(0, 20).map(q => q.id)});
+  on("s-ex", () => study("Written answers", exQ.slice().sort(byId).map(q => q.id), exTest));
+  on("m-ex", exTest);
+  on("s-mc", () => study("Multiple choice", mcQ.slice().sort(byId).map(q => q.id), mcTest));
+  on("m-mc", mcTest);
+  on("s-weak", () => study("Questions to redo", weakQ().sort(byId).map(q => q.id), weakTest));
   on("m-weak", () => start({title:"Questions to redo", ids:weakest(pool().filter(q => q.id in st.sc && st.sc[q.id] < 1)).slice(0, 20).map(q => q.id)}));
   on("m-notes", () => notes(DATA.notes[0] && DATA.notes[0].deck));
+}
+
+// One row on the list. btns is a list of [id, label, primary, disabled].
+function paper(title, desc, meta, btns) {
+  return `<div class="paper"><div><b>${esc(title)}</b><span>${esc(desc)}</span><span class="m">${esc(meta)}</span></div>
+    <div class="acts">${btns.map(b => `<button id="${b[0]}" class="${b[2] ? "p" : ""}" ${b[3] ? "disabled" : ""} aria-label="${esc(b[1] + ", " + title)}">${b[1]}</button>`).join("")}</div></div>`;
+}
+
+// Study view. Every question on one page with its answer showing.
+function study(title, ids, test) {
+  clearInterval(tick);
+  app.innerHTML = `<div class="top"><button class="l" id="back">Back to the home page</button><b>Study</b><span>${ids.length} questions</span></div>
+  <h1 style="margin-top:24px">${esc(title)}</h1>
+  <p class="s">Every answer is showing. Read through, then test yourself.</p>
+  <div class="nav"><span></span><button id="t1">Test me now</button></div>
+  ${ids.map((id, i) => {
+    const q = BYID[id];
+    return `<section class="rev"><div class="meta"><span>Question ${i + 1}. Week ${q.week}, ${esc(q.topic)}</span><span>${marks(q)} ${marks(q) === 1 ? "mark" : "marks"}</span></div><h2 class="stem">${esc(q.q)}</h2>
+    ${isEx(q) ? `<h3 class="sub">Model answer</h3><p>${esc(q.model)}</p><h3 class="sub">Points a marker looks for</h3><ul class="pl">${q.points.map(pt => `<li>${esc(pt)}</li>`).join("")}</ul>${srcLine(q)}`
+      : `${q.options.map((o, k) => optRow(q, k, false, q.answer.includes(k) ? "key" : "", true)).join("")}<p>${esc(q.explain)}</p>${srcLine(q)}`}</section>`;
+  }).join("")}
+  <div class="nav"><button id="up">Back to the top</button><button class="p" id="t2">Now test me</button></div>${FOOT}`;
+  focusOn("h1"); window.scrollTo(0, 0);
+  on("back", () => { home(); window.scrollTo(0, 0); }); on("t1", test); on("t2", test); on("up", () => { window.scrollTo(0, 0); focusOn("h1"); });
 }
 
 /* ---------- a run of questions ---------- */
@@ -296,7 +341,7 @@ function autoTick(q, text) {
 }
 const stateOf = (q, k, picked) => q.answer.includes(k) ? (picked.includes(k) ? "right" : "missed") : (picked.includes(k) ? "wrong" : "");
 function optRow(q, k, sel, state, locked) {
-  const label = {right:"Your answer. Right.", missed:q.type === "multi" ? "Right answer. You did not choose it." : "This is the right answer.", wrong:"Your answer. Wrong."}[state] || "";
+  const label = {right:"Your answer. Right.", missed:q.type === "multi" ? "Right answer. You did not choose it." : "This is the right answer.", wrong:"Your answer. Wrong.", key:"Right answer."}[state] || "";
   return `<label class="o"><input type="${q.type === "multi" ? "checkbox" : "radio"}" name="o" value="${k}" ${sel ? "checked" : ""} ${locked ? "disabled" : ""}>
     <span>${esc(q.options[k])}${label ? `<small${state === "wrong" ? "" : ' class="ok"'}>${label}</small>` : ""}</span>
     ${state === "wrong" ? CROSS : state ? TICK : "<span></span>"}</label>`;
@@ -429,6 +474,7 @@ function week(w) {
   app.innerHTML = `<div class="top"><button class="l" id="back">Back to the home page</button><b>Week ${w}</b><span></span></div>
   <h1 style="margin-top:24px">Week ${w}, ${esc(WEEKS[w] || "")}</h1>
   <div class="papers" style="margin-top:20px">
+    <button id="w-st"><b>Study the answers</b><span>Every question for this week with its answer showing.</span><i>${cell(w, true).qs.length + cell(w, false).qs.length} questions</i></button>
     <button id="w-mc"><b>Multiple choice</b><span>10 questions, starting with the ones you get wrong.</span><i>${line(false)}</i></button>
     <button id="w-ex"><b>Written answers</b><span>5 questions. Type a paragraph, then mark it against a model answer.</span><i>${line(true)}</i></button>
   </div>
@@ -439,6 +485,7 @@ function week(w) {
   on("back", () => { home(); window.scrollTo(0, 0); });
   const go = ex => start({title:`Week ${w}, ${ex ? "written answers" : "multiple choice"}`, ids:weakest(cell(w, ex).qs).slice(0, ex ? 5 : 10).map(q => q.id)});
   on("w-mc", () => go(false)); on("w-ex", () => go(true));
+  on("w-st", () => study(`Week ${w}, ${WEEKS[w] || ""}`, [...cell(w, true).qs, ...cell(w, false).qs].map(q => q.id), () => go(true)));
   wireAsk(`Week ${w}, ${WEEKS[w]},`, topics);
 }
 
