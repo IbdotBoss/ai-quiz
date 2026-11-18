@@ -86,7 +86,7 @@
   "type": "single",
   "q": "In an RNN, what is the hidden state?",
   "options": [
-   "The label that the network predicts for the sequence",
+   "The label that the network predicts for the whole sequence at the last step",
    "The weights that never change during training",
    "A representation of previous inputs, passed forward through the loop",
    "A copy of the input image kept for reference"
@@ -175,7 +175,7 @@
   "options": [
    "To undo the effect of the hidden state",
    "To split the sentence back into single words",
-   "To choose which filters to apply to the text",
+   "To choose which filters to apply to the text in the next layer",
    "To classify something such as the intent of the sentence"
   ],
   "answer": [
@@ -256,7 +256,7 @@
   "type": "single",
   "q": "What happens in the backward pass of backpropagation through time?",
   "options": [
-   "The input passes through the hidden states to estimate a label",
+   "The input passes forward through the hidden states to estimate a label",
    "The hidden state is reset to zero at every time step",
    "The loss is sent back and the weight changes come from the chain rule",
    "The window of time steps is made longer after each epoch"
@@ -321,7 +321,7 @@
   "options": [
    "The word France is too short to be stored as a hidden state",
    "The window always drops the most recent word first",
-   "The sentence has to be fed into the network in reverse order",
+   "The sentence has to be fed into the network in reverse order, last word first",
    "The word France may fall outside the window, so the link is not learned"
   ],
   "answer": [
@@ -339,7 +339,7 @@
   "type": "single",
   "q": "What is the cell state in an LSTM?",
   "options": [
-   "A gate that decides what information to forget",
+   "A gate that decides what information to forget at each step",
    "A layer that flattens the input into a vector",
    "A line running along the chain, like a conveyor belt",
    "A copy of the loss kept during training"
@@ -382,7 +382,7 @@
   "q": "What is the job of the forget gate in an LSTM?",
   "options": [
    "It decides which information to throw away from the cell state",
-   "It creates candidate values to add to the cell state",
+   "It creates new candidate values that could be added to the cell state",
    "It decides which part of the cell state to output",
    "It resets the hidden state of the previous step"
   ],

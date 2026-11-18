@@ -7,7 +7,7 @@
   "q": "Why do traditional fully connected networks cope poorly with images?",
   "options": [
    "They do not use local groups of neighbouring pixels that form shapes",
-   "They cannot apply a nonlinear function to neuron outputs",
+   "They cannot apply a nonlinear function to the outputs of their neurons",
    "They cannot be trained using backpropagation at all",
    "They only accept grayscale images with a single channel"
   ],
@@ -93,7 +93,7 @@
   "options": [
    "The kernel doubles in size and covers more of the image",
    "The border of the image is filled with zeros first",
-   "Each kernel weight is doubled, so features get stronger",
+   "Each kernel weight is doubled, so the detected features get stronger",
    "The kernel moves two positions per step, so the output is smaller"
   ],
   "answer": [
@@ -112,7 +112,7 @@
   "q": "Why is padding added around the border of an image before convolution?",
   "options": [
    "To enlarge the kernel so it can detect bigger shapes",
-   "To convert a colour image into a single channel image",
+   "To convert a colour image with three channels into a single channel image",
    "To handle edge pixels, which the kernel would otherwise cover less",
    "To increase the stride so the kernel moves faster"
   ],
@@ -157,7 +157,7 @@
    "They start random and are refined by feedforward and backpropagation",
    "They are designed by hand to match edges and corners",
    "They are copied from the pooling layer after training",
-   "They stay at their random starting values during training"
+   "They stay fixed at their random starting values for the whole of training"
   ],
   "answer": [
    0
@@ -342,7 +342,7 @@
   "q": "How does dropout reduce overfitting during training?",
   "options": [
    "It permanently deletes the weakest neurons after the first pass",
-   "It normalises each feature using the mini batch mean and variance",
+   "It normalises each feature using the mean and variance of the current mini batch",
    "It reduces the spatial size of the feature maps in each layer",
    "It randomly ignores some layer outputs, so the layer differs on each pass"
   ],
@@ -424,7 +424,7 @@
    "It flattens feature maps into a single vector",
    "It turns raw values, called logits, into probabilities summing to one",
    "It decides which neuron outputs to drop at random",
-   "It scales each feature to the range 0 to 1 across a mini batch"
+   "It scales each feature to the range 0 to 1 across the samples in a mini batch"
   ],
   "answer": [
    1

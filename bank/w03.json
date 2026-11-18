@@ -69,7 +69,7 @@
   "q": "Is the following statement about regression correct?\n\"Regression returns class probabilities, and a threshold is then chosen to decide the label.\"",
   "options": [
    "Correct, because every supervised model returns class probabilities first",
-   "Incorrect, because regression returns a class label rather than a number",
+   "Incorrect, because regression returns a class label and never returns a number at all",
    "Incorrect, because that describes classification, while regression returns a number",
    "Incorrect, because thresholds are used only in unsupervised clustering"
   ],
@@ -131,7 +131,7 @@
    "It predicts every value perfectly, with no error at all",
    "It does no better than always predicting the mean target value",
    "It explains all of the variance in the target variable",
-   "It is worse than the baseline of predicting the mean"
+   "It is worse than the simple baseline of always predicting the mean value"
   ],
   "answer": [
    1
@@ -252,7 +252,7 @@
   "type": "single",
   "q": "Why is a random forest usually more stable than one decision tree?",
   "options": [
-   "Each tree sees the whole dataset, so all trees agree and errors vanish",
+   "Each tree sees the whole dataset, so all of the trees agree and the errors vanish entirely",
    "The trees are built one after another, each one fixing the last tree",
    "Averaging many slightly different trees smooths out the mistakes of any one tree",
    "The forest removes outliers from the data before any tree is built"

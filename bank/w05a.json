@@ -235,7 +235,7 @@
    "The reward table is learned during training and the Q-table is given in advance",
    "The reward table gives immediate rewards and the Q-table holds learned long term values",
    "The reward table stores policies and the Q-table stores transition probabilities",
-   "They hold the same numbers and differ only in how they are laid out on the page"
+   "They hold the same numbers and differ only in how those numbers are laid out on the page"
   ],
   "answer": [
    1
@@ -273,7 +273,7 @@
   "q": "In the Q-learning update rule, what does the learning parameter G, typically 0.8, control?",
   "options": [
    "How many episodes the agent is allowed to run before it must stop",
-   "How often the agent chooses a random action instead of the best one",
+   "How often the agent chooses a random action instead of the best one it knows so far",
    "How many different states the environment is allowed to contain",
    "How much the best next-state value counts compared with the immediate reward"
   ],
@@ -294,7 +294,7 @@
   "options": [
    "Only by the immediate reward, ignoring what comes after",
    "Only by the best value of the final goal state",
-   "By the sum of all future rewards, with no discount",
+   "By the sum of all future rewards, with no discount applied",
    "It would not be able to assign any value at all"
   ],
   "answer": [
@@ -312,7 +312,7 @@
   "type": "single",
   "q": "In Q-learning, the moves closest to the goal get strong values first and earlier moves follow. Why?",
   "options": [
-   "The agent is told the whole route in advance and learns it backwards",
+   "The agent is told the whole route in advance and then learns it backwards from the goal",
    "The goal reward strengthens the last move first, then the effect spreads back",
    "Earlier moves are always given higher rewards than moves near the goal",
    "The agent always visits the states in the same fixed order each episode"
@@ -333,7 +333,7 @@
   "q": "An agent starts with no knowledge and moves at random. Why can it still learn a good route to the goal?",
   "options": [
    "The environment tells it the best action to take before each move",
-   "Random movement is guaranteed to find the shortest route immediately",
+   "Random movement is guaranteed to find the shortest route on the very first episode",
    "Reaching the goal by chance gives a reward that strengthens the earlier moves",
    "It copies the best route from a set of labelled example routes"
   ],

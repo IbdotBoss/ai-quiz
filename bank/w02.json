@@ -70,7 +70,7 @@
   "q": "Spammers and fraudsters keep changing their behaviour. Why does machine learning cope better than fixed rules?",
   "options": [
    "Fixed rules cannot be changed once they are written",
-   "The model never needs fresh data after the first training",
+   "The model never needs any fresh data once the first training has finished",
    "The model can be retrained on new data without rewriting the logic",
    "The model replaces data quality checks with probabilities"
   ],
@@ -160,7 +160,7 @@
    "Forecasting travel time in minutes for tomorrow morning",
    "Deciding whether an email is spam",
    "Deciding whether a customer will leave",
-   "Choosing a flower species from measurements"
+   "Choosing a flower species from petal and sepal measurements"
   ],
   "answer": [
    0
@@ -177,7 +177,7 @@
   "type": "single",
   "q": "A classifier outputs a probability for each class. How is this turned into a final label?",
   "options": [
-   "The model always picks the class seen most often in training",
+   "The model always picks whichever class it saw most often during training",
    "A threshold is chosen to balance the cost of false alarms and misses",
    "The probabilities are averaged over all the training examples",
    "A person reviews every prediction and picks the label"
@@ -239,7 +239,7 @@
   "options": [
    "High, even though it never finds a single positive case",
    "Low, because it ignores half of the classes",
-   "Zero, because it never predicts the positive class",
+   "Zero, because it never predicts the positive class for any record",
    "Equal to its recall on the positive class"
   ],
   "answer": [
@@ -345,7 +345,7 @@
   "q": "Why can the same new point be given a different class when k is changed?",
   "options": [
    "The distance measure changes whenever k changes",
-   "The training labels are rewritten for each new value of k",
+   "The training labels are rewritten each time a new value of k is chosen",
    "The model is retrained from scratch for every value of k",
    "A different set of neighbours is counted, so the vote can change"
   ],

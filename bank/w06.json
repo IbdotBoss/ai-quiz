@@ -27,7 +27,7 @@
   "q": "What does the simplest neural network, a perceptron, consist of?",
   "options": [
    "Two hidden layers of neurons feeding one output",
-   "Thousands of neurons arranged in consecutive layers",
+   "Thousands of neurons arranged in many consecutive hidden layers",
    "A single neuron with several input nodes and one output node",
    "One input node connected to several output nodes"
   ],
@@ -47,7 +47,7 @@
   "q": "Each connection leaving an input node of a perceptron has a weight. What does the weight do?",
   "options": [
    "It sets how strongly that input counts in the weighted sum",
-   "It decides whether the neuron fires for a given sum",
+   "It decides whether the neuron fires for a given weighted sum",
    "It sets how many inputs the neuron has",
    "It measures the error of the final prediction"
   ],
@@ -363,7 +363,7 @@
    "A new set of weights for each layer",
    "A label for each unseen sample",
    "One number that measures the prediction error",
-   "A list of derivatives for every neuron"
+   "A list of derivatives for every neuron in the network"
   ],
   "answer": [
    2
@@ -444,7 +444,7 @@
   "q": "What is gradient descent used for during training?",
   "options": [
    "To update the weights and biases so the cost falls",
-   "To compute the cost for the training set",
+   "To compute the cost for every sample in the training set",
    "To choose the activation function",
    "To measure performance on unseen data"
   ],

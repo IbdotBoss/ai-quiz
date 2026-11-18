@@ -87,7 +87,7 @@
   "type": "single",
   "q": "A voice assistant answers set questions using predefined instructions and parameters. How is it best classified?",
   "options": [
-   "Strong AI, because it understands speech as well as a human does",
+   "Strong AI, because it understands speech and language as well as a human does",
    "Strong AI, because it can plan for the future in its own way",
    "Weak AI, because it lacks the memory needed for any learning",
    "Weak AI, because it solves one limited task, not the full human range"
@@ -198,7 +198,7 @@
   "type": "single",
   "q": "Which ability marks theory of mind AI, as opposed to systems that only match patterns?",
   "options": [
-   "Reproducing identical outputs from fixed statistical rules",
+   "Reproducing identical outputs every time from a fixed set of statistical rules",
    "Understanding human motives and intentions and predicting behaviour",
    "Monitoring one object over time without understanding it",
    "Having a conscious sense of its own existence"

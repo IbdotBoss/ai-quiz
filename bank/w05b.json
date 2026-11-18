@@ -274,7 +274,7 @@
   "q": "How is a problem usually set up before a genetic algorithm is run on it?",
   "options": [
    "As a search for the point where a gradient equals zero",
-   "As a search for one exact answer by checking every option",
+   "As a search for one exact answer by checking every possible option in turn",
    "As a search for the most diverse set of candidate solutions",
    "As a search for the minimum of something, which marks an acceptable limit"
   ],

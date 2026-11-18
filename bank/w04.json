@@ -28,7 +28,7 @@
   "options": [
    "Regression, to predict the wine type as a number",
    "Clustering, to discover whether natural groups of wines exist",
-   "Classification, to learn from the known wine type column",
+   "Classification, to learn from the known wine type column in the data",
    "Reinforcement learning, to reward the right wine type"
   ],
   "answer": [
@@ -152,7 +152,7 @@
   "type": "single",
   "q": "K-means is run twice on the same data with the same k and returns different clusters. What is the most likely cause?",
   "options": [
-   "K-means moves the data points a little on every pass through the data",
+   "K-means moves the data points themselves a little on every pass it makes through the data",
    "The starting cluster centres were chosen at random and were different each time",
    "K-means randomly changes the number of clusters on each run",
    "The distance measure changes at random from one run to the next"
@@ -172,7 +172,7 @@
   "type": "single",
   "q": "In k-means, what does it mean to say the algorithm has converged?",
   "options": [
-   "Every cluster has been given exactly the same number of points",
+   "Every cluster has been given exactly the same number of points as the others",
    "All centres have moved to the overall mean of the dataset",
    "No point changes its cluster membership when the process is repeated",
    "The value of k has reached the number of data points"
@@ -214,7 +214,7 @@
   "options": [
    "The point after which the rate of improvement drops drastically",
    "The point where inertia first becomes zero",
-   "The point where inertia is highest on the plot",
+   "The point where inertia is at its highest value anywhere on the whole plot",
    "The point where the line is perfectly straight"
   ],
   "answer": [
@@ -361,7 +361,7 @@
   "options": [
    "It groups the points into a set number of clusters",
    "It projects the data onto directions that capture the greatest variance",
-   "It predicts a label for each point from known examples",
+   "It predicts a label for each point from known examples that carry labels",
    "It deletes the points that lie furthest from the mean"
   ],
   "answer": [
@@ -379,7 +379,7 @@
   "type": "single",
   "q": "How does linear discriminant analysis differ from principal component analysis?",
   "options": [
-   "It is unsupervised and tries to maximise the total variance",
+   "It is unsupervised and tries to maximise the total variance kept in the data",
    "It is non-linear and only preserves very local structure",
    "It is supervised and tries to maximise the separation between classes",
    "It is a clustering method that finds density based groups"
@@ -420,7 +420,7 @@
   "q": "A dataset has four features. After principal component analysis, the first one or two components explain almost all the variance. What does this suggest?",
   "options": [
    "The features overlap a lot, so fewer dimensions can summarise them",
-   "The four original features were all unrelated to each other",
+   "The four original features were all completely unrelated to one another",
    "The data must contain exactly one or two natural clusters",
    "The remaining components must be the most important ones"
   ],

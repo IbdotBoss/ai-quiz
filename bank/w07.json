@@ -47,7 +47,7 @@
   "q": "What does the forward pass do?",
   "options": [
    "It updates every weight using the error",
-   "It sends the error from the output back to the inputs",
+   "It sends the error from the output layer back towards the inputs",
    "It tests the finished network on unseen data",
    "It runs from the inputs to the outputs to make a prediction"
   ],
@@ -177,7 +177,7 @@
    "How many epochs remain before training stops",
    "What the target value should be",
    "How much a change in that weight would change the total error",
-   "Which activation function the neuron uses"
+   "Which activation function the neuron attached to that weight should use"
   ],
   "answer": [
    2

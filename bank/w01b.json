@@ -152,7 +152,7 @@
   "type": "single",
   "q": "After joining two tables, many rows appear twice. What does this most likely point to?",
   "options": [
-   "A genuine extreme value that needs modelling",
+   "A genuine extreme value that needs modelling separately",
    "A join that has gone wrong and created duplicates",
    "Seasonality in the underlying process",
    "Class imbalance in the target column"
@@ -175,7 +175,7 @@
    "Both are errors and should be deleted straight away",
    "Both are true extremes and should be left untouched",
    "The age is probably an entry error and the income a true extreme",
-   "The income is an error and the age is a true extreme"
+   "The income is probably an entry error and the age is a true extreme"
   ],
   "answer": [
    2
@@ -213,7 +213,7 @@
   "q": "A feature correlates almost perfectly with the target. What should you suspect first?",
   "options": [
    "Target leakage, where the feature reveals the label",
-   "A perfect predictor that should simply be kept",
+   "A perfect predictor that should simply be kept in the model",
    "Class imbalance in the target column",
    "A skewed feature that needs a log transform"
   ],
@@ -232,7 +232,7 @@
   "type": "single",
   "q": "What does multicollinearity describe?",
   "options": [
-   "How strongly each feature is related to the target label",
+   "How strongly each feature is related to the target label in the data",
    "How strongly each feature can be explained by the other features",
    "How many values in each feature are missing",
    "How evenly the classes are spread across the dataset"
@@ -278,7 +278,7 @@
    "A random split that shuffles all days together",
    "A stratified split that balances classes",
    "A time-based split where training data comes before test data",
-   "A split that places every year in all three sets"
+   "A split that places some days from every year in all three sets"
   ],
   "answer": [
    2
@@ -295,7 +295,7 @@
   "type": "single",
   "q": "A dataset has many records for each patient. What split avoids an overly optimistic result?",
   "options": [
-   "A random split that sends records of one patient to every set",
+   "A random split that sends the records of one patient to every one of the sets",
    "A time split that ignores which patient each record belongs to",
    "A stratified split that balances the classes in each set",
    "A grouped split that keeps all records of a patient in the same set"
@@ -364,7 +364,7 @@
   "options": [
    "Differencing or detrending to make the series more stable",
    "Scaling every value to the same range",
-   "Shuffling the observations to break the order",
+   "Shuffling the observations so the order of the series is broken",
    "Splitting the series with stratified sampling"
   ],
   "answer": [

@@ -7,7 +7,7 @@
   "q": "What is the key difference between image classification and image segmentation?",
   "options": [
    "Classification gives one label to the whole image, while segmentation labels every pixel",
-   "Classification labels each pixel, while segmentation labels the whole image once",
+   "Classification labels each pixel separately, while segmentation labels the whole image once",
    "Classification draws bounding boxes, while segmentation gives one class number",
    "Classification needs a mask label, while segmentation needs a one hot vector"
   ],
@@ -178,7 +178,7 @@
   "options": [
    "Detection draws boxes with class labels, which is coarser but faster than a mask",
    "Detection gives a pixel mask, which is finer but slower than boxes",
-   "Detection gives one label for the whole image, which is the fastest option",
+   "Detection gives one label for the whole image, which is the fastest option of the three",
    "Detection gives a feature vector, which cannot show object position"
   ],
   "answer": [
@@ -239,7 +239,7 @@
    "The label must also give what is needed to rebuild the bounding box",
    "A one hot vector cannot be compared with the network output",
    "A one hot vector cannot be used with convolutional layers",
-   "A one hot vector needs a separate mask image for every class"
+   "A one hot vector needs a separate mask image for every class in the data"
   ],
   "answer": [
    0
@@ -366,7 +366,7 @@
   "q": "What does the CNN backbone of YOLO, such as Darknet, do?",
   "options": [
    "It removes overlapping boxes using intersection over union",
-   "It resizes the image to a fixed shape and scales the pixels",
+   "It resizes the input image to a fixed shape and scales the pixel values",
    "It assigns one class label to the entire image",
    "It extracts features such as edges and shapes into a feature map"
   ],
@@ -447,7 +447,7 @@
   "options": [
    "The network produces too few boxes for each object",
    "Several boxes can land on one object, so duplicates are removed",
-   "Pixel values must be scaled back to the range 0 to 255",
+   "Pixel values must be scaled back to the range 0 to 255 before display",
    "The confidence scores must be turned into class labels"
   ],
   "answer": [
