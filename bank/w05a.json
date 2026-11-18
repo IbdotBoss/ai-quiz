@@ -16,7 +16,8 @@
   ],
   "explain": "Reinforcement learning is trial and error guided by feedback. The other options describe supervised regression, clustering and dimensionality reduction.",
   "source": "Week 5 reinforcement learning lecture, slide 5 and 6",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05a-002",
@@ -35,7 +36,8 @@
   ],
   "explain": "A reinforcement learning agent is only told how good its actions turned out, and must work out which actions caused the outcome. Supervised models are given the right answer for each example.",
   "source": "Week 5 reinforcement learning lecture, slide 5 and 6",
-  "flag": "The contrast with supervised learning is a standard reading of the slide wording on trial and error."
+  "flag": "The contrast with supervised learning is a standard reading of the slide wording on trial and error.",
+  "core": true
  },
  {
   "id": "w05a-003",
@@ -54,7 +56,8 @@
   ],
   "explain": "The agent acts and the environment responds with feedback. The agent then uses that feedback to improve its decisions.",
   "source": "Week 5 reinforcement learning lecture, slide 6",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05a-004",
@@ -73,7 +76,8 @@
   ],
   "explain": "Falling or losing balance is the negative feedback. Staying balanced, moving forward and saving energy are rewards.",
   "source": "Week 5 reinforcement learning lecture, slide 8",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05a-005",
@@ -92,7 +96,8 @@
   ],
   "explain": "The environment is everything the agent interacts with, which here is the board and the opponent. The program making the moves is the agent and winning is a reward.",
   "source": "Week 5 reinforcement learning lecture, slide 8",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05a-006",
@@ -114,7 +119,8 @@
   ],
   "explain": "Safe, lawful and smooth driving earns rewards. Collisions, hard braking, lane violations and running red lights are penalties.",
   "source": "Week 5 reinforcement learning lecture, slide 8",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05a-007",
@@ -133,7 +139,8 @@
   ],
   "explain": "A model-free agent learns from experienced transitions and rewards and does not explicitly learn how the environment works. A model-based agent builds a model first.",
   "source": "Week 5 reinforcement learning lecture, slide 10",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05a-008",
@@ -152,7 +159,8 @@
   ],
   "explain": "Value-based methods estimate the expected cumulative reward of states or actions and pick actions with high estimates. Q-learning is an example.",
   "source": "Week 5 reinforcement learning lecture, slide 12",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05a-009",
@@ -174,7 +182,8 @@
   ],
   "explain": "The actor picks actions and the critic evaluates them through expected future reward. The wrong options swap the roles or describe an unrelated method.",
   "source": "Week 5 reinforcement learning lecture, slide 14",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05a-010",
@@ -193,7 +202,8 @@
   ],
   "explain": "Q-learning does not need to know how the environment works, and it learns the value of each action through experience.",
   "source": "Week 5 reinforcement learning lecture, slide 12 and 15",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05a-011",
@@ -212,7 +222,8 @@
   ],
   "explain": "A Q-value is a long term estimate that includes later rewards. The immediate reward alone is held in the reward table.",
   "source": "Week 5 reinforcement learning lecture, slide 20",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05a-012",
@@ -231,7 +242,8 @@
   ],
   "explain": "The reward table is the fixed immediate feedback for going from one state to another. The Q-table starts at zero and is filled by learning, so it comes to include future rewards.",
   "source": "Week 5 reinforcement learning lecture, slide 19 to 21",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05a-013",
@@ -250,7 +262,8 @@
   ],
   "explain": "The Q-table starts with zero in every entry and is filled in as the agent explores, using the reward table.",
   "source": "Week 5 reinforcement learning lecture, slide 20",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05a-014",
@@ -269,7 +282,8 @@
   ],
   "explain": "The rule adds the reward of the current move to G times the best value of the next state. A larger G makes future rewards matter more.",
   "source": "Week 5 reinforcement learning lecture, slide 22",
-  "flag": "The slide calls G the learning parameter, its role here is as a discount on future value, which is how it is normally described."
+  "flag": "The slide calls G the learning parameter, its role here is as a discount on future value, which is how it is normally described.",
+  "core": true
  },
  {
   "id": "w05a-015",
@@ -288,7 +302,8 @@
   ],
   "explain": "With G equal to zero the future term vanishes, so each Q-value is just the reward of the current move. The agent becomes short sighted.",
   "source": "Week 5 reinforcement learning lecture, slide 22",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05a-016",
@@ -307,7 +322,8 @@
   ],
   "explain": "Reaching the goal strengthens the move into it. Next time, the move before it can see that strong value ahead, so the effect spreads back step by step.",
   "source": "Week 5 reinforcement learning lecture, slide 17 and 18",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05a-017",
@@ -326,7 +342,8 @@
   ],
   "explain": "The agent learns from experience. Reaching the goal gives a reward that raises the value of the moves leading there, and repeated episodes refine this.",
   "source": "Week 5 reinforcement learning lecture, slide 17 and 18",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05a-018",
@@ -345,7 +362,8 @@
   ],
   "explain": "The table is built step by step over many episodes until the values stop changing. That settled table is the converged Q-table.",
   "source": "Week 5 reinforcement learning lecture, slide 24 and 25",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05a-019",
@@ -367,7 +385,8 @@
   ],
   "explain": "Q-learning is model free and learns by trial and error, updating action values step by step. It needs neither a transition model nor labelled actions.",
   "source": "Week 5 reinforcement learning lecture, slide 15",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05a-020",
@@ -389,7 +408,8 @@
   ],
   "explain": "Value-based methods learn values and act on them, and Q-learning does exactly this. Learning a policy directly is the policy-based approach.",
   "source": "Week 5 reinforcement learning lecture, slide 12",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05a-021",
@@ -409,7 +429,8 @@
   ],
   "explain": "A model-based agent predicts consequences with a model and plans ahead. The wrong options describe model-free learning and supervised learning.",
   "source": "Week 5 reinforcement learning lecture, slide 11",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05a-022",
@@ -425,7 +446,8 @@
    "Identifies agent, environment and reward correctly in an example"
   ],
   "source": "Week 5 reinforcement learning lecture, slide 5 to 8",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05a-023",
@@ -440,7 +462,8 @@
    "Mentions the agent acting and learning from consequences"
   ],
   "source": "Week 5 reinforcement learning lecture, slide 3 to 6",
-  "flag": "The comparison is built from the recap and the trial and error wording, the passive and active framing is textbook."
+  "flag": "The comparison is built from the recap and the trial and error wording, the passive and active framing is textbook.",
+  "core": true
  },
  {
   "id": "w05a-024",
@@ -455,7 +478,8 @@
    "Gives a suitable example of each"
   ],
   "source": "Week 5 reinforcement learning lecture, slide 10 and 11",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05a-025",
@@ -471,7 +495,8 @@
    "Gives a suitable example"
   ],
   "source": "Week 5 reinforcement learning lecture, slide 12 and 13",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05a-026",
@@ -487,7 +512,8 @@
    "Gives an example such as a walking robot"
   ],
   "source": "Week 5 reinforcement learning lecture, slide 14",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05a-027",
@@ -503,7 +529,8 @@
    "Says the table starts at zero and improves with experience"
   ],
   "source": "Week 5 reinforcement learning lecture, slide 15 and 20",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05a-028",
@@ -519,7 +546,8 @@
    "Says the table converges when values stabilise"
   ],
   "source": "Week 5 reinforcement learning lecture, slide 22 to 25",
-  "flag": "Calling the learning parameter a weight on future value is the usual discount factor description, the slide only calls it the learning parameter."
+  "flag": "Calling the learning parameter a weight on future value is the usual discount factor description, the slide only calls it the learning parameter.",
+  "core": true
  },
  {
   "id": "w05a-029",
@@ -535,6 +563,7 @@
    "Mentions convergence"
   ],
   "source": "Week 5 reinforcement learning lecture, slide 17 to 25",
-  "flag": ""
+  "flag": "",
+  "core": false
  }
 ]

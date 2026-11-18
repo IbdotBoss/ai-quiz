@@ -16,7 +16,8 @@
   ],
   "explain": "In translation the order of the words changes the meaning, so history matters. Flower measurements are independent examples with no time order.",
   "source": "Week 10 lecture, slide 3 and 4",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-002",
@@ -35,7 +36,8 @@
   ],
   "explain": "The words are identical and only the order differs, yet the meaning is opposite. A model that ignores order cannot tell them apart.",
   "source": "Week 10 lecture, slide 4",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w10-003",
@@ -54,7 +56,8 @@
   ],
   "explain": "Feedforward networks and CNNs only connect one layer to the next. An RNN adds a recurrent connection that feeds information back in a loop.",
   "source": "Week 10 lecture, slide 6",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-004",
@@ -73,7 +76,8 @@
   ],
   "explain": "Direction depends on earlier positions. A sequence of snapshots gives that history, which is the idea behind sequential memory in an RNN.",
   "source": "Week 10 lecture, slide 7",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-005",
@@ -92,7 +96,8 @@
   ],
   "explain": "The loop passes prior information forward and this information is the hidden state. It gives the network a form of memory of what came before.",
   "source": "Week 10 lecture, slide 8",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-006",
@@ -115,7 +120,8 @@
   ],
   "explain": "Speech, handwriting, video and time series all depend on what came before or after. Iris flower labelling treats each row as independent.",
   "source": "Week 10 lecture, slide 3 and 4",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w10-007",
@@ -134,7 +140,8 @@
   ],
   "explain": "The hidden layer combines the input at time t with the hidden state from the step before, which itself depends on earlier inputs. This is how history is carried forward.",
   "source": "Week 10 lecture, slide 10 and 11",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w10-008",
@@ -156,7 +163,8 @@
   ],
   "explain": "The node joins the new input to the old memory, applies an activation and sends the result both onwards and forwards in time. All four statements are correct.",
   "source": "Week 10 lecture, slide 13",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w10-009",
@@ -175,7 +183,8 @@
   ],
   "explain": "By the final step the RNN has encoded information from all earlier words, so its output can be used to classify the intent.",
   "source": "Week 10 lecture, slide 15 and 16",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-010",
@@ -194,7 +203,8 @@
   ],
   "explain": "Each step makes the adjustment smaller than the one before it, so the earliest layers hardly change. That is why an RNN has short term memory.",
   "source": "Week 10 lecture, slide 17 to 19",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-011",
@@ -216,7 +226,8 @@
   ],
   "explain": "Small adjustments in later layers lead to even smaller ones earlier on, so early layers fail to learn. It is a problem of shrinking, not growing, gradients.",
   "source": "Week 10 lecture, slide 18 and 19",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w10-012",
@@ -235,7 +246,8 @@
   ],
   "explain": "The forward pass takes the input through the hidden states and works out the loss. Partial derivatives come later, in the backward pass.",
   "source": "Week 10 lecture, slide 20 and 21",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-013",
@@ -254,7 +266,8 @@
   ],
   "explain": "The backward pass sends the loss back through the network and uses the chain rule to work out how much each weight should change.",
   "source": "Week 10 lecture, slide 22",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w10-014",
@@ -273,7 +286,8 @@
   ],
   "explain": "Normal backpropagation goes through the whole sequence, which makes gradients vanish. Limiting the window avoids far away steps.",
   "source": "Week 10 lecture, slide 23",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-015",
@@ -295,7 +309,8 @@
   ],
   "explain": "Using a window saves time and complexity but cuts off long range links. That limit is its main drawback.",
   "source": "Week 10 lecture, slide 23",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w10-016",
@@ -314,7 +329,8 @@
   ],
   "explain": "The nearby words only show that a language is coming. The word France is needed to pick the language, and a long gap can put it outside the window.",
   "source": "Week 10 lecture, slide 24",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-017",
@@ -333,7 +349,8 @@
   ],
   "explain": "The cell state carries information straight along the chain with only minor linear changes. Gates carefully add to or remove from it. The forget gate is one of those gates, not the cell state.",
   "source": "Week 10 lecture, slide 26",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-018",
@@ -354,7 +371,8 @@
   ],
   "explain": "A sigmoid outputs values between zero and one, which say how much of each component to let through. Minus one to one is the range of tanh.",
   "source": "Week 10 lecture, slide 27 and 31",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-019",
@@ -373,7 +391,8 @@
   ],
   "explain": "The forget gate outputs a number between 0 and 1 for each value in the cell state. A 1 means keep it completely and a 0 means get rid of it.",
   "source": "Week 10 lecture, slide 28",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w10-020",
@@ -393,7 +412,8 @@
   ],
   "explain": "Storing new information has two parts, an input gate that picks which values to update and a layer that creates candidates. Output filtering is a separate, later step.",
   "source": "Week 10 lecture, slide 29",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w10-021",
@@ -412,7 +432,8 @@
   ],
   "explain": "A sigmoid layer decides which parts to output and the cell state is pushed through tanh to lie between minus one and one. The two are multiplied, so only chosen parts leave.",
   "source": "Week 10 lecture, slide 31",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w10-022",
@@ -431,7 +452,8 @@
   ],
   "explain": "The repeating module of an LSTM is more elaborate, with several interacting layers that make up the gates. A plain RNN uses just one.",
   "source": "Week 10 lecture, slide 25",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w10-023",
@@ -453,7 +475,8 @@
   ],
   "explain": "A GRU keeps the gating idea but uses fewer gates, so it still models temporal patterns with less computation.",
   "source": "Week 10 lecture, slide 32",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-024",
@@ -469,7 +492,8 @@
    "Gives a sequence example such as translation, speech or time series"
   ],
   "source": "Week 10 lecture, slide 3 and 4",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-025",
@@ -485,7 +509,8 @@
    "A copy of the output is passed forward as working memory"
   ],
   "source": "Week 10 lecture, slide 6 to 13",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-026",
@@ -501,7 +526,8 @@
    "Final output goes to a feedforward layer to classify intent"
   ],
   "source": "Week 10 lecture, slide 15 and 16",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w10-027",
@@ -517,7 +543,8 @@
    "RNN struggles to retain information from earlier steps"
   ],
   "source": "Week 10 lecture, slide 17 to 19",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-028",
@@ -533,7 +560,8 @@
    "Partial derivatives and the chain rule give weight changes"
   ],
   "source": "Week 10 lecture, slide 20 to 22",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-029",
@@ -549,7 +577,8 @@
    "It cannot learn dependencies longer than the window"
   ],
   "source": "Week 10 lecture, slide 23 and 24",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-030",
@@ -565,7 +594,8 @@
    "Simple RNN has a single layer and forgets over long gaps"
   ],
   "source": "Week 10 lecture, slide 25 and 26",
-  "flag": "The explanation of why the cell state helps with vanishing gradients is standard textbook reasoning. The slides only describe the cell state as a conveyor belt with minor linear interactions."
+  "flag": "The explanation of why the cell state helps with vanishing gradients is standard textbook reasoning. The slides only describe the cell state as a conveyor belt with minor linear interactions.",
+  "core": true
  },
  {
   "id": "w10-031",
@@ -581,7 +611,8 @@
    "Output step filters the cell state using tanh and a sigmoid gate"
   ],
   "source": "Week 10 lecture, slide 27 to 31",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w10-032",
@@ -597,6 +628,7 @@
    "LSTM has more gates and is more elaborate"
   ],
   "source": "Week 10 lecture, slide 32",
-  "flag": "The final comparison about a separate cell state is textbook knowledge. The slide only gives the one line description of the GRU."
+  "flag": "The final comparison about a separate cell state is textbook knowledge. The slide only gives the one line description of the GRU.",
+  "core": true
  }
 ]

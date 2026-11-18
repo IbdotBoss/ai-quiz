@@ -16,7 +16,8 @@
   ],
   "explain": "A machine passes when a judge cannot tell its replies from a person's. The test looks only at behaviour, so how the machine works, its speed or brain-like design does not matter.",
   "source": "Week 1 lecture, slide 18",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01a-002",
@@ -35,7 +36,8 @@
   ],
   "explain": "Passing is defined by the judge being unable to tell the difference. This says nothing about consciousness, so it does not make the machine strong AI.",
   "source": "Week 1 lecture, slide 19",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-003",
@@ -54,7 +56,8 @@
   ],
   "explain": "Thinking is hard to define and measure, so Turing replaced it with a question about behaviour that can be tested. The other options ask about stored knowledge, self-reports or brain structure.",
   "source": "Week 1 lecture, slide 18",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-004",
@@ -74,7 +77,8 @@
   ],
   "explain": "People broadly agree what artificial means, but intelligence is hard to define. It has no single agreed measure.",
   "source": "Week 1 lecture, slide 4",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01a-005",
@@ -93,7 +97,8 @@
   ],
   "explain": "Assistants such as Siri and Alexa are narrow systems built for specific problems. The option about lacking memory fails because weak AI can still learn from data.",
   "source": "Week 1 lecture, slide 22",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01a-006",
@@ -115,7 +120,8 @@
   ],
   "explain": "Strong AI is a theoretical goal, a machine with human-level intelligence. Systems in everyday use are narrow weak AI.",
   "source": "Week 1 lecture, slide 21",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-007",
@@ -139,7 +145,8 @@
   ],
   "explain": "Weak AI is the practical form that exists now. Consciousness and a purely theoretical status describe strong AI instead.",
   "source": "Week 1 lecture, slide 22",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-008",
@@ -158,7 +165,8 @@
   ],
   "explain": "Reactive machines have no memory and are task specific, so an input always gives the same output. Deep Blue is the standard example.",
   "source": "Week 1 lecture, slide 23",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01a-009",
@@ -180,7 +188,8 @@
   ],
   "explain": "Limited memory machines look at the past and improve with more data. Giving the same output with no memory describes reactive machines, and a conscious understanding of existence describes self-aware systems.",
   "source": "Week 1 lecture, slide 24",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-010",
@@ -199,7 +208,8 @@
   ],
   "explain": "Theory of mind AI would understand human motives and intentions, not just match patterns. Monitoring one object over time describes limited memory machines, and a conscious sense of existence describes self-aware AI, which is a later step.",
   "source": "Week 1 lecture, slide 25",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-011",
@@ -218,7 +228,8 @@
   ],
   "explain": "Self-aware AI would understand itself as well as the world around it. Reactive machines, limited memory machines and deep learning systems already exist.",
   "source": "Week 1 lecture, slide 26",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-012",
@@ -242,7 +253,8 @@
   ],
   "explain": "Weak and strong AI are a separate split, based on how broad the ability is. The four types are ordered by memory and understanding.",
   "source": "Week 1 lecture, slide 23 to 26",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-013",
@@ -261,7 +273,8 @@
   ],
   "explain": "The theory separates intelligence into several kinds. So whether a machine is intelligent depends on which kind is meant.",
   "source": "Week 1 lecture, slide 6",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-014",
@@ -280,7 +293,8 @@
   ],
   "explain": "Interpersonal intelligence is sensitivity to the moods and motives of others and the ability to work in groups. Intrapersonal intelligence is about self-reflection.",
   "source": "Week 1 lecture, slide 8 and 9",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-015",
@@ -299,7 +313,8 @@
   ],
   "explain": "Intrapersonal intelligence looks inward at the self. The tempting wrong choice is interpersonal intelligence, which looks outward at other people.",
   "source": "Week 1 lecture, slide 9",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-016",
@@ -318,7 +333,8 @@
   ],
   "explain": "Naturalistic intelligence is the ability to identify, classify and manipulate elements of the environment. Visual-spatial is about spatial judgement and visualisation.",
   "source": "Week 1 lecture, slide 13",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-017",
@@ -340,7 +356,8 @@
   ],
   "explain": "Visual-spatial intelligence is about spatial problems, and numbers and critical thinking belong to logical-mathematical intelligence. Existential intelligence is about the meaning of life, and identifying animals and plants belongs to naturalistic intelligence.",
   "source": "Week 1 lecture, slide 7 to 14",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-018",
@@ -359,7 +376,8 @@
   ],
   "explain": "In a computing context what matters is the behaviour produced. The definition of AI does not have to be confined to biologically observable methods.",
   "source": "Week 1 lecture, slide 2 and 27",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-019",
@@ -375,7 +393,8 @@
    "It focuses on behaviour and not on intellect or how the machine works"
   ],
   "source": "Week 1 lecture, slide 17 to 19",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01a-020",
@@ -391,7 +410,8 @@
    "Strong AI only exists as a theoretical concept today"
   ],
   "source": "Week 1 lecture, slide 21 and 22",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01a-021",
@@ -407,7 +427,8 @@
    "One correct example of each, such as Deep Blue and ChatGPT"
   ],
   "source": "Week 1 lecture, slide 23 and 24",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01a-022",
@@ -423,7 +444,8 @@
    "Self awareness is a sense of self and does not exist yet"
   ],
   "source": "Week 1 lecture, slide 23 to 26",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-023",
@@ -439,7 +461,8 @@
    "Behaviour based tests offer a practical way around the problem"
   ],
   "source": "Week 1 lecture, slide 4 and 6",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01a-024",
@@ -455,7 +478,8 @@
    "Names at least one other type, or says each type raises the question of whether a machine could have it"
   ],
   "source": "Week 1 lecture, slide 6 to 14",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-025",
@@ -471,7 +495,8 @@
    "Links the focus on behaviour to the Turing Test"
   ],
   "source": "Week 1 lecture, slide 2, 18 and 27",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01a-026",
@@ -487,6 +512,7 @@
    "Understands patterns and does not only match them"
   ],
   "source": "Week 1 lecture, slide 25",
-  "flag": ""
+  "flag": "",
+  "core": false
  }
 ]

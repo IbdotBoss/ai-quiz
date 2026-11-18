@@ -16,7 +16,8 @@
   ],
   "explain": "Dendrites receive the impulse from neighbouring neurons. It then passes through the nucleus and the axon and leaves at the axon terminal, which is the exit and not the entry.",
   "source": "Week 6 lecture, slide 5",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w06-002",
@@ -35,7 +36,8 @@
   ],
   "explain": "In its simplest form a perceptron is one neuron that takes several inputs and gives one output. Thousands of perceptrons arranged in layers make a full network.",
   "source": "Week 6 lecture, slide 7 and 13",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-003",
@@ -54,7 +56,8 @@
   ],
   "explain": "Inputs are multiplied by their weights and summed, so a larger weight gives that input more influence. The decision to fire belongs to the activation function and not to the weight.",
   "source": "Week 6 lecture, slide 8",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w06-004",
@@ -73,7 +76,8 @@
   ],
   "explain": "The perceptron sums the weighted inputs and then adds a bias. Comparing with a label happens in the cost function, outside the neuron.",
   "source": "Week 6 lecture, slide 8 and 9",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w06-005",
@@ -92,7 +96,8 @@
   ],
   "explain": "The activation function checks the weighted sum and decides whether the neuron fires. Updating weights is done by backpropagation and gradient descent during training.",
   "source": "Week 6 lecture, slide 8",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-006",
@@ -111,7 +116,8 @@
   ],
   "explain": "A step function gives one of two values, 0 or 1, so the neuron either fires or does not. Outputs that grow with the sum or spread across classes belong to other activation functions.",
   "source": "Week 6 lecture, slide 9 and 10",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w06-007",
@@ -130,7 +136,8 @@
   ],
   "explain": "A single perceptron can only learn patterns that are linearly separable. Training for more epochs does not remove that limit.",
   "source": "Week 6 lecture, slide 12",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w06-008",
@@ -149,7 +156,8 @@
   ],
   "explain": "XOR cannot be split by one straight boundary, so a single weighted sum and activation cannot separate its classes. Training longer or starting from other random weights does not remove this limit.",
   "source": "Week 6 lecture, slide 12",
-  "flag": "The slide only says a single perceptron learns linearly separable patterns. That XOR is not linearly separable is standard textbook knowledge."
+  "flag": "The slide only says a single perceptron learns linearly separable patterns. That XOR is not linearly separable is standard textbook knowledge.",
+  "core": false
  },
  {
   "id": "w06-009",
@@ -171,7 +179,8 @@
   ],
   "explain": "The perceptron sums weighted inputs, adds a bias and applies an activation function. Passing the error backwards and averaging the cost belong to training, not to the neuron's own calculation.",
   "source": "Week 6 lecture, slide 8",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w06-010",
@@ -192,7 +201,8 @@
   ],
   "explain": "Weights and biases start random, are adjusted by backpropagation and gradient descent, and learning means finding values that minimise the output error. They are not fixed by hand.",
   "source": "Week 6 lecture, slide 9 and 12",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-011",
@@ -214,7 +224,8 @@
   ],
   "explain": "Supervised learning has known desired outputs, aims to learn the input to output relationship, and is how neural networks generally learn. A cost function is still needed to measure how far predictions are from those answers.",
   "source": "Week 6 lecture, slide 14",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-012",
@@ -237,7 +248,8 @@
   ],
   "explain": "The four measurements form the feature set the network reads. Flower type is the label, which is the answer the network is trained to predict.",
   "source": "Week 6 lecture, slide 20",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w06-013",
@@ -256,7 +268,8 @@
   ],
   "explain": "Random weights and biases give a random prediction, so garbage in gives garbage out. The labels have not yet been used to adjust anything.",
   "source": "Week 6 lecture, slide 17",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-014",
@@ -275,7 +288,8 @@
   ],
   "explain": "The prediction must exist before its error can be measured, the error must exist before it is sent back, and the derivatives must be known before the weights are updated. The other orders break that chain.",
   "source": "Week 6 lecture, slide 16",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-015",
@@ -296,7 +310,8 @@
   ],
   "explain": "Training ends when the cost converges to a minimum or a set number of epochs is reached. Zero weights or a single forward pass are not stopping rules.",
   "source": "Week 6 lecture, slide 16 and 36",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w06-016",
@@ -315,7 +330,8 @@
   ],
   "explain": "The counter goes up once for each full round of the loop, which is forward pass, cost, backpropagation and gradient descent. Training can stop when it reaches a set maximum.",
   "source": "Week 6 lecture, slide 16 and 33",
-  "flag": "The slide counts each loop round as an epoch. Many textbooks define an epoch as one pass over the training set, so the stem names the loop round."
+  "flag": "The slide counts each loop round as an epoch. Many textbooks define an epoch as one pass over the training set, so the stem names the loop round.",
+  "core": false
  },
  {
   "id": "w06-017",
@@ -334,7 +350,8 @@
   ],
   "explain": "Loss usually describes how well one observation fits, and cost averages that loss across the training set. Reversing the two definitions is a common mistake.",
   "source": "Week 6 lecture, slide 21",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-018",
@@ -353,7 +370,8 @@
   ],
   "explain": "A cost function summarises the error between predictions and actual labels as one real number. New weights come from gradient descent, not from the cost function.",
   "source": "Week 6 lecture, slide 21",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w06-019",
@@ -372,7 +390,8 @@
   ],
   "explain": "Squaring the distance makes far points cost much more than near points. Treating all sizes alike ignores the squaring.",
   "source": "Week 6 lecture, slide 25",
-  "flag": "The slide says errors grow exponentially, which is more precisely quadratic growth, so the stem avoids that word."
+  "flag": "The slide says errors grow exponentially, which is more precisely quadratic growth, so the stem avoids that word.",
+  "core": false
  },
  {
   "id": "w06-020",
@@ -391,7 +410,8 @@
   ],
   "explain": "Prices are continuous values, so a regression cost such as mean squared error fits. Spam or not spam is a target of 0 or 1, so binary cross entropy fits. The other pairings use a regression cost for the spam labels or binary cross entropy for the prices.",
   "source": "Week 6 lecture, slide 23 and 26",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w06-021",
@@ -413,7 +433,8 @@
   ],
   "explain": "Binary cross entropy suits targets of 0 or 1. It compares the true distribution with the predicted one, averages the error over the predictions, and takes its prediction from a sigmoid or softmax output. All four statements are true.",
   "source": "Week 6 lecture, slide 26 to 28",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w06-022",
@@ -432,7 +453,8 @@
   ],
   "explain": "Gradient descent updates the weights and biases to reduce the cost. The cost function only measures the error, and testing is separate from training.",
   "source": "Week 6 lecture, slide 30 and 31",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-023",
@@ -451,7 +473,8 @@
   ],
   "explain": "Gradient descent moves in the negative direction of the derivative. With a positive slope that means decreasing the weight, and increasing it would raise the cost.",
   "source": "Week 6 lecture, slide 31 and 33",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w06-024",
@@ -473,7 +496,8 @@
   ],
   "explain": "Backpropagation carries the error back and computes partial derivatives with the chain rule, and gradient descent uses them to change weights and biases. The forward pass makes the predictions, and testing uses unseen data.",
   "source": "Week 6 lecture, slide 33",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-025",
@@ -494,7 +518,8 @@
   ],
   "explain": "Testing uses new unseen data, measures performance and is usually called inference. The weights are not trained further on the test data.",
   "source": "Week 6 lecture, slide 36",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-026",
@@ -516,7 +541,8 @@
   ],
   "explain": "Perceptrons work in consecutive layers, turn inputs into predictions based on features, and feed forward moves from input to output. Weights start random and differ, and the cost function is still needed.",
   "source": "Week 6 lecture, slide 13 and 18",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-027",
@@ -532,7 +558,8 @@
    "Inputs and outputs of an artificial neuron play the roles of dendrites and axon"
   ],
   "source": "Week 6 lecture, slide 3 to 7",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w06-028",
@@ -548,7 +575,8 @@
    "Weights and bias are learned to reduce the output error"
   ],
   "source": "Week 6 lecture, slide 7 to 12",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-029",
@@ -564,7 +592,8 @@
    "Sigmoid or softmax is a valid example"
   ],
   "source": "Week 6 lecture, slide 8, 10 and 27",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-030",
@@ -580,7 +609,8 @@
    "Layers turn inputs into predictions based on features"
   ],
   "source": "Week 6 lecture, slide 12 and 13",
-  "flag": "The slides only say a network turns inputs into predictions based on features. The claim that layers overcome the linear limit is standard textbook knowledge."
+  "flag": "The slides only say a network turns inputs into predictions based on features. The claim that layers overcome the linear limit is standard textbook knowledge.",
+  "core": false
  },
  {
   "id": "w06-031",
@@ -596,7 +626,8 @@
    "The goal is to learn the input to output relationship"
   ],
   "source": "Week 6 lecture, slide 14 and 20",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-032",
@@ -613,7 +644,8 @@
    "Repeat until convergence or the epoch limit"
   ],
   "source": "Week 6 lecture, slide 16 and 36",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-033",
@@ -629,7 +661,8 @@
    "Training improves the parameters over time"
   ],
   "source": "Week 6 lecture, slide 17",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-034",
@@ -645,7 +678,8 @@
    "A classification example such as binary cross entropy"
   ],
   "source": "Week 6 lecture, slide 21 to 28",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-035",
@@ -661,7 +695,8 @@
    "Repeated updates move the cost towards a minimum"
   ],
   "source": "Week 6 lecture, slide 30 to 33",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-036",
@@ -677,7 +712,8 @@
    "The improvement shows in the next epoch"
   ],
   "source": "Week 6 lecture, slide 33",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w06-037",
@@ -693,6 +729,7 @@
    "The process is called inference"
   ],
   "source": "Week 6 lecture, slide 36",
-  "flag": ""
+  "flag": "",
+  "core": true
  }
 ]

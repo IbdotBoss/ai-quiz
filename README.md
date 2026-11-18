@@ -14,6 +14,10 @@ Practice questions and revision notes for the MOD004553 Artificial Intelligence 
 - Each question can open in Claude, ChatGPT, Perplexity or Gemini with the question and your answer filled in.
 - Progress is saved in your browser. Nothing is sent anywhere.
 
+## Core set
+
+The home page switches between the full bank and a core set of 193 questions, which is one multiple choice and one written question on each main topic. `select_core.py` tags the core questions and can be run again after the bank changes.
+
 ## How the questions were made
 
 The slide text was extracted from the 12 decks. Questions were drafted from that text only, then every answer key and marking point was checked against the slides by a second read. Where a question leans on standard textbook knowledge the slides do not state, it carries a note.

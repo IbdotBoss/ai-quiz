@@ -16,7 +16,8 @@
   ],
   "explain": "The meaning of an image sits in groups of neighbouring pixels, and a fully connected network does not use that local structure. It can still use nonlinear functions and backpropagation, so those options fail.",
   "source": "Week 8 lecture, slide 6",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-002",
@@ -35,7 +36,8 @@
   ],
   "explain": "A colour image is like three 2D matrices stacked together, one each for red, green and blue. A grayscale image has just one channel.",
   "source": "Week 8 lecture, slide 7",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w08-003",
@@ -54,7 +56,8 @@
   ],
   "explain": "The filter holds weights that are multiplied with each patch of the input, so it acts as a feature detector. Switching off outputs is dropout and turning values into probabilities is softmax.",
   "source": "Week 8 lecture, slide 9 and 11",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-004",
@@ -78,7 +81,8 @@
   ],
   "explain": "Different kernels pull out different features and can also sharpen or soften an image. Producing probabilities belongs to the softmax layer and dropping outputs belongs to the dropout layer.",
   "source": "Week 8 lecture, slide 10",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-005",
@@ -97,7 +101,8 @@
   ],
   "explain": "Stride is the amount the kernel shifts over the input. A bigger shift means fewer positions are visited. Filling the border with zeros describes padding, not stride.",
   "source": "Week 8 lecture, slide 13 and 14",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-006",
@@ -116,7 +121,8 @@
   ],
   "explain": "A sliding kernel treats pixels at the edges differently from the rest, so a border is added. Padding does not change the kernel size, the number of channels or the stride.",
   "source": "Week 8 lecture, slide 15",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-007",
@@ -138,7 +144,8 @@
   ],
   "explain": "Zero padding fills the border with zeros, and reflection and replication padding fill it using the image's own edge values. Dropout and softmax are separate layer types, not padding methods.",
   "source": "Week 8 lecture, slide 15 and 16",
-  "flag": "Slide 16 is image only, so the padding types come from the text on slide 15."
+  "flag": "Slide 16 is image only, so the padding types come from the text on slide 15.",
+  "core": false
  },
  {
   "id": "w08-008",
@@ -157,7 +164,8 @@
   ],
   "explain": "Filters are randomly initialised like ordinary weights and biases, then repeated training evolves them into strong feature extractors. They are not hand designed and they do not stay random.",
   "source": "Week 8 lecture, slide 19",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w08-009",
@@ -176,7 +184,8 @@
   ],
   "explain": "Pooling shrinks the convolved features, which lowers the computing needed. Turning maps into a vector is the flatten layer and ignoring outputs at random is dropout.",
   "source": "Week 8 lecture, slide 20 and 21",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-010",
@@ -195,7 +204,8 @@
   ],
   "explain": "Average pooling returns the average of the values under the kernel. Keeping only the largest value describes max pooling, which is the tempting wrong choice.",
   "source": "Week 8 lecture, slide 21",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w08-011",
@@ -217,7 +227,8 @@
   ],
   "explain": "Pooling reduces dimensions, saves computation and keeps dominant features that do not depend on exact position or rotation, which supports effective training. All four statements are correct.",
   "source": "Week 8 lecture, slide 20",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w08-012",
@@ -236,7 +247,8 @@
   ],
   "explain": "An activation function is a gate that decides what a neuron outputs. In a CNN it is applied across the two dimensions of each feature map. ReLU is the most popular choice.",
   "source": "Week 8 lecture, slide 22 and 23",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-013",
@@ -255,7 +267,8 @@
   ],
   "explain": "Normalisation makes feature sizes comparable, so one feature with large values does not dominate. Producing probabilities is softmax, and dropping neurons is dropout.",
   "source": "Week 8 lecture, slide 24",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-014",
@@ -274,7 +287,8 @@
   ],
   "explain": "When batches differ a lot, the network keeps changing its weights towards each odd distribution, which slows training. Batch normalisation reduces this. Overfitting is about memorising the training set instead.",
   "source": "Week 8 lecture, slide 25",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-015",
@@ -296,7 +310,8 @@
   ],
   "explain": "Batch normalisation standardises each feature using mini batch statistics, which speeds up learning. Removing outputs at random is dropout and taking the largest value is max pooling.",
   "source": "Week 8 lecture, slide 26",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w08-016",
@@ -316,7 +331,8 @@
   ],
   "explain": "An overfitted network has memorised the training examples, so training error is tiny but new data gives large error. It has not learned to generalise.",
   "source": "Week 8 lecture, slide 27",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-017",
@@ -335,7 +351,8 @@
   ],
   "explain": "Dropout is a regularisation technique that randomly drops outputs during training, so the network cannot rely on memorising everything. The dropped outputs are not removed for good.",
   "source": "Week 8 lecture, slide 28",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-018",
@@ -354,7 +371,8 @@
   ],
   "explain": "The purpose of dropout is the opposite of memorisation. By ignoring random outputs it pushes the network to generalise. Shrinking feature maps is the job of pooling.",
   "source": "Week 8 lecture, slide 27 and 28",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w08-019",
@@ -373,7 +391,8 @@
   ],
   "explain": "The first stage breaks the image into features and analyses them. The second stage, made of fully connected layers, uses those features to predict the best label.",
   "source": "Week 8 lecture, slide 29",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-020",
@@ -392,7 +411,8 @@
   ],
   "explain": "The flatten layer takes the feature maps and turns them into one vector so that ordinary fully connected layers can use them. Final probabilities come from the softmax output layer.",
   "source": "Week 8 lecture, slide 30 and 31",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-021",
@@ -411,7 +431,8 @@
   ],
   "explain": "Softmax gives the final probability for each label, and the probabilities add up to one. Flattening, dropout and batch normalisation are different layers.",
   "source": "Week 8 lecture, slide 30 and 32",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-022",
@@ -433,7 +454,8 @@
   ],
   "explain": "Fully connected layers include the flatten input layer, ordinary layers with weights and biases, and the softmax output layer. Kernels and maximum values belong to convolution and pooling.",
   "source": "Week 8 lecture, slide 30",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w08-023",
@@ -455,7 +477,8 @@
   ],
   "explain": "Convolution is a linear operation between a filter and the input, filters are learned, and 3 by 3 is the usual size. Hand designed frozen filters and maximum values do not describe it.",
   "source": "Week 8 lecture, slide 9, 11 and 19",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w08-024",
@@ -471,7 +494,8 @@
    "So a CNN uses local features and works more efficiently"
   ],
   "source": "Week 8 lecture, slide 5 and 6",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-025",
@@ -488,7 +512,8 @@
    "Filters start random and are learned in training"
   ],
   "source": "Week 8 lecture, slide 8 to 11 and 19",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-026",
@@ -504,7 +529,8 @@
    "Zero padding is common and reflection or replication padding are alternatives"
   ],
   "source": "Week 8 lecture, slide 13 to 16",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-027",
@@ -520,7 +546,8 @@
    "Average pooling returns the mean of the patch"
   ],
   "source": "Week 8 lecture, slide 20 and 21",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-028",
@@ -536,7 +563,8 @@
    "ReLU is the most popular choice"
   ],
   "source": "Week 8 lecture, slide 22 and 23",
-  "flag": "The nonlinearity point is standard textbook knowledge. Slide 4 only says the dot product is optionally followed by a nonlinearity."
+  "flag": "The nonlinearity point is standard textbook knowledge. Slide 4 only says the dot product is optionally followed by a nonlinearity.",
+  "core": true
  },
  {
   "id": "w08-029",
@@ -552,7 +580,8 @@
    "Learning is faster and converges sooner"
   ],
   "source": "Week 8 lecture, slide 24 to 26",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-030",
@@ -568,7 +597,8 @@
    "It randomly ignores some layer outputs during training"
   ],
   "source": "Week 8 lecture, slide 27 and 28",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-031",
@@ -584,7 +614,8 @@
    "Softmax turns logits into probabilities that sum to one"
   ],
   "source": "Week 8 lecture, slide 29 to 32",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w08-032",
@@ -600,6 +631,7 @@
    "Softmax gives the final label probabilities"
   ],
   "source": "Week 8 lecture, slide 17, 18 and 29",
-  "flag": ""
+  "flag": "",
+  "core": true
  }
 ]

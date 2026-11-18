@@ -16,7 +16,8 @@
   ],
   "explain": "Supervised learning learns from input and output pairs to predict outcomes. Unsupervised learning has no labels and looks for patterns or groupings in the data itself.",
   "source": "Week 4 lecture, slide 6",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-002",
@@ -35,7 +36,8 @@
   ],
   "explain": "With no labels there is nothing to predict in a supervised way, so the sensible task is to look for groups. Classification and regression both need a target column.",
   "source": "Week 4 lecture, slide 7",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w04-003",
@@ -57,7 +59,8 @@
   ],
   "explain": "K-means, principal component analysis and autoencoders find structure without labels. Linear regression and decision trees learn from labelled examples.",
   "source": "Week 4 lecture, slide 6",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-004",
@@ -79,7 +82,8 @@
   ],
   "explain": "Clustering is similarity based, unsupervised and exploratory. The wrong options describe supervised classification and regression.",
   "source": "Week 4 lecture, slide 12",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-005",
@@ -98,7 +102,8 @@
   ],
   "explain": "Grouping customers by behaviour is segmentation, a clustering task. Market basket analysis looks instead for products bought together.",
   "source": "Week 4 lecture, slide 5 and 14",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w04-006",
@@ -117,7 +122,8 @@
   ],
   "explain": "Market basket analysis discovers associations between products that appear in the same purchase. Customer segmentation groups the customers themselves.",
   "source": "Week 4 lecture, slide 5",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w04-007",
@@ -136,7 +142,8 @@
   ],
   "explain": "K-means starts with random centres, assigns each point to the closest centre, moves each centre to the mean of its points, and repeats. It does not stop after one pass or need labels.",
   "source": "Week 4 lecture, slide 21 to 25",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-008",
@@ -155,7 +162,8 @@
   ],
   "explain": "The initial centres are placed at random, so different starting points can lead to different final clusters. The value of k is fixed by the user.",
   "source": "Week 4 lecture, slide 21",
-  "flag": "Run to run variation is textbook knowledge. The slide only shows that centres start at random."
+  "flag": "Run to run variation is textbook knowledge. The slide only shows that centres start at random.",
+  "core": false
  },
  {
   "id": "w04-009",
@@ -174,7 +182,8 @@
   ],
   "explain": "Convergence is reached when repeating the assign and move steps no longer changes which cluster any point belongs to.",
   "source": "Week 4 lecture, slide 25 and 26",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w04-010",
@@ -193,7 +202,8 @@
   ],
   "explain": "Inertia keeps falling as more clusters are added, so the lowest value would always point to the largest k. This is why the elbow, where improvement drops sharply, is used to choose k instead of the minimum.",
   "source": "Week 4 lecture, slide 29 and 31",
-  "flag": "The slide says inertia falls as k rises, the conclusion about not using the minimum is a standard reading."
+  "flag": "The slide says inertia falls as k rises, the conclusion about not using the minimum is a standard reading.",
+  "core": true
  },
  {
   "id": "w04-011",
@@ -212,7 +222,8 @@
   ],
   "explain": "Adding clusters helps a lot at first, then very little. The bend where this change happens is the elbow, although it can be hard to see.",
   "source": "Week 4 lecture, slide 31",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w04-012",
@@ -231,7 +242,8 @@
   ],
   "explain": "Values near 1 mean a well clustered point and values near 0 mean it sits between clusters. Negative values suggest it may be in the wrong cluster.",
   "source": "Week 4 lecture, slide 32",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-013",
@@ -253,7 +265,8 @@
   ],
   "explain": "Cohesion measures tightness within a cluster and separation measures distance to the nearest other cluster. The overall score is the average over all points, and each value lies between minus one and plus one.",
   "source": "Week 4 lecture, slide 32",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w04-014",
@@ -272,7 +285,8 @@
   ],
   "explain": "The best k is the one that maximises the average silhouette score. Too few clusters give low separation and too many give fragmented, unstable clusters.",
   "source": "Week 4 lecture, slide 33",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w04-015",
@@ -291,7 +305,8 @@
   ],
   "explain": "DBSCAN is density based and is good for irregular cluster shapes. K-means favours compact groups around centres.",
   "source": "Week 4 lecture, slide 13",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-016",
@@ -310,7 +325,8 @@
   ],
   "explain": "A dendrogram is the tree produced by hierarchical clustering. The other methods do not produce one.",
   "source": "Week 4 lecture, slide 13",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w04-017",
@@ -333,7 +349,8 @@
   ],
   "explain": "Fewer features speed things up, remove noise, reduce overfitting and allow plotting. Reducing features never creates labels.",
   "source": "Week 4 lecture, slide 35",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-018",
@@ -352,7 +369,8 @@
   ],
   "explain": "Principal component analysis finds new axes, the principal components, along which the data varies most, and projects the data onto them. It is not a clustering or prediction method.",
   "source": "Week 4 lecture, slide 36",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-019",
@@ -371,7 +389,8 @@
   ],
   "explain": "Linear discriminant analysis uses class labels to separate classes. Principal component analysis uses no labels and keeps variance.",
   "source": "Week 4 lecture, slide 36",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w04-020",
@@ -390,7 +409,8 @@
   ],
   "explain": "Each eigenvalue shows how much the data varies along its direction, which is what the explained variance ratio is built from. Directions with large eigenvalues are the components worth keeping.",
   "source": "Week 4 lecture, slide 39 to 42",
-  "flag": "The link from eigenvalue size to explained variance is standard textbook linear algebra, the slides show it only through the explained variance ratio."
+  "flag": "The link from eigenvalue size to explained variance is standard textbook linear algebra, the slides show it only through the explained variance ratio.",
+  "core": false
  },
  {
   "id": "w04-021",
@@ -409,7 +429,8 @@
   ],
   "explain": "If a few components hold most of the variance, the features overlap heavily, so a low dimensional summary loses little information. It says nothing direct about the number of clusters.",
   "source": "Week 4 lecture, slide 44",
-  "flag": "The slide gives the variance figures, the interpretation about redundancy is standard."
+  "flag": "The slide gives the variance figures, the interpretation about redundancy is standard.",
+  "core": false
  },
  {
   "id": "w04-022",
@@ -429,7 +450,8 @@
   ],
   "explain": "K-means needs k set in advance and it moves each centre to the mean of its points. It uses no labels and favours compact groups.",
   "source": "Week 4 lecture, slide 19 to 25",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w04-023",
@@ -452,7 +474,8 @@
   ],
   "explain": "The first four reduce the number of features. DBSCAN is a density based clustering method.",
   "source": "Week 4 lecture, slide 13 and 36",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w04-024",
@@ -468,7 +491,8 @@
    "Gives a correct example of each, such as predicting prices and grouping customers"
   ],
   "source": "Week 4 lecture, slide 6",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-025",
@@ -484,7 +508,8 @@
    "Gives a valid application such as segmentation"
   ],
   "source": "Week 4 lecture, slide 12 and 14",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-026",
@@ -501,7 +526,8 @@
    "Mentions minimising squared distances"
   ],
   "source": "Week 4 lecture, slide 19 to 26",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-027",
@@ -517,7 +543,8 @@
    "Notes the elbow can be hard to see"
   ],
   "source": "Week 4 lecture, slide 29 to 31",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-028",
@@ -533,7 +560,8 @@
    "Says the best k maximises the score"
   ],
   "source": "Week 4 lecture, slide 32 and 33",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-029",
@@ -549,7 +577,8 @@
    "Gives one situation where each method would be chosen"
   ],
   "source": "Week 4 lecture, slide 13 and 19",
-  "flag": "The point that k-means favours compact round groups is standard knowledge, the slide only says DBSCAN suits arbitrary shapes."
+  "flag": "The point that k-means favours compact round groups is standard knowledge, the slide only says DBSCAN suits arbitrary shapes.",
+  "core": true
  },
  {
   "id": "w04-030",
@@ -565,7 +594,8 @@
    "Names a method"
   ],
   "source": "Week 4 lecture, slide 34 to 36",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-031",
@@ -581,7 +611,8 @@
    "Says the data is projected onto the top components"
   ],
   "source": "Week 4 lecture, slide 37 to 44",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w04-032",
@@ -596,6 +627,7 @@
    "Says t-SNE is non-linear and preserves local structure for visualisation"
   ],
   "source": "Week 4 lecture, slide 36",
-  "flag": ""
+  "flag": "",
+  "core": false
  }
 ]

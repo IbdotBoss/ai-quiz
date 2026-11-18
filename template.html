@@ -133,7 +133,7 @@ const VIR = ["#440154","#482878","#3e4a89","#31688e","#26828e","#1f9e89","#35b77
 const Q = DATA.questions, BYID = Object.fromEntries(Q.map(q => [q.id, q]));
 const BYDECK = Object.fromEntries(Q.map(q => [q.deck, q.week]));
 const LS = "ai-quiz-v1";
-let st = {sc:{}, seen:{}, run:null, hist:[], ai:"claude", aiTemp:false};
+let st = {sc:{}, seen:{}, run:null, hist:[], ai:"claude", aiTemp:false, core:true};
 try { Object.assign(st, JSON.parse(localStorage.getItem(LS) || "{}")); } catch(e) {}
 const save = () => { try { localStorage.setItem(LS, JSON.stringify(st)); } catch(e) {} };
 const app = document.getElementById("app");
@@ -142,6 +142,8 @@ const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { c
 const isEx = q => q.type === "explain";
 const marks = q => isEx(q) ? q.points.length : 1;
 const same = (a, b) => a.length === b.length && a.every(x => b.includes(x));
+// The core set is one multiple choice and one written question per main topic. See select_core.py.
+const CORE = Q.filter(q => q.core), pool = () => st.core ? CORE : Q;
 const weeksPresent = [...new Set(Q.map(q => q.week))].sort((a, b) => a - b);
 let tick = null, first = true;
 const focusOn = sel => { const e = app.querySelector(sel); if (e) { e.tabIndex = -1; e.focus({preventScroll:true}); } };
@@ -198,13 +200,13 @@ const aiName = () => (AI[st.ai] || AI.claude).name;
 
 /* ---------- home ---------- */
 function cell(week, ex) {
-  const qs = Q.filter(q => q.week === week && isEx(q) === ex), tried = qs.filter(q => q.id in st.sc);
+  const qs = pool().filter(q => q.week === week && isEx(q) === ex), tried = qs.filter(q => q.id in st.sc);
   const frac = qs.length ? tried.reduce((s, q) => s + st.sc[q.id], 0) / qs.length : 0;
   return {qs, tried:tried.length, frac};
 }
 function home() {
   clearInterval(tick);
-  const weak = Q.filter(q => q.id in st.sc && st.sc[q.id] < 1).length;
+  const weak = pool().filter(q => q.id in st.sc && st.sc[q.id] < 1).length;
   const resume = st.run && !st.run.done;
   const last = st.hist.slice(-5).reverse();
   const td = (w, ex) => {
@@ -221,7 +223,13 @@ function home() {
     <h1>Artificial Intelligence test practice</h1>
     <p>The test is 50 minutes on a computer in Week 12, and the questions are mostly written answers. This page has ${Q.length} practice questions from the Week 1 to ${weeksPresent[weeksPresent.length - 1]} lectures.</p>
   </header>
-  <h2 id="hm">Questions you have right, by week</h2>
+  <fieldset><legend><h2>Which questions to practise</h2></legend>
+    <div class="row" style="flex-direction:column;gap:0">
+      <label class="o"><input type="radio" name="core" value="1" ${st.core ? "checked" : ""}><span>Core set, ${CORE.length} questions. One multiple choice and one written question on each main topic.</span></label>
+      <label class="o"><input type="radio" name="core" value="0" ${st.core ? "" : "checked"}><span>Full bank, ${Q.length} questions. Adds more questions on each topic and some smaller topics.</span></label>
+    </div>
+  </fieldset>
+  <h2 id="hm">${st.core ? "Core" : "All"} questions you have right, by week</h2>
   <table class="plot" aria-labelledby="hm">
     <thead><tr><th scope="col"><span class="vh">Week</span></th><th scope="col">Multiple choice</th><th scope="col">Written answer</th></tr></thead>
     <tbody>${weeksPresent.map(w => `<tr><th scope="row"><button class="wk" data-week="${w}" aria-label="Week ${w}, ${esc(WEEKS[w] || "")}. Open notes and questions."><b>${w}</b><span>${esc(WEEKS[w] || "")}</span></button></th>${td(w, false)}${td(w, true)}</tr>`).join("")}</tbody>
@@ -249,16 +257,17 @@ function home() {
     const w = +b.dataset.w, ex = b.dataset.ex === "1", c = cell(w, ex);
     start({title:`Week ${w}, ${ex ? "written answers" : "multiple choice"}`, ids:weakest(c.qs).slice(0, ex ? 5 : 10).map(q => q.id)});
   });
+  app.querySelectorAll("input[name=core]").forEach(e => e.onchange = () => { st.core = e.value === "1"; save(); const y = window.scrollY; home(); window.scrollTo(0, y); app.querySelector("input[name=core]:checked").focus(); });
   app.querySelectorAll("input[name=ai]").forEach(e => e.onchange = () => { st.ai = e.value; save(); });
   document.getElementById("ai-temp").onchange = e => { st.aiTemp = e.target.checked; save(); };
   on("resume", () => show());
   on("m-timed", () => {
-    const ex = Q.filter(isEx), ids = [];
+    const ex = pool().filter(isEx), ids = [];
     shuffle(weeksPresent).forEach(w => { const pick = weakest(ex.filter(q => q.week === w))[0]; if (pick && ids.length < 8) ids.push(pick.id); });
     start({title:"Timed written paper", ids, exam:true, limit:50 * 60});
   });
-  on("m-mixed", () => start({title:"Mixed set", ids:shuffle([...weakest(Q.filter(q => !isEx(q))).slice(0, 10), ...weakest(Q.filter(isEx)).slice(0, 5)]).map(q => q.id)}));
-  on("m-weak", () => start({title:"Questions to redo", ids:weakest(Q.filter(q => q.id in st.sc && st.sc[q.id] < 1)).slice(0, 20).map(q => q.id)}));
+  on("m-mixed", () => start({title:"Mixed set", ids:shuffle([...weakest(pool().filter(q => !isEx(q))).slice(0, 10), ...weakest(pool().filter(isEx)).slice(0, 5)]).map(q => q.id)}));
+  on("m-weak", () => start({title:"Questions to redo", ids:weakest(pool().filter(q => q.id in st.sc && st.sc[q.id] < 1)).slice(0, 20).map(q => q.id)}));
   on("m-notes", () => notes(DATA.notes[0] && DATA.notes[0].deck));
 }
 

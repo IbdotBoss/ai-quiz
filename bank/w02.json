@@ -16,7 +16,8 @@
   ],
   "explain": "Machine learning improves at a task by learning from data, usually historical. Hand-written rules are what it replaces.",
   "source": "Week 2 lecture, slide 3",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w02-002",
@@ -35,7 +36,8 @@
   ],
   "explain": "Reinforcement learning is trial and error guided by rewards. Supervised learning needs labelled examples and unsupervised learning looks for structure.",
   "source": "Week 2 lecture, slide 3",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-003",
@@ -57,7 +59,8 @@
   ],
   "explain": "The building blocks are data, a model family, a loss, optimisation and evaluation. Data quality, bias and leakage still need care and are never guaranteed.",
   "source": "Week 2 lecture, slide 4",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-004",
@@ -76,7 +79,8 @@
   ],
   "explain": "Behaviour that changes over time is called concept drift, and retraining adapts the model to it. Rules can be edited, but a growing rule set becomes hard to manage.",
   "source": "Week 2 lecture, slide 5",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w02-005",
@@ -100,7 +104,8 @@
   ],
   "explain": "Deterministic logic, safety critical use, tiny data and a need for transparency all favour rules. Complex patterns and changing data are where machine learning helps.",
   "source": "Week 2 lecture, slide 5 and 7",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-006",
@@ -119,7 +124,8 @@
   ],
   "explain": "Default or no default is a category, so this is classification. Regression predicts a continuous value such as a price or a time.",
   "source": "Week 2 lecture, slide 12 and 14",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w02-007",
@@ -141,7 +147,8 @@
   ],
   "explain": "Classification predicts discrete classes. Yield and journey time are continuous numbers, which makes them regression.",
   "source": "Week 2 lecture, slide 14",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-008",
@@ -160,7 +167,8 @@
   ],
   "explain": "Regression returns a numeric estimate of a continuous value. The other three produce a category.",
   "source": "Week 2 lecture, slide 12 and 14",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-009",
@@ -179,7 +187,8 @@
   ],
   "explain": "The threshold is a decision made after the model produces its probabilities. Moving it trades false alarms against missed cases.",
   "source": "Week 2 lecture, slide 16",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w02-010",
@@ -198,7 +207,8 @@
   ],
   "explain": "Precision asks how many predicted positives are truly positive, so it matters when false positives are costly. Recall focuses on missed positives instead.",
   "source": "Week 2 lecture, slide 24",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w02-011",
@@ -217,7 +227,8 @@
   ],
   "explain": "Recall is the share of actual positives that were caught, so it matters when missing a case is costly. Specificity concerns healthy people correctly cleared.",
   "source": "Week 2 lecture, slide 24 and 25",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-012",
@@ -236,7 +247,8 @@
   ],
   "explain": "Accuracy counts all correct predictions, and the majority class makes up most of them. This is why accuracy can mislead and measures such as F1 are preferred.",
   "source": "Week 2 lecture, slide 24",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-013",
@@ -259,7 +271,8 @@
   ],
   "explain": "The matrix holds true positives, false positives, true negatives and false negatives. It is a classification tool, so the regression option is wrong.",
   "source": "Week 2 lecture, slide 23",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-014",
@@ -278,7 +291,8 @@
   ],
   "explain": "F1 is the harmonic mean of precision and recall, so it gives one balanced number. It is useful when classes are imbalanced.",
   "source": "Week 2 lecture, slide 24",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-015",
@@ -297,7 +311,8 @@
   ],
   "explain": "Each point on the curve is one threshold. AUC, the area under the curve, summarises how well the model ranks positives above negatives.",
   "source": "Week 2 lecture, slide 25",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-016",
@@ -319,7 +334,8 @@
   ],
   "explain": "A single tree of if then rules describes a decision tree, not a support vector machine, which uses the kernel trick. k-NN does very little work until it is asked to predict.",
   "source": "Week 2 lecture, slide 26 and 35",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-017",
@@ -338,7 +354,8 @@
   ],
   "explain": "The neighbours counted at each k differ, so the majority may differ. The labels and the distance measure stay the same.",
   "source": "Week 2 lecture, slide 31 to 34",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w02-018",
@@ -357,7 +374,8 @@
   ],
   "explain": "There is no real training phase. The cost comes at prediction time, when distances to the training points are computed.",
   "source": "Week 2 lecture, slide 35",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-019",
@@ -376,7 +394,8 @@
   ],
   "explain": "Classification uses a majority vote and regression uses an average of the neighbours' values. Both use the k nearest points.",
   "source": "Week 2 lecture, slide 36",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-020",
@@ -395,7 +414,8 @@
   ],
   "explain": "Distance is driven by the feature with the largest numeric range, here income in pounds. Scaling puts features on a comparable footing.",
   "source": "Week 2 lecture, slide 36 and 39",
-  "flag": "The slides state that k-NN is sensitive to irrelevant features and the Week 1 slides mention scaling for distance models. The unscaled income example is standard textbook knowledge."
+  "flag": "The slides state that k-NN is sensitive to irrelevant features and the Week 1 slides mention scaling for distance models. The unscaled income example is standard textbook knowledge.",
+  "core": false
  },
  {
   "id": "w02-021",
@@ -417,7 +437,8 @@
   ],
   "explain": "The two wrong options fail because k-NN works for classification and regression, and because it is non-parametric it assumes no particular data distribution.",
   "source": "Week 2 lecture, slide 35 and 39",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-022",
@@ -436,7 +457,8 @@
   ],
   "explain": "Validation data shows how each k performs on unseen examples, and cross-validation makes the comparison more reliable. Judging on training data would favour k equal to one, which memorises the training set.",
   "source": "Week 2 lecture, slide 37",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-023",
@@ -455,7 +477,8 @@
   ],
   "explain": "Gini impurity is the chance of mislabelling a random sample if it is labelled by the node's class mix. A pure node, where all samples share one class, has an impurity of zero.",
   "source": "Week 2 lecture, slide 42",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w02-024",
@@ -474,7 +497,8 @@
   ],
   "explain": "The tree tries each split and keeps the one with the greatest gain, meaning the largest drop in weighted impurity. The number of values a feature has does not decide this.",
   "source": "Week 2 lecture, slide 44",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-025",
@@ -498,7 +522,8 @@
   ],
   "explain": "A tree stops when a node is pure, no features remain, or a limit such as maximum depth or minimum samples is reached. Shuffling the data and a node that still holds several classes are not reasons to stop.",
   "source": "Week 2 lecture, slide 46",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-026",
@@ -517,7 +542,8 @@
   ],
   "explain": "An impure leaf still predicts its majority class. The share of that class gives an estimated probability.",
   "source": "Week 2 lecture, slide 45 to 47",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-027",
@@ -533,7 +559,8 @@
    "Reinforcement uses trial and error with rewards"
   ],
   "source": "Week 2 lecture, slide 3",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w02-028",
@@ -549,7 +576,8 @@
    "Deterministic, safety critical or transparent needs favour rules"
   ],
   "source": "Week 2 lecture, slide 5 and 7",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w02-029",
@@ -565,7 +593,8 @@
    "Regression predicts a continuous value with a valid example"
   ],
   "source": "Week 2 lecture, slide 10 to 14",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w02-030",
@@ -581,7 +610,8 @@
    "Describes the effect of raising or lowering it"
   ],
   "source": "Week 2 lecture, slide 16",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w02-031",
@@ -597,7 +627,8 @@
    "Recall matters when false negatives are costly with an example"
   ],
   "source": "Week 2 lecture, slide 24",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w02-032",
@@ -613,7 +644,8 @@
    "Suggests precision, recall, F1 or the confusion matrix"
   ],
   "source": "Week 2 lecture, slide 23 and 24",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-033",
@@ -629,7 +661,8 @@
    "Non-parametric means no assumed data distribution"
   ],
   "source": "Week 2 lecture, slide 35 and 36",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w02-034",
@@ -645,7 +678,8 @@
    "Pick the best and optionally use cross-validation"
   ],
   "source": "Week 2 lecture, slide 37 and 39",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w02-035",
@@ -661,7 +695,8 @@
    "Picks the split with the largest gain and repeats on the children"
   ],
   "source": "Week 2 lecture, slide 42 to 45",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w02-036",
@@ -677,6 +712,7 @@
    "Impure leaf gives an estimated probability"
   ],
   "source": "Week 2 lecture, slide 46 and 47",
-  "flag": ""
+  "flag": "",
+  "core": false
  }
 ]

@@ -16,7 +16,8 @@
   ],
   "explain": "EDA happens before formal modelling. It builds a picture of the data's content, quality, relationships and anomalies. Tuning, deployment and validation come later.",
   "source": "Week 1 data lecture, slide 12",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01b-002",
@@ -38,7 +39,8 @@
   ],
   "explain": "EDA finds problems with the data and hints at suitable methods. It cannot give final performance because no model has been tested yet.",
   "source": "Week 1 data lecture, slide 13",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-003",
@@ -57,7 +59,8 @@
   ],
   "explain": "The order is observation, hypothesis, experimentation, analysis and conclusion. Analysis needs results from the experiment first.",
   "source": "Week 1 data lecture, slide 9",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-004",
@@ -79,7 +82,8 @@
   ],
   "explain": "AI accelerates discovery and automates routine work. Research using AI still follows the scientific method with peer review and reproducibility.",
   "source": "Week 1 data lecture, slide 8 and 9",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-005",
@@ -98,7 +102,8 @@
   ],
   "explain": "Cross-validation, statistical testing and benchmarking check whether the model really works. Choosing and justifying an algorithm belongs to model development.",
   "source": "Week 1 data lecture, slide 10",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-006",
@@ -117,7 +122,8 @@
   ],
   "explain": "Time series are observations indexed by time, so order and the dependence between readings matter. Tabular rows are treated as separate entities.",
   "source": "Week 1 data lecture, slide 11 and 27",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01b-007",
@@ -136,7 +142,8 @@
   ],
   "explain": "Audio is profiled by sampling rate, duration and spectrograms. Tokenisation belongs to text, autocorrelation and seasonality to time series, and shape and channels to images.",
   "source": "Week 1 data lecture, slide 11",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-008",
@@ -155,7 +162,8 @@
   ],
   "explain": "Schema and integrity checks look for duplicated rows and identifier collisions, which signal broken joins. Outliers and imbalance are different problems.",
   "source": "Week 1 data lecture, slide 16",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01b-009",
@@ -174,7 +182,8 @@
   ],
   "explain": "A value of 250 cannot be a real age, so it is probably an entry error. A very high income can be real, so it calls for a modelling choice such as a transform, not automatic removal.",
   "source": "Week 1 data lecture, slide 19",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-010",
@@ -193,7 +202,8 @@
   ],
   "explain": "Features with very different ranges can distort distance-based methods and make optimisation unstable. Standard, robust or power scaling may then be used.",
   "source": "Week 1 data lecture, slide 20",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-011",
@@ -212,7 +222,8 @@
   ],
   "explain": "Correlations that are too perfect are a warning of leakage. A model using the leaked feature would look good in testing but fail on real new data.",
   "source": "Week 1 data lecture, slide 21 and 13",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-012",
@@ -231,7 +242,8 @@
   ],
   "explain": "It is measured with the variance inflation factor and helps decide which variables to drop, combine or regularise. How strongly each feature relates to the target is a different check, called target relationships.",
   "source": "Week 1 data lecture, slide 22",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-013",
@@ -253,7 +265,8 @@
   ],
   "explain": "Imbalance makes accuracy misleading and can hide poor performance on the rare class. Deleting that class removes the very cases you care about.",
   "source": "Week 1 data lecture, slide 24",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-014",
@@ -272,7 +285,8 @@
   ],
   "explain": "The split should reflect how the data were generated. Random shuffling would let the model train on days after the ones it is tested on, which gives overly optimistic results.",
   "source": "Week 1 data lecture, slide 25",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-015",
@@ -291,7 +305,8 @@
   ],
   "explain": "If records of the same patient appear in training and test sets, the model can recognise the person. Grouped entities need grouped splitting.",
   "source": "Week 1 data lecture, slide 25",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-016",
@@ -313,7 +328,8 @@
   ],
   "explain": "PCA shows how variance is concentrated across directions. It does not prove causes and it is not a missingness check.",
   "source": "Week 1 data lecture, slide 26",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-017",
@@ -336,7 +352,8 @@
   ],
   "explain": "Order is the defining feature of a time series. Because of this, observations are rarely independent.",
   "source": "Week 1 data lecture, slide 27",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01b-018",
@@ -355,7 +372,8 @@
   ],
   "explain": "A changing mean means the series is not stationary. Differencing and detrending are the standard remedies, and a log transform helps when the variance changes.",
   "source": "Week 1 data lecture, slide 32",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-019",
@@ -374,7 +392,8 @@
   ],
   "explain": "A transient spike may be noise while a persistent level change means the data regime shifted. The two need different modelling responses.",
   "source": "Week 1 data lecture, slide 34",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-020",
@@ -393,7 +412,8 @@
   ],
   "explain": "Function words such as the and and dominate counts without telling much about the task. Removing them cuts noise and dimensionality.",
   "source": "Week 1 data lecture, slide 38",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01b-021",
@@ -412,7 +432,8 @@
   ],
   "explain": "Lowercasing merges variants such as AI and ai, which reduces sparsity. The risk is losing meaning when capitalisation matters.",
   "source": "Week 1 data lecture, slide 39",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-022",
@@ -434,7 +455,8 @@
   ],
   "explain": "Cleansing should standardise text without changing its meaning. Rewriting and deleting words change what the text says.",
   "source": "Week 1 data lecture, slide 40",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-023",
@@ -453,7 +475,8 @@
   ],
   "explain": "Multiword expressions carry meaning that counts of single words lose. Turning words into numbers in a continuous space is what an embedding does.",
   "source": "Week 1 data lecture, slide 44 and 46",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-024",
@@ -472,7 +495,8 @@
   ],
   "explain": "Embedding plots show structure in the corpus, such as clusters and outliers, and give early evidence of how separable the labels are. Vocabulary counts, empty texts and noise indicators come from other EDA steps.",
   "source": "Week 1 data lecture, slide 46",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-025",
@@ -494,7 +518,8 @@
   ],
   "explain": "Duplicates across training and test sets inflate results because the model has seen the same picture. Hashes and embeddings detect them.",
   "source": "Week 1 data lecture, slide 52",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01b-026",
@@ -510,7 +535,8 @@
    "Informs model choice, baselines and bias detection"
   ],
   "source": "Week 1 data lecture, slide 12 and 13",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01b-027",
@@ -526,7 +552,8 @@
    "Evaluation uses cross-validation and benchmarks, and knowledge contribution gives new methods or insights"
   ],
   "source": "Week 1 data lecture, slide 10",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-028",
@@ -542,7 +569,8 @@
    "Conclusion and publication with reproducibility and peer review"
   ],
   "source": "Week 1 data lecture, slide 9",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-029",
@@ -558,7 +586,8 @@
    "Errors are separated from legitimate extremes before deciding what to do"
   ],
   "source": "Week 1 data lecture, slide 17 and 19",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01b-030",
@@ -574,7 +603,8 @@
    "A correct example such as time-based or grouped splits"
   ],
   "source": "Week 1 data lecture, slide 25",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-031",
@@ -590,7 +620,8 @@
    "Responses include stratified splits, better metrics, weights or resampling"
   ],
   "source": "Week 1 data lecture, slide 24",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w01b-032",
@@ -606,7 +637,8 @@
    "Remedies such as differencing, detrending or transforms"
   ],
   "source": "Week 1 data lecture, slide 27 and 32",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01b-033",
@@ -622,7 +654,8 @@
    "Cleaning should preserve meaning"
   ],
   "source": "Week 1 data lecture, slide 38 to 40",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01b-034",
@@ -638,7 +671,8 @@
    "Duplicates across splits cause leakage and optimistic results"
   ],
   "source": "Week 1 data lecture, slide 47 to 52",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w01b-035",
@@ -654,6 +688,7 @@
    "Notes that each modality needs its own EDA workflow"
   ],
   "source": "Week 1 data lecture, slide 11",
-  "flag": ""
+  "flag": "",
+  "core": true
  }
 ]

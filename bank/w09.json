@@ -16,7 +16,8 @@
   ],
   "explain": "Segmentation localises the target by assigning a class to every pixel. Classification only returns one label for the entire picture.",
   "source": "Week 9 lecture, slide 8",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-002",
@@ -35,7 +36,8 @@
   ],
   "explain": "Classification cannot say where an object is or how many there are, and one label does not fit a scene with several objects. That is why methods that locate objects are needed.",
   "source": "Week 9 lecture, slide 5",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w09-003",
@@ -57,7 +59,8 @@
   ],
   "explain": "Segmentation needs a mask for every training image, which takes a lot of effort. A single label or a box description would not give pixel level detail.",
   "source": "Week 9 lecture, slide 6 and 9",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-004",
@@ -76,7 +79,8 @@
   ],
   "explain": "Unlike a classifier, which gives one label, a segmentation network produces a prediction mask that localises the object. Boxes with confidence scores belong to object detection.",
   "source": "Week 9 lecture, slide 7",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w09-005",
@@ -98,7 +102,8 @@
   ],
   "explain": "Segmentation suits tasks that need localisation, such as medical imaging, self driving cars and satellite analysis. Labelling whole photos is plain classification.",
   "source": "Week 9 lecture, slide 8 and 13",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w09-006",
@@ -117,7 +122,8 @@
   ],
   "explain": "U-Net shrinks the image in contraction blocks, passes through a bottleneck and then rebuilds an image in expansion blocks. The shape of this layout looks like a U.",
   "source": "Week 9 lecture, slide 10 and 11",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-007",
@@ -136,7 +142,8 @@
   ],
   "explain": "Max pooling throws away detail on the way down. Copying and cropping the earlier feature maps hands some of that detail back so the reconstructed mask is sharper.",
   "source": "Week 9 lecture, slide 11",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w09-008",
@@ -159,7 +166,8 @@
   ],
   "explain": "U-Net encodes then rebuilds the image, with the bottleneck in the middle and up sampling in the expansion path. It outputs a mask, not boxes, and needs mask labels.",
   "source": "Week 9 lecture, slide 10 and 11",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w09-009",
@@ -178,7 +186,8 @@
   ],
   "explain": "Segmentation produces a detailed pixel level mask of each object. Detection gives a box and a label, a rougher but quicker result.",
   "source": "Week 9 lecture, slide 13",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-010",
@@ -197,7 +206,8 @@
   ],
   "explain": "Only a pixel level mask shows the exact outline. Boxes are too coarse and a whole image label gives no location at all.",
   "source": "Week 9 lecture, slide 13",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-011",
@@ -216,7 +226,8 @@
   ],
   "explain": "Detection gives faster boxes and labels, which suits real time work. A single frame label cannot say where each pedestrian or vehicle is.",
   "source": "Week 9 lecture, slide 13 and 18",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w09-012",
@@ -235,7 +246,8 @@
   ],
   "explain": "A one hot vector names the class but says nothing about where the object is. A detection label adds the box centre, width and height.",
   "source": "Week 9 lecture, slide 15",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-013",
@@ -257,7 +269,8 @@
   ],
   "explain": "A detection label has at least five values, which are x, y, width, height and class. A pixel mask belongs to segmentation.",
   "source": "Week 9 lecture, slide 15 and 16",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w09-014",
@@ -276,7 +289,8 @@
   ],
   "explain": "YOLO stands for You Only Look Once, because it looks at the whole image in a single pass. It still uses a CNN and it does not label every pixel.",
   "source": "Week 9 lecture, slide 18",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-015",
@@ -298,7 +312,8 @@
   ],
   "explain": "Images are resized, normalised and split into a grid. Normalising stops large pixel values dominating and helps the network learn faster. Grayscale conversion and masks are not part of it.",
   "source": "Week 9 lecture, slide 19",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w09-016",
@@ -317,7 +332,8 @@
   ],
   "explain": "Each cell detects objects whose centre falls inside it. This is quicker than checking every possible region as R-CNN does.",
   "source": "Week 9 lecture, slide 19",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-017",
@@ -339,7 +355,8 @@
   ],
   "explain": "YOLO gives each grid cell the job of detecting objects centred in it and predicts multiple boxes with confidence scores per cell. All four statements are correct.",
   "source": "Week 9 lecture, slide 19, 24 and 25",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w09-018",
@@ -358,7 +375,8 @@
   ],
   "explain": "The backbone is a CNN that builds the feature map from which boxes and classes are predicted. Removing overlaps is the job of non maximum suppression.",
   "source": "Week 9 lecture, slide 22",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w09-019",
@@ -377,7 +395,8 @@
   ],
   "explain": "Each box gives x and y for the centre, w and h for the size, and a probability that an object is present. A pixel mask belongs to segmentation.",
   "source": "Week 9 lecture, slide 24",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-020",
@@ -396,7 +415,8 @@
   ],
   "explain": "A cell may hold a car and a person, which need differently shaped boxes. Several anchors let the model cover varied shapes.",
   "source": "Week 9 lecture, slide 25",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-021",
@@ -415,7 +435,8 @@
   ],
   "explain": "Older versions used softmax so each object received one class. Sigmoid lets several classes apply to the same object, which is useful for multi label problems.",
   "source": "Week 9 lecture, slide 28",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-022",
@@ -434,7 +455,8 @@
   ],
   "explain": "Many boxes can land on one object. Non maximum suppression keeps the best box and discards the duplicates so each object appears once.",
   "source": "Week 9 lecture, slide 29",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-023",
@@ -458,7 +480,8 @@
   ],
   "explain": "The procedure keeps the most confident box and removes boxes that overlap it too much, then repeats. It is the overlap with the kept box that decides, not confidence alone.",
   "source": "Week 9 lecture, slide 29",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w09-024",
@@ -477,7 +500,8 @@
   ],
   "explain": "A high overlap with the chosen box shows the box is a duplicate of the same object, so it is removed. Overlap says nothing about class or confidence.",
   "source": "Week 9 lecture, slide 29",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-025",
@@ -493,7 +517,8 @@
    "Ground truth masks are labour intensive to produce"
   ],
   "source": "Week 9 lecture, slide 5 to 9",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-026",
@@ -509,7 +534,8 @@
    "The output is a reconstructed segmented image"
   ],
   "source": "Week 9 lecture, slide 10 and 11",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-027",
@@ -525,7 +551,8 @@
    "The rebuilt mask is more accurate"
   ],
   "source": "Week 9 lecture, slide 11",
-  "flag": "The last point about accuracy is a reasonable inference. Slide 11 only says copy and crop compensates for information loss."
+  "flag": "The last point about accuracy is a reasonable inference. Slide 11 only says copy and crop compensates for information loss.",
+  "core": false
  },
  {
   "id": "w09-028",
@@ -541,7 +568,8 @@
    "Gives one use for each, such as medical imaging for segmentation and vehicle detection for detection"
   ],
   "source": "Week 9 lecture, slide 13",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-029",
@@ -557,7 +585,8 @@
    "Detection says what the object is and where it is"
   ],
   "source": "Week 9 lecture, slide 15 and 16",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-030",
@@ -574,7 +603,8 @@
    "The output is boxes with class labels and confidence scores"
   ],
   "source": "Week 9 lecture, slide 18 to 31",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-031",
@@ -590,7 +620,8 @@
    "Anchors let a cell predict objects of different shapes and sizes"
   ],
   "source": "Week 9 lecture, slide 19, 21 and 25",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-032",
@@ -607,7 +638,8 @@
    "Repeat until all boxes are handled"
   ],
   "source": "Week 9 lecture, slide 29",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w09-033",
@@ -623,6 +655,7 @@
    "Sigmoid allows multiple classes per object"
   ],
   "source": "Week 9 lecture, slide 28",
-  "flag": ""
+  "flag": "",
+  "core": true
  }
 ]

@@ -16,7 +16,8 @@
   ],
   "explain": "Genetic algorithms are inspired by evolution. A population of solutions changes over generations, and the fitter ones are more likely to pass on their features.",
   "source": "Week 5 genetic algorithms lecture, slide 1 and 6",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05b-002",
@@ -35,7 +36,8 @@
   ],
   "explain": "A genetic algorithm works on a population. It selects parents from the current population by fitness and uses them to produce children for the next generation.",
   "source": "Week 5 genetic algorithms lecture, slide 7",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05b-003",
@@ -54,7 +56,8 @@
   ],
   "explain": "A chromosome is the full string and each gene is one position in it, a 0 or a 1 in the bitstring example. Fitness is the score of the chromosome, not the string itself.",
   "source": "Week 5 genetic algorithms lecture, slide 2 and 14",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05b-004",
@@ -73,7 +76,8 @@
   ],
   "explain": "Genes are the blocks that make up a chromosome. In the example each gene is a single bit.",
   "source": "Week 5 genetic algorithms lecture, slide 2 and 14",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05b-005",
@@ -92,7 +96,8 @@
   ],
   "explain": "Fitness measures success. In biology it is how well an organism does, and here it is how good a solution is. It is used to decide which solutions are kept.",
   "source": "Week 5 genetic algorithms lecture, slide 2 and 15",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05b-006",
@@ -111,7 +116,8 @@
   ],
   "explain": "Crossover is the recombination of genes from parents. Mutation instead changes bits at random in one chromosome.",
   "source": "Week 5 genetic algorithms lecture, slide 2, 4 and 16",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05b-007",
@@ -130,7 +136,8 @@
   ],
   "explain": "Mutation is a random change to the DNA or bitstring, like a copying error. It adds variety that crossover alone might not give.",
   "source": "Week 5 genetic algorithms lecture, slide 5 and 16",
-  "flag": "The purpose of adding variety is standard knowledge, the slides define mutation as a random change."
+  "flag": "The purpose of adding variety is standard knowledge, the slides define mutation as a random change.",
+  "core": false
  },
  {
   "id": "w05b-008",
@@ -149,7 +156,8 @@
   ],
   "explain": "The first step generates a set of random solutions, encoded for example as bitstrings, and then tests how good each one is.",
   "source": "Week 5 genetic algorithms lecture, slide 13 and 14",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05b-009",
@@ -172,7 +180,8 @@
   ],
   "explain": "The loop tests, removes weak solutions, duplicates strong ones and varies them until the best is good enough. Restarting at random each time would throw away what has been learned.",
   "source": "Week 5 genetic algorithms lecture, slide 13",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05b-010",
@@ -191,7 +200,8 @@
   ],
   "explain": "The loop repeats until the best solution is good enough. It does not stop after a fixed single pass.",
   "source": "Week 5 genetic algorithms lecture, slide 13 and 15",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05b-011",
@@ -213,7 +223,8 @@
   ],
   "explain": "The analytical method needs an equation, can be confused by several minima and does not scale to complex problems. It can find minima, and it does not need a population.",
   "source": "Week 5 genetic algorithms lecture, slide 11",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05b-012",
@@ -232,7 +243,8 @@
   ],
   "explain": "Blind guessing is basic trial and error, so it can be slow and can be misled by several minima. A genetic algorithm does better by building on good solutions.",
   "source": "Week 5 genetic algorithms lecture, slide 11 to 13",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05b-013",
@@ -251,7 +263,8 @@
   ],
   "explain": "Ranking, removing bad solutions, duplicating good ones and making small changes steers the search towards better answers instead of guessing blindly.",
   "source": "Week 5 genetic algorithms lecture, slide 13",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05b-014",
@@ -270,7 +283,8 @@
   ],
   "explain": "A genetic algorithm usually looks for the minimum of some quantity, which stands for an acceptable limit. Other kinds of problem are rewritten as minimisation problems to fit.",
   "source": "Week 5 genetic algorithms lecture, slide 8",
-  "flag": "The slide gives minimisation as the usual set up and says other problems are reformulated to fit."
+  "flag": "The slide gives minimisation as the usual set up and says other problems are reformulated to fit.",
+  "core": true
  },
  {
   "id": "w05b-015",
@@ -292,7 +306,8 @@
   ],
   "explain": "Genetic algorithms are most successful on large search spaces such as scheduling, route optimisation and finance. A short list or a known formula needs no search.",
   "source": "Week 5 genetic algorithms lecture, slide 1",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05b-016",
@@ -311,7 +326,8 @@
   ],
   "explain": "Approximate solutions can usually be found, but the problem has to be encoded as chromosomes, which is not always easy. They do not need an equation and can cope with several minima.",
   "source": "Week 5 genetic algorithms lecture, slide 18",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05b-017",
@@ -332,7 +348,8 @@
   ],
   "explain": "Crossover mixes parent genes, mutation is a random change and fitness measures success. The complete string is the chromosome, and a gene is one block within it.",
   "source": "Week 5 genetic algorithms lecture, slide 2, 4 and 5",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05b-018",
@@ -349,7 +366,8 @@
    "Says the loop repeats until the best solution is good enough"
   ],
   "source": "Week 5 genetic algorithms lecture, slide 6, 7, 13 and 14",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05b-019",
@@ -365,7 +383,8 @@
    "Says what each term means in biology"
   ],
   "source": "Week 5 genetic algorithms lecture, slide 2 and 14",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05b-020",
@@ -380,7 +399,8 @@
    "Explains that crossover mixes existing features while mutation adds new variety"
   ],
   "source": "Week 5 genetic algorithms lecture, slide 4, 5 and 16",
-  "flag": "The reason for using both is standard knowledge, the slides define each operator and use both in step 3."
+  "flag": "The reason for using both is standard knowledge, the slides define each operator and use both in step 3.",
+  "core": true
  },
  {
   "id": "w05b-021",
@@ -396,7 +416,8 @@
    "Says a genetic algorithm gives a guided search and approximate answers"
   ],
   "source": "Week 5 genetic algorithms lecture, slide 9 to 13",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w05b-022",
@@ -412,7 +433,8 @@
    "Mentions a random initial population"
   ],
   "source": "Week 5 genetic algorithms lecture, slide 14 and 15",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w05b-023",
@@ -427,6 +449,7 @@
    "Names large search spaces and gives an example such as scheduling or routes"
   ],
   "source": "Week 5 genetic algorithms lecture, slide 1 and 18",
-  "flag": ""
+  "flag": "",
+  "core": true
  }
 ]

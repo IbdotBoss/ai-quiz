@@ -16,7 +16,8 @@
   ],
   "explain": "The target is a number on a continuous scale, so this is regression. Classification would only fit if the company chose to predict a category such as high or low use.",
   "source": "Week 3 lecture, slide 7 and 12",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w03-002",
@@ -35,7 +36,8 @@
   ],
   "explain": "Pneumonia or no pneumonia is a discrete class. The other three predict numeric quantities, and a count of tickets is still treated as a numeric target.",
   "source": "Week 3 lecture, slide 9",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w03-003",
@@ -56,7 +58,8 @@
   ],
   "explain": "Features are the inputs and the label is the known output the model learns to predict. The wrong options swap these roles or claim the labels are not used during learning.",
   "source": "Week 3 lecture, slide 6",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w03-004",
@@ -75,7 +78,8 @@
   ],
   "explain": "Class probabilities and thresholds belong to classification. Regression gives a number such as a price or a temperature directly.",
   "source": "Week 3 lecture, slide 7",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w03-005",
@@ -94,7 +98,8 @@
   ],
   "explain": "Squaring makes a large error count far more than a small one, so mean squared error is pulled up by outliers. Mean absolute error treats every unit of error equally and is less sensitive.",
   "source": "Week 3 lecture, slide 19 and 20",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w03-006",
@@ -113,7 +118,8 @@
   ],
   "explain": "Taking the square root undoes the squaring and brings the error back to the units of the target, so it reads in familiar terms. It still reacts strongly to outliers, so the option about ignoring them fails.",
   "source": "Week 3 lecture, slide 21",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w03-007",
@@ -132,7 +138,8 @@
   ],
   "explain": "A value of 1 is a perfect fit and 0 means the model adds nothing over predicting the mean. Only a value below 0 means it is worse than that baseline.",
   "source": "Week 3 lecture, slide 22",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w03-008",
@@ -151,7 +158,8 @@
   ],
   "explain": "R-squared below 0 means the model is worse than the mean baseline. It is a warning that the model is poor, not a sign of a good fit.",
   "source": "Week 3 lecture, slide 22",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w03-009",
@@ -174,7 +182,8 @@
   ],
   "explain": "The four regression metrics all compare predictions with actual values. Silhouette score measures how good a clustering is, so it does not apply to regression.",
   "source": "Week 3 lecture, slide 18",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w03-010",
@@ -193,7 +202,8 @@
   ],
   "explain": "Ordinary least squares picks the line whose predictions are closest to the data, where closeness means the smallest sum of squared residuals. It does not group data or fix one error to zero.",
   "source": "Week 3 lecture, slide 26 and 27",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w03-011",
@@ -212,7 +222,8 @@
   ],
   "explain": "Linear regression is the model used when interpretability matters and the relationship is roughly linear. Tree ensembles are accurate but do not produce simple coefficients.",
   "source": "Week 3 lecture, slide 16 and 23",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w03-012",
@@ -231,7 +242,8 @@
   ],
   "explain": "Each tree predicts a number and the forest returns their average. Voting is for classification, and adding without dividing would make the answer grow with the number of trees.",
   "source": "Week 3 lecture, slide 30 to 32",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w03-013",
@@ -250,7 +262,8 @@
   ],
   "explain": "The trees are built on random rows and features, so they differ, and averaging evens out their individual errors. Building trees one after another to fix errors describes boosting instead.",
   "source": "Week 3 lecture, slide 23 and 30",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w03-014",
@@ -273,7 +286,8 @@
   ],
   "explain": "A random forest is an ensemble of trees, each trained on random rows and features, and it averages their predictions. It also handles non-linear data and outliers well. Correcting the errors of the previous tree is the idea behind gradient boosting, so that option is wrong.",
   "source": "Week 3 lecture, slide 23 and 30",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w03-015",
@@ -292,7 +306,8 @@
   ],
   "explain": "Random forest is a bagging method with independent trees averaged together. Boosting builds trees in sequence, each correcting the earlier ones.",
   "source": "Week 3 lecture, slide 23",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w03-016",
@@ -314,7 +329,8 @@
   ],
   "explain": "All four are reasons given for the value of regression. It quantifies relationships, forecasts numbers, supports hypothesis testing and is a foundation for advanced models.",
   "source": "Week 3 lecture, slide 16",
-  "flag": "Cause and effect wording follows the slide, in practice regression alone shows association."
+  "flag": "Cause and effect wording follows the slide, in practice regression alone shows association.",
+  "core": false
  },
  {
   "id": "w03-017",
@@ -333,7 +349,8 @@
   ],
   "explain": "The label is the target output, which here is price. The other columns are input features that the model uses to estimate it.",
   "source": "Week 3 lecture, slide 13",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w03-018",
@@ -352,7 +369,8 @@
   ],
   "explain": "Learning from rewards by trial and error is reinforcement learning. Supervised learning needs labelled examples and unsupervised learning looks for structure without feedback.",
   "source": "Week 3 lecture, slide 3",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w03-019",
@@ -374,7 +392,8 @@
   ],
   "explain": "R-squared compares the model with a mean baseline and measures explained variance. It has no units and it can be negative when the model is worse than the baseline.",
   "source": "Week 3 lecture, slide 22",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w03-020",
@@ -395,7 +414,8 @@
   ],
   "explain": "Regression predicts a continuous numeric value such as consumption or yield. Spam detection, breed identification and churn grouping all choose between classes.",
   "source": "Week 3 lecture, slide 9 and 12",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w03-021",
@@ -411,7 +431,8 @@
    "Mentions that both learn from labelled data"
   ],
   "source": "Week 3 lecture, slide 7 to 9",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w03-022",
@@ -427,7 +448,8 @@
    "Gives an example that names the inputs and the output, such as house size and price"
   ],
   "source": "Week 3 lecture, slide 5 and 6",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w03-023",
@@ -443,7 +465,8 @@
    "States that the result is the line that fits the data best"
   ],
   "source": "Week 3 lecture, slide 26 and 27",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w03-024",
@@ -459,7 +482,8 @@
    "Mentions robustness to outliers or less overfitting"
   ],
   "source": "Week 3 lecture, slide 30 to 32",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w03-025",
@@ -475,7 +499,8 @@
    "Says mean absolute error is less sensitive to outliers"
   ],
   "source": "Week 3 lecture, slide 19 and 20",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w03-026",
@@ -491,7 +516,8 @@
    "States that a negative value is worse than the baseline"
   ],
   "source": "Week 3 lecture, slide 22",
-  "flag": ""
+  "flag": "",
+  "core": false
  },
  {
   "id": "w03-027",
@@ -507,7 +533,8 @@
    "Gives one situation where each model would be chosen"
   ],
   "source": "Week 3 lecture, slide 23",
-  "flag": ""
+  "flag": "",
+  "core": true
  },
  {
   "id": "w03-028",
@@ -523,6 +550,7 @@
    "Notes that both are tree ensembles"
   ],
   "source": "Week 3 lecture, slide 23",
-  "flag": ""
+  "flag": "",
+  "core": true
  }
 ]
