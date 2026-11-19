@@ -352,8 +352,8 @@ function modelBlock(q, r, live, h) {
   const mine = r.pts[q.id] || [];
   return `<${h} class="sub">Model answer</${h}><p>${esc(q.model)}</p>
     <fieldset class="pts" data-id="${q.id}"><legend><${h} class="sub">Tick each point your answer made</${h}></legend>
-    <p class="s">${(r.auto[q.id] || []).length ? `The page has ticked ${r.auto[q.id].length} of ${q.points.length} because their key terms appear in your answer. It matches words and cannot judge meaning, so check each one.` : (r.text[q.id] || "").trim() ? "The page found too few key terms from any point in your answer, so nothing is ticked yet. Tick the points you did make." : "You did not write an answer, so nothing is ticked."}</p>
-    ${q.points.map((p, i) => `<label class="o"><input type="checkbox" value="${i}" ${mine.includes(i) ? "checked" : ""} ${live ? "" : "disabled"}><span>${esc(p)}${(r.auto[q.id] || []).includes(i) ? `<small class="ok">Key terms found in your answer</small>` : ""}</span><span></span></label>`).join("")}</fieldset>${srcLine(q)}`;
+    <p class="s">${(r.auto[q.id] || []).length ? `Key terms from ${r.auto[q.id].length} of ${q.points.length} points appear in your answer. The page matches words and cannot judge meaning, so it ticks nothing. Only your ticks count.` : (r.text[q.id] || "").trim() ? "The page found too few key terms from any point in your answer. Tick the points you did make." : "You did not write an answer, so nothing is ticked."}</p>
+    ${q.points.map((p, i) => `<label class="o"><input type="checkbox" value="${i}" ${mine.includes(i) ? "checked" : ""} ${live ? "" : "disabled"}><span>${esc(p)}${(r.auto[q.id] || []).includes(i) ? `<small class="ok">Key terms found. Did you make this point?</small>` : ""}</span><span></span></label>`).join("")}</fieldset>${srcLine(q)}`;
 }
 
 function question() {
@@ -393,7 +393,7 @@ function question() {
   on("quit", () => { if (!r.exam) st.run = null; save(); home(); window.scrollTo(0, 0); });
   on("prev", () => go(r.i - 1));
   on("next", () => r.i < n - 1 ? go(r.i + 1) : finish());
-  on("chk", () => { r.checked[q.id] = true; if (ex) { r.auto[q.id] = autoTick(q, r.text[q.id] || ""); r.pts[q.id] = r.auto[q.id].slice(); } record(r, q); save(); question(); });
+  on("chk", () => { r.checked[q.id] = true; if (ex) { r.auto[q.id] = autoTick(q, r.text[q.id] || ""); r.pts[q.id] = []; } record(r, q); save(); question(); });
   const fin = () => {
     const left = r.ids.filter(id => !answered(r, id)).length;
     if (!left) return finish();
@@ -416,7 +416,7 @@ function finish() {
   clearInterval(tick);
   const r = st.run;
   r.done = true; r.took = Math.floor((Date.now() - r.t0) / 1000);
-  if (r.exam) r.ids.forEach(id => { const q = BYID[id]; if (isEx(q)) { r.auto[id] = autoTick(q, r.text[id] || ""); r.pts[id] = r.auto[id].slice(); } record(r, q); });
+  if (r.exam) r.ids.forEach(id => { const q = BYID[id]; if (isEx(q)) { r.auto[id] = autoTick(q, r.text[id] || ""); r.pts[id] = []; } record(r, q); });
   st.hist.push({title:r.title, score:0, total:0, at:Date.now()}); st.hist = st.hist.slice(-30);
   tally(); save(); results(); window.scrollTo(0, 0);
 }
