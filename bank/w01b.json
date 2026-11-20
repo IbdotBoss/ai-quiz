@@ -240,7 +240,7 @@
   "answer": [
    1
   ],
-  "explain": "It is measured with the variance inflation factor and helps decide which variables to drop, combine or regularise. How strongly each feature relates to the target is a different check, called target relationships.",
+  "explain": "Multicollinearity describes how strongly a feature can be explained by the other features. The variance inflation factor measures it and helps decide which variables to drop, combine or regularise. How strongly a feature relates to the target is a different check.",
   "source": "Week 1 data lecture, slide 22",
   "flag": "",
   "core": false

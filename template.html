@@ -161,7 +161,8 @@ const weakest = qs => shuffle(qs).sort((a, b) => ((st.sc[a.id] ?? -1) - (st.sc[b
 
 const TICK = `<svg class="mk" viewBox="0 0 22 22" aria-hidden="true"><path d="M4 12l5 5L18 6" fill="none" stroke="var(--right)" stroke-width="3"/></svg>`;
 const CROSS = `<svg class="mk" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 5l12 12M17 5L5 17" fill="none" stroke="var(--wrong)" stroke-width="3"/></svg>`;
-const FOOT = `<footer class="foot"><p>Created by <a href="https://www.ibrahimuthman.me/">Ibrahim Uthman</a>. If it helped, <a class="gh" href="https://github.com/IbdotBoss/ai-quiz">star it on GitHub<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg></a>.</p></footer>`;
+const FOOT = `<footer class="foot"><p><a href="https://faaja.space/">All three modules: faaja.space</a></p>
+  <p>Created by <a href="https://www.ibrahimuthman.me/">Ibrahim Uthman</a>. If it helped, <a class="gh" href="https://github.com/IbdotBoss/ai-quiz">star it on GitHub<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg></a>.</p></footer>`;
 
 /* ---------- asking an AI assistant ---------- */
 // No key and no backend. The question goes to the assistant as a prefilled prompt and is also copied,
@@ -230,6 +231,7 @@ function home() {
   <header>
     <p class="s">MOD004553</p>
     <h1>Artificial Intelligence test practice</h1>
+    <p class="s"><a href="https://faaja.space/">All three modules</a></p>
     <p>50 minutes on a computer in Week 12. Mostly written answers.</p>
   </header>
   <fieldset><legend><h2>Which questions to practise</h2></legend>
@@ -248,7 +250,7 @@ function home() {
     ${paper("Mixed set", "10 multiple choice and 5 written, weakest first.", "15 questions", [["m-mixed", "Test"]])}
     ${paper("Timed written paper", "8 written questions from different weeks. The tutor has not published the real format yet.", "8 questions, 50 min", [["m-timed", "Test"]])}
   </div>
-  <h2 id="hm">${st.core ? "Core" : "All"} questions you have right, by week</h2>
+  <h2 id="hm">Share of ${st.core ? "core" : "all"} questions marked right, by week</h2>
   <table class="plot" aria-labelledby="hm">
     <thead><tr><th scope="col"><span class="vh">Week</span></th><th scope="col">Multiple choice</th><th scope="col">Written answer</th></tr></thead>
     <tbody>${weeksPresent.map(w => `<tr><th scope="row"><button class="wk" data-week="${w}" aria-label="Week ${w}, ${esc(WEEKS[w] || "")}. Open notes and questions."><b>${w}</b><span>${esc(WEEKS[w] || "")}</span></button></th>${td(w, false)}${td(w, true)}</tr>`).join("")}</tbody>
@@ -261,7 +263,7 @@ function home() {
     <label class="o" style="border:0;grid-template-columns:22px minmax(0,1fr)"><input type="checkbox" id="ai-temp" ${st.aiTemp ? "checked" : ""}><span>Open in a temporary chat. Works for Claude and ChatGPT.</span></label>
     <p class="s">Gemini cannot be filled in from a link, so the text is copied for you to paste.</p>
   </fieldset></details>
-  ${last.length ? `<h2>Your last sets and their marks</h2><table class="t"><tr><th scope="col">Set</th><th scope="col">Date</th><th scope="col" class="num">Mark</th></tr>${last.map(h => `<tr><td>${esc(h.title)}</td><td>${new Date(h.at).toLocaleDateString()}</td><td class="num">${h.score} of ${h.total}</td></tr>`).join("")}</table>` : ""}
+  ${last.length ? `<h2>Recent marks</h2><table class="t"><tr><th scope="col">Set</th><th scope="col">Date</th><th scope="col" class="num">Mark</th></tr>${last.map(h => `<tr><td>${esc(h.title)}</td><td>${new Date(h.at).toLocaleDateString()}</td><td class="num">${h.score} of ${h.total}</td></tr>`).join("")}</table>` : ""}
   ${FOOT}`;
   if (!first) focusOn("h1"); first = false;
   app.querySelectorAll(".wk").forEach(b => b.onclick = () => { week(+b.dataset.week); window.scrollTo(0, 0); });
@@ -369,7 +371,7 @@ function question() {
     ${aiRow([["mark", ex ? `Ask ${aiName()} to mark it` : `Ask ${aiName()} about this`]])}</div>`;
   const n2 = r.ids.filter(id => answered(r, id)).length;
   app.innerHTML = `
-  <div class="top"><button class="l" id="quit">${r.exam ? "Save and leave the paper" : "Leave this set"}</button><b>${esc(r.title)}</b>${r.limit ? `<span class="timer" id="tm" role="timer" aria-label="Time left"></span>` : `<span>Question ${r.i + 1} of ${n}</span>`}</div>
+  <div class="top"><button class="l" id="quit">${r.exam ? "Save and leave the paper" : "Save and leave"}</button><b>${esc(r.title)}</b>${r.limit ? `<span class="timer" id="tm" role="timer" aria-label="Time left"></span>` : `<span>Question ${r.i + 1} of ${n}</span>`}</div>
   <div class="meta"><span>Week ${q.week}, ${esc(q.topic)}</span><span>${checked ? `${got(r, q)} of ${marks(q)} ${marks(q) === 1 ? "mark" : "marks"}` : `${marks(q)} ${marks(q) === 1 ? "mark" : "marks"}`}</span></div>
   ${body}${fb}
   ${ex && !checked && !r.exam ? aiRow([["hint", `Get a hint from ${aiName()}`]]) : ""}
@@ -390,7 +392,7 @@ function question() {
   wireAi(q, () => ex ? (r.text[q.id] || "").trim() : (r.ans[q.id] || []));
   focusOn(checked ? ".fb" : ex ? "#ans" : "legend");
   const go = i => { r.i = i; save(); question(); window.scrollTo(0, 0); };
-  on("quit", () => { if (!r.exam) st.run = null; save(); home(); window.scrollTo(0, 0); });
+  on("quit", () => { save(); home(); window.scrollTo(0, 0); });
   on("prev", () => go(r.i - 1));
   on("next", () => r.i < n - 1 ? go(r.i + 1) : finish());
   on("chk", () => { r.checked[q.id] = true; if (ex) { r.auto[q.id] = autoTick(q, r.text[q.id] || ""); r.pts[q.id] = []; } record(r, q); save(); question(); });
@@ -408,15 +410,15 @@ function question() {
   if (r.limit) {
     const tm = document.getElementById("tm");
     const upd = () => { const s = timeLeft(); tm.textContent = fmt(s) + " left"; tm.classList.toggle("low", s < 300); if (!s) { clearInterval(tick); document.getElementById("dlg").close(); finish(); } };
-    upd(); tick = setInterval(upd, 1000);
+    upd(); if (timeLeft()) tick = setInterval(upd, 1000);
   }
 }
 
 function finish() {
   clearInterval(tick);
-  const r = st.run;
+  const r = st.run; if (r.done) return;
   r.done = true; r.took = Math.floor((Date.now() - r.t0) / 1000);
-  if (r.exam) r.ids.forEach(id => { const q = BYID[id]; if (isEx(q)) { r.auto[id] = autoTick(q, r.text[id] || ""); r.pts[id] = []; } record(r, q); });
+  if (r.exam) r.ids.forEach(id => { const q = BYID[id]; if (isEx(q)) { r.auto[id] = autoTick(q, r.text[id] || ""); r.pts[id] = []; } if (answered(r, id)) record(r, q); });
   st.hist.push({title:r.title, score:0, total:0, at:Date.now()}); st.hist = st.hist.slice(-30);
   tally(); save(); results(); window.scrollTo(0, 0);
 }
@@ -499,6 +501,7 @@ function notes(deck) {
   if (n) wireAsk(DECKS[n.deck] || n.deck, [...new Set(Q.filter(q => q.deck === n.deck).map(q => q.topic))]);
   document.getElementById("sheet").onchange = e => { notes(e.target.value); document.getElementById("sheet").focus(); };
   on("back", () => { home(); window.scrollTo(0, 0); });
+  window.scrollTo(0, 0);
 }
 
 if (st.run && !st.run.ids.every(id => BYID[id])) st.run = null;
