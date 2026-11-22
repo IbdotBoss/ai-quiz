@@ -472,7 +472,7 @@
    2,
    4
   ],
-  "explain": "The first four reduce the number of features. DBSCAN is a density based clustering method.",
+  "explain": "Principal component analysis, t-SNE, linear discriminant analysis and UMAP all reduce the number of features. DBSCAN is a density based clustering method.",
   "source": "Week 4 lecture, slide 13 and 36",
   "flag": "",
   "core": false
