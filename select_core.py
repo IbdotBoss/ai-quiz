@@ -10,7 +10,7 @@ SKIP = {
     "Multiple intelligences", "Value of AI in research", "Scientific method in AI", "AI research pipeline",
     "Uses of regression", "Types of machine learning", "Unsupervised learning applications",
     "Uses of genetic algorithms", "Biological inspiration", "Network structure", "Images and channels",
-    "YOLO backbone", "YOLO preprocessing", "Classification algorithms", "Segmentation uses",
+    "YOLO backbone", "YOLO preprocessing", "Classification algorithms", "Segmentation uses", "NLP applications",
 }
 # Written questions the first-per-topic rule leaves out but a descriptive test is likely to ask. Added by hand.
 ALSO = {"w01a-022", "w02-032", "w03-026", "w06-030"}
