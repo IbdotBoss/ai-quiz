@@ -12,17 +12,17 @@
 <style>
 @font-face{font-family:"Atkinson Next";src:url(data:font/woff2;base64,/*FONT*/) format("woff2");font-weight:200 800;font-display:swap}
 :root{
-  --paper:#fbf8f1;--desk:#e7e1d3;--ink:#1d1a16;--ink-2:#4f4940;--hair:#d9d1c1;--tint:#f2ecdf;--rule:#c9d6e8;--margin:#c0392b;
+  --paper:#fbf8f1;--desk:#e7e1d3;--ink:#1d1a16;--ink-2:#4f4940;--hair:#d9d1c1;--tint:#f2ecdf;--rule:#c9d6e8;--margin:#c0392b;--margin-line:#f0c9c4;--edge:#e8b4ae;--shadow-1:#0000001a;--shadow-2:#00000014;
   --serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
-  --right:#18794e;--wrong:#b3261e;--focus:#3e4a89;--off:#767676;--hatch:#d9d5e0;--veil:#1b142499;
+  --right:#18794e;--wrong:#b3261e;--focus:#3e4a89;--off:#6b665e;--hatch:#d9d5e0;--veil:#1b142499;
   --t-xs:.84rem;--t-s:.94rem;--t-m:1.0625rem;--t-l:1.375rem;--t-xl:2.25rem;
   --r:6px;
 }
 *{box-sizing:border-box}
 html,body{overflow-x:clip}
 body{margin:0;background:var(--desk) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");color:var(--ink);font:400 var(--t-m)/1.5 "Atkinson Next",Verdana,Arial,sans-serif}
-main{max-width:760px;margin:0 auto;padding:24px 20px 72px;min-height:100dvh;background:var(--paper);box-shadow:0 1px 2px #0000001a,0 8px 28px #00000014}
-@media (min-width:800px){main{margin:32px auto 48px;padding:56px 56px 96px;border-left:2px solid #e8b4ae;background-image:linear-gradient(90deg,transparent 39px,#f0c9c4 39px,#f0c9c4 40px,transparent 40px)}}
+main{max-width:760px;margin:0 auto;padding:24px 20px 72px;min-height:100dvh;background:var(--paper);box-shadow:0 1px 2px var(--shadow-1),0 8px 28px var(--shadow-2)}
+@media (min-width:800px){main{margin:32px auto 48px;padding:56px 56px 96px;border-left:2px solid var(--edge);background-image:linear-gradient(90deg,transparent 39px,var(--margin-line) 39px,var(--margin-line) 40px,transparent 40px)}}
 h1,h2,h3{text-wrap:balance;margin:0}
 h1{font:700 var(--t-xl)/1.08 var(--serif);letter-spacing:-.01em}
 h2{font:700 var(--t-l)/1.25 var(--serif);margin-top:40px}
@@ -117,7 +117,7 @@ table.t{border-collapse:collapse;width:100%;font-size:var(--t-s);margin-top:8px;
 .foot .gh{display:inline-flex;align-items:center;gap:8px;vertical-align:bottom;min-height:24px}
 .notes{overflow-wrap:break-word;font-family:var(--serif);font-size:1.0625rem;line-height:1.65}
 .notes strong{font-weight:700}
-.notes blockquote{margin:12px 0 20px;padding:10px 14px;border-left:3px solid var(--margin);background:var(--tint);font-style:italic;font-size:var(--t-s)}
+.notes blockquote{margin:12px 0 20px;padding:12px 16px;border:1px solid var(--hair);border-radius:var(--r);background:var(--tint);font-style:italic;font-size:var(--t-s)}
 .notes blockquote p{margin:0}
 .notes blockquote p::before{content:"Watch out. ";font-style:normal;font-weight:700;color:var(--margin)}
 .notes ol,.notes ul{padding-left:24px}
