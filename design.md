@@ -79,3 +79,18 @@ The three comps are in `comps/index.html`. A second round of three, drawn from M
 ## Stack
 
 One static HTML file built by `build.py`, with questions, notes and the font inlined. No routes and no server data, and it opens by double-click offline.
+
+## Variants
+
+### Home page B, Today, 23 Nov 2026
+
+This supersedes the heatmap home page and the cream exam-booklet restyle. Stage called the booklet look generic and the home page too busy. Three working directions were built and he picked B.
+
+- **Question the home page answers.** What should I do next. One dark card holds one action. It resumes an unfinished set, marks a handed-in paper, starts the weakest broad written question, or, once all 11 have full marks, starts the timed paper. The pick is stable, lowest score then earliest week.
+- **Then.** At most two follow-ups, each naming its action: redo missed questions, start an untouched week, sit the timed paper.
+- **Marks by week.** The viridis heatmap stays, closed under a summary, so it no longer competes with the card.
+- **Everything else.** One link, "All notes, sets and papers", opens a menu page with every set, both papers, Ask AI settings, recent marks and Clear my progress.
+- **Look.** White ground, Atkinson only, no serif, no paper texture, no ruled answer boxes.
+- **Refused.** Warm cream ground with a serif display, the first default `design-foundation` lists. The red margin rule and desk texture, which were decoration.
+- **Checks.** axe-core 4.10.2 with no violations on home, menu, week and question pages. No sideways scroll at 320 and 375. Adversarial panel of three critics and a judge. Upheld bugs fixed: an all-done state, the week Study button tested only written answers, the Ask AI error pointed to the wrong page, jargon on the card.
+- **Rejected from the panel.** Scoring cells by tried questions only. The square shows the share of the whole week answered right, which is the coverage measure the README describes. Making Test the primary button in the menu. Stage asked to study before testing on 18 Nov.

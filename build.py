@@ -56,7 +56,9 @@ for path in sorted(glob.glob(os.path.join(HERE, "notes", "*.md"))):
     html = subprocess.run(["pandoc", "-f", "gfm", "-t", "html", path], capture_output=True, check=True).stdout.decode("utf8")
     notes.append({"deck": os.path.basename(path)[:-3], "html": html})
 
-tpl = open(os.path.join(HERE, "template.html"), encoding="utf8").read()
+# Optional: python build.py <template> <output> builds a variant without touching docs/index.html.
+TPL = sys.argv[1] if len(sys.argv) > 2 else os.path.join(HERE, "template.html")
+tpl = open(TPL, encoding="utf8").read()
 assert "/*FONT*/" in tpl and "/*DATA*/" in tpl
 font = open(os.path.join(HERE, "fonts", "AtkinsonHyperlegibleNext.woff2"), "rb").read()
 tpl = tpl.replace("/*FONT*/", base64.b64encode(font).decode())
@@ -64,7 +66,7 @@ data = json.dumps({"questions": questions, "notes": notes}, ensure_ascii=False).
 out = tpl.replace("/*DATA*/", data)
 
 # docs/index.html is what GitHub Pages serves. index.html is the same file for opening locally.
-for path in (os.path.join(HERE, "docs", "index.html"), os.path.join(HERE, "index.html")):
+for path in ([sys.argv[2]] if len(sys.argv) > 2 else (os.path.join(HERE, "docs", "index.html"), os.path.join(HERE, "index.html"))):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     open(path, "w", encoding="utf8").write(out)
 

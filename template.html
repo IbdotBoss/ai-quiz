@@ -12,20 +12,20 @@
 <style>
 @font-face{font-family:"Atkinson Next";src:url(data:font/woff2;base64,/*FONT*/) format("woff2");font-weight:200 800;font-display:swap}
 :root{
-  --paper:#fbf8f1;--desk:#e7e1d3;--ink:#1d1a16;--ink-2:#4f4940;--hair:#d9d1c1;--tint:#f2ecdf;--rule:#c9d6e8;--margin:#c0392b;--margin-line:#f0c9c4;--edge:#e8b4ae;--shadow-1:#0000001a;--shadow-2:#00000014;
-  --serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
-  --right:#18794e;--wrong:#b3261e;--focus:#3e4a89;--off:#6b665e;--hatch:#d9d5e0;--veil:#1b142499;
+  --paper:#fff;--ink:#1b1424;--ink-2:#4b4357;--ink-3:#c9c3d3;--hair:#dedbe4;--tint:#f4f2f7;
+  --font:"Atkinson Next",Verdana,sans-serif;
+  --right:#18794e;--wrong:#b3261e;--focus:#3e4a89;--off:#6b6475;--hatch:#d9d5e0;--veil:#1b142499;
   --t-xs:.84rem;--t-s:.94rem;--t-m:1.0625rem;--t-l:1.375rem;--t-xl:2.25rem;
   --r:6px;
 }
 *{box-sizing:border-box}
 html,body{overflow-x:clip}
-body{margin:0;background:var(--desk) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");color:var(--ink);font:400 var(--t-m)/1.5 "Atkinson Next",Verdana,Arial,sans-serif}
-main{max-width:760px;margin:0 auto;padding:24px 20px 72px;min-height:100dvh;background:var(--paper);box-shadow:0 1px 2px var(--shadow-1),0 8px 28px var(--shadow-2)}
-@media (min-width:800px){main{margin:32px auto 48px;padding:56px 56px 96px;border-left:2px solid var(--edge);background-image:linear-gradient(90deg,transparent 39px,var(--margin-line) 39px,var(--margin-line) 40px,transparent 40px)}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 var(--t-m)/1.5 var(--font)}
+main{max-width:680px;margin:0 auto;padding:24px 16px 72px;min-height:100dvh}
+@media (min-width:800px){main{padding:48px 24px 96px}}
 h1,h2,h3{text-wrap:balance;margin:0}
-h1{font:700 var(--t-xl)/1.08 var(--serif);letter-spacing:-.01em}
-h2{font:700 var(--t-l)/1.25 var(--serif);margin-top:40px}
+h1{font:800 var(--t-xl)/1.1 var(--font)}
+h2{font:700 var(--t-l)/1.25 var(--font);margin-top:40px}
 h3,.sub{font-size:var(--t-m);font-weight:700;margin-top:20px;line-height:1.5}
 h1.stem,h2.stem{margin:8px 0 4px}
 h1:focus,h2:focus,.fb:focus,legend:focus{outline:none}
@@ -35,7 +35,7 @@ a{color:var(--ink)}
 svg{display:block}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
-button,select{font:700 1rem/1.2 "Atkinson Next",Verdana,sans-serif;color:var(--ink);background:var(--paper);border:1.5px solid var(--ink);border-radius:var(--r);padding:12px 20px;min-height:44px;cursor:pointer}
+button,select{font:700 1rem/1.2 var(--font);color:var(--ink);background:var(--paper);border:1.5px solid var(--ink);border-radius:var(--r);padding:12px 20px;min-height:44px;cursor:pointer}
 button.p{background:var(--ink);color:var(--paper)}
 button:active:not(:disabled){transform:translateY(1px)}
 button.l{border:0;padding:12px 0;text-decoration:underline;font-weight:400;font-size:var(--t-s)}
@@ -82,18 +82,18 @@ select{max-width:100%;text-overflow:ellipsis}
 
 fieldset{border:0;margin:0;padding:0;min-width:0}legend{padding:0}
 .meta{display:flex;justify-content:space-between;gap:12px;margin-top:24px;font-size:var(--t-s);color:var(--ink-2)}
-.stem{font:600 var(--t-l)/1.35 var(--serif);margin:8px 0 4px;white-space:pre-wrap;text-wrap:balance;display:block}
+.stem{font:700 var(--t-l)/1.35 var(--font);margin:8px 0 4px;white-space:pre-wrap;text-wrap:balance;display:block}
 .how{display:block;font-size:var(--t-s);color:var(--ink-2);font-weight:400;margin-bottom:12px}
 .o{display:grid;grid-template-columns:22px minmax(0,1fr) 24px;gap:0 12px;align-items:start;padding:12px 0;border-top:1px solid var(--hair);cursor:pointer}
 .o input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--ink);cursor:pointer}
-.o input:disabled{cursor:default;opacity:1}
+.o input:disabled{cursor:default}
 .o small{display:block;font-weight:700;font-size:var(--t-xs);color:var(--wrong)}.o small.ok{color:var(--right)}
 .o .mk{width:22px;height:22px;margin-top:2px}
 .row{display:flex;flex-wrap:wrap;gap:4px 24px}.row .o{border:0;grid-template-columns:22px auto;padding:8px 0;min-height:44px}
-textarea{display:block;width:100%;min-height:200px;resize:vertical;font:400 var(--t-m)/32px var(--serif);color:var(--ink);background:var(--paper) repeating-linear-gradient(transparent 0 31px,var(--rule) 31px 32px) 0 11px/100% 32px local;border:1.5px solid var(--ink);border-radius:var(--r);padding:12px}
+textarea{display:block;width:100%;min-height:200px;resize:vertical;font:400 var(--t-m)/1.6 var(--font);color:var(--ink);background:var(--paper);border:1.5px solid var(--ink);border-radius:var(--r);padding:12px}
 textarea.short{min-height:96px}
 textarea::placeholder{color:var(--ink-2);opacity:1}
-.yours{white-space:pre-wrap;font-family:var(--serif);background:var(--tint);padding:12px;border-radius:var(--r);overflow-wrap:break-word}
+.yours{white-space:pre-wrap;font-family:var(--font);background:var(--tint);padding:12px;border-radius:var(--r);overflow-wrap:break-word}
 .fb{margin-top:20px;border-top:1.5px solid var(--ink);padding-top:4px;overflow-wrap:break-word}
 .flag{background:var(--tint);padding:12px;border-radius:var(--r);font-size:var(--t-s);margin-top:12px}
 .nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:28px}
@@ -115,23 +115,40 @@ table.t{border-collapse:collapse;width:100%;font-size:var(--t-s);margin-top:8px;
 .rev{border-top:1.5px solid var(--ink);margin-top:32px}
 .foot{margin-top:64px;border-top:1px solid var(--hair);padding-top:16px;font-size:var(--t-s);color:var(--ink-2)}
 .foot .gh{display:inline-flex;align-items:center;gap:8px;vertical-align:bottom;min-height:24px}
-.notes{overflow-wrap:break-word;font-family:var(--serif);font-size:1.0625rem;line-height:1.65}
+.notes{overflow-wrap:break-word;font-family:var(--font);font-size:1.0625rem;line-height:1.65}
 .notes strong{font-weight:700}
-.notes blockquote{margin:12px 0 20px;padding:12px 16px;border:1px solid var(--hair);border-radius:var(--r);background:var(--tint);font-style:italic;font-size:var(--t-s)}
+.notes blockquote{margin:12px 0 20px;padding:12px 16px;border-radius:var(--r);background:var(--tint);font-size:var(--t-s)}
 .notes blockquote p{margin:0}
-.notes blockquote p::before{content:"Watch out. ";font-style:normal;font-weight:700;color:var(--margin)}
+.notes blockquote p::before{content:"Watch out. ";font-style:normal;font-weight:700;color:var(--wrong)}
 .notes ol,.notes ul{padding-left:24px}
 .notes h1{font-size:var(--t-xl);margin-top:28px}
 .notes h2{border-top:1px solid var(--hair);padding-top:16px;margin-top:28px}
 .notes h3{font-size:var(--t-m);margin-top:24px}
 .notes h2{font-size:var(--t-l)}
-.notes h4{font:700 var(--t-l)/1.3 var(--serif);margin:20px 0 0;border-top:1px solid var(--hair);padding-top:12px}
+.notes h4{font:700 var(--t-l)/1.3 var(--font);margin:20px 0 0;border-top:1px solid var(--hair);padding-top:12px}
 .notes table{display:block;overflow-x:auto;border-collapse:collapse;margin:12px 0;font-size:var(--t-s);font-variant-numeric:tabular-nums}
 .notes td,.notes th{border-bottom:1px solid var(--hair);padding:8px 16px 8px 0;text-align:left;vertical-align:top}
 .notes li{margin:4px 0}
 dialog{border:1.5px solid var(--ink);border-radius:var(--r);padding:20px;max-width:min(420px,calc(100% - 40px));color:var(--ink)}
 dialog::backdrop{background:var(--veil)}
 dialog .nav{margin-top:20px}
+
+/* home */
+.kick{font-size:var(--t-s);color:var(--ink-2);margin:0}
+.next{background:var(--ink);color:var(--paper);border-radius:var(--r);padding:20px;margin-top:16px}
+.next small{display:block;font-size:var(--t-s);color:var(--ink-3)}
+.next b{display:block;font-size:var(--t-l);line-height:1.3;margin:4px 0 16px;overflow-wrap:break-word}
+.next button{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.next button:focus-visible{outline-color:var(--paper)}
+.then{margin-top:28px}
+.then h2,.wh{margin:0;font-size:var(--t-m)}
+.then button{display:flex;flex-direction:column;gap:4px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--hair);border-radius:0;padding:12px 0;font-weight:400}
+.then button span{color:var(--ink-2);font-size:var(--t-s)}
+.then button:hover b{text-decoration:underline}
+.sq summary{list-style:none;cursor:pointer}.sq summary::-webkit-details-marker{display:none}.sq summary h2::after{content:" +";color:var(--ink-2)}.sq[open] summary h2::after{content:" -"}
+.sq{margin-top:28px}
+.more{margin-top:24px}
+.menu h2{font-size:var(--t-m);margin-top:28px}
 </style>
 </head>
 <body>
@@ -206,7 +223,7 @@ async function sendAi(text, out) {
     const temp = st.aiTemp && t.priv;
     if (fits) { window.open((temp ? t.priv : t.url)(text), "_blank", "noopener,noreferrer"); out.textContent = `Opened ${t.name}${temp ? " in a temporary chat" : ""}.${copied ? " The prompt is also copied, so paste it if the box is empty." : ""}`; }
     else if (copied) { out.innerHTML = `Prompt copied. <a href="${t.open || t.url("").split("?")[0]}" target="_blank" rel="noopener noreferrer">Open ${t.name}</a> and paste it.`; }
-    else out.textContent = "Copying failed in this browser. Choose a different assistant on the home page.";
+    else out.textContent = "Copying failed in this browser. Choose a different assistant under Ask AI on the Notes, sets and papers page.";
   }
 }
 function wireAi(q, getMine) {
@@ -220,89 +237,121 @@ function cell(week, ex) {
   const frac = qs.length ? tried.reduce((s, q) => s + st.sc[q.id], 0) / qs.length : 0;
   return {qs, tried:tried.length, frac};
 }
+const weakQ = () => pool().filter(q => q.id in st.sc && st.sc[q.id] < 1);
+const exQ = () => pool().filter(isEx), mcQ = () => pool().filter(q => !isEx(q)), byId = (a, b) => a.id < b.id ? -1 : 1;
+const goWeek = w => { week(w); window.scrollTo(0, 0); };
+// The real format: 10 multiple choice and 4 written, each from a different week, 50 minutes.
+function timed() {
+  const pick = (qs, n) => { const ids = []; shuffle(weeksPresent).forEach(w => { const q = weakest(qs.filter(q => q.week === w))[0]; if (q && ids.length < n) ids.push(q.id); }); return ids; };
+  start({title:"Timed paper", ids:[...pick(mcQ(), 10), ...pick(exQ(), 4)], exam:true, limit:50 * 60});
+}
 function home() {
   clearInterval(tick);
-  const weak = pool().filter(q => q.id in st.sc && st.sc[q.id] < 1).length;
   const resume = st.run && !st.run.done, toMark = st.run && st.run.done && st.run.exam;
   const left = resume && st.run.limit ? Math.ceil(timeLeft() / 60) : 0;
-  const last = st.hist.slice(-5).reverse();
-  const exQ = pool().filter(isEx), mcQ = pool().filter(q => !isEx(q)), byId = (a, b) => a.id < b.id ? -1 : 1;
+  // Stable pick so the card does not change on every visit: lowest score, then earliest week.
+  const top = FOCUS.slice().sort((a, b) => ((st.sc[a.id] ?? -1) - (st.sc[b.id] ?? -1)) || a.week - b.week)[0], redo = weakQ().length;
+  const fresh = weeksPresent.find(w => !cell(w, true).tried && !cell(w, false).tried);
+  let card;
+  if (resume) card = [`You stopped at question ${st.run.i + 1} of ${st.run.ids.length}${st.run.limit ? (left ? `, ${left} min left` : ", time is up") : ""}`, st.run.title, "Resume"];
+  else if (toMark) card = ["Handed in and waiting for your marks", st.run.title, "Mark it"];
+  else if (top && (st.sc[top.id] ?? -1) >= 1) card = ["Every test focus answer has full marks", "Timed paper, 4 written and 10 multiple choice", "Start the paper"];
+  else if (top) card = [top.id in st.sc ? `Your weakest broad written answer, ${Math.round(st.sc[top.id] * 100)}% last time` : "A broad written question like the real test asks", `Week ${top.week}, ${top.topic}`, "Answer it"];
+  const then = [];
+  if (redo) then.push(["t-redo", `Redo ${redo} ${redo === 1 ? "question" : "questions"} you lost marks on`, "From your earlier sets"]);
+  if (fresh) then.push(["t-week", `Start week ${fresh}, ${WEEKS[fresh] || ""}`, "Nothing tried yet. Opens its notes and questions"]);
+  if ((resume || toMark) && top && then.length < 2) then.push(["t-focus", "Answer a broad written question", `Week ${top.week}, ${top.topic}`]);
+  if (then.length < 2) then.push(["t-timed", "Sit the timed paper", "4 written and 10 multiple choice in 50 minutes, like the real test"]);
   const td = (w, ex) => {
     const c = cell(w, ex), kind = ex ? "written answer" : "multiple choice";
     if (!c.qs.length) return "<td></td>";
     const pct = Math.round(c.frac * 100), bin = Math.min(9, Math.floor(c.frac * 10));
     return c.tried
-      ? `<td><button data-w="${w}" data-ex="${ex ? 1 : 0}" style="background:${VIR[bin]};color:${bin > 4 ? "var(--ink)" : "#fff"}" aria-label="Week ${w}, ${kind} questions. ${pct} percent right, ${c.tried} of ${c.qs.length} tried. Practise.">${pct}%</button></td>`
-      : `<td><button class="new" data-w="${w}" data-ex="${ex ? 1 : 0}" aria-label="Week ${w}, ${kind} questions. Not started, ${c.qs.length} questions. Practise.">not started</button></td>`;
+      ? `<td><button data-w="${w}" data-ex="${ex ? 1 : 0}" style="background:${VIR[bin]};color:${bin > 4 ? "var(--ink)" : "var(--paper)"}" aria-label="Week ${w}, ${kind} questions. ${pct} percent right, ${c.tried} of ${c.qs.length} tried. Practise.">${pct}%</button></td>`
+      : `<td><button class="new" data-w="${w}" data-ex="${ex ? 1 : 0}" aria-label="Week ${w}, ${kind} questions. Not started, ${c.qs.length} questions. Practise.">new</button></td>`;
   };
   app.innerHTML = `
-  <header>
-    <p class="s">MOD004553</p>
-    <h1>Artificial Intelligence test practice</h1>
-    <p class="s"><a href="https://faaja.space/">All three modules</a></p>
-    <p>50 minutes on a computer in Week 12. Mostly written answers.</p>
-    <p class="s">Your progress saves in this browser only.</p>
-  </header>
-  <h2>Study, then practise</h2>
-  <div class="papers">
-    ${resume ? paper("Resume " + st.run.title.toLowerCase(), "You stopped at question " + (st.run.i + 1) + "." + (st.run.limit ? (left ? ` ${left} min left on the clock.` : " Time has run out.") : "") + " Starting another set replaces it.", st.run.ids.length + " questions", [["resume", "Resume", 1]]) : ""}
-    ${toMark ? paper("Mark your " + st.run.title.toLowerCase(), "Handed in. Tick the points each answer made to get your mark.", st.run.ids.length + " questions", [["resume", "Mark it", 1]]) : ""}
-    ${paper("Test focus", "One broad written question per week, the kind the real test asks. Learn these first. Test gives you 4 of them in 40 minutes, weakest first.", FOCUS.length + " questions", [["s-focus", "Study", 1], ["m-focus", "Test"]])}
-    ${paper("Revision notes", "One sheet per lecture deck.", DATA.notes.length + " sheets", [["m-notes", "Open", 1]])}
-    ${paper("Written answers", "Study shows each question with its model answer and marking points. Test gives you 5 questions, weakest first.", exQ.length + " questions", [["s-ex", "Study", 1], ["m-ex", "Test"]])}
-    ${paper("Multiple choice", "Study shows each question with the right answer marked. Test gives you 10 questions, weakest first.", mcQ.length + " questions", [["s-mc", "Study", 1], ["m-mc", "Test"]])}
-    ${paper("Questions to redo", weak ? "Questions where you lost a mark last time. Redo gives you up to 20 questions." : "Nothing here until you miss a mark.", weak + " to redo", [["s-weak", "Study", 0, !weak], ["m-weak", "Redo", 0, !weak]])}
-    ${paper("Mixed set", "10 multiple choice and 5 written questions, picked from your weakest.", "15 questions", [["m-mixed", "Test"]])}
-    ${paper("Timed paper", "The real test format: 4 written and 10 multiple choice questions from different weeks. The clock keeps running if you leave.", "14 questions, 50 min", [["m-timed", "Test"]])}
-    ${paper("Tutor's mock test", "The 10 written and 20 multiple choice questions from the mock the tutor posted on 23 November. Test has no clock.", MOCK.length + " questions", [["s-mock", "Study", 1], ["m-mock", "Test"]])}
-  </div>
-  <h2 id="hm">Share of questions marked right, by week</h2>
-  <p class="s">Each square is a button. A multiple choice square starts up to 10 questions from that week and a written square up to 5, weakest first. Press a week name for its notes, its answers and an Ask AI box.</p>
+  <p class="kick">Week 12 test, 50 minutes</p>
+  <h1>Next up</h1>
+  ${card ? `<div class="next"><small>${esc(card[0])}</small><b>${esc(card[1])}</b><button id="go">${card[2]}</button></div>` : ""}
+  ${then.length ? `<div class="then"><h2>Then</h2>${then.map(t => `<button id="${t[0]}"><b>${esc(t[1])}</b><span>${t[2]}</span></button>`).join("")}</div>` : ""}
+  <details class="sq"><summary><h2 class="wh" id="hm">Marks by week</h2></summary>
   <table class="plot" aria-labelledby="hm">
-    <thead><tr><th scope="col"><span class="vh">Week</span></th><th scope="col">Multiple choice</th><th scope="col">Written answer</th></tr></thead>
+    <thead><tr><th scope="col"><span class="vh">Week</span></th><th scope="col">Multiple choice</th><th scope="col">Written</th></tr></thead>
     <tbody>${weeksPresent.map(w => `<tr><th scope="row"><button class="wk" data-week="${w}" aria-label="Week ${w}, ${esc(WEEKS[w] || "")}. Open notes and questions."><b>${w}</b><span>${esc(WEEKS[w] || "")}</span></button></th>${td(w, false)}${td(w, true)}</tr>`).join("")}</tbody>
   </table>
-  <div class="key"><span>Colour of a square, from 0%</span><span class="sw" aria-hidden="true">${VIR.map(c => `<i style="background:${c}"></i>`).join("")}</span><span>to 100% of its questions right</span><span class="nw" aria-hidden="true"></span><span>no question tried yet</span></div>
-  <details><summary>${aiSum()}</summary>
-  <fieldset><legend class="vh">Assistant for the Ask AI buttons</legend>
-    <div class="row">${Object.entries(AI).map(([k, t]) => `<label class="o"><input type="radio" name="ai" value="${k}" ${st.ai === k ? "checked" : ""}><span>${t.name}</span></label>`).join("")}</div>
-    <label class="o" style="border:0;grid-template-columns:22px minmax(0,1fr)"><input type="checkbox" id="ai-temp" ${st.aiTemp ? "checked" : ""}><span>Open in a temporary chat. Works for Claude and ChatGPT.</span></label>
-    <p class="s">Gemini cannot be filled in from a link, so the text is copied for you to paste.</p>
-  </fieldset></details>
-  ${last.length ? `<h2>Recent marks</h2><table class="t"><tr><th scope="col">Set</th><th scope="col">Date</th><th scope="col" class="num">Mark</th></tr>${last.map(h => `<tr><td>${esc(h.title)}</td><td>${new Date(h.at).toLocaleDateString()}</td><td class="num">${h.score} of ${h.total} marks</td></tr>`).join("")}</table>` : ""}
-  <p><button class="l" id="reset">Clear my progress</button></p>
+  <div class="key"><span>0%</span><span class="sw" aria-hidden="true">${VIR.map(c => `<i style="background:${c}"></i>`).join("")}</span><span>100% right</span><span class="nw" aria-hidden="true"></span><span>not tried</span></div>
+  </details>
+  <p class="more"><button class="l" id="all">All notes, sets and papers</button></p>
   ${FOOT}`;
   if (!first) focusOn("h1"); first = false;
-  app.querySelectorAll(".wk").forEach(b => b.onclick = () => { week(+b.dataset.week); window.scrollTo(0, 0); });
+  app.querySelectorAll(".wk").forEach(b => b.onclick = () => goWeek(+b.dataset.week));
   app.querySelectorAll(".plot td button").forEach(b => b.onclick = () => {
     const w = +b.dataset.w, ex = b.dataset.ex === "1", c = cell(w, ex);
     start({title:`Week ${w}, ${ex ? "written answers" : "multiple choice"}`, ids:weakest(c.qs).slice(0, ex ? 5 : 10).map(q => q.id)});
   });
-  app.querySelectorAll("input[name=ai]").forEach(e => e.onchange = () => { st.ai = e.value; save(); app.querySelector("details summary").textContent = aiSum(); });
+  const one = () => start({title:`Test focus, Week ${top.week}`, ids:[top.id]});
+  const allDone = !resume && !toMark && top && (st.sc[top.id] ?? -1) >= 1;
+  on("go", resume || toMark ? () => show() : allDone ? timed : one);
+  on("t-focus", one);
+  on("t-redo", () => start({title:"Questions to redo", ids:weakest(weakQ()).slice(0, 20).map(q => q.id)}));
+  on("t-week", () => goWeek(fresh));
+  on("t-timed", timed);
+  on("all", () => { menu(); window.scrollTo(0, 0); });
+}
+
+// Every feature on one list, one tap from home.
+function menu() {
+  clearInterval(tick);
+  const resume = st.run && !st.run.done, toMark = st.run && st.run.done && st.run.exam;
+  const redo = weakQ().length, last = st.hist.slice(-5).reverse();
+  app.innerHTML = `<div class="top"><button class="l" id="back">Back to the home page</button><span></span></div>
+  <div class="menu">
+  <h1 style="margin-top:24px">Notes, sets and papers</h1>
+  <p class="s">Test sets pick your weakest questions first. Progress saves in this browser only.</p>
+  <div class="papers">
+    ${resume ? paper("Resume " + st.run.title.toLowerCase(), "You stopped at question " + (st.run.i + 1) + ". Starting another set replaces it.", st.run.ids.length + " questions", [["resume", "Resume", 1]]) : ""}
+    ${toMark ? paper("Mark your " + st.run.title.toLowerCase(), "Tick the points each answer made to get your mark.", st.run.ids.length + " questions", [["resume", "Mark it", 1]]) : ""}
+    ${paper("Revision notes", "One sheet per lecture deck.", DATA.notes.length + " sheets", [["m-notes", "Open", 1]])}
+    ${paper("Test focus", "One broad written question per week, like the real test. Test gives you 4 in 40 minutes.", FOCUS.length + " questions", [["s-focus", "Study", 1], ["m-focus", "Test"]])}
+    ${paper("Written answers", "Study shows model answers and marking points. Test gives you 5.", exQ().length + " questions", [["s-ex", "Study", 1], ["m-ex", "Test"]])}
+    ${paper("Multiple choice", "Study shows the right answers. Test gives you 10.", mcQ().length + " questions", [["s-mc", "Study", 1], ["m-mc", "Test"]])}
+    ${paper("Questions to redo", redo ? "Questions where you lost a mark. Redo gives you up to 20." : "Nothing here until you miss a mark.", redo + " to redo", [["s-weak", "Study", 0, !redo], ["m-weak", "Redo", 0, !redo]])}
+    ${paper("Timed paper", "4 written and 10 multiple choice from different weeks. The clock keeps running if you leave.", "14 questions, 50 min", [["m-timed", "Test"]])}
+    ${paper("Tutor's mock test", "The mock the tutor posted on 23 November. No clock.", MOCK.length + " questions", [["s-mock", "Study", 1], ["m-mock", "Test"]])}
+  </div>
+  <h2>Ask AI</h2>
+  <fieldset><legend class="s" id="ai-sum">${aiSum()}</legend>
+    <div class="row">${Object.entries(AI).map(([k, t]) => `<label class="o"><input type="radio" name="ai" value="${k}" ${st.ai === k ? "checked" : ""}><span>${t.name}</span></label>`).join("")}</div>
+    <label class="o" style="border:0;grid-template-columns:22px minmax(0,1fr)"><input type="checkbox" id="ai-temp" ${st.aiTemp ? "checked" : ""}><span>Open in a temporary chat. Works for Claude and ChatGPT.</span></label>
+    <p class="s">Gemini cannot be filled in from a link, so the text is copied for you to paste.</p>
+  </fieldset>
+  ${last.length ? `<h2>Recent marks</h2><table class="t"><tr><th scope="col">Set</th><th scope="col">Date</th><th scope="col" class="num">Mark</th></tr>${last.map(h => `<tr><td>${esc(h.title)}</td><td>${new Date(h.at).toLocaleDateString()}</td><td class="num">${h.score} of ${h.total} marks</td></tr>`).join("")}</table>` : ""}
+  <p><button class="l" id="reset">Clear my progress</button></p>
+  </div>${FOOT}`;
+  focusOn("h1");
+  on("back", () => { home(); window.scrollTo(0, 0); });
+  app.querySelectorAll("input[name=ai]").forEach(e => e.onchange = () => { st.ai = e.value; save(); document.getElementById("ai-sum").textContent = aiSum(); });
   document.getElementById("ai-temp").onchange = e => { st.aiTemp = e.target.checked; save(); };
   on("resume", () => show());
-  on("m-timed", () => {
-    const pick = (qs, n) => { const ids = []; shuffle(weeksPresent).forEach(w => { const q = weakest(qs.filter(q => q.week === w))[0]; if (q && ids.length < n) ids.push(q.id); }); return ids; };
-    start({title:"Timed paper", ids:[...pick(pool().filter(q => !isEx(q)), 10), ...pick(pool().filter(isEx), 4)], exam:true, limit:50 * 60});
-  });
+  on("m-timed", timed);
   const focusTest = () => start({title:"Test focus", ids:weakest(FOCUS).slice(0, 4).map(q => q.id), exam:true, limit:40 * 60});
   on("s-focus", () => study("Test focus", FOCUS.map(q => q.id), focusTest));
   on("m-focus", focusTest);
-  const mockTest = () => start({title:"Tutor's mock test", ids:[...MOCK.filter(q => !isEx(q)), ...MOCK.filter(isEx)].map(q => q.id), exam:true});
-  on("s-mock", () => study("Tutor's mock test", [...MOCK.filter(q => !isEx(q)), ...MOCK.filter(isEx)].map(q => q.id), mockTest));
+  const mockIds = () => [...MOCK.filter(q => !isEx(q)), ...MOCK.filter(isEx)].map(q => q.id);
+  const mockTest = () => start({title:"Tutor's mock test", ids:mockIds(), exam:true});
+  on("s-mock", () => study("Tutor's mock test", mockIds(), mockTest));
   on("m-mock", mockTest);
   on("reset", () => { if (confirm("Clear every mark, question to redo, set left part way and handed-in paper in this browser? Your Ask AI choice stays. This cannot be undone.")) { try { localStorage.setItem(LS, JSON.stringify({ai: st.ai, aiTemp: st.aiTemp})); } catch(e) {} location.reload(); } });
-  on("m-mixed", () => start({title:"Mixed set", ids:shuffle([...weakest(pool().filter(q => !isEx(q))).slice(0, 10), ...weakest(pool().filter(isEx)).slice(0, 5)]).map(q => q.id)}));
-  const exTest = () => start({title:"Written answers", ids:weakest(exQ).slice(0, 5).map(q => q.id)});
-  const mcTest = () => start({title:"Multiple choice", ids:weakest(mcQ).slice(0, 10).map(q => q.id)});
-  const weakQ = () => pool().filter(q => q.id in st.sc && st.sc[q.id] < 1);
+  const exTest = () => start({title:"Written answers", ids:weakest(exQ()).slice(0, 5).map(q => q.id)});
+  const mcTest = () => start({title:"Multiple choice", ids:weakest(mcQ()).slice(0, 10).map(q => q.id)});
   const weakTest = () => start({title:"Questions to redo", ids:weakest(weakQ()).slice(0, 20).map(q => q.id)});
-  on("s-ex", () => study("Written answers", exQ.slice().sort(byId).map(q => q.id), exTest));
+  on("s-ex", () => study("Written answers", exQ().sort(byId).map(q => q.id), exTest));
   on("m-ex", exTest);
-  on("s-mc", () => study("Multiple choice", mcQ.slice().sort(byId).map(q => q.id), mcTest));
+  on("s-mc", () => study("Multiple choice", mcQ().sort(byId).map(q => q.id), mcTest));
   on("m-mc", mcTest);
   on("s-weak", () => study("Questions to redo", weakQ().sort(byId).map(q => q.id), weakTest));
-  on("m-weak", () => start({title:"Questions to redo", ids:weakest(pool().filter(q => q.id in st.sc && st.sc[q.id] < 1)).slice(0, 20).map(q => q.id)}));
+  on("m-weak", weakTest);
   on("m-notes", () => notes(DATA.notes[0] && DATA.notes[0].deck));
 }
 
@@ -501,7 +550,7 @@ function week(w) {
   on("back", () => { home(); window.scrollTo(0, 0); });
   const go = ex => start({title:`Week ${w}, ${ex ? "written answers" : "multiple choice"}`, ids:weakest(cell(w, ex).qs).slice(0, ex ? 5 : 10).map(q => q.id)});
   on("w-mc", () => go(false)); on("w-ex", () => go(true));
-  on("w-st", () => study(`Week ${w}, ${WEEKS[w] || ""}`, [...cell(w, true).qs, ...cell(w, false).qs].map(q => q.id), () => go(true)));
+  on("w-st", () => study(`Week ${w}, ${WEEKS[w] || ""}`, [...cell(w, true).qs, ...cell(w, false).qs].map(q => q.id), () => start({title:`Week ${w}`, ids:[...weakest(cell(w, true).qs).slice(0, 5), ...weakest(cell(w, false).qs).slice(0, 10)].map(q => q.id)})));
   wireAsk(`Week ${w}, ${WEEKS[w]},`, topics);
 }
 
