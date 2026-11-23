@@ -16,28 +16,7 @@
   ],
   "explain": "Reinforcement learning is trial and error guided by feedback. The other options describe supervised regression, clustering and dimensionality reduction.",
   "source": "Week 5 reinforcement learning lecture, slide 5 and 6",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w05a-002",
-  "week": 5,
-  "topic": "Reinforcement versus supervised learning",
-  "type": "single",
-  "q": "How does the feedback in reinforcement learning differ from the feedback in supervised learning?",
-  "options": [
-   "It is a correct label supplied for every example before training starts",
-   "It is a reward or penalty that follows each action the agent takes",
-   "It is a cluster number assigned to each data point by the algorithm",
-   "It is the average of all earlier errors, with no link to actions"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "A reinforcement learning agent is only told how good its actions turned out, and must work out which actions caused the outcome. Supervised models are given the right answer for each example.",
-  "source": "Week 5 reinforcement learning lecture, slide 5 and 6",
-  "flag": "The contrast with supervised learning is a standard reading of the slide wording on trial and error.",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w05a-003",
@@ -56,154 +35,7 @@
   ],
   "explain": "The agent acts and the environment responds with feedback. The agent then uses that feedback to improve its decisions.",
   "source": "Week 5 reinforcement learning lecture, slide 6",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w05a-004",
-  "week": 5,
-  "topic": "Agent, environment and reward",
-  "type": "single",
-  "q": "A robot is learning to walk. Which event would count as a penalty?",
-  "options": [
-   "Staying balanced while moving forward",
-   "Using less energy for each step",
-   "Reaching a stable and efficient walking style",
-   "Falling down or losing balance"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "Falling or losing balance is the negative feedback. Staying balanced, moving forward and saving energy are rewards.",
-  "source": "Week 5 reinforcement learning lecture, slide 8",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w05a-005",
-  "week": 5,
-  "topic": "Agent, environment and reward",
-  "type": "single",
-  "q": "For a chess playing AI such as AlphaZero, what is the environment?",
-  "options": [
-   "The chessboard together with the opponent's moves",
-   "The set of winning openings the AI has stored",
-   "The chess program that chooses each move",
-   "The reward of winning a match"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "The environment is everything the agent interacts with, which here is the board and the opponent. The program making the moves is the agent and winning is a reward.",
-  "source": "Week 5 reinforcement learning lecture, slide 8",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w05a-006",
-  "week": 5,
-  "topic": "Agent, environment and reward",
-  "type": "multi",
-  "q": "Which of these are rewards for an autonomous car that is learning to drive?",
-  "options": [
-   "Avoiding collisions",
-   "Hard braking",
-   "Staying in its lane",
-   "Reaching the destination smoothly",
-   "Running a red light"
-  ],
-  "answer": [
-   0,
-   2,
-   3
-  ],
-  "explain": "Safe, lawful and smooth driving earns rewards. Collisions, hard braking, lane violations and running red lights are penalties.",
-  "source": "Week 5 reinforcement learning lecture, slide 8",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w05a-007",
-  "week": 5,
-  "topic": "Types of reinforcement learning",
-  "type": "single",
-  "q": "An agent learns which chess moves are good purely from playing many games, without learning the probabilities of future outcomes. Which type of learning is this?",
-  "options": [
-   "Model-based reinforcement learning",
-   "Model-free reinforcement learning",
-   "Supervised classification",
-   "Unsupervised clustering"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "A model-free agent learns from experienced transitions and rewards and does not explicitly learn how the environment works. A model-based agent builds a model first.",
-  "source": "Week 5 reinforcement learning lecture, slide 10",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w05a-008",
-  "week": 5,
-  "topic": "Types of reinforcement learning",
-  "type": "single",
-  "q": "A robot in an unknown maze learns how valuable each move is from its expected future rewards, and uses those values to choose moves. Which type of learning is this?",
-  "options": [
-   "Policy-based reinforcement learning",
-   "Model-based reinforcement learning",
-   "Value-based reinforcement learning",
-   "Unsupervised clustering of positions"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "Value-based methods estimate the expected cumulative reward of states or actions and pick actions with high estimates. Q-learning is an example.",
-  "source": "Week 5 reinforcement learning lecture, slide 12",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w05a-009",
-  "week": 5,
-  "topic": "Actor-critic",
-  "type": "multi",
-  "q": "Which statements about actor-critic reinforcement learning are correct?",
-  "options": [
-   "The critic learns a value function that judges how good decisions are",
-   "The critic chooses the next action and the actor scores it",
-   "It is a clustering method with two groups of points",
-   "The actor learns a policy that chooses actions",
-   "It combines policy-based and value-based learning"
-  ],
-  "answer": [
-   0,
-   3,
-   4
-  ],
-  "explain": "The actor picks actions and the critic evaluates them through expected future reward. The wrong options swap the roles or describe an unrelated method.",
-  "source": "Week 5 reinforcement learning lecture, slide 14",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w05a-010",
-  "week": 5,
-  "topic": "Q-learning",
-  "type": "single",
-  "q": "What kind of reinforcement learning algorithm is Q-learning?",
-  "options": [
-   "A model-based, policy-based algorithm that needs a transition model",
-   "A supervised algorithm that learns from labelled state and action pairs",
-   "An unsupervised algorithm that groups similar states into clusters",
-   "A model-free, value-based algorithm that learns from experience"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "Q-learning does not need to know how the environment works, and it learns the value of each action through experience.",
-  "source": "Week 5 reinforcement learning lecture, slide 12 and 15",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w05a-011",
@@ -222,68 +54,7 @@
   ],
   "explain": "A Q-value is a long term estimate that includes later rewards. The immediate reward alone is held in the reward table.",
   "source": "Week 5 reinforcement learning lecture, slide 20",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w05a-012",
-  "week": 5,
-  "topic": "Q-table",
-  "type": "single",
-  "q": "What is the difference between the reward table and the Q-table?",
-  "options": [
-   "The reward table is learned during training and the Q-table is given in advance",
-   "The reward table gives immediate rewards and the Q-table holds learned long term values",
-   "The reward table stores policies and the Q-table stores transition probabilities",
-   "They hold the same numbers and differ only in how those numbers are laid out on the page"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "The reward table is the fixed immediate feedback for going from one state to another. The Q-table starts at zero and is filled by learning, so it comes to include future rewards.",
-  "source": "Week 5 reinforcement learning lecture, slide 19 to 21",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w05a-013",
-  "week": 5,
-  "topic": "Q-table",
-  "type": "single",
-  "q": "What are the starting values in a Q-table before the agent has learned anything?",
-  "options": [
-   "The same values as the reward table",
-   "Random values chosen between minus one and one",
-   "Zero everywhere",
-   "The maximum reward for every entry"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "The Q-table starts with zero in every entry and is filled in as the agent explores, using the reward table.",
-  "source": "Week 5 reinforcement learning lecture, slide 20",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w05a-014",
-  "week": 5,
-  "topic": "Q-learning update rule",
-  "type": "single",
-  "q": "In the Q-learning update rule, what does the learning parameter G, typically 0.8, control?",
-  "options": [
-   "How many episodes the agent is allowed to run before it must stop",
-   "How often the agent chooses a random action instead of the best one it knows so far",
-   "How many different states the environment is allowed to contain",
-   "How much the best next-state value counts compared with the immediate reward"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "The rule adds the reward of the current move to G times the best value of the next state. A larger G makes future rewards matter more.",
-  "source": "Week 5 reinforcement learning lecture, slide 22",
-  "flag": "The slide calls G the learning parameter, its role here is as a discount on future value, which is how it is normally described.",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w05a-015",
@@ -302,8 +73,7 @@
   ],
   "explain": "With G equal to zero the future term vanishes, so each Q-value is just the reward of the current move. The agent becomes short sighted.",
   "source": "Week 5 reinforcement learning lecture, slide 22",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w05a-016",
@@ -322,132 +92,7 @@
   ],
   "explain": "Reaching the goal strengthens the move into it. Next time, the move before it can see that strong value ahead, so the effect spreads back step by step.",
   "source": "Week 5 reinforcement learning lecture, slide 17 and 18",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w05a-017",
-  "week": 5,
-  "topic": "Q-learning",
-  "type": "single",
-  "q": "An agent starts with no knowledge and moves at random. Why can it still learn a good route to the goal?",
-  "options": [
-   "The environment tells it the best action to take before each move",
-   "Random movement is guaranteed to find the shortest route on the very first episode",
-   "Reaching the goal by chance gives a reward that strengthens the earlier moves",
-   "It copies the best route from a set of labelled example routes"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "The agent learns from experience. Reaching the goal gives a reward that raises the value of the moves leading there, and repeated episodes refine this.",
-  "source": "Week 5 reinforcement learning lecture, slide 17 and 18",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w05a-018",
-  "week": 5,
-  "topic": "Q-learning",
-  "type": "single",
-  "q": "What does it mean when a Q-table is described as converged?",
-  "options": [
-   "Every entry has been set back to zero",
-   "The agent has stopped receiving rewards from the environment",
-   "All entries are equal to the largest reward",
-   "The values have stabilised after many episodes of interaction"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "The table is built step by step over many episodes until the values stop changing. That settled table is the converged Q-table.",
-  "source": "Week 5 reinforcement learning lecture, slide 24 and 25",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w05a-019",
-  "week": 5,
-  "topic": "Q-learning",
-  "type": "multi",
-  "q": "Which statements about Q-learning are correct?",
-  "options": [
-   "It needs the transition probabilities supplied in advance",
-   "It learns from experience by trying actions",
-   "It does not need to know how the environment works",
-   "It updates the values of actions over many iterations",
-   "It needs a labelled example of the right action for every state"
-  ],
-  "answer": [
-   1,
-   2,
-   3
-  ],
-  "explain": "Q-learning is model free and learns by trial and error, updating action values step by step. It needs neither a transition model nor labelled actions.",
-  "source": "Week 5 reinforcement learning lecture, slide 15",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w05a-020",
-  "week": 5,
-  "topic": "Types of reinforcement learning",
-  "type": "multi",
-  "q": "Which statements describe value-based reinforcement learning?",
-  "options": [
-   "The agent must be given a full model of the environment",
-   "Q-learning is an example",
-   "The agent learns a policy directly with no value estimates",
-   "The estimates are used to choose actions that maximise long term reward",
-   "The agent estimates expected cumulative future rewards of states or actions"
-  ],
-  "answer": [
-   1,
-   3,
-   4
-  ],
-  "explain": "Value-based methods learn values and act on them, and Q-learning does exactly this. Learning a policy directly is the policy-based approach.",
-  "source": "Week 5 reinforcement learning lecture, slide 12",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w05a-021",
-  "week": 5,
-  "topic": "Types of reinforcement learning",
-  "type": "multi",
-  "q": "Which statements correctly describe model-based reinforcement learning?",
-  "options": [
-   "It needs labelled examples of the correct action",
-   "It learns only from experienced rewards and never builds a model",
-   "It uses a model of how the environment works",
-   "The model includes transition probabilities and a reward function"
-  ],
-  "answer": [
-   2,
-   3
-  ],
-  "explain": "A model-based agent predicts consequences with a model and plans ahead. The wrong options describe model-free learning and supervised learning.",
-  "source": "Week 5 reinforcement learning lecture, slide 11",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w05a-022",
-  "week": 5,
-  "topic": "What reinforcement learning is",
-  "type": "explain",
-  "q": "Explain what reinforcement learning is, naming the agent, the environment and the reward in one example.",
-  "model": "Reinforcement learning is a branch of machine learning in which an agent learns to make sequential decisions by interacting with an environment. The agent tries actions and the environment responds with a reward or a penalty. Over time the agent improves its strategy to gain the best long term outcome. In a self-driving car example the agent is the driving system, the environment is the road with other cars and traffic lights, and rewards are given for safe driving while collisions are penalised.",
-  "points": [
-   "Says an agent learns by interacting with an environment",
-   "Says learning is by trial and error using rewards or penalties",
-   "Mentions long term or cumulative outcome",
-   "Identifies agent, environment and reward correctly in an example"
-  ],
-  "source": "Week 5 reinforcement learning lecture, slide 5 to 8",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w05a-023",
@@ -462,8 +107,7 @@
    "Mentions the agent acting and learning from consequences"
   ],
   "source": "Week 5 reinforcement learning lecture, slide 3 to 6",
-  "flag": "The comparison is built from the recap and the trial and error wording, the passive and active framing is textbook.",
-  "core": true
+  "flag": "The comparison is built from the recap and the trial and error wording, the passive and active framing is textbook."
  },
  {
   "id": "w05a-024",
@@ -478,93 +122,7 @@
    "Gives a suitable example of each"
   ],
   "source": "Week 5 reinforcement learning lecture, slide 10 and 11",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w05a-025",
-  "week": 5,
-  "topic": "Types of reinforcement learning",
-  "type": "explain",
-  "q": "Compare value-based and policy-based reinforcement learning.",
-  "model": "Value-based methods learn to estimate the expected cumulative future reward of states or actions, and the agent picks actions that have high values. Q-learning is an example. Policy-based methods learn a policy directly. A policy tells the agent which action to take in a given state, and learning aims to maximise expected cumulative reward. Steering an autonomous vehicle is a policy-based example, and navigating a maze by learning move values is a value-based example.",
-  "points": [
-   "Says value-based methods estimate the value of states or actions",
-   "Says policy-based methods learn the action choice directly",
-   "Names Q-learning as value-based",
-   "Gives a suitable example"
-  ],
-  "source": "Week 5 reinforcement learning lecture, slide 12 and 13",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w05a-026",
-  "week": 5,
-  "topic": "Actor-critic",
-  "type": "explain",
-  "q": "Describe how actor-critic reinforcement learning works.",
-  "model": "Actor-critic combines policy-based and value-based learning, using two components that work together. The actor learns a policy, which decides what action to take in each state. The critic learns a value function that judges how good the actions or states are in terms of expected future reward. The critic's evaluation helps the actor to improve. In a walking robot, the actor decides how to move the legs and the critic judges how well those movements contribute to walking without falling.",
-  "points": [
-   "Says it combines policy-based and value-based methods",
-   "Describes the actor as choosing actions through a policy",
-   "Describes the critic as evaluating using a value function",
-   "Gives an example such as a walking robot"
-  ],
-  "source": "Week 5 reinforcement learning lecture, slide 14",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w05a-027",
-  "week": 5,
-  "topic": "Q-learning",
-  "type": "explain",
-  "q": "Explain in your own words what Q-learning is and what the Q-table stores.",
-  "model": "Q-learning is a model-free reinforcement learning method in which an agent learns the best action to take in each situation by trying actions and learning from the rewards. The agent does not need to know how the environment works. It stores what it learns in a Q-table, a lookup table where each entry gives the expected total reward for taking an action in a state and then following the best policy afterwards. The table starts at zero and is improved through experience.",
-  "points": [
-   "Says it is model-free and learns from rewards by trying actions",
-   "Describes the Q-table as a lookup table of action values for each state",
-   "Says each value is the expected total reward when following the best policy afterwards",
-   "Says the table starts at zero and improves with experience"
-  ],
-  "source": "Week 5 reinforcement learning lecture, slide 15 and 20",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w05a-028",
-  "week": 5,
-  "topic": "Q-learning update rule",
-  "type": "explain",
-  "q": "Describe how a Q-table is updated and explain the role of the learning parameter.",
-  "model": "The agent explores the environment and updates each entry using the reward for the current move plus the learning parameter multiplied by the best value available from the next state. The reward table supplies the immediate rewards. The parameter, typically 0.8, controls how much future value counts, and if it were zero only the immediate reward would matter. The process is repeated over many episodes, so values near the goal spread backwards, until the table stops changing and has converged.",
-  "points": [
-   "Says the update combines the current reward with the best next-state value",
-   "Explains that the parameter weights how much future value counts",
-   "Says updates repeat over many episodes",
-   "Says the table converges when values stabilise"
-  ],
-  "source": "Week 5 reinforcement learning lecture, slide 22 to 25",
-  "flag": "Calling the learning parameter a weight on future value is the usual discount factor description, the slide only calls it the learning parameter.",
-  "core": true
- },
- {
-  "id": "w05a-029",
-  "week": 5,
-  "topic": "Q-learning",
-  "type": "explain",
-  "q": "Explain why a Q-learning agent needs many episodes before its Q-table is useful.",
-  "model": "At the start the Q-table is all zeros, so the agent knows nothing and early moves are effectively random. Only when the agent reaches the goal does it receive a reward that strengthens the move into the goal. In later episodes the move before that can see the strengthened value, so the benefit spreads back one step at a time. Many episodes are needed for this to reach every state, and for the values to settle at a converged table.",
-  "points": [
-   "Says the table starts at zero with no knowledge",
-   "Explains that the goal reward first strengthens the last move",
-   "Explains that the value spreads backwards to earlier states over repeated episodes",
-   "Mentions convergence"
-  ],
-  "source": "Week 5 reinforcement learning lecture, slide 17 to 25",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w05a-m01",
@@ -583,7 +141,6 @@
   "source": "Tutor's mock test, written question 5",
   "flag": "The mock gives no sample answer. This model answer was written from the slides for that week.",
   "mock": true,
-  "core": true,
   "focus": true
  },
  {
@@ -604,7 +161,6 @@
   "explain": "The update adds the immediate reward to the discounted best Q value of the next state.",
   "source": "Tutor's mock test, multiple choice question 9",
   "flag": "",
-  "mock": true,
-  "core": true
+  "mock": true
  }
 ]

@@ -16,89 +16,7 @@
   ],
   "explain": "A machine passes when a judge cannot tell its replies from a person's. The test looks only at behaviour, so how the machine works, its speed or brain-like design does not matter.",
   "source": "Week 1 lecture, slide 18",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01a-002",
-  "week": 1,
-  "topic": "Turing Test",
-  "type": "single",
-  "q": "A human judge talks to a hidden entity and cannot tell whether it is a computer. What does the Turing Test conclude about the computer?",
-  "options": [
-   "The computer has shown that it is conscious and self-aware",
-   "The computer has passed the test and is said to be intelligent",
-   "The judge has failed and the test must be repeated with a new judge",
-   "The computer has become a form of strong AI by definition"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Passing is defined by the judge being unable to tell the difference. This says nothing about consciousness, so it does not make the machine strong AI.",
-  "source": "Week 1 lecture, slide 19",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01a-003",
-  "week": 1,
-  "topic": "Turing Test",
-  "type": "single",
-  "q": "Which question did Turing put in place of asking whether machines can think?",
-  "options": [
-   "Can machines store more knowledge than any human?",
-   "Can machines describe their own thoughts accurately?",
-   "Can machines pass a behaviour test for intelligence?",
-   "Can machines copy the structure of a human brain?"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "Thinking is hard to define and measure, so Turing replaced it with a question about behaviour that can be tested. The other options ask about stored knowledge, self-reports or brain structure.",
-  "source": "Week 1 lecture, slide 18",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01a-004",
-  "week": 1,
-  "topic": "Defining AI",
-  "type": "multi",
-  "q": "Which statements about the two words in the term artificial intelligence are correct?",
-  "options": [
-   "Intelligence has one agreed test that gives a single score",
-   "Artificial means produced by human effort rather than arising naturally",
-   "Both words are equally disputed and have no agreed meaning",
-   "Intelligence is hard to define because it is hard to measure"
-  ],
-  "answer": [
-   1,
-   3
-  ],
-  "explain": "People broadly agree what artificial means, but intelligence is hard to define. It has no single agreed measure.",
-  "source": "Week 1 lecture, slide 4",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01a-005",
-  "week": 1,
-  "topic": "Weak and strong AI",
-  "type": "single",
-  "q": "A voice assistant answers set questions using predefined instructions and parameters. How is it best classified?",
-  "options": [
-   "Strong AI, because it understands speech and language as well as a human does",
-   "Strong AI, because it can plan for the future in its own way",
-   "Weak AI, because it lacks the memory needed for any learning",
-   "Weak AI, because it solves one limited task, not the full human range"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "Assistants such as Siri and Alexa are narrow systems built for specific problems. The option about lacking memory fails because weak AI can still learn from data.",
-  "source": "Week 1 lecture, slide 22",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w01a-006",
@@ -120,33 +38,7 @@
   ],
   "explain": "Strong AI is a theoretical goal, a machine with human-level intelligence. Systems in everyday use are narrow weak AI.",
   "source": "Week 1 lecture, slide 21",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01a-007",
-  "week": 1,
-  "topic": "Weak and strong AI",
-  "type": "multi",
-  "q": "Which statements about weak AI are correct?",
-  "options": [
-   "It has consciousness but only a narrow range of tasks",
-   "Most or all of today's AI systems are examples of it",
-   "It exists only as a theoretical concept",
-   "It does not cover the full range of human cognitive abilities",
-   "It generates output from predefined instructions and parameters",
-   "It is built to solve a specific problem"
-  ],
-  "answer": [
-   1,
-   3,
-   4,
-   5
-  ],
-  "explain": "Weak AI is the practical form that exists now. Consciousness and a purely theoretical status describe strong AI instead.",
-  "source": "Week 1 lecture, slide 22",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w01a-008",
@@ -165,71 +57,7 @@
   ],
   "explain": "Reactive machines have no memory and are task specific, so an input always gives the same output. Deep Blue is the standard example.",
   "source": "Week 1 lecture, slide 23",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01a-009",
-  "week": 1,
-  "topic": "AI types",
-  "type": "multi",
-  "q": "Which statements describe limited memory machines?",
-  "options": [
-   "Deep learning systems such as ChatGPT are examples",
-   "They can look at the past and monitor objects over time",
-   "They get better as they receive more data to train on",
-   "They always give the same output for the same input with no memory",
-   "They have a conscious understanding of their own existence"
-  ],
-  "answer": [
-   0,
-   1,
-   2
-  ],
-  "explain": "Limited memory machines look at the past and improve with more data. Giving the same output with no memory describes reactive machines, and a conscious understanding of existence describes self-aware systems.",
-  "source": "Week 1 lecture, slide 24",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01a-010",
-  "week": 1,
-  "topic": "AI types",
-  "type": "single",
-  "q": "Which ability marks theory of mind AI, as opposed to systems that only match patterns?",
-  "options": [
-   "Reproducing identical outputs every time from a fixed set of statistical rules",
-   "Understanding human motives and intentions and predicting behaviour",
-   "Monitoring one object over time without understanding it",
-   "Having a conscious sense of its own existence"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Theory of mind AI would understand human motives and intentions, not just match patterns. Monitoring one object over time describes limited memory machines, and a conscious sense of existence describes self-aware AI, which is a later step.",
-  "source": "Week 1 lecture, slide 25",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01a-011",
-  "week": 1,
-  "topic": "AI types",
-  "type": "single",
-  "q": "Which type of AI does not exist yet, partly because too little is known about the human brain and emotion?",
-  "options": [
-   "Reactive machines",
-   "Limited memory machines",
-   "Self-aware machines",
-   "Deep learning systems"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "Self-aware AI would understand itself as well as the world around it. Reactive machines, limited memory machines and deep learning systems already exist.",
-  "source": "Week 1 lecture, slide 26",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w01a-012",
@@ -253,111 +81,7 @@
   ],
   "explain": "Weak and strong AI are a separate split, based on how broad the ability is. The four types are ordered by memory and understanding.",
   "source": "Week 1 lecture, slide 23 to 26",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01a-013",
-  "week": 1,
-  "topic": "Multiple intelligences",
-  "type": "single",
-  "q": "What does the theory of multiple intelligences claim?",
-  "options": [
-   "Intelligence is one general ability that can be measured by one score",
-   "Only logical and mathematical skill counts as true intelligence",
-   "Each kind of intelligence is found only in humans, never in machines",
-   "Intelligence is made of several distinct kinds, not one general ability"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "The theory separates intelligence into several kinds. So whether a machine is intelligent depends on which kind is meant.",
-  "source": "Week 1 lecture, slide 6",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01a-014",
-  "week": 1,
-  "topic": "Multiple intelligences",
-  "type": "single",
-  "q": "Which intelligence is the ability to perceive, understand and manage emotions, with sensitivity to other people's moods?",
-  "options": [
-   "Interpersonal intelligence",
-   "Intrapersonal intelligence",
-   "Naturalistic intelligence",
-   "Existential intelligence"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "Interpersonal intelligence is sensitivity to the moods and motives of others and the ability to work in groups. Intrapersonal intelligence is about self-reflection.",
-  "source": "Week 1 lecture, slide 8 and 9",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01a-015",
-  "week": 1,
-  "topic": "Multiple intelligences",
-  "type": "single",
-  "q": "Someone has a deep understanding of themselves and is good at introspection. Which intelligence is this?",
-  "options": [
-   "Interpersonal intelligence",
-   "Intrapersonal intelligence",
-   "Bodily-kinesthetic intelligence",
-   "Linguistic-verbal intelligence"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Intrapersonal intelligence looks inward at the self. The tempting wrong choice is interpersonal intelligence, which looks outward at other people.",
-  "source": "Week 1 lecture, slide 9",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01a-016",
-  "week": 1,
-  "topic": "Multiple intelligences",
-  "type": "single",
-  "q": "A rover identifies and classifies rocks and features of its environment. Which human intelligence does this resemble most?",
-  "options": [
-   "Existential intelligence",
-   "Linguistic-verbal intelligence",
-   "Naturalistic intelligence",
-   "Visual-spatial intelligence"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "Naturalistic intelligence is the ability to identify, classify and manipulate elements of the environment. Visual-spatial is about spatial judgement and visualisation.",
-  "source": "Week 1 lecture, slide 13",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01a-017",
-  "week": 1,
-  "topic": "Multiple intelligences",
-  "type": "multi",
-  "q": "Which pairs correctly match an intelligence with its description?",
-  "options": [
-   "Logical-mathematical with logic, abstraction and reasoning about causal systems",
-   "Visual-spatial with a talent for numbers and critical thinking",
-   "Bodily-kinesthetic with control of body movement and skilful handling of objects",
-   "Existential with the ability to identify animals and plants",
-   "Linguistic-verbal with a facility for words, reading and writing"
-  ],
-  "answer": [
-   0,
-   2,
-   4
-  ],
-  "explain": "Visual-spatial intelligence is about spatial problems, and numbers and critical thinking belong to logical-mathematical intelligence. Existential intelligence is about the meaning of life, and identifying animals and plants belongs to naturalistic intelligence.",
-  "source": "Week 1 lecture, slide 7 to 14",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w01a-018",
@@ -376,8 +100,7 @@
   ],
   "explain": "In a computing context what matters is the behaviour produced. The definition of AI does not have to be confined to biologically observable methods.",
   "source": "Week 1 lecture, slide 2 and 27",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w01a-019",
@@ -393,8 +116,7 @@
    "It focuses on behaviour and not on intellect or how the machine works"
   ],
   "source": "Week 1 lecture, slide 17 to 19",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w01a-020",
@@ -410,25 +132,7 @@
    "Strong AI only exists as a theoretical concept today"
   ],
   "source": "Week 1 lecture, slide 21 and 22",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01a-021",
-  "week": 1,
-  "topic": "AI types",
-  "type": "explain",
-  "q": "Compare reactive machines with limited memory machines.",
-  "model": "A reactive machine has no memory and is built for one task, so the same input always gives the same output. It relies on statistics, fixed rules and pattern recognition, and a chess program or a recommendation system is an example. A limited memory machine can look at the past and track objects or situations over time. It copies how neurons in the brain work together, so it gets better as it trains on more data. Deep learning systems such as ChatGPT are examples.",
-  "points": [
-   "Reactive machines have no memory and give the same output for the same input",
-   "Limited memory machines can look into the past and monitor things over time",
-   "Limited memory machines improve with more training data",
-   "One correct example of each, such as Deep Blue and ChatGPT"
-  ],
-  "source": "Week 1 lecture, slide 23 and 24",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w01a-022",
@@ -444,75 +148,6 @@
    "Self awareness is a sense of self and does not exist yet"
   ],
   "source": "Week 1 lecture, slide 23 to 26",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01a-023",
-  "week": 1,
-  "topic": "Defining AI",
-  "type": "explain",
-  "q": "Explain why artificial intelligence is hard to define even though the word artificial is easy to agree on.",
-  "model": "Artificial means produced by human effort rather than arising naturally, and people broadly agree on that. Intelligence is a different matter because it means intellect, wisdom and understanding, which are very hard to measure. Without a clear measure it is hard to say when a machine has it. The theory of multiple intelligences adds to the problem because it splits intelligence into several kinds. This is why the Turing Test uses behaviour as a practical definition.",
-  "points": [
-   "Artificial has basic agreement on its meaning",
-   "Intelligence is hard to define because it is hard to measure",
-   "Intelligence may have several modalities and not one single form",
-   "Behaviour based tests offer a practical way around the problem"
-  ],
-  "source": "Week 1 lecture, slide 4 and 6",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01a-024",
-  "week": 1,
-  "topic": "Multiple intelligences",
-  "type": "explain",
-  "q": "Explain the theory of multiple intelligences and describe two of the types.",
-  "model": "The theory says that human intelligence is not one general ability but is split into specific modalities. Visual-spatial intelligence is spatial judgement and the ability to picture objects from different angles, for example when navigating. Linguistic-verbal intelligence is a skill with words and languages, such as reading, writing and telling stories. Other types include logical-mathematical, bodily-kinesthetic, naturalistic, interpersonal, intrapersonal and existential. Each type raises the question of whether a machine could have it.",
-  "points": [
-   "Intelligence is split into modalities and not one general ability",
-   "Describes one type correctly",
-   "Describes a second type correctly",
-   "Names at least one other type, or says each type raises the question of whether a machine could have it"
-  ],
-  "source": "Week 1 lecture, slide 6 to 14",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01a-025",
-  "week": 1,
-  "topic": "Defining AI",
-  "type": "explain",
-  "q": "Explain why the computing definition of AI focuses on behaviour and not on how the machine works.",
-  "model": "Asking whether a machine truly thinks cannot be answered because intelligence is hard to define and measure. The computing definition therefore says AI is the ability of a machine to mimic the behaviour of living things, mainly humans. How the machine does this is not important and what matters is the outcome. This follows from the Turing Test, which only asks whether a judge can tell the machine apart from a person. The definition also does not require the machine to copy biological methods.",
-  "points": [
-   "Thinking and intelligence are hard to define or measure",
-   "AI means a machine mimicking behaviour of living entities",
-   "The method does not matter and the outcome does",
-   "Links the focus on behaviour to the Turing Test"
-  ],
-  "source": "Week 1 lecture, slide 2, 18 and 27",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01a-026",
-  "week": 1,
-  "topic": "AI types",
-  "type": "explain",
-  "q": "Describe theory of mind AI and explain how it differs from classic pattern matching systems.",
-  "model": "Theory of mind AI would be able to understand human motives, intentions and reasoning and predict behaviour, as if simulating human relationships. It could place information in context. It would have broad functionality, whereas classic machine learning algorithms only work well in one specific domain. The key difference is that it would not just match patterns but would understand them. This type is often linked to artificial general intelligence.",
-  "points": [
-   "Understands human motives and intentions and predicts behaviour",
-   "Can contextualise information",
-   "Broad functionality compared with narrow domain algorithms",
-   "Understands patterns and does not only match them"
-  ],
-  "source": "Week 1 lecture, slide 25",
-  "flag": "",
-  "core": false
+  "flag": ""
  }
 ]

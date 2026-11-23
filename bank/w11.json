@@ -1,133 +1,5 @@
 [
  {
-  "id": "w11-001",
-  "week": 11,
-  "topic": "What NLP is",
-  "type": "single",
-  "q": "What does natural language processing focus on?",
-  "options": [
-   "Deriving meaning from human language and handling it automatically",
-   "Compressing large text files so they take up much less storage space on a disk drive",
-   "Recognising objects and their positions in photographs",
-   "Checking that program source code follows a set grammar"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "NLP is a branch of machine learning and AI that derives meaning from human language and handles it automatically. It covers both speech and text.",
-  "source": "Week 11 lecture, slide 2 and 3",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-002",
-  "week": 11,
-  "topic": "NLU and NLG",
-  "type": "single",
-  "q": "Which task is natural language generation?",
-  "options": [
-   "Reading a customer review carefully and working out what the writer actually means by it",
-   "Taking a formal logic statement and expressing it in natural language",
-   "Splitting a sentence into individual word tokens",
-   "Removing hashtags and HTML tags from a message"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Generation goes from a formal statement to natural language. Understanding goes the other way, from a sentence to what it means.",
-  "source": "Week 11 lecture, slide 3",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-003",
-  "week": 11,
-  "topic": "NLP applications",
-  "type": "multi",
-  "q": "Which of these are uses of NLP?",
-  "options": [
-   "Sentiment analysis of customer reviews",
-   "Identifying fake news",
-   "Machine translation",
-   "Spam message detection",
-   "Edge detection in an image"
-  ],
-  "answer": [
-   0,
-   1,
-   2,
-   3
-  ],
-  "explain": "Sentiment analysis, fake news detection, translation and spam detection all work on language. Edge detection works on pixels, so it belongs to image processing.",
-  "source": "Week 11 lecture, slide 2 and 5",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w11-004",
-  "week": 11,
-  "topic": "Text preprocessing",
-  "type": "single",
-  "q": "What is the purpose of text preparation and cleaning before NLP?",
-  "options": [
-   "To translate the text into a second language before analysis",
-   "To improve the quality of raw text so it can be analysed better",
-   "To add extra words to short documents so they all match in length",
-   "To label each message as spam or ham by hand before training"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Preprocessing improves the quality of raw text for analysis. Its tasks include removing irrelevant characters, lowercasing, tokenization and removing stop words.",
-  "source": "Week 11 lecture, slide 7",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-005",
-  "week": 11,
-  "topic": "Text preprocessing",
-  "type": "multi",
-  "q": "Which of these are text preparation tasks?",
-  "options": [
-   "Removing irrelevant characters",
-   "Lowercasing",
-   "Tokenization",
-   "Removing stop words",
-   "Max pooling"
-  ],
-  "answer": [
-   0,
-   1,
-   2,
-   3
-  ],
-  "explain": "Removing irrelevant characters, lowercasing, tokenization and stop word removal are all cleaning steps. Max pooling is a CNN layer from Week 8.",
-  "source": "Week 11 lecture, slide 7",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w11-006",
-  "week": 11,
-  "topic": "Removing irrelevant characters",
-  "type": "single",
-  "q": "After cleaning, what does \"<p>Hey there!!!</p> #Excited\" become?",
-  "options": [
-   "Hey there Excited",
-   "<p>Hey there</p> Excited",
-   "<p>Hey there</p> #Excited, with the tags left in place",
-   "Hey there!!! #Excited"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "Cleaning removes HTML tags, punctuation and hashtag symbols but keeps the words. Lowercasing is a separate step.",
-  "source": "Week 11 lecture, slide 8 and 9",
-  "flag": "",
-  "core": true
- },
- {
   "id": "w11-007",
   "week": 11,
   "topic": "Case normalisation",
@@ -144,28 +16,7 @@
   ],
   "explain": "Casing does not really tell the model about sentiment. Turning \"CASH\" and \"cash\" into one form reduces irrelevant variety in the data.",
   "source": "Week 11 lecture, slide 10",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-008",
-  "week": 11,
-  "topic": "Removing outliers",
-  "type": "single",
-  "q": "What counts as an outlier in NLP?",
-  "options": [
-   "Any word that appears in more than one document anywhere in the training corpus",
-   "Unusual or extreme words, phrases or documents that do not fit the usual distribution",
-   "The words that carry the very strongest positive or negative sentiment anywhere in the whole corpus of documents",
-   "Every message that is labelled as spam in the training data"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Outliers are unusual or extreme words, phrases or documents. One approach is to drop the bottom 20% of words.",
-  "source": "Week 11 lecture, slide 11",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w11-009",
@@ -184,28 +35,7 @@
   ],
   "explain": "Tokenization splits sentences into tokens. The level can be words, subwords or characters, depending on the granularity needed.",
   "source": "Week 11 lecture, slide 12",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-010",
-  "week": 11,
-  "topic": "N-grams",
-  "type": "single",
-  "q": "What is an n-gram?",
-  "options": [
-   "A contiguous sequence of N words or tokens",
-   "A word that appears exactly N times in a document",
-   "A dense vector with N values that stands for one word",
-   "A list of the N most common stop words in a language"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "An n-gram is N tokens in a row. N-grams capture context and which words occur together.",
-  "source": "Week 11 lecture, slide 12",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w11-011",
@@ -224,48 +54,7 @@
   ],
   "explain": "Stop words are common words that do not contribute to the sentiment. They are filtered out before the text reaches the model.",
   "source": "Week 11 lecture, slide 14",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-012",
-  "week": 11,
-  "topic": "Stemming",
-  "type": "single",
-  "q": "What does stemming do to a word?",
-  "options": [
-   "Swaps it for a synonym that has the same meaning in the sentence",
-   "Reduces it to a root by removing suffixes and prefixes",
-   "Turns it into a dense vector of continuous values",
-   "Splits it into its individual characters"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Stemming cuts prefixes and suffixes so variations of a word are treated as one. Happily and happiness both become happi.",
-  "source": "Week 11 lecture, slide 16 and 17",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-013",
-  "week": 11,
-  "topic": "Lemmatization",
-  "type": "single",
-  "q": "What is the lemma of \"went\"?",
-  "options": [
-   "Wen",
-   "Went",
-   "Go",
-   "Going"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "Lemmatization gives the dictionary form and uses meaning, so went maps to go. A stemmer works on spelling and cannot make that link.",
-  "source": "Week 11 lecture, slide 19",
-  "flag": "The slides say stemming uses heuristics. That a stemmer cannot map went to go is an inference from that.",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w11-014",
@@ -284,91 +73,7 @@
   ],
   "explain": "Lemmatization keeps meaning and returns real words called lemmas. Stemming follows rules of thumb, so happily can become happi, which is not a word.",
   "source": "Week 11 lecture, slide 18",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-015",
-  "week": 11,
-  "topic": "Vectorization",
-  "type": "single",
-  "q": "Why is text vectorised before it goes into a machine learning model?",
-  "options": [
-   "Models do maths on numbers, so text must become numerical vectors",
-   "Vectors take up less memory than the original text in every case",
-   "Vectorization removes the stop words and punctuation automatically",
-   "It translates the text into English before the model sees it"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "Vectorization turns text into numerical vectors. Maths is easier on numbers, so algorithms can then process the text.",
-  "source": "Week 11 lecture, slide 20",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-016",
-  "week": 11,
-  "topic": "Vectorization",
-  "type": "multi",
-  "q": "Which of these are vectorization techniques?",
-  "options": [
-   "Bag of words",
-   "TF-IDF",
-   "One-hot encoding",
-   "Stemming",
-   "Tokenization"
-  ],
-  "answer": [
-   0,
-   1,
-   2
-  ],
-  "explain": "Bag of words, TF-IDF and one-hot encoding turn text into numbers. Stemming and tokenization are cleaning steps that come before.",
-  "source": "Week 11 lecture, slide 20",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w11-017",
-  "week": 11,
-  "topic": "TF-IDF",
-  "type": "single",
-  "q": "What does a TF-IDF score try to show?",
-  "options": [
-   "How long a document is compared with the rest of the corpus",
-   "How important a word is to one document within a collection of documents",
-   "Whether a single word in the text carries a positive or a negative sentiment overall",
-   "How similar two words are in meaning"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "TF-IDF reflects how important a word is to a document in a corpus. A word frequent in one document but rare across the corpus scores high.",
-  "source": "Week 11 lecture, slide 21",
-  "flag": "The slides give only the definition. Why a word that is rare across the corpus scores high is standard textbook reasoning.",
-  "core": true
- },
- {
-  "id": "w11-018",
-  "week": 11,
-  "topic": "TF-IDF",
-  "type": "single",
-  "q": "A corpus has 200 documents and the term \"aid\" appears in 8 of them. The document \"aid people health driv\" has 4 terms. What is the TF-IDF of \"aid\" in that document?",
-  "options": [
-   "About 0.80",
-   "About 3.21",
-   "About 0.25",
-   "About 25.0"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "TF is 1 / 4 = 0.25. IDF is ln(200 / 8) = 3.21. TF-IDF is 0.25 x 3.21, which is about 0.80.",
-  "source": "Week 11 lecture, slide 22",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w11-019",
@@ -387,111 +92,7 @@
   ],
   "explain": "Embeddings are dense, continuous vectors that place related words close together. TF-IDF gives sparse vectors based on term frequencies.",
   "source": "Week 11 lecture, slide 24",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-020",
-  "week": 11,
-  "topic": "Embedding",
-  "type": "multi",
-  "q": "Which of these are pre-trained word embedding models?",
-  "options": [
-   "Word2Vec",
-   "GloVe",
-   "FastText",
-   "TF-IDF",
-   "YOLO"
-  ],
-  "answer": [
-   0,
-   1,
-   2
-  ],
-  "explain": "Word2Vec, GloVe and FastText learn vectors from word use in very large corpora. TF-IDF is a frequency statistic and YOLO is an object detector from Week 9.",
-  "source": "Week 11 lecture, slide 24",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w11-021",
-  "week": 11,
-  "topic": "Embedding",
-  "type": "single",
-  "q": "In the example embeddings, why are the vectors for \"king\" and \"queen\" close together?",
-  "options": [
-   "They happen to have the same number of letters, so their vectors line up",
-   "They are used in similar contexts, so they have a related meaning",
-   "They both appear only once in the text",
-   "The model gives every noun the same vector"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Embeddings capture semantic relationships from context. King [0.4, 0.7, -0.1] and queen [0.5, 0.8, -0.2] are close because their meanings are related.",
-  "source": "Week 11 lecture, slide 25",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w11-022",
-  "week": 11,
-  "topic": "Word order",
-  "type": "single",
-  "q": "What is the problem with a model that only uses word frequencies?",
-  "options": [
-   "It ignores word order, which can change the meaning of a sentence",
-   "It cannot handle any document that is longer than about ten words in total",
-   "It needs labelled images as well as text to train",
-   "It always predicts the spam class for every message"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "Frequencies say which words appear but not in what order. Order matters for meaning, so a sequential model such as an RNN is used.",
-  "source": "Week 11 lecture, slide 29 and 30",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-023",
-  "week": 11,
-  "topic": "Word order",
-  "type": "single",
-  "q": "Why is \"That car is sick\" hard for a sentiment model?",
-  "options": [
-   "The sentence is far too short to be tokenized into words by the model",
-   "\"Sick\" can be positive or negative, so context decides the sentiment",
-   "It contains a stop word that cannot be removed",
-   "Cars are not covered in the training vocabulary"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "In slang, sick can be praise. The model needs context to tell the positive reading from the negative one.",
-  "source": "Week 11 lecture, slide 29",
-  "flag": "The slide shows the sentence as either positive or negative. Reading sick as slang praise is an inference.",
-  "core": false
- },
- {
-  "id": "w11-024",
-  "week": 11,
-  "topic": "Sequences for RNNs",
-  "type": "single",
-  "q": "What does texts_to_sequences do before an RNN or LSTM is trained?",
-  "options": [
-   "Turns each text into a sequence of numbers that keeps the word order",
-   "Sorts all the words in each text into alphabetical order before training starts",
-   "Counts how many documents contain each word",
-   "Removes every word that appears fewer than twice"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "RNNs expect sequential data. texts_to_sequences replaces each word with a number and keeps the words in their original order.",
-  "source": "Week 11 lecture, slide 30 and 31",
-  "flag": "The slides name the function but do not say how it works. Mapping each word to an integer index is how the Keras tokenizer does it.",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w11-025",
@@ -510,97 +111,7 @@
   ],
   "explain": "Texts give sequences of different lengths. pad_sequences pads or truncates them to one fixed length so the network gets the same shape every time.",
   "source": "Week 11 lecture, slide 32",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-026",
-  "week": 11,
-  "topic": "Embedding layer",
-  "type": "single",
-  "q": "What problem does an embedding layer solve?",
-  "options": [
-   "Sparse representations such as one-hot encoding are inefficient",
-   "The sequences have different lengths, so each one must be padded to match the others",
-   "Words are in mixed case and need lowercasing",
-   "The model forgets early words because of vanishing gradients"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "One-hot vectors are long and mostly zero. The embedding layer turns words into dense, low-dimensional vectors that capture meaning and cut computation.",
-  "source": "Week 11 lecture, slide 34",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-027",
-  "week": 11,
-  "topic": "What NLP is",
-  "type": "explain",
-  "q": "Explain what natural language processing is and give three of its uses.",
-  "model": "Natural language processing is a branch of machine learning and artificial intelligence. It focuses on deriving meaning from human language and handling it automatically. It covers both speech and text. Uses include chatbots, sentiment analysis of reviews or social media, fake news detection, translation, question answering, summarising and speech recognition.",
-  "points": [
-   "Branch of machine learning or AI",
-   "Derives meaning from human language and handles it automatically",
-   "Covers speech and text",
-   "Gives three uses such as chatbots, sentiment analysis or translation"
-  ],
-  "source": "Week 11 lecture, slide 2 and 3",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-028",
-  "week": 11,
-  "topic": "NLU and NLG",
-  "type": "explain",
-  "q": "Explain the difference between natural language understanding and natural language generation.",
-  "model": "Natural language understanding takes a sentence and works out what it means, for example reading a review to find its sentiment. Natural language generation goes the other way. It takes a formal logic statement and expresses it in natural language. Both are parts of NLP.",
-  "points": [
-   "Understanding takes a sentence and works out its meaning",
-   "Generation takes a formal statement and expresses it in natural language",
-   "They work in opposite directions",
-   "Gives an example of either"
-  ],
-  "source": "Week 11 lecture, slide 3",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-029",
-  "week": 11,
-  "topic": "Text preprocessing",
-  "type": "explain",
-  "q": "Describe the main steps used to prepare raw text before it is given to an NLP model.",
-  "model": "Text preparation improves the quality of raw text. First, irrelevant characters such as punctuation, hashtags, HTML tags and encoding symbols are removed. Case normalisation turns all text to lowercase, since casing adds little meaning. Tokenization splits sentences into tokens such as words. Stop words like and, to and the are removed. Stemming or lemmatization then reduces words to a common form.",
-  "points": [
-   "Removes irrelevant characters such as punctuation or HTML tags",
-   "Lowercases the text",
-   "Tokenizes the text into words or other units",
-   "Removes stop words",
-   "Applies stemming or lemmatization"
-  ],
-  "source": "Week 11 lecture, slide 7 to 19",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-030",
-  "week": 11,
-  "topic": "Tokenization",
-  "type": "explain",
-  "q": "Explain tokenization and n-grams, and why tokenization matters for an NLP model.",
-  "model": "Tokenization splits sentences into tokens. These are usually words but can be subwords or characters, depending on the granularity needed. It matters because it turns raw text into a form a machine learning model can process and analyse. N-grams are contiguous sequences of N tokens. They capture context and which words occur together.",
-  "points": [
-   "Splits text into tokens",
-   "Tokens can be words, subwords or characters",
-   "Turns raw text into a form a model can process",
-   "N-grams are sequences of N tokens in a row that capture context"
-  ],
-  "source": "Week 11 lecture, slide 12 and 13",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w11-031",
@@ -616,8 +127,7 @@
    "Gives a lemma example such as went to go or better to good"
   ],
   "source": "Week 11 lecture, slide 16 to 19",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w11-032",
@@ -633,43 +143,7 @@
    "TF-IDF is TF x IDF, about 0.80"
   ],
   "source": "Week 11 lecture, slide 21 and 22",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-033",
-  "week": 11,
-  "topic": "Embedding",
-  "type": "explain",
-  "q": "Explain what word embeddings are and how they differ from TF-IDF.",
-  "model": "An embedding is a special type of vectorisation. Each word becomes a dense vector of continuous values in a vector space. The vectors capture semantic relationships, so words used in similar contexts such as king and queen get similar vectors. Pre-trained models such as Word2Vec, GloVe and FastText learn them from very large corpora. TF-IDF instead gives sparse vectors based on term frequencies.",
-  "points": [
-   "Words become dense vectors of continuous values",
-   "Vectors capture meaning, so related words are close",
-   "Names a model such as Word2Vec, GloVe or FastText",
-   "TF-IDF gives sparse frequency-based vectors"
-  ],
-  "source": "Week 11 lecture, slide 24 and 25",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w11-034",
-  "week": 11,
-  "topic": "Sequences for RNNs",
-  "type": "explain",
-  "q": "Explain why a frequency-based model is not enough for sentiment analysis, and how text is prepared for an RNN instead.",
-  "model": "A model built on word frequencies ignores the order of words, but order matters for meaning. Context also decides sentiment, for example sick in that car is sick can be praise. RNNs such as LSTMs and GRUs process sequential data and keep context. The text is turned into sequences of numbers with texts_to_sequences. Since RNNs need fixed-size input, pad_sequences pads or truncates each one to the same length. An embedding layer then turns words into dense vectors.",
-  "points": [
-   "Frequency models ignore word order, which affects meaning",
-   "RNNs, LSTMs or GRUs keep the order and context",
-   "Text is converted to sequences, for example with texts_to_sequences",
-   "Sequences are padded or truncated to a fixed length",
-   "An embedding layer gives dense word vectors"
-  ],
-  "source": "Week 11 lecture, slide 29 to 34",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w11-m01",
@@ -689,8 +163,7 @@
   "explain": "High term frequency raises TF and rarity across the corpus raises IDF, so both push the score up.",
   "source": "Tutor's mock test, multiple choice question 20",
   "flag": "",
-  "mock": true,
-  "core": true
+  "mock": true
  },
  {
   "id": "w11-035",
@@ -708,7 +181,6 @@
   ],
   "source": "Week 11 lecture, slide 7 to 34",
   "flag": "",
-  "focus": true,
-  "core": true
+  "focus": true
  }
 ]

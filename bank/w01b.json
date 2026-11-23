@@ -16,194 +16,7 @@
   ],
   "explain": "EDA happens before formal modelling. It builds a picture of the data's content, quality, relationships and anomalies. Tuning, deployment and validation come later.",
   "source": "Week 1 data lecture, slide 12",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01b-002",
-  "week": 1,
-  "topic": "Exploratory data analysis",
-  "type": "multi",
-  "q": "Which of the following can EDA reveal about a dataset?",
-  "options": [
-   "Class imbalance and skewed distributions",
-   "Missing values, duplicates and wrong data types",
-   "The final accuracy the model will reach on unseen data",
-   "Which neural network design will always perform best",
-   "Target leakage and sampling bias"
-  ],
-  "answer": [
-   0,
-   1,
-   4
-  ],
-  "explain": "EDA finds problems with the data and hints at suitable methods. It cannot give final performance because no model has been tested yet.",
-  "source": "Week 1 data lecture, slide 13",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-003",
-  "week": 1,
-  "topic": "Scientific method in AI",
-  "type": "single",
-  "q": "In the scientific method for AI research, what comes straight after proposing an algorithmic approach as a hypothesis?",
-  "options": [
-   "Conclusion where findings are refined and published",
-   "Experimentation using controlled tests on datasets",
-   "Observation of a real world problem such as air quality",
-   "Analysis of results using quantitative metrics"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "The order is observation, hypothesis, experimentation, analysis and conclusion. Analysis needs results from the experiment first.",
-  "source": "Week 1 data lecture, slide 9",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-004",
-  "week": 1,
-  "topic": "Value of AI in research",
-  "type": "multi",
-  "q": "Which of the following are reasons AI is valuable in research?",
-  "options": [
-   "It can bridge fields such as biology, health and transport",
-   "It can uncover hidden patterns in large and complex datasets",
-   "It can automate repetitive cleaning, annotation and analysis",
-   "It guarantees correct conclusions without any experiments",
-   "It removes the need for reproducibility and peer review"
-  ],
-  "answer": [
-   0,
-   1,
-   2
-  ],
-  "explain": "AI accelerates discovery and automates routine work. Research using AI still follows the scientific method with peer review and reproducibility.",
-  "source": "Week 1 data lecture, slide 8 and 9",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-005",
-  "week": 1,
-  "topic": "AI research pipeline",
-  "type": "single",
-  "q": "A researcher checks a model using cross-validation, statistical tests and benchmark comparison. Which stage of the AI research pipeline is this?",
-  "options": [
-   "Problem formulation",
-   "Model development",
-   "Evaluation and validation",
-   "Data collection and preprocessing"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "Cross-validation, statistical testing and benchmarking check whether the model really works. Choosing and justifying an algorithm belongs to model development.",
-  "source": "Week 1 data lecture, slide 10",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-006",
-  "week": 1,
-  "topic": "Data modalities",
-  "type": "single",
-  "q": "Hourly air quality readings are collected from one sensor over several months and the order of the readings matters. Which data modality fits best?",
-  "options": [
-   "Tabular data",
-   "Text data",
-   "Image data",
-   "Time series data"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "Time series are observations indexed by time, so order and the dependence between readings matter. Tabular rows are treated as separate entities.",
-  "source": "Week 1 data lecture, slide 11 and 27",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01b-007",
-  "week": 1,
-  "topic": "Data modalities",
-  "type": "single",
-  "q": "Which pair of properties is profiled when exploring audio data?",
-  "options": [
-   "Sampling rate and duration",
-   "Tokenisation and vocabulary size",
-   "Autocorrelation and seasonality",
-   "Shape, aspect ratio and colour channels"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "Audio is profiled by sampling rate, duration and spectrograms. Tokenisation belongs to text, autocorrelation and seasonality to time series, and shape and channels to images.",
-  "source": "Week 1 data lecture, slide 11",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-008",
-  "week": 1,
-  "topic": "Tabular data",
-  "type": "single",
-  "q": "After joining two tables, many rows appear twice. What does this most likely point to?",
-  "options": [
-   "A genuine extreme value that needs modelling separately",
-   "A join that has gone wrong and created duplicates",
-   "Seasonality in the underlying process",
-   "Class imbalance in the target column"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Schema and integrity checks look for duplicated rows and identifier collisions, which signal broken joins. Outliers and imbalance are different problems.",
-  "source": "Week 1 data lecture, slide 16",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01b-009",
-  "week": 1,
-  "topic": "Tabular data",
-  "type": "single",
-  "q": "One record shows a customer age of 250, while another shows a rare but real very high income. How should each be treated?",
-  "options": [
-   "Both are errors and should be deleted straight away",
-   "Both are true extremes and should be left untouched",
-   "The age is probably an entry error and the income a true extreme",
-   "The income is probably an entry error and the age is a true extreme"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "A value of 250 cannot be a real age, so it is probably an entry error. A very high income can be real, so it calls for a modelling choice such as a transform, not automatic removal.",
-  "source": "Week 1 data lecture, slide 19",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-010",
-  "week": 1,
-  "topic": "Tabular data",
-  "type": "single",
-  "q": "Why does EDA compare the scales and ranges of features?",
-  "options": [
-   "To remove duplicated rows before the dataset is split",
-   "To measure how many values are missing in each column",
-   "To choose how the data is divided into training groups",
-   "To decide whether features need scaling before modelling"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "Features with very different ranges can distort distance-based methods and make optimisation unstable. Standard, robust or power scaling may then be used.",
-  "source": "Week 1 data lecture, slide 20",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w01b-011",
@@ -222,8 +35,7 @@
   ],
   "explain": "Correlations that are too perfect are a warning of leakage. A model using the leaked feature would look good in testing but fail on real new data.",
   "source": "Week 1 data lecture, slide 21 and 13",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w01b-012",
@@ -242,8 +54,7 @@
   ],
   "explain": "Multicollinearity describes how strongly a feature can be explained by the other features. The variance inflation factor measures it and helps decide which variables to drop, combine or regularise. How strongly a feature relates to the target is a different check.",
   "source": "Week 1 data lecture, slide 22",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w01b-013",
@@ -265,312 +76,7 @@
   ],
   "explain": "Imbalance makes accuracy misleading and can hide poor performance on the rare class. Deleting that class removes the very cases you care about.",
   "source": "Week 1 data lecture, slide 24",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-014",
-  "week": 1,
-  "topic": "Tabular data",
-  "type": "single",
-  "q": "A dataset holds daily sales for three years and the aim is to forecast the future. Which split design suits it?",
-  "options": [
-   "A random split that shuffles all days together",
-   "A stratified split that balances classes",
-   "A time-based split where training data comes before test data",
-   "A split that places some days from every year in all three sets"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "The split should reflect how the data were generated. Random shuffling would let the model train on days after the ones it is tested on, which gives overly optimistic results.",
-  "source": "Week 1 data lecture, slide 25",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-015",
-  "week": 1,
-  "topic": "Tabular data",
-  "type": "single",
-  "q": "A dataset has many records for each patient. What split avoids an overly optimistic result?",
-  "options": [
-   "A random split that sends the records of one patient to every one of the sets",
-   "A time split that ignores which patient each record belongs to",
-   "A stratified split that balances the classes in each set",
-   "A grouped split that keeps all records of a patient in the same set"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "If records of the same patient appear in training and test sets, the model can recognise the person. Grouped entities need grouped splitting.",
-  "source": "Week 1 data lecture, slide 25",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-016",
-  "week": 1,
-  "topic": "Tabular data",
-  "type": "multi",
-  "q": "Which of these can a dimensionality check with PCA on standardised data show?",
-  "options": [
-   "Which single feature caused the class label",
-   "Two or three dimensional views for sanity checks",
-   "The exact number of missing values in each row",
-   "Potential for compressing the data",
-   "Axes that are noisy or carry little signal"
-  ],
-  "answer": [
-   1,
-   3,
-   4
-  ],
-  "explain": "PCA shows how variance is concentrated across directions. It does not prove causes and it is not a missingness check.",
-  "source": "Week 1 data lecture, slide 26",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-017",
-  "week": 1,
-  "topic": "Time series data",
-  "type": "multi",
-  "q": "Which are key properties of time series data?",
-  "options": [
-   "Possible non-stationarity",
-   "Trends",
-   "Temporal dependence, also called autocorrelation",
-   "Seasonality",
-   "Rows are independent so order never matters"
-  ],
-  "answer": [
-   0,
-   1,
-   2,
-   3
-  ],
-  "explain": "Order is the defining feature of a time series. Because of this, observations are rarely independent.",
-  "source": "Week 1 data lecture, slide 27",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01b-018",
-  "week": 1,
-  "topic": "Time series data",
-  "type": "single",
-  "q": "A series rises steadily so its average changes over time. What is a suitable remedy before modelling?",
-  "options": [
-   "Differencing or detrending to make the series more stable",
-   "Scaling every value to the same range",
-   "Shuffling the observations so the order of the series is broken",
-   "Splitting the series with stratified sampling"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "A changing mean means the series is not stationary. Differencing and detrending are the standard remedies, and a log transform helps when the variance changes.",
-  "source": "Week 1 data lecture, slide 32",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-019",
-  "week": 1,
-  "topic": "Time series data",
-  "type": "single",
-  "q": "What does analysing change points help you separate?",
-  "options": [
-   "Seasonal cycles from random sampling error",
-   "Brief spikes from lasting shifts in level",
-   "Training rows from validation rows",
-   "Duplicated timestamps from missing timestamps"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "A transient spike may be noise while a persistent level change means the data regime shifted. The two need different modelling responses.",
-  "source": "Week 1 data lecture, slide 34",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-020",
-  "week": 1,
-  "topic": "Text data",
-  "type": "single",
-  "q": "Why might stop words be removed in a bag-of-words model?",
-  "options": [
-   "They are rare words that make the vocabulary too small",
-   "They are the words that carry most of the meaning",
-   "They are very common and rarely add task-specific meaning",
-   "They are numbers and symbols that cannot be counted"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "Function words such as the and and dominate counts without telling much about the task. Removing them cuts noise and dimensionality.",
-  "source": "Week 1 data lecture, slide 38",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01b-021",
-  "week": 1,
-  "topic": "Text data",
-  "type": "single",
-  "q": "What caution applies when converting all text to lowercase?",
-  "options": [
-   "It always makes the vocabulary larger and sparser",
-   "It removes every punctuation mark in the text",
-   "It changes the meaning of every word in all cases",
-   "Case can carry meaning in some tasks or languages"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "Lowercasing merges variants such as AI and ai, which reduces sparsity. The risk is losing meaning when capitalisation matters.",
-  "source": "Week 1 data lecture, slide 39",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-022",
-  "week": 1,
-  "topic": "Text data",
-  "type": "multi",
-  "q": "Which actions belong to careful text cleansing?",
-  "options": [
-   "Masking URLs and mentions",
-   "Normalising Unicode and unescaping HTML",
-   "Collapsing extra whitespace",
-   "Deleting every rare word from the corpus",
-   "Rewriting sentences to improve their grammar"
-  ],
-  "answer": [
-   0,
-   1,
-   2
-  ],
-  "explain": "Cleansing should standardise text without changing its meaning. Rewriting and deleting words change what the text says.",
-  "source": "Week 1 data lecture, slide 40",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-023",
-  "week": 1,
-  "topic": "Text data",
-  "type": "single",
-  "q": "Why look at bigrams and trigrams rather than only single words?",
-  "options": [
-   "They capture phrases such as product names and idioms",
-   "They shorten every document so that all lengths match",
-   "They remove noise such as URLs and markup tags",
-   "They convert words into numbers in a continuous space"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "Multiword expressions carry meaning that counts of single words lose. Turning words into numbers in a continuous space is what an embedding does.",
-  "source": "Week 1 data lecture, slide 44 and 46",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-024",
-  "week": 1,
-  "topic": "Text data",
-  "type": "single",
-  "q": "What does projecting documents into a vector space and reducing dimensions help you see?",
-  "options": [
-   "The exact vocabulary size and word frequencies",
-   "Clusters, themes and outliers across the documents",
-   "The number of empty or malformed documents",
-   "The share of URLs and handles in the text"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Embedding plots show structure in the corpus, such as clusters and outliers, and give early evidence of how separable the labels are. Vocabulary counts, empty texts and noise indicators come from other EDA steps.",
-  "source": "Week 1 data lecture, slide 46",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-025",
-  "week": 1,
-  "topic": "Image data",
-  "type": "multi",
-  "q": "Which methods can find exact or near-duplicate images that might leak across splits?",
-  "options": [
-   "Perceptual hashes for near copies",
-   "Raising the resolution of every image",
-   "Embedding similarity between images",
-   "Cryptographic hashes for exact copies",
-   "Comparing per-channel means only"
-  ],
-  "answer": [
-   0,
-   2,
-   3
-  ],
-  "explain": "Duplicates across training and test sets inflate results because the model has seen the same picture. Hashes and embeddings detect them.",
-  "source": "Week 1 data lecture, slide 52",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01b-026",
-  "week": 1,
-  "topic": "Exploratory data analysis",
-  "type": "explain",
-  "q": "Explain what exploratory data analysis is and why it is done before modelling.",
-  "model": "Exploratory data analysis is the structured process of profiling, summarising and visualising data to understand its content, quality, patterns, relationships and anomalies. It uses simple statistics such as counts, means and correlations together with plots such as histograms and scatter plots. It is done before modelling because it exposes problems like missing values, outliers and leakage early. It also shows distributions and imbalance, and it guides model choice and a realistic baseline.",
-  "points": [
-   "Defined as profiling, summarising and visualising data",
-   "Combines simple statistics with plots",
-   "Checks data quality such as missing values and outliers",
-   "Informs model choice, baselines and bias detection"
-  ],
-  "source": "Week 1 data lecture, slide 12 and 13",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01b-027",
-  "week": 1,
-  "topic": "AI research pipeline",
-  "type": "explain",
-  "q": "Describe the stages of the AI research pipeline.",
-  "model": "The pipeline starts with problem formulation, where objectives and research questions are defined. Next comes data collection and preprocessing, which establishes reliability and ethics. Model development follows, with algorithm selection and a justification for the choice. Evaluation and validation then use cross-validation, statistical tests and benchmark comparison. The last stage is knowledge contribution, meaning new methods, insights or applications. The module focus is on the data stages.",
-  "points": [
-   "Problem formulation defines objectives and questions",
-   "Data collection and preprocessing covers reliability and ethics",
-   "Model development involves choosing and justifying an algorithm",
-   "Evaluation uses cross-validation and benchmarks, and knowledge contribution gives new methods or insights"
-  ],
-  "source": "Week 1 data lecture, slide 10",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-028",
-  "week": 1,
-  "topic": "Scientific method in AI",
-  "type": "explain",
-  "q": "Explain how AI research follows the scientific method.",
-  "model": "AI research starts with observation of a real world problem such as air quality or medical diagnosis. The researcher forms a hypothesis by proposing an algorithmic or modelling approach. Experimentation then tests it with controlled tests on datasets. Results are analysed with quantitative metrics. The conclusion refines the models, generalises the findings and publishes them. As in traditional science, reproducibility and peer review are emphasised.",
-  "points": [
-   "Observation of a real problem",
-   "Hypothesis proposes an approach and experimentation tests it",
-   "Analysis uses quantitative metrics",
-   "Conclusion and publication with reproducibility and peer review"
-  ],
-  "source": "Week 1 data lecture, slide 9",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w01b-029",
@@ -586,25 +92,7 @@
    "Errors are separated from legitimate extremes before deciding what to do"
   ],
   "source": "Week 1 data lecture, slide 17 and 19",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01b-030",
-  "week": 1,
-  "topic": "Tabular data",
-  "type": "explain",
-  "q": "Explain why the way data is split into training, validation and test sets must reflect how the data were generated. Give one example.",
-  "model": "The test set should give an honest estimate of how the model performs on new data. If the split ignores how the data arose, information leaks and results look better than they really are. For independent rows a random or stratified split is fine. For data over time a time-based split keeps the past in training and the future in testing. When several records belong to the same person or group, they must stay together in one set.",
-  "points": [
-   "Splits must allow honest estimates of generalisation",
-   "Wrong splits cause optimistic bias",
-   "Random or stratified for independent rows",
-   "A correct example such as time-based or grouped splits"
-  ],
-  "source": "Week 1 data lecture, slide 25",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w01b-031",
@@ -620,76 +108,7 @@
    "Responses include stratified splits, better metrics, weights or resampling"
   ],
   "source": "Week 1 data lecture, slide 24",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w01b-032",
-  "week": 1,
-  "topic": "Time series data",
-  "type": "explain",
-  "q": "Describe the key properties of time series data and explain why stationarity is checked.",
-  "model": "A time series is a set of observations indexed by time and kept in order. The spacing can be regular or irregular and there may be one variable or several. Key properties are temporal dependence, which is autocorrelation, trends, seasonality and possible non-stationarity. Stationarity means the mean, variance and autocovariance stay stable over time. It is checked because trends or changing variance can break many models, and differencing, detrending or log transforms can remedy this.",
-  "points": [
-   "Observations are ordered in time",
-   "Names properties such as autocorrelation, trend and seasonality",
-   "Stationarity means stable mean, variance and autocovariance",
-   "Remedies such as differencing, detrending or transforms"
-  ],
-  "source": "Week 1 data lecture, slide 27 and 32",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01b-033",
-  "week": 1,
-  "topic": "Text data",
-  "type": "explain",
-  "q": "Explain stop-word removal, case normalisation and text cleansing, and give the main caution for case normalisation and for cleansing.",
-  "model": "Stop word removal drops very common function words such as the and and, which cuts noise and dimensionality in bag of words models. Case normalisation usually lowercases text so variants like AI and ai merge, which reduces sparsity, but case can carry meaning in some tasks. Text cleansing standardises text by normalising Unicode, unescaping HTML, masking URLs and collapsing whitespace. It should be minimally invasive so that informative tokens and meaning are kept.",
-  "points": [
-   "Stop words are frequent words removed to reduce noise",
-   "Case normalisation merges variants but may lose meaning",
-   "Cleansing standardises text through steps such as masking URLs",
-   "Cleaning should preserve meaning"
-  ],
-  "source": "Week 1 data lecture, slide 38 to 40",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01b-034",
-  "week": 1,
-  "topic": "Image data",
-  "type": "explain",
-  "q": "Describe the main checks made when exploring image data and explain why duplicates are a problem.",
-  "model": "An image is an array of pixel values with spatial dimensions and one or more channels. EDA profiles resolution and aspect ratio to set target shapes and padding rules. It also checks channel statistics such as means, ranges and colour space, which guide normalisation and can reveal greyscale stored as colour. Quality checks look for blur, over or under exposure and corrupt files. Duplicates matter because the same or near identical image in both training and test sets leaks information and inflates results.",
-  "points": [
-   "Images are pixel arrays with dimensions and channels",
-   "Resolution and aspect ratio profiling",
-   "Intensity and channel statistics and quality checks such as blur",
-   "Duplicates across splits cause leakage and optimistic results"
-  ],
-  "source": "Week 1 data lecture, slide 47 to 52",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w01b-035",
-  "week": 1,
-  "topic": "Data modalities",
-  "type": "explain",
-  "q": "Name the main data modalities and give one thing you would profile for each.",
-  "model": "Tabular data has rows as entities and columns as features, so you check types, duplicates and missing values. Time series data is ordered, so you look at autocorrelation and seasonality. Text is profiled through tokenisation, vocabulary and length statistics. Images are profiled by shape, aspect ratio and channels. Audio is profiled by sampling rate, duration and spectrograms. Video adds frame rate, resolution and colour depth. Each modality needs its own EDA workflow.",
-  "points": [
-   "Lists at least four modalities correctly",
-   "Gives a suitable profiling item for tabular and time series",
-   "Gives suitable items for text, image or audio",
-   "Notes that each modality needs its own EDA workflow"
-  ],
-  "source": "Week 1 data lecture, slide 11",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w01b-m01",
@@ -708,7 +127,6 @@
   "source": "Tutor's mock test, written question 1",
   "flag": "The model answer follows the tutor's sample answer in the mock test.",
   "mock": true,
-  "core": true,
   "focus": true
  },
  {
@@ -729,8 +147,7 @@
   "explain": "A box plot shows the spread of a numerical variable and marks points beyond the whiskers as possible outliers. Pie and bar charts suit categories, and a confusion matrix evaluates a classifier.",
   "source": "Tutor's mock test, multiple choice question 1",
   "flag": "",
-  "mock": true,
-  "core": true
+  "mock": true
  },
  {
   "id": "w01b-m03",
@@ -750,7 +167,6 @@
   "explain": "A value near -1 means a strong negative linear relationship. Correlation does not show cause.",
   "source": "Tutor's mock test, multiple choice question 2",
   "flag": "",
-  "mock": true,
-  "core": true
+  "mock": true
  }
 ]

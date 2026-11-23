@@ -6,25 +6,26 @@
 <meta name="robots" content="noindex">
 <meta name="color-scheme" content="light">
 <meta name="description" content="Practice questions and revision notes for the MOD004553 Artificial Intelligence in-class test.">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#e7e1d3">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='16' height='16' fill='%23440154'/%3E%3Crect x='16' width='16' height='16' fill='%2326828e'/%3E%3Crect y='16' width='16' height='16' fill='%2335b779'/%3E%3Crect x='16' y='16' width='16' height='16' fill='%23fde725'/%3E%3C/svg%3E">
 <title>AI Test Practice</title>
 <style>
 @font-face{font-family:"Atkinson Next";src:url(data:font/woff2;base64,/*FONT*/) format("woff2");font-weight:200 800;font-display:swap}
 :root{
-  --paper:#fff;--ink:#1b1424;--ink-2:#4b4357;--hair:#dedbe4;--tint:#f4f2f7;
+  --paper:#fbf8f1;--desk:#e7e1d3;--ink:#1d1a16;--ink-2:#4f4940;--hair:#d9d1c1;--tint:#f2ecdf;--rule:#c9d6e8;--margin:#c0392b;
+  --serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
   --right:#18794e;--wrong:#b3261e;--focus:#3e4a89;--off:#767676;--hatch:#d9d5e0;--veil:#1b142499;
   --t-xs:.84rem;--t-s:.94rem;--t-m:1.0625rem;--t-l:1.375rem;--t-xl:2.25rem;
   --r:6px;
 }
 *{box-sizing:border-box}
 html,body{overflow-x:clip}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 var(--t-m)/1.5 "Atkinson Next",Verdana,Arial,sans-serif}
-main{max-width:720px;margin:0 auto;padding:24px 20px 72px;min-height:100dvh}
-@media (min-width:800px){main{padding:56px 20px 96px}}
+body{margin:0;background:var(--desk) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");color:var(--ink);font:400 var(--t-m)/1.5 "Atkinson Next",Verdana,Arial,sans-serif}
+main{max-width:760px;margin:0 auto;padding:24px 20px 72px;min-height:100dvh;background:var(--paper);box-shadow:0 1px 2px #0000001a,0 8px 28px #00000014}
+@media (min-width:800px){main{margin:32px auto 48px;padding:56px 56px 96px;border-left:2px solid #e8b4ae;background-image:linear-gradient(90deg,transparent 39px,#f0c9c4 39px,#f0c9c4 40px,transparent 40px)}}
 h1,h2,h3{text-wrap:balance;margin:0}
-h1{font-size:var(--t-xl);font-weight:800;line-height:1.02}
-h2{font-size:var(--t-l);font-weight:700;line-height:1.25;margin-top:40px}
+h1{font:700 var(--t-xl)/1.08 var(--serif);letter-spacing:-.01em}
+h2{font:700 var(--t-l)/1.25 var(--serif);margin-top:40px}
 h3,.sub{font-size:var(--t-m);font-weight:700;margin-top:20px;line-height:1.5}
 h1.stem,h2.stem{margin:8px 0 4px}
 h1:focus,h2:focus,.fb:focus,legend:focus{outline:none}
@@ -81,7 +82,7 @@ select{max-width:100%;text-overflow:ellipsis}
 
 fieldset{border:0;margin:0;padding:0;min-width:0}legend{padding:0}
 .meta{display:flex;justify-content:space-between;gap:12px;margin-top:24px;font-size:var(--t-s);color:var(--ink-2)}
-.stem{font-size:var(--t-l);font-weight:700;line-height:1.3;margin:8px 0 4px;white-space:pre-wrap;text-wrap:balance;display:block}
+.stem{font:600 var(--t-l)/1.35 var(--serif);margin:8px 0 4px;white-space:pre-wrap;text-wrap:balance;display:block}
 .how{display:block;font-size:var(--t-s);color:var(--ink-2);font-weight:400;margin-bottom:12px}
 .o{display:grid;grid-template-columns:22px minmax(0,1fr) 24px;gap:0 12px;align-items:start;padding:12px 0;border-top:1px solid var(--hair);cursor:pointer}
 .o input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--ink);cursor:pointer}
@@ -89,10 +90,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0}legend{padding:0}
 .o small{display:block;font-weight:700;font-size:var(--t-xs);color:var(--wrong)}.o small.ok{color:var(--right)}
 .o .mk{width:22px;height:22px;margin-top:2px}
 .row{display:flex;flex-wrap:wrap;gap:4px 24px}.row .o{border:0;grid-template-columns:22px auto;padding:8px 0;min-height:44px}
-textarea{display:block;width:100%;min-height:168px;resize:vertical;font:400 var(--t-m)/1.5 "Atkinson Next",Verdana,sans-serif;color:var(--ink);background:var(--paper);border:1.5px solid var(--ink);border-radius:var(--r);padding:12px}
+textarea{display:block;width:100%;min-height:200px;resize:vertical;font:400 var(--t-m)/32px var(--serif);color:var(--ink);background:var(--paper) repeating-linear-gradient(transparent 0 31px,var(--rule) 31px 32px) 0 11px/100% 32px local;border:1.5px solid var(--ink);border-radius:var(--r);padding:12px}
 textarea.short{min-height:96px}
 textarea::placeholder{color:var(--ink-2);opacity:1}
-.yours{white-space:pre-wrap;background:var(--tint);padding:12px;border-radius:var(--r);overflow-wrap:break-word}
+.yours{white-space:pre-wrap;font-family:var(--serif);background:var(--tint);padding:12px;border-radius:var(--r);overflow-wrap:break-word}
 .fb{margin-top:20px;border-top:1.5px solid var(--ink);padding-top:4px;overflow-wrap:break-word}
 .flag{background:var(--tint);padding:12px;border-radius:var(--r);font-size:var(--t-s);margin-top:12px}
 .nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:28px}
@@ -114,12 +115,17 @@ table.t{border-collapse:collapse;width:100%;font-size:var(--t-s);margin-top:8px;
 .rev{border-top:1.5px solid var(--ink);margin-top:32px}
 .foot{margin-top:64px;border-top:1px solid var(--hair);padding-top:16px;font-size:var(--t-s);color:var(--ink-2)}
 .foot .gh{display:inline-flex;align-items:center;gap:8px;vertical-align:bottom;min-height:24px}
-.notes{overflow-wrap:break-word}
+.notes{overflow-wrap:break-word;font-family:var(--serif);font-size:1.0625rem;line-height:1.65}
+.notes strong{font-weight:700}
+.notes blockquote{margin:12px 0 20px;padding:10px 14px;border-left:3px solid var(--margin);background:var(--tint);font-style:italic;font-size:var(--t-s)}
+.notes blockquote p{margin:0}
+.notes blockquote p::before{content:"Watch out. ";font-style:normal;font-weight:700;color:var(--margin)}
+.notes ol,.notes ul{padding-left:24px}
 .notes h1{font-size:var(--t-xl);margin-top:28px}
 .notes h2{border-top:1px solid var(--hair);padding-top:16px;margin-top:28px}
 .notes h3{font-size:var(--t-m);margin-top:24px}
 .notes h2{font-size:var(--t-l)}
-.notes h4{font-size:var(--t-m);margin:20px 0 0;border-top:1px solid var(--hair);padding-top:12px}
+.notes h4{font:700 var(--t-l)/1.3 var(--serif);margin:20px 0 0;border-top:1px solid var(--hair);padding-top:12px}
 .notes table{display:block;overflow-x:auto;border-collapse:collapse;margin:12px 0;font-size:var(--t-s);font-variant-numeric:tabular-nums}
 .notes td,.notes th{border-bottom:1px solid var(--hair);padding:8px 16px 8px 0;text-align:left;vertical-align:top}
 .notes li{margin:4px 0}
@@ -152,8 +158,7 @@ const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { c
 const isEx = q => q.type === "explain";
 const marks = q => isEx(q) ? q.points.length : 1;
 const same = (a, b) => a.length === b.length && a.every(x => b.includes(x));
-// The core set is one multiple choice and one written question per main topic. See select_core.py.
-const CORE = Q.filter(q => q.core), pool = () => st.core ? CORE : Q;
+const pool = () => Q;
 const weeksPresent = [...new Set(Q.map(q => q.week))].sort((a, b) => a - b);
 let tick = null, first = true;
 const focusOn = sel => { const e = app.querySelector(sel); if (e) { e.tabIndex = -1; e.focus({preventScroll:true}); } };
@@ -238,12 +243,6 @@ function home() {
     <p>50 minutes on a computer in Week 12. Mostly written answers.</p>
     <p class="s">Your progress saves in this browser only.</p>
   </header>
-  <fieldset><legend><h2>Which questions to practise</h2></legend>
-    <div class="row" style="flex-direction:column;gap:0">
-      <label class="o"><input type="radio" name="core" value="1" ${st.core ? "checked" : ""}><span>Core set, ${CORE.length} questions on the main topics.</span></label>
-      <label class="o"><input type="radio" name="core" value="0" ${st.core ? "" : "checked"}><span>Full bank, ${Q.length} questions. Adds the smaller topics.</span></label>
-    </div>
-  </fieldset>
   <h2>Study, then practise</h2>
   <div class="papers">
     ${resume ? paper("Resume " + st.run.title.toLowerCase(), "You stopped at question " + (st.run.i + 1) + "." + (st.run.limit ? (left ? ` ${left} min left on the clock.` : " Time has run out.") : "") + " Starting another set replaces it.", st.run.ids.length + " questions", [["resume", "Resume", 1]]) : ""}
@@ -257,7 +256,7 @@ function home() {
     ${paper("Timed paper", "The real test format: 4 written and 10 multiple choice questions from different weeks. The clock keeps running if you leave.", "14 questions, 50 min", [["m-timed", "Test"]])}
     ${paper("Tutor's mock test", "The 10 written and 20 multiple choice questions from the mock the tutor posted on 23 November. Test has no clock.", MOCK.length + " questions", [["s-mock", "Study", 1], ["m-mock", "Test"]])}
   </div>
-  <h2 id="hm">Share of ${st.core ? "core" : "all"} questions marked right, by week</h2>
+  <h2 id="hm">Share of questions marked right, by week</h2>
   <p class="s">Each square is a button. A multiple choice square starts up to 10 questions from that week and a written square up to 5, weakest first. Press a week name for its notes, its answers and an Ask AI box.</p>
   <table class="plot" aria-labelledby="hm">
     <thead><tr><th scope="col"><span class="vh">Week</span></th><th scope="col">Multiple choice</th><th scope="col">Written answer</th></tr></thead>
@@ -279,7 +278,6 @@ function home() {
     const w = +b.dataset.w, ex = b.dataset.ex === "1", c = cell(w, ex);
     start({title:`Week ${w}, ${ex ? "written answers" : "multiple choice"}`, ids:weakest(c.qs).slice(0, ex ? 5 : 10).map(q => q.id)});
   });
-  app.querySelectorAll("input[name=core]").forEach(e => e.onchange = () => { st.core = e.value === "1"; save(); const y = window.scrollY; home(); window.scrollTo(0, y); app.querySelector("input[name=core]:checked").focus(); });
   app.querySelectorAll("input[name=ai]").forEach(e => e.onchange = () => { st.ai = e.value; save(); app.querySelector("details summary").textContent = aiSum(); });
   document.getElementById("ai-temp").onchange = e => { st.aiTemp = e.target.checked; save(); };
   on("resume", () => show());
@@ -293,7 +291,7 @@ function home() {
   const mockTest = () => start({title:"Tutor's mock test", ids:[...MOCK.filter(q => !isEx(q)), ...MOCK.filter(isEx)].map(q => q.id), exam:true});
   on("s-mock", () => study("Tutor's mock test", [...MOCK.filter(q => !isEx(q)), ...MOCK.filter(isEx)].map(q => q.id), mockTest));
   on("m-mock", mockTest);
-  on("reset", () => { if (confirm("Clear every mark, question to redo, set left part way and handed-in paper in this browser? Your Ask AI choice and question set stay. This cannot be undone.")) { try { localStorage.setItem(LS, JSON.stringify({ai: st.ai, aiTemp: st.aiTemp, core: st.core})); } catch(e) {} location.reload(); } });
+  on("reset", () => { if (confirm("Clear every mark, question to redo, set left part way and handed-in paper in this browser? Your Ask AI choice stays. This cannot be undone.")) { try { localStorage.setItem(LS, JSON.stringify({ai: st.ai, aiTemp: st.aiTemp})); } catch(e) {} location.reload(); } });
   on("m-mixed", () => start({title:"Mixed set", ids:shuffle([...weakest(pool().filter(q => !isEx(q))).slice(0, 10), ...weakest(pool().filter(isEx)).slice(0, 5)]).map(q => q.id)}));
   const exTest = () => start({title:"Written answers", ids:weakest(exQ).slice(0, 5).map(q => q.id)});
   const mcTest = () => start({title:"Multiple choice", ids:weakest(mcQ).slice(0, 10).map(q => q.id)});

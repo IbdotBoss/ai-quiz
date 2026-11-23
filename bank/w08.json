@@ -16,73 +16,7 @@
   ],
   "explain": "The meaning of an image sits in groups of neighbouring pixels, and a fully connected network does not use that local structure. It can still use nonlinear functions and backpropagation, so those options fail.",
   "source": "Week 8 lecture, slide 6",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-002",
-  "week": 8,
-  "topic": "Images and channels",
-  "type": "single",
-  "q": "What does a channel refer to in a digital image?",
-  "options": [
-   "A hidden layer between the input and the output of a network",
-   "A class label that the network can assign to a picture",
-   "A colour component of the image, stored as a 2D matrix",
-   "A filter position as the kernel slides across the image"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "A colour image is like three 2D matrices stacked together, one each for red, green and blue. A grayscale image has just one channel.",
-  "source": "Week 8 lecture, slide 7",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w08-003",
-  "week": 8,
-  "topic": "Convolution",
-  "type": "single",
-  "q": "In a convolutional layer, what is the job of a filter, also called a kernel?",
-  "options": [
-   "It randomly switches off outputs to stop the network memorising",
-   "It slides over the input to detect features such as edges",
-   "It converts feature values into probabilities that sum to one",
-   "It rescales pixel values so that features share a similar size"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "The filter holds weights that are multiplied with each patch of the input, so it acts as a feature detector. Switching off outputs is dropout and turning values into probabilities is softmax.",
-  "source": "Week 8 lecture, slide 9 and 11",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-004",
-  "week": 8,
-  "topic": "Filters",
-  "type": "multi",
-  "q": "Which tasks can different filters carry out on an input image?",
-  "options": [
-   "Randomly dropping layer outputs",
-   "Converting logits into class probabilities",
-   "Detecting edges",
-   "Softening the image",
-   "Sharpening the image",
-   "Detecting corners"
-  ],
-  "answer": [
-   2,
-   3,
-   4,
-   5
-  ],
-  "explain": "Different kernels pull out different features and can also sharpen or soften an image. Producing probabilities belongs to the softmax layer and dropping outputs belongs to the dropout layer.",
-  "source": "Week 8 lecture, slide 10",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w08-005",
@@ -101,8 +35,7 @@
   ],
   "explain": "Stride is the amount the kernel shifts over the input. A bigger shift means fewer positions are visited. Filling the border with zeros describes padding, not stride.",
   "source": "Week 8 lecture, slide 13 and 14",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w08-006",
@@ -121,218 +54,7 @@
   ],
   "explain": "A sliding kernel treats pixels at the edges differently from the rest, so a border is added. Padding does not change the kernel size, the number of channels or the stride.",
   "source": "Week 8 lecture, slide 15",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-007",
-  "week": 8,
-  "topic": "Padding",
-  "type": "multi",
-  "q": "Which of these are forms of padding?",
-  "options": [
-   "Reflection padding",
-   "Replication padding",
-   "Dropout padding",
-   "Softmax padding",
-   "Zero padding"
-  ],
-  "answer": [
-   0,
-   1,
-   4
-  ],
-  "explain": "Zero padding fills the border with zeros, and reflection and replication padding fill it using the image's own edge values. Dropout and softmax are separate layer types, not padding methods.",
-  "source": "Week 8 lecture, slide 15 and 16",
-  "flag": "Slide 16 is image only, so the padding types come from the text on slide 15.",
-  "core": false
- },
- {
-  "id": "w08-008",
-  "week": 8,
-  "topic": "Convolution",
-  "type": "single",
-  "q": "How do the filters of a CNN become useful feature detectors?",
-  "options": [
-   "They start random and are refined by feedforward and backpropagation",
-   "They are designed by hand to match edges and corners",
-   "They are copied from the pooling layer after training",
-   "They stay fixed at their random starting values for the whole of training"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "Filters are randomly initialised like ordinary weights and biases, then repeated training evolves them into strong feature extractors. They are not hand designed and they do not stay random.",
-  "source": "Week 8 lecture, slide 19",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w08-009",
-  "week": 8,
-  "topic": "Pooling",
-  "type": "single",
-  "q": "A max pooling layer is added after a convolutional layer. What is its main job?",
-  "options": [
-   "To enlarge the feature maps so finer detail is recovered",
-   "To turn the feature maps into a single vector",
-   "To randomly ignore some outputs so the network cannot memorise",
-   "To shrink the feature maps while keeping the dominant features"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "Pooling shrinks the convolved features, which lowers the computing needed. Turning maps into a vector is the flatten layer and ignoring outputs at random is dropout.",
-  "source": "Week 8 lecture, slide 20 and 21",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-010",
-  "week": 8,
-  "topic": "Pooling",
-  "type": "single",
-  "q": "A kernel covers a patch of values in a feature map. How does average pooling summarise that patch?",
-  "options": [
-   "It keeps only the largest value in the patch",
-   "It returns the mean of all the values in the patch",
-   "It keeps the first value that the kernel reaches",
-   "It subtracts the patch mean from every value"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Average pooling returns the average of the values under the kernel. Keeping only the largest value describes max pooling, which is the tempting wrong choice.",
-  "source": "Week 8 lecture, slide 21",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w08-011",
-  "week": 8,
-  "topic": "Pooling",
-  "type": "multi",
-  "q": "Which are benefits of a pooling layer?",
-  "options": [
-   "It extracts dominant features that are rotation and position invariant",
-   "It shrinks the spatial size of the convolved features",
-   "It helps keep the training of the model effective",
-   "It lowers the computing power needed to process the data"
-  ],
-  "answer": [
-   0,
-   1,
-   2,
-   3
-  ],
-  "explain": "Pooling reduces dimensions, saves computation and keeps dominant features that do not depend on exact position or rotation, which supports effective training. All four statements are correct.",
-  "source": "Week 8 lecture, slide 20",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w08-012",
-  "week": 8,
-  "topic": "Activation",
-  "type": "single",
-  "q": "What does an activation layer do in a CNN?",
-  "options": [
-   "It gates a neuron's output, deciding whether it is activated",
-   "It slides a kernel over the image to extract local features",
-   "It averages groups of neighbouring values to shrink the map",
-   "It flattens the feature maps into one long vector"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "An activation function is a gate that decides what a neuron outputs. In a CNN it is applied across the two dimensions of each feature map. ReLU is the most popular choice.",
-  "source": "Week 8 lecture, slide 22 and 23",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-013",
-  "week": 8,
-  "topic": "Normalisation",
-  "type": "single",
-  "q": "Why are input features scaled to a similar range, such as 0 to 1?",
-  "options": [
-   "So that the output layer produces probabilities that sum to one",
-   "So that the image shrinks before pooling is applied",
-   "So that each feature contributes about equally to the prediction",
-   "So that neurons can be dropped at random during training"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "Normalisation makes feature sizes comparable, so one feature with large values does not dominate. Producing probabilities is softmax, and dropping neurons is dropout.",
-  "source": "Week 8 lecture, slide 24",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-014",
-  "week": 8,
-  "topic": "Batch normalisation",
-  "type": "single",
-  "q": "Batches from a dataset look very different from each other, and training keeps swinging between them. What is this problem called?",
-  "options": [
-   "Overfitting, where training error is tiny but error on new data is large",
-   "Covariate shift, a large change in data distribution between batches",
-   "Underfitting, where training error stays high however long training runs",
-   "Vanishing gradient, where early layers barely update at all"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "When batches differ a lot, the network keeps changing its weights towards each odd distribution, which slows training. Batch normalisation reduces this. Overfitting is about memorising the training set instead.",
-  "source": "Week 8 lecture, slide 25",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-015",
-  "week": 8,
-  "topic": "Batch normalisation",
-  "type": "multi",
-  "q": "Which statements about batch normalisation are correct?",
-  "options": [
-   "It works on the feature maps of a mini batch",
-   "It generally speeds up learning and leads to faster convergence",
-   "For each feature it subtracts the mini batch mean and divides by the mini batch standard deviation",
-   "It chooses the largest value from each patch of the feature map",
-   "It randomly removes outputs to reduce memorisation"
-  ],
-  "answer": [
-   0,
-   1,
-   2
-  ],
-  "explain": "Batch normalisation standardises each feature using mini batch statistics, which speeds up learning. Removing outputs at random is dropout and taking the largest value is max pooling.",
-  "source": "Week 8 lecture, slide 26",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w08-016",
-  "week": 8,
-  "topic": "Overfitting",
-  "type": "multi",
-  "q": "Which statements describe overfitting?",
-  "options": [
-   "The error on new data is large",
-   "The error on the training set becomes very small",
-   "The network generalises well to new situations",
-   "The error on the training set stays high however long training runs"
-  ],
-  "answer": [
-   0,
-   1
-  ],
-  "explain": "An overfitted network has memorised the training examples, so training error is tiny but new data gives large error. It has not learned to generalise.",
-  "source": "Week 8 lecture, slide 27",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w08-017",
@@ -351,186 +73,7 @@
   ],
   "explain": "Dropout is a regularisation technique that randomly drops outputs during training, so the network cannot rely on memorising everything. The dropped outputs are not removed for good.",
   "source": "Week 8 lecture, slide 28",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-018",
-  "week": 8,
-  "topic": "Dropout",
-  "type": "single",
-  "q": "Is the following statement correct?\n\"Dropout is used so that a network can memorise the whole training set.\"",
-  "options": [
-   "Yes, because dropout stores the training examples inside the layer",
-   "Yes, because dropping outputs makes the layer more accurate on training data only",
-   "No, because dropout is a regularisation technique that stops memorising",
-   "No, because dropout is only used to shrink the size of feature maps"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "The purpose of dropout is the opposite of memorisation. By ignoring random outputs it pushes the network to generalise. Shrinking feature maps is the job of pooling.",
-  "source": "Week 8 lecture, slide 27 and 28",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w08-019",
-  "week": 8,
-  "topic": "CNN structure",
-  "type": "single",
-  "q": "What are the two main stages of a CNN?",
-  "options": [
-   "Convolution and pooling to find features, then fully connected layers to predict the label",
-   "Fully connected layers to find features, then convolution and pooling to predict the label",
-   "Normalisation to prepare the image, then pooling to predict the label",
-   "Pooling to find features, then convolution to predict the label"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "The first stage breaks the image into features and analyses them. The second stage, made of fully connected layers, uses those features to predict the best label.",
-  "source": "Week 8 lecture, slide 29",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-020",
-  "week": 8,
-  "topic": "Fully connected layers",
-  "type": "single",
-  "q": "What does the flatten layer at the start of the fully connected stage do?",
-  "options": [
-   "It gives the final probability for each label using softmax",
-   "It applies a filter to detect edges in the image",
-   "It randomly drops outputs to prevent overfitting",
-   "It turns the earlier output into one vector for the next stage"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "The flatten layer takes the feature maps and turns them into one vector so that ordinary fully connected layers can use them. Final probabilities come from the softmax output layer.",
-  "source": "Week 8 lecture, slide 30 and 31",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-021",
-  "week": 8,
-  "topic": "Softmax",
-  "type": "single",
-  "q": "What is the purpose of the softmax function in the output layer?",
-  "options": [
-   "It flattens feature maps into a single vector",
-   "It turns raw values, called logits, into probabilities summing to one",
-   "It decides which neuron outputs to drop at random",
-   "It scales each feature to the range 0 to 1 across the samples in a mini batch"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Softmax gives the final probability for each label, and the probabilities add up to one. Flattening, dropout and batch normalisation are different layers.",
-  "source": "Week 8 lecture, slide 30 and 32",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-022",
-  "week": 8,
-  "topic": "Fully connected layers",
-  "type": "multi",
-  "q": "Which are types of fully connected layer in a CNN?",
-  "options": [
-   "A softmax layer that acts as the output",
-   "A pooling input layer that keeps the maximum",
-   "A normal layer that applies weights and biases",
-   "A flatten layer that acts as the input",
-   "A convolutional output layer that applies a small kernel"
-  ],
-  "answer": [
-   0,
-   2,
-   3
-  ],
-  "explain": "Fully connected layers include the flatten input layer, ordinary layers with weights and biases, and the softmax output layer. Kernels and maximum values belong to convolution and pooling.",
-  "source": "Week 8 lecture, slide 30",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w08-023",
-  "week": 8,
-  "topic": "Convolution",
-  "type": "multi",
-  "q": "Which statements about convolution are correct?",
-  "options": [
-   "It returns the maximum value from each patch",
-   "Its filters start random and improve through training",
-   "Its filters are designed by hand and then frozen",
-   "The most common filter size is 3 by 3",
-   "It multiplies a set of weights with the input in a linear operation"
-  ],
-  "answer": [
-   1,
-   3,
-   4
-  ],
-  "explain": "Convolution is a linear operation between a filter and the input, filters are learned, and 3 by 3 is the usual size. Hand designed frozen filters and maximum values do not describe it.",
-  "source": "Week 8 lecture, slide 9, 11 and 19",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w08-024",
-  "week": 8,
-  "topic": "CNN motivation",
-  "type": "explain",
-  "q": "Explain why a traditional fully connected network does not scale well to images and what a CNN assumes instead.",
-  "model": "The meaning of an image sits in groups of neighbouring pixels that together form a shape, and a traditional network is not designed to use these local features. It treats pixels as separate inputs, so it is good at classifying but poor at extracting features. A CNN assumes the input is an image. This lets the architecture encode visual features and use local patterns, so it extracts features better and runs more efficiently.",
-  "points": [
-   "Image meaning comes from groups of neighbouring pixels",
-   "Traditional networks do not use local features and are weak at feature extraction",
-   "A CNN assumes the input is an image",
-   "So a CNN uses local features and works more efficiently"
-  ],
-  "source": "Week 8 lecture, slide 5 and 6",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-025",
-  "week": 8,
-  "topic": "Convolution",
-  "type": "explain",
-  "q": "Describe what the convolution operation does and the role of the filter.",
-  "model": "Convolution slides a small 2D array of weights, called a filter or kernel, over the image and multiplies it with each patch of input. This is a linear operation that extracts and keeps local features. Different filters pick out different features such as edges or corners. The result is a smaller output that is easier to process without losing features that matter for prediction. The filters begin random and are improved by training.",
-  "points": [
-   "A filter or kernel is a 2D array of weights applied across the input",
-   "It multiplies the weights with each patch of input in a linear operation",
-   "Different filters detect different features such as edges and corners",
-   "The output is smaller but keeps the features that matter",
-   "Filters start random and are learned in training"
-  ],
-  "source": "Week 8 lecture, slide 8 to 11 and 19",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-026",
-  "week": 8,
-  "topic": "Stride and padding",
-  "type": "explain",
-  "q": "Explain what stride and padding control in a convolution.",
-  "model": "Stride is the amount the kernel shifts each time as it moves across the input. It moves right by the stride until the width is covered, then drops down and repeats. A larger stride means fewer positions and a smaller output. Padding adds extra values around the border of the image so that edge pixels are handled properly. The most common choice is zero padding, but reflection and replication padding also exist.",
-  "points": [
-   "Stride is the shift of the kernel at each step",
-   "A larger stride visits fewer positions",
-   "Padding adds a border to handle edge pixels",
-   "Zero padding is common and reflection or replication padding are alternatives"
-  ],
-  "source": "Week 8 lecture, slide 13 to 16",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w08-027",
@@ -546,42 +89,7 @@
    "Average pooling returns the mean of the patch"
   ],
   "source": "Week 8 lecture, slide 20 and 21",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-028",
-  "week": 8,
-  "topic": "Activation",
-  "type": "explain",
-  "q": "Explain the purpose of the activation layer in a CNN and name the most popular activation function.",
-  "model": "An activation function is a mathematical equation that decides the output of a neuron. In a CNN it works across two dimensions like a screen and decides whether each output pixel is activated. It acts as a gate between the inputs feeding a neuron and its output going to the next layer. It also adds the nonlinearity that a plain dot product lacks. ReLU is the most popular activation function in CNNs.",
-  "points": [
-   "It decides the output of a neuron",
-   "It acts as a gate between inputs and output",
-   "It decides whether each output pixel is activated",
-   "ReLU is the most popular choice"
-  ],
-  "source": "Week 8 lecture, slide 22 and 23",
-  "flag": "The nonlinearity point is standard textbook knowledge. Slide 4 only says the dot product is optionally followed by a nonlinearity.",
-  "core": true
- },
- {
-  "id": "w08-029",
-  "week": 8,
-  "topic": "Batch normalisation",
-  "type": "explain",
-  "q": "Explain how batch normalisation helps the training of a CNN.",
-  "model": "Very different looking batches cause a large shift in the data distribution, called covariate shift. The network is misled into changing its weights towards one odd batch, so it bounces between distributions and learns slowly. Batch normalisation works on feature maps across a mini batch. For each feature it finds the mean and variance, subtracts the mean and divides by the standard deviation. This speeds up learning and gives faster convergence.",
-  "points": [
-   "Different batches cause covariate shift",
-   "Covariate shift slows training because the network bounces between distributions",
-   "It subtracts the mini batch mean and divides by the standard deviation for each feature",
-   "Learning is faster and converges sooner"
-  ],
-  "source": "Week 8 lecture, slide 24 to 26",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w08-030",
@@ -597,42 +105,7 @@
    "It randomly ignores some layer outputs during training"
   ],
   "source": "Week 8 lecture, slide 27 and 28",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-031",
-  "week": 8,
-  "topic": "Fully connected layers",
-  "type": "explain",
-  "q": "Describe the role of the fully connected layers at the end of a CNN, including the flatten layer and softmax.",
-  "model": "Once convolution and pooling have found features, fully connected layers use them to predict the best label for the image. The flatten layer first turns the feature maps into a single vector. Normal fully connected layers then apply weights and biases to the features. The output layer uses softmax, which turns the raw values, called logits, into a probability for each label. The probabilities sum to one.",
-  "points": [
-   "They take the output of the feature stage and predict a label",
-   "Flatten turns feature maps into a single vector",
-   "Normal layers apply weights and biases",
-   "Softmax turns logits into probabilities that sum to one"
-  ],
-  "source": "Week 8 lecture, slide 29 to 32",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w08-032",
-  "week": 8,
-  "topic": "CNN structure",
-  "type": "explain",
-  "q": "Describe the layers of a CNN and the order in which an image moves through them to produce a label.",
-  "model": "A typical CNN stacks layers that reduce the image size while keeping the features that separate one class from another. Convolutional layers apply filters to find local features. Activation layers act as gates on the outputs, normalisation layers keep feature values comparable, pooling layers shrink the maps and dropout layers fight overfitting. This is the feature stage. A flatten layer then feeds fully connected layers, and a softmax output layer gives the label probabilities.",
-  "points": [
-   "Six layer types are convolution, pooling, activation, normalisation, dropout and fully connected",
-   "The feature stage reduces size while keeping key features",
-   "Flatten feeds the fully connected layers",
-   "Softmax gives the final label probabilities"
-  ],
-  "source": "Week 8 lecture, slide 17, 18 and 29",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w08-m01",
@@ -651,7 +124,6 @@
   "source": "Tutor's mock test, written question 8",
   "flag": "The mock gives no sample answer. This model answer was written from the slides for that week. That a CNN shares filter weights across the image is textbook knowledge.",
   "mock": true,
-  "core": true,
   "focus": true
  },
  {
@@ -672,8 +144,7 @@
   "explain": "Output size is (input - kernel) / stride + 1 = (32 - 3) / 1 + 1 = 30 on each side.",
   "source": "Tutor's mock test, multiple choice question 14",
   "flag": "",
-  "mock": true,
-  "core": true
+  "mock": true
  },
  {
   "id": "w08-m03",
@@ -693,8 +164,7 @@
   "explain": "Max pooling keeps the largest value in the window, which is 7. 4.25 would be average pooling.",
   "source": "Tutor's mock test, multiple choice question 15",
   "flag": "",
-  "mock": true,
-  "core": true
+  "mock": true
  },
  {
   "id": "w08-m04",
@@ -714,7 +184,6 @@
   "explain": "Batch normalisation subtracts the mini-batch mean and divides by its standard deviation, then applies a learned scale and shift. Removing negative values is what ReLU does.",
   "source": "Tutor's mock test, multiple choice question 16",
   "flag": "The learned scale and shift come from the mock test and standard references. The slides describe only the mean and standard deviation step.",
-  "mock": true,
-  "core": true
+  "mock": true
  }
 ]

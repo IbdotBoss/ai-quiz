@@ -1,131 +1,5 @@
 [
  {
-  "id": "w09-001",
-  "week": 9,
-  "topic": "Segmentation",
-  "type": "single",
-  "q": "What is the key difference between image classification and image segmentation?",
-  "options": [
-   "Classification gives one label to the whole image, while segmentation labels every pixel",
-   "Classification labels each pixel separately, while segmentation labels the whole image once",
-   "Classification draws bounding boxes, while segmentation gives one class number",
-   "Classification needs a mask label, while segmentation needs a one hot vector"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "Segmentation localises the target by assigning a class to every pixel. Classification only returns one label for the entire picture.",
-  "source": "Week 9 lecture, slide 8",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-002",
-  "week": 9,
-  "topic": "Segmentation",
-  "type": "single",
-  "q": "A photo shows a person and a small dog. Why is a single label such as DOG or HUMAN not enough?",
-  "options": [
-   "A CNN cannot give a single label when two objects are present",
-   "A single label needs every image resized to a fixed shape",
-   "One label cannot show where objects are or how many there are",
-   "A single label needs the fully connected layers to be removed"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "Classification cannot say where an object is or how many there are, and one label does not fit a scene with several objects. That is why methods that locate objects are needed.",
-  "source": "Week 9 lecture, slide 5",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w09-003",
-  "week": 9,
-  "topic": "Segmentation labels",
-  "type": "multi",
-  "q": "Which statements about the labels used to train a segmentation network are correct?",
-  "options": [
-   "Only the centre coordinates and the box size are required",
-   "The label is given as a binary mask image",
-   "The mask shows where the target object sits across the image",
-   "Producing ground truth masks is labour intensive",
-   "One categorical label is enough for the whole image"
-  ],
-  "answer": [
-   1,
-   2,
-   3
-  ],
-  "explain": "Segmentation needs a mask for every training image, which takes a lot of effort. A single label or a box description would not give pixel level detail.",
-  "source": "Week 9 lecture, slide 6 and 9",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-004",
-  "week": 9,
-  "topic": "Segmentation",
-  "type": "single",
-  "q": "What should a segmentation network output for a given input image?",
-  "options": [
-   "One class prediction for the whole image",
-   "A predicted mask image showing where the object is",
-   "A list of bounding boxes with confidence scores",
-   "A one hot vector with one entry per class"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Unlike a classifier, which gives one label, a segmentation network produces a prediction mask that localises the object. Boxes with confidence scores belong to object detection.",
-  "source": "Week 9 lecture, slide 7",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w09-005",
-  "week": 9,
-  "topic": "Segmentation uses",
-  "type": "multi",
-  "q": "Which tasks need a class label for each pixel?",
-  "options": [
-   "Giving one label to each photo in a holiday album",
-   "Analysing satellite images",
-   "Predicting whether an email is spam",
-   "Outlining a brain tumour in a scan",
-   "Understanding the road scene for a self driving car"
-  ],
-  "answer": [
-   1,
-   3,
-   4
-  ],
-  "explain": "Segmentation suits tasks that need localisation, such as medical imaging, self driving cars and satellite analysis. Labelling whole photos is plain classification.",
-  "source": "Week 9 lecture, slide 8 and 13",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w09-006",
-  "week": 9,
-  "topic": "U-Net",
-  "type": "single",
-  "q": "What are the three sections of a U-Net model?",
-  "options": [
-   "Encoding blocks, a pooling layer and classification blocks",
-   "Convolution blocks, a dropout section and softmax blocks",
-   "Contraction blocks, a grid layer and anchor blocks",
-   "Contraction blocks, a bottleneck and expansion blocks"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "U-Net shrinks the image in contraction blocks, passes through a bottleneck and then rebuilds an image in expansion blocks. The shape of this layout looks like a U.",
-  "source": "Week 9 lecture, slide 10 and 11",
-  "flag": "",
-  "core": true
- },
- {
   "id": "w09-007",
   "week": 9,
   "topic": "U-Net",
@@ -142,72 +16,7 @@
   ],
   "explain": "Max pooling throws away detail on the way down. Copying and cropping the earlier feature maps hands some of that detail back so the reconstructed mask is sharper.",
   "source": "Week 9 lecture, slide 11",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w09-008",
-  "week": 9,
-  "topic": "U-Net",
-  "type": "multi",
-  "q": "Which statements about U-Net are correct?",
-  "options": [
-   "The bottleneck sits between the contraction and expansion blocks",
-   "It is trained with a single label per image",
-   "Its contraction blocks end with an up sampling layer",
-   "Expansion blocks use an up sampling layer",
-   "It converts the image into a feature vector and then reconstructs a segmented image",
-   "It outputs bounding boxes around each object"
-  ],
-  "answer": [
-   0,
-   3,
-   4
-  ],
-  "explain": "U-Net encodes then rebuilds the image, with the bottleneck in the middle and up sampling in the expansion path. It outputs a mask, not boxes, and needs mask labels.",
-  "source": "Week 9 lecture, slide 10 and 11",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w09-009",
-  "week": 9,
-  "topic": "Segmentation versus detection",
-  "type": "single",
-  "q": "How does the output of object detection differ from the output of segmentation?",
-  "options": [
-   "Detection draws boxes with class labels, which is coarser but faster than a mask",
-   "Detection gives a pixel mask, which is finer but slower than boxes",
-   "Detection gives one label for the whole image, which is the fastest option of the three",
-   "Detection gives a feature vector, which cannot show object position"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "Segmentation produces a detailed pixel level mask of each object. Detection gives a box and a label, a rougher but quicker result.",
-  "source": "Week 9 lecture, slide 13",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-010",
-  "week": 9,
-  "topic": "Choosing a method",
-  "type": "single",
-  "q": "A team needs the exact shape and boundary of a tumour in a medical scan. Which approach fits best?",
-  "options": [
-   "Object detection with bounding boxes only",
-   "Plain classification of the whole scan",
-   "A YOLO grid with anchor boxes",
-   "Image segmentation, for example with U-Net"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "Only a pixel level mask shows the exact outline. Boxes are too coarse and a whole image label gives no location at all.",
-  "source": "Week 9 lecture, slide 13",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w09-011",
@@ -226,94 +35,7 @@
   ],
   "explain": "Detection gives faster boxes and labels, which suits real time work. A single frame label cannot say where each pedestrian or vehicle is.",
   "source": "Week 9 lecture, slide 13 and 18",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w09-012",
-  "week": 9,
-  "topic": "Detection labels",
-  "type": "single",
-  "q": "Why is a one hot label by itself not enough for object detection?",
-  "options": [
-   "The label must also give what is needed to rebuild the bounding box",
-   "A one hot vector cannot be compared with the network output",
-   "A one hot vector cannot be used with convolutional layers",
-   "A one hot vector needs a separate mask image for every class in the data"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "A one hot vector names the class but says nothing about where the object is. A detection label adds the box centre, width and height.",
-  "source": "Week 9 lecture, slide 15",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-013",
-  "week": 9,
-  "topic": "Detection labels",
-  "type": "multi",
-  "q": "Which items belong in the label an object detector predicts for one object?",
-  "options": [
-   "The centre coordinates of the box",
-   "One label that describes the whole image",
-   "The class label",
-   "The width and height of the box",
-   "A full pixel mask of the object"
-  ],
-  "answer": [
-   0,
-   2,
-   3
-  ],
-  "explain": "A detection label has at least five values, which are x, y, width, height and class. A pixel mask belongs to segmentation.",
-  "source": "Week 9 lecture, slide 15 and 16",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w09-014",
-  "week": 9,
-  "topic": "YOLO",
-  "type": "single",
-  "q": "Why is YOLO described as extremely fast compared with older methods such as Faster R-CNN?",
-  "options": [
-   "It skips the CNN and works on raw pixels directly",
-   "It only handles images with a single object in them",
-   "It processes the entire image in one forward pass",
-   "It labels every pixel before drawing any box"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "YOLO stands for You Only Look Once, because it looks at the whole image in a single pass. It still uses a CNN and it does not label every pixel.",
-  "source": "Week 9 lecture, slide 18",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-015",
-  "week": 9,
-  "topic": "YOLO preprocessing",
-  "type": "multi",
-  "q": "Which steps does an input image go through before the YOLO network uses it?",
-  "options": [
-   "Drawing a pixel mask for each object",
-   "Division into an S by S grid",
-   "Resizing to a fixed shape",
-   "Normalising pixel values to a scale of 0 to 1",
-   "Conversion to a single grayscale channel"
-  ],
-  "answer": [
-   1,
-   2,
-   3
-  ],
-  "explain": "Images are resized, normalised and split into a grid. Normalising stops large pixel values dominating and helps the network learn faster. Grayscale conversion and masks are not part of it.",
-  "source": "Week 9 lecture, slide 19",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w09-016",
@@ -332,111 +54,7 @@
   ],
   "explain": "Each cell detects objects whose centre falls inside it. This is quicker than checking every possible region as R-CNN does.",
   "source": "Week 9 lecture, slide 19",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-017",
-  "week": 9,
-  "topic": "YOLO grid",
-  "type": "multi",
-  "q": "Which statements about YOLO grid cells are correct?",
-  "options": [
-   "The grid avoids checking every possible region of the image",
-   "Each cell predicts several bounding boxes",
-   "Each predicted box carries a confidence score",
-   "Each cell is responsible for objects whose centre falls inside it"
-  ],
-  "answer": [
-   0,
-   1,
-   2,
-   3
-  ],
-  "explain": "YOLO gives each grid cell the job of detecting objects centred in it and predicts multiple boxes with confidence scores per cell. All four statements are correct.",
-  "source": "Week 9 lecture, slide 19, 24 and 25",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w09-018",
-  "week": 9,
-  "topic": "YOLO backbone",
-  "type": "single",
-  "q": "What does the CNN backbone of YOLO, such as Darknet, do?",
-  "options": [
-   "It removes overlapping boxes using intersection over union",
-   "It resizes the input image to a fixed shape and scales the pixel values",
-   "It assigns one class label to the entire image",
-   "It extracts features such as edges and shapes into a feature map"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "The backbone is a CNN that builds the feature map from which boxes and classes are predicted. Removing overlaps is the job of non maximum suppression.",
-  "source": "Week 9 lecture, slide 22",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w09-019",
-  "week": 9,
-  "topic": "YOLO boxes",
-  "type": "single",
-  "q": "What does each predicted bounding box in YOLO contain?",
-  "options": [
-   "A pixel mask, a class number and the image resolution",
-   "The grid size, the number of anchors and the class count",
-   "A centre position, a width and height, and a confidence score",
-   "A softmax vector for the whole image and a colour histogram"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "Each box gives x and y for the centre, w and h for the size, and a probability that an object is present. A pixel mask belongs to segmentation.",
-  "source": "Week 9 lecture, slide 24",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-020",
-  "week": 9,
-  "topic": "Anchor boxes",
-  "type": "single",
-  "q": "Why does each YOLO grid cell predict several anchor boxes?",
-  "options": [
-   "Because objects come in different shapes and sizes",
-   "Because one box per cell would be too slow to compute",
-   "Because anchors replace the need for a CNN backbone",
-   "Because anchors are used to normalise the pixel values"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "A cell may hold a car and a person, which need differently shaped boxes. Several anchors let the model cover varied shapes.",
-  "source": "Week 9 lecture, slide 25",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-021",
-  "week": 9,
-  "topic": "Class prediction",
-  "type": "single",
-  "q": "How does the way YOLOv3 predicts classes differ from older YOLO versions?",
-  "options": [
-   "It uses softmax instead of sigmoid, so one object can have several classes",
-   "It stops predicting classes and only predicts box positions",
-   "It predicts one class for each pixel instead of each box",
-   "It uses sigmoid instead of softmax, so one object can have several classes"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "Older versions used softmax so each object received one class. Sigmoid lets several classes apply to the same object, which is useful for multi label problems.",
-  "source": "Week 9 lecture, slide 28",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w09-022",
@@ -455,104 +73,7 @@
   ],
   "explain": "Many boxes can land on one object. Non maximum suppression keeps the best box and discards the duplicates so each object appears once.",
   "source": "Week 9 lecture, slide 29",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-023",
-  "week": 9,
-  "topic": "Non maximum suppression",
-  "type": "multi",
-  "q": "Which steps are part of non maximum suppression?",
-  "options": [
-   "Repeat for the remaining boxes",
-   "Keep the box with the highest confidence",
-   "Discard remaining boxes that overlap the kept box above the threshold",
-   "Sort the boxes by confidence score",
-   "Merge all overlapping boxes into a pixel mask",
-   "Discard the lowest confidence boxes regardless of overlap"
-  ],
-  "answer": [
-   0,
-   1,
-   2,
-   3
-  ],
-  "explain": "The procedure keeps the most confident box and removes boxes that overlap it too much, then repeats. It is the overlap with the kept box that decides, not confidence alone.",
-  "source": "Week 9 lecture, slide 29",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w09-024",
-  "week": 9,
-  "topic": "Intersection over union",
-  "type": "single",
-  "q": "In non maximum suppression, what is intersection over union used for?",
-  "options": [
-   "To measure how much one box overlaps another, to spot duplicates",
-   "To measure how confident the model is that an object is present",
-   "To decide which class an object belongs to",
-   "To count how many grid cells the image has"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "A high overlap with the chosen box shows the box is a duplicate of the same object, so it is removed. Overlap says nothing about class or confidence.",
-  "source": "Week 9 lecture, slide 29",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-025",
-  "week": 9,
-  "topic": "Segmentation",
-  "type": "explain",
-  "q": "Explain the difference between image classification and image segmentation and why segmentation needs different labels.",
-  "model": "Classification assigns one label to the whole image, which is not enough when the target fills a small area or several objects share the frame. Segmentation assigns a class to each pixel, so it shows where the target is and can find several of them. Because of this the training label must be a binary mask image, not a single category. The network also outputs a prediction mask. Producing the ground truth masks is labour intensive.",
-  "points": [
-   "Classification gives one label for the whole image",
-   "Segmentation labels each pixel and so shows where objects are",
-   "Training labels must be binary mask images",
-   "Ground truth masks are labour intensive to produce"
-  ],
-  "source": "Week 9 lecture, slide 5 to 9",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-026",
-  "week": 9,
-  "topic": "U-Net",
-  "type": "explain",
-  "q": "Describe the structure of U-Net and say how it produces a segmented image.",
-  "model": "U-Net turns the image into a feature vector and then rebuilds an image from it, and its layout looks like the letter U. Contraction blocks use convolution layers followed by max pooling to shrink the maps. The bottleneck sits between the two halves. Expansion blocks use convolution layers followed by up sampling to grow the maps again until a segmented prediction mask is produced.",
-  "points": [
-   "Contraction blocks use convolution then max pooling",
-   "The bottleneck sits between contraction and expansion",
-   "Expansion blocks use convolution then up sampling",
-   "The output is a reconstructed segmented image"
-  ],
-  "source": "Week 9 lecture, slide 10 and 11",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-027",
-  "week": 9,
-  "topic": "U-Net",
-  "type": "explain",
-  "q": "Explain why U-Net uses copy and crop connections.",
-  "model": "Max pooling in the contraction blocks throws away some spatial information as the maps shrink. Each expansion block therefore receives a copy and crop of the feature maps from the matching contraction block. This hands the lost detail back to the expansion path. It helps the network rebuild a more accurate segmented image than it could from the compressed vector alone.",
-  "points": [
-   "Max pooling loses spatial information",
-   "Feature maps are copied from the matching contraction block",
-   "The copy hands the lost detail back to the expansion block",
-   "The rebuilt mask is more accurate"
-  ],
-  "source": "Week 9 lecture, slide 11",
-  "flag": "The last point about accuracy is a reasonable inference. Slide 11 only says copy and crop compensates for information loss.",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w09-028",
@@ -568,25 +89,7 @@
    "Gives one use for each, such as medical imaging for segmentation and vehicle detection for detection"
   ],
   "source": "Week 9 lecture, slide 13",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-029",
-  "week": 9,
-  "topic": "Detection labels",
-  "type": "explain",
-  "q": "Compare the label used for image classification with the label used for object detection.",
-  "model": "In classification the label is a one hot vector that only says which class the whole image belongs to. In object detection the label must name the class and also hold what is needed to rebuild the bounding box. The model predicts at least five values, which are the box centre x and y, the width and height, and the class label. Detection therefore tells us both what and where.",
-  "points": [
-   "Classification uses a one hot vector for the whole image",
-   "Detection needs the class plus box information",
-   "Detection predicts at least five values, x, y, width, height and class",
-   "Detection says what the object is and where it is"
-  ],
-  "source": "Week 9 lecture, slide 15 and 16",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w09-030",
@@ -603,25 +106,7 @@
    "The output is boxes with class labels and confidence scores"
   ],
   "source": "Week 9 lecture, slide 18 to 31",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-031",
-  "week": 9,
-  "topic": "YOLO grid and anchors",
-  "type": "explain",
-  "q": "Explain the role of the grid and anchor boxes in YOLO.",
-  "model": "YOLO splits the image into an S by S grid and each cell is responsible for objects whose centre falls inside it. This is faster and more efficient than checking every possible region as R-CNN does. Each cell predicts several boxes using anchors, which are boxes of different shapes. Anchors help the model handle objects of varying sizes, for example one anchor suited to a car and another to a person in the same cell.",
-  "points": [
-   "Image is divided into an S by S grid",
-   "A cell handles objects whose centre is inside it",
-   "The grid is faster than checking every region",
-   "Anchors let a cell predict objects of different shapes and sizes"
-  ],
-  "source": "Week 9 lecture, slide 19, 21 and 25",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w09-032",
@@ -638,25 +123,7 @@
    "Repeat until all boxes are handled"
   ],
   "source": "Week 9 lecture, slide 29",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w09-033",
-  "week": 9,
-  "topic": "Class prediction",
-  "type": "explain",
-  "q": "Explain how YOLO predicts class labels and how the activation used changed in later versions.",
-  "model": "After predicting boxes, YOLO outputs a vector of class scores for each detected object, showing how likely each type is, such as car, person or dog. Older versions used softmax, which assigns one class to each object. YOLOv3 and later use sigmoid instead. This allows more than one class prediction for the same object, which helps in multi label classification.",
-  "points": [
-   "Class scores are output for each detected object",
-   "Older versions used softmax with one class per object",
-   "YOLOv3 and later use sigmoid",
-   "Sigmoid allows multiple classes per object"
-  ],
-  "source": "Week 9 lecture, slide 28",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w09-m01",
@@ -675,7 +142,6 @@
   "source": "Tutor's mock test, written question 9",
   "flag": "The mock gives no sample answer. This model answer was written from the slides for that week.",
   "mock": true,
-  "core": true,
   "focus": true
  },
  {
@@ -696,8 +162,7 @@
   "explain": "Copy and crop passes encoder feature maps to the decoder, restoring detail lost during max pooling.",
   "source": "Tutor's mock test, multiple choice question 17",
   "flag": "",
-  "mock": true,
-  "core": true
+  "mock": true
  },
  {
   "id": "w09-m03",
@@ -717,7 +182,6 @@
   "explain": "YOLO is an object detector. It gives a bounding box and a class for each object it finds.",
   "source": "Tutor's mock test, multiple choice question 18",
   "flag": "",
-  "mock": true,
-  "core": true
+  "mock": true
  }
 ]

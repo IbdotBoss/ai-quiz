@@ -16,70 +16,7 @@
   ],
   "explain": "The target is a number on a continuous scale, so this is regression. Classification would only fit if the company chose to predict a category such as high or low use.",
   "source": "Week 3 lecture, slide 7 and 12",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w03-002",
-  "week": 3,
-  "topic": "Regression or classification",
-  "type": "single",
-  "q": "Which of these tasks is a classification problem rather than a regression problem?",
-  "options": [
-   "Forecasting the travel time in minutes for a journey tomorrow",
-   "Deciding from a chest X-ray whether a patient has pneumonia",
-   "Predicting wheat yield in tonnes per hectare from soil and weather",
-   "Predicting how many support tickets will be raised tomorrow"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Pneumonia or no pneumonia is a discrete class. The other three predict numeric quantities, and a count of tickets is still treated as a numeric target.",
-  "source": "Week 3 lecture, slide 9",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w03-003",
-  "week": 3,
-  "topic": "Features and labels",
-  "type": "multi",
-  "q": "Which statements about the labelled data used in supervised learning are correct?",
-  "options": [
-   "The model learns from the features alone and never sees the labels",
-   "Labels are only needed after training is finished and are never used during it",
-   "The label is the input that the model reads in order to make a prediction",
-   "The output label is also called the dependent variable or target",
-   "Input features are also called independent variables or predictors"
-  ],
-  "answer": [
-   3,
-   4
-  ],
-  "explain": "Features are the inputs and the label is the known output the model learns to predict. The wrong options swap these roles or claim the labels are not used during learning.",
-  "source": "Week 3 lecture, slide 6",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w03-004",
-  "week": 3,
-  "topic": "Regression or classification",
-  "type": "single",
-  "q": "Is the following statement about regression correct?\n\"Regression returns class probabilities, and a threshold is then chosen to decide the label.\"",
-  "options": [
-   "Correct, because every supervised model returns class probabilities first",
-   "Incorrect, because regression returns a class label and never returns a number at all",
-   "Incorrect, because that describes classification, while regression returns a number",
-   "Incorrect, because thresholds are used only in unsupervised clustering"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "Class probabilities and thresholds belong to classification. Regression gives a number such as a price or a temperature directly.",
-  "source": "Week 3 lecture, slide 7",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w03-005",
@@ -98,28 +35,7 @@
   ],
   "explain": "Squaring makes a large error count far more than a small one, so mean squared error is pulled up by outliers. Mean absolute error treats every unit of error equally and is less sensitive.",
   "source": "Week 3 lecture, slide 19 and 20",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w03-006",
-  "week": 3,
-  "topic": "Regression metrics",
-  "type": "single",
-  "q": "Why is root mean squared error often easier to explain to a client than mean squared error?",
-  "options": [
-   "It is in the same units as the target, such as pounds or degrees",
-   "It ignores outliers completely, so it gives a steadier figure",
-   "It always lies between zero and one, which makes it easy to compare",
-   "It measures how much variance in the target the model explains"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "Taking the square root undoes the squaring and brings the error back to the units of the target, so it reads in familiar terms. It still reacts strongly to outliers, so the option about ignoring them fails.",
-  "source": "Week 3 lecture, slide 21",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w03-007",
@@ -138,112 +54,7 @@
   ],
   "explain": "A value of 1 is a perfect fit and 0 means the model adds nothing over predicting the mean. Only a value below 0 means it is worse than that baseline.",
   "source": "Week 3 lecture, slide 22",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w03-008",
-  "week": 3,
-  "topic": "Regression metrics",
-  "type": "single",
-  "q": "A model gets a negative R-squared on test data. What is the most sensible conclusion?",
-  "options": [
-   "The model is a perfect fit and the negative sign is a display quirk",
-   "The model fits well, because a negative value means very low error",
-   "The model does worse than a baseline that always predicts the mean",
-   "The scoring code has a bug, because a squared value cannot be negative"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "R-squared below 0 means the model is worse than the mean baseline. It is a warning that the model is poor, not a sign of a good fit.",
-  "source": "Week 3 lecture, slide 22",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w03-009",
-  "week": 3,
-  "topic": "Regression metrics",
-  "type": "multi",
-  "q": "Which of these are used to evaluate a regression model?",
-  "options": [
-   "Silhouette score",
-   "Mean squared error",
-   "R-squared",
-   "Root mean squared error",
-   "Mean absolute error"
-  ],
-  "answer": [
-   1,
-   2,
-   3,
-   4
-  ],
-  "explain": "The four regression metrics all compare predictions with actual values. Silhouette score measures how good a clustering is, so it does not apply to regression.",
-  "source": "Week 3 lecture, slide 18",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w03-010",
-  "week": 3,
-  "topic": "Linear regression",
-  "type": "single",
-  "q": "What does ordinary least squares choose when it fits a linear regression model?",
-  "options": [
-   "The coefficients that make the largest single prediction error equal to zero",
-   "The coefficients that split the data into groups of the most similar points",
-   "The coefficients that make the predictions average out to the target mean",
-   "The coefficients that minimise the sum of squared prediction errors"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "Ordinary least squares picks the line whose predictions are closest to the data, where closeness means the smallest sum of squared residuals. It does not group data or fix one error to zero.",
-  "source": "Week 3 lecture, slide 26 and 27",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w03-011",
-  "week": 3,
-  "topic": "Choosing a regression model",
-  "type": "single",
-  "q": "A regulator asks a team to show how each input changes the predicted price, using clear coefficients. Which model suits this best?",
-  "options": [
-   "Linear regression, because it gives interpretable coefficients",
-   "Random forest regression, because averaging many trees shows each coefficient",
-   "Gradient boosting, because sequential trees give one coefficient per input",
-   "Support vector regression, because it always gives the simplest explanation"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "Linear regression is the model used when interpretability matters and the relationship is roughly linear. Tree ensembles are accurate but do not produce simple coefficients.",
-  "source": "Week 3 lecture, slide 16 and 23",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w03-012",
-  "week": 3,
-  "topic": "Random forest",
-  "type": "single",
-  "q": "How does a random forest regression model produce its final prediction for one case?",
-  "options": [
-   "It picks the prediction of the single tree that scored best in training",
-   "It averages the numbers predicted by all of its decision trees",
-   "It lets the trees vote on a class and returns the most common class",
-   "It adds the predictions of the trees together to get one large total"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Each tree predicts a number and the forest returns their average. Voting is for classification, and adding without dividing would make the answer grow with the number of trees.",
-  "source": "Week 3 lecture, slide 30 to 32",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w03-013",
@@ -262,211 +73,7 @@
   ],
   "explain": "The trees are built on random rows and features, so they differ, and averaging evens out their individual errors. Building trees one after another to fix errors describes boosting instead.",
   "source": "Week 3 lecture, slide 23 and 30",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w03-014",
-  "week": 3,
-  "topic": "Random forest",
-  "type": "multi",
-  "q": "Which statements describe how a random forest regression model is built and used?",
-  "options": [
-   "The final prediction is the average of the tree predictions",
-   "It is an ensemble of many decision tree regressors",
-   "Each tree is built to correct the errors of the tree before it",
-   "It handles non-linear data well and is robust to outliers",
-   "Each tree is trained on random variations of the rows and features"
-  ],
-  "answer": [
-   0,
-   1,
-   3,
-   4
-  ],
-  "explain": "A random forest is an ensemble of trees, each trained on random rows and features, and it averages their predictions. It also handles non-linear data and outliers well. Correcting the errors of the previous tree is the idea behind gradient boosting, so that option is wrong.",
-  "source": "Week 3 lecture, slide 23 and 30",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w03-015",
-  "week": 3,
-  "topic": "Bagging and boosting",
-  "type": "single",
-  "q": "How does gradient boosting regression differ from random forest regression?",
-  "options": [
-   "It builds all trees at the same time on random rows and averages them",
-   "It uses a single very deep tree instead of many shallow trees",
-   "It fits a straight line through the data using least squares",
-   "It builds trees in turn, each one fixing errors left by earlier trees"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "Random forest is a bagging method with independent trees averaged together. Boosting builds trees in sequence, each correcting the earlier ones.",
-  "source": "Week 3 lecture, slide 23",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w03-016",
-  "week": 3,
-  "topic": "Uses of regression",
-  "type": "multi",
-  "q": "Which of these are reasons regression models matter in research?",
-  "options": [
-   "They predict continuous values such as prices and demand",
-   "They measure the effect of independent variables on an outcome",
-   "They underpin many more advanced machine learning techniques",
-   "They help test assumptions about cause and effect relationships"
-  ],
-  "answer": [
-   0,
-   1,
-   2,
-   3
-  ],
-  "explain": "All four are reasons given for the value of regression. It quantifies relationships, forecasts numbers, supports hypothesis testing and is a foundation for advanced models.",
-  "source": "Week 3 lecture, slide 16",
-  "flag": "Cause and effect wording follows the slide, in practice regression alone shows association.",
-  "core": false
- },
- {
-  "id": "w03-017",
-  "week": 3,
-  "topic": "Features and labels",
-  "type": "single",
-  "q": "A housing dataset has columns for square feet, bedrooms, bathrooms, location score and price. The model must predict price. Which column is the label?",
-  "options": [
-   "Price, because it is the value the model is trained to predict",
-   "Square feet, because it is the first column and the most important",
-   "Location score, because it is the only column that is not a count",
-   "All the columns, because a label is any column in the dataset"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "The label is the target output, which here is price. The other columns are input features that the model uses to estimate it.",
-  "source": "Week 3 lecture, slide 13",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w03-018",
-  "week": 3,
-  "topic": "Types of machine learning",
-  "type": "single",
-  "q": "A program improves its decisions by receiving rewards and penalties through trial and error, with no labelled examples. Which learning paradigm is this?",
-  "options": [
-   "Supervised learning",
-   "Reinforcement learning",
-   "Unsupervised learning",
-   "Semi-supervised learning"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Learning from rewards by trial and error is reinforcement learning. Supervised learning needs labelled examples and unsupervised learning looks for structure without feedback.",
-  "source": "Week 3 lecture, slide 3",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w03-019",
-  "week": 3,
-  "topic": "Regression metrics",
-  "type": "multi",
-  "q": "Which statements about R-squared are correct?",
-  "options": [
-   "It is measured in the same units as the target variable",
-   "A value of 0 means the model is no better than predicting the mean",
-   "It shows how much of the variance in the target the model explains",
-   "A value closer to 1 means a better fit",
-   "It can never be below zero"
-  ],
-  "answer": [
-   1,
-   2,
-   3
-  ],
-  "explain": "R-squared compares the model with a mean baseline and measures explained variance. It has no units and it can be negative when the model is worse than the baseline.",
-  "source": "Week 3 lecture, slide 22",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w03-020",
-  "week": 3,
-  "topic": "Regression or classification",
-  "type": "multi",
-  "q": "Which of these tasks are regression problems?",
-  "options": [
-   "Deciding whether an email is spam",
-   "Predicting future electricity or gas consumption",
-   "Assigning a customer to a churn risk group",
-   "Identifying a dog breed from a photo",
-   "Estimating crop yield from soil and climate data"
-  ],
-  "answer": [
-   1,
-   4
-  ],
-  "explain": "Regression predicts a continuous numeric value such as consumption or yield. Spam detection, breed identification and churn grouping all choose between classes.",
-  "source": "Week 3 lecture, slide 9 and 12",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w03-021",
-  "week": 3,
-  "topic": "Regression or classification",
-  "type": "explain",
-  "q": "Describe the difference between classification and regression, and give one example of each.",
-  "model": "Both are supervised learning tasks, which means they learn from labelled data. Classification predicts a discrete class, such as deciding whether an email is spam or not. Regression predicts a continuous numeric value, such as the price of a house from its size and location. A classification model can return probabilities for each class and a threshold turns those into a label. A regression model returns a number directly, and its quality is judged by how far the numbers are from the true values.",
-  "points": [
-   "States that classification predicts discrete classes and regression predicts continuous values",
-   "Gives a correct classification example such as spam or default",
-   "Gives a correct regression example such as price or temperature",
-   "Mentions that both learn from labelled data"
-  ],
-  "source": "Week 3 lecture, slide 7 to 9",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w03-022",
-  "week": 3,
-  "topic": "Supervised learning",
-  "type": "explain",
-  "q": "Explain what supervised machine learning is, and describe the parts of the labelled data it uses.",
-  "model": "Supervised learning trains a model on labelled historical examples so it can predict the outcome for new, unseen cases. Each example has input features, also called independent variables or predictors. It also has an output label, also called the dependent variable or target. The model learns the link between the features and the label. For example, a house price model learns from past sales where size and location are the features and the sale price is the label.",
-  "points": [
-   "Says the model learns from labelled examples",
-   "Names input features and output labels",
-   "Says predictions are made on new, unseen data",
-   "Gives an example that names the inputs and the output, such as house size and price"
-  ],
-  "source": "Week 3 lecture, slide 5 and 6",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w03-023",
-  "week": 3,
-  "topic": "Linear regression",
-  "type": "explain",
-  "q": "Explain how ordinary least squares fits a linear regression model.",
-  "model": "Linear regression fits a straight line through the data, or a flat surface when there are many inputs. Ordinary least squares looks for the coefficients that place that line as close to the data as possible. It measures closeness by the residuals, which are the gaps between predicted and actual values. It squares them and adds them up, and it chooses the coefficients that make this sum as small as possible. The result is the best fitting line in the least squares sense.",
-  "points": [
-   "Says the model is a line, or a flat surface for many inputs, with coefficients to find",
-   "Identifies residuals as the differences between predicted and actual values",
-   "States that the squared residuals are summed and minimised",
-   "States that the result is the line that fits the data best"
-  ],
-  "source": "Week 3 lecture, slide 26 and 27",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w03-024",
@@ -482,25 +89,7 @@
    "Mentions robustness to outliers or less overfitting"
   ],
   "source": "Week 3 lecture, slide 30 to 32",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w03-025",
-  "week": 3,
-  "topic": "Regression metrics",
-  "type": "explain",
-  "q": "Compare mean absolute error with mean squared error, and say when each might be preferred.",
-  "model": "Mean absolute error is the average size of the gaps between predicted and actual values. Mean squared error squares each gap before averaging, so large mistakes are penalised much more than small ones. This makes mean absolute error less sensitive to outliers and mean squared error more sensitive. If a few big errors are especially costly, mean squared error or its square root is a good choice. If outliers are rare noise and a fair typical error is wanted, mean absolute error is better.",
-  "points": [
-   "Describes mean absolute error as the average size of the gaps between predicted and actual values",
-   "Describes mean squared error as squaring each gap before averaging",
-   "Says squaring penalises large errors more strongly",
-   "Says mean absolute error is less sensitive to outliers"
-  ],
-  "source": "Week 3 lecture, slide 19 and 20",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w03-026",
@@ -516,42 +105,7 @@
    "States that a negative value is worse than the baseline"
   ],
   "source": "Week 3 lecture, slide 22",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w03-027",
-  "week": 3,
-  "topic": "Choosing a regression model",
-  "type": "explain",
-  "q": "Compare linear regression with random forest regression and explain when you would choose each.",
-  "model": "Linear regression fits a straight line through the data. It works best when the relationship is roughly linear. It gives interpretable coefficients and makes a good baseline. Random forest regression averages many decision trees, so it handles non-linear patterns well, copes with outliers and is less prone to overfitting. It is less easy to interpret. I would choose linear regression when a simple explainable model is needed and the relationship looks linear. I would choose a random forest for complex, non-linear data where accuracy matters most.",
-  "points": [
-   "Says linear regression suits roughly linear relationships and interpretability",
-   "Says random forest handles non-linear data and is robust",
-   "Notes the trade-off between interpretability and flexibility",
-   "Gives one situation where each model would be chosen"
-  ],
-  "source": "Week 3 lecture, slide 23",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w03-028",
-  "week": 3,
-  "topic": "Bagging and boosting",
-  "type": "explain",
-  "q": "Explain the difference between random forest regression and gradient boosting regression.",
-  "model": "Both use many decision trees, but they combine them differently. A random forest is a bagging method. It builds many trees independently on random variations of the data and averages their predictions. Gradient boosting builds trees one after another. Each new tree is trained to fix the errors left by the earlier trees, so the model improves step by step. Bagging mainly reduces instability, while boosting focuses on gradually correcting mistakes.",
-  "points": [
-   "Identifies random forest as bagging with independent trees averaged",
-   "Identifies boosting as building trees sequentially",
-   "States that each boosted tree corrects earlier errors",
-   "Notes that both are tree ensembles"
-  ],
-  "source": "Week 3 lecture, slide 23",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w03-m01",
@@ -570,7 +124,6 @@
   "source": "Tutor's mock test, written question 3",
   "flag": "The model answer follows the tutor's sample answer in the mock test.",
   "mock": true,
-  "core": true,
   "focus": true
  },
  {
@@ -591,8 +144,7 @@
   "explain": "Ordinary least squares picks the coefficients that make the sum of squared residuals as small as possible.",
   "source": "Tutor's mock test, multiple choice question 5",
   "flag": "",
-  "mock": true,
-  "core": true
+  "mock": true
  },
  {
   "id": "w03-m03",
@@ -612,7 +164,6 @@
   "explain": "Linearity means the target changes in a straight line with each predictor. A curved relationship fitted with only a linear term breaks that.",
   "source": "Tutor's mock test, multiple choice question 6",
   "flag": "",
-  "mock": true,
-  "core": true
+  "mock": true
  }
 ]

@@ -1,131 +1,5 @@
 [
  {
-  "id": "w04-001",
-  "week": 4,
-  "topic": "Supervised and unsupervised learning",
-  "type": "single",
-  "q": "What is the main difference between supervised and unsupervised learning?",
-  "options": [
-   "Unsupervised learning finds patterns in unlabelled data and supervised learning predicts from labelled data",
-   "Unsupervised learning predicts from labelled data and supervised learning finds patterns in unlabelled data",
-   "Unsupervised learning needs rewards from an environment and supervised learning does not",
-   "Unsupervised learning only predicts numbers and supervised learning only predicts classes"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "Supervised learning learns from input and output pairs to predict outcomes. Unsupervised learning has no labels and looks for patterns or groupings in the data itself.",
-  "source": "Week 4 lecture, slide 6",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w04-002",
-  "week": 4,
-  "topic": "Supervised and unsupervised learning",
-  "type": "single",
-  "q": "A chemistry dataset describes wines by their measured properties but has no column giving the wine type. Which task is the data suited to?",
-  "options": [
-   "Regression, to predict the wine type as a number",
-   "Clustering, to discover whether natural groups of wines exist",
-   "Classification, to learn from the known wine type column in the data",
-   "Reinforcement learning, to reward the right wine type"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "With no labels there is nothing to predict in a supervised way, so the sensible task is to look for groups. Classification and regression both need a target column.",
-  "source": "Week 4 lecture, slide 7",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w04-003",
-  "week": 4,
-  "topic": "Unsupervised learning methods",
-  "type": "multi",
-  "q": "Which of these are common unsupervised learning methods?",
-  "options": [
-   "Decision trees",
-   "Linear regression",
-   "K-means",
-   "Autoencoders",
-   "Principal component analysis"
-  ],
-  "answer": [
-   2,
-   3,
-   4
-  ],
-  "explain": "K-means, principal component analysis and autoencoders find structure without labels. Linear regression and decision trees learn from labelled examples.",
-  "source": "Week 4 lecture, slide 6",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w04-004",
-  "week": 4,
-  "topic": "Clustering",
-  "type": "multi",
-  "q": "Which statements about clustering are correct?",
-  "options": [
-   "It predicts a continuous number for each new data point",
-   "It works without a target variable or predefined categories",
-   "It groups points that are close or similar by some measure such as distance",
-   "It needs labelled examples of every group before it can start",
-   "It can be used as an exploratory tool to find hidden structure"
-  ],
-  "answer": [
-   1,
-   2,
-   4
-  ],
-  "explain": "Clustering is similarity based, unsupervised and exploratory. The wrong options describe supervised classification and regression.",
-  "source": "Week 4 lecture, slide 12",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w04-005",
-  "week": 4,
-  "topic": "Clustering",
-  "type": "single",
-  "q": "A shop wants to split its customers into groups by behaviour and preferences so it can tailor its marketing. Which task is this?",
-  "options": [
-   "Market basket analysis using clustering",
-   "Regression to forecast next month's sales",
-   "Customer segmentation using clustering",
-   "Dimensionality reduction of the customer data"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "Grouping customers by behaviour is segmentation, a clustering task. Market basket analysis looks instead for products bought together.",
-  "source": "Week 4 lecture, slide 5 and 14",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w04-006",
-  "week": 4,
-  "topic": "Unsupervised learning applications",
-  "type": "single",
-  "q": "A supermarket wants to discover which products are often bought together. What is this application called?",
-  "options": [
-   "Document clustering",
-   "Gene analysis",
-   "Customer segmentation",
-   "Market basket analysis"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "Market basket analysis discovers associations between products that appear in the same purchase. Customer segmentation groups the customers themselves.",
-  "source": "Week 4 lecture, slide 5",
-  "flag": "",
-  "core": false
- },
- {
   "id": "w04-007",
   "week": 4,
   "topic": "K-means",
@@ -142,48 +16,7 @@
   ],
   "explain": "K-means starts with random centres, assigns each point to the closest centre, moves each centre to the mean of its points, and repeats. It does not stop after one pass or need labels.",
   "source": "Week 4 lecture, slide 21 to 25",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w04-008",
-  "week": 4,
-  "topic": "K-means",
-  "type": "single",
-  "q": "K-means is run twice on the same data with the same k and returns different clusters. What is the most likely cause?",
-  "options": [
-   "K-means moves the data points themselves a little on every pass it makes through the data",
-   "The starting cluster centres were chosen at random and were different each time",
-   "K-means randomly changes the number of clusters on each run",
-   "The distance measure changes at random from one run to the next"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "The initial centres are placed at random, so different starting points can lead to different final clusters. The value of k is fixed by the user.",
-  "source": "Week 4 lecture, slide 21",
-  "flag": "Run to run variation is textbook knowledge. The slide only shows that centres start at random.",
-  "core": false
- },
- {
-  "id": "w04-009",
-  "week": 4,
-  "topic": "K-means",
-  "type": "single",
-  "q": "In k-means, what does it mean to say the algorithm has converged?",
-  "options": [
-   "Every cluster has been given exactly the same number of points as the others",
-   "All centres have moved to the overall mean of the dataset",
-   "No point changes its cluster membership when the process is repeated",
-   "The value of k has reached the number of data points"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "Convergence is reached when repeating the assign and move steps no longer changes which cluster any point belongs to.",
-  "source": "Week 4 lecture, slide 25 and 26",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w04-010",
@@ -202,91 +35,7 @@
   ],
   "explain": "Inertia keeps falling as more clusters are added, so the lowest value would always point to the largest k. This is why the elbow, where improvement drops sharply, is used to choose k instead of the minimum.",
   "source": "Week 4 lecture, slide 29 and 31",
-  "flag": "The slide says inertia falls as k rises, the conclusion about not using the minimum is a standard reading.",
-  "core": true
- },
- {
-  "id": "w04-011",
-  "week": 4,
-  "topic": "Choosing k in k-means",
-  "type": "single",
-  "q": "On a plot of inertia against k, which point marks a good choice of k in the elbow method?",
-  "options": [
-   "The point after which the rate of improvement drops drastically",
-   "The point where inertia first becomes zero",
-   "The point where inertia is at its highest value anywhere on the whole plot",
-   "The point where the line is perfectly straight"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "Adding clusters helps a lot at first, then very little. The bend where this change happens is the elbow, although it can be hard to see.",
-  "source": "Week 4 lecture, slide 31",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w04-012",
-  "week": 4,
-  "topic": "Silhouette score",
-  "type": "single",
-  "q": "A point has a silhouette value close to 0. What does this say about the point?",
-  "options": [
-   "It is very well clustered and far from other clusters",
-   "It lies on the boundary between two clusters",
-   "It is the exact centre of its own cluster",
-   "It was left out of every cluster by the algorithm"
-  ],
-  "answer": [
-   1
-  ],
-  "explain": "Values near 1 mean a well clustered point and values near 0 mean it sits between clusters. Negative values suggest it may be in the wrong cluster.",
-  "source": "Week 4 lecture, slide 32",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w04-013",
-  "week": 4,
-  "topic": "Silhouette score",
-  "type": "multi",
-  "q": "Which statements about the parts of the silhouette score are correct?",
-  "options": [
-   "The separation term is the average distance to points in the nearest neighbouring cluster",
-   "The score ranges from 0 to 100 for each point",
-   "The cohesion term is the average distance to other points in the same cluster",
-   "The overall score is the largest value found among all the points",
-   "A good clustering has small cohesion distances and large separation distances"
-  ],
-  "answer": [
-   0,
-   2,
-   4
-  ],
-  "explain": "Cohesion measures tightness within a cluster and separation measures distance to the nearest other cluster. The overall score is the average over all points, and each value lies between minus one and plus one.",
-  "source": "Week 4 lecture, slide 32",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w04-014",
-  "week": 4,
-  "topic": "Silhouette score",
-  "type": "single",
-  "q": "How is the silhouette score used to choose the number of clusters?",
-  "options": [
-   "Try several values of k and pick the one with the average score closest to minus one",
-   "Try several values of k and pick the largest, because more clusters are always better",
-   "Try several values of k and pick the one with the highest average score",
-   "Try several values of k and pick the one where the score first drops below zero"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "The best k is the one that maximises the average silhouette score. Too few clusters give low separation and too many give fragmented, unstable clusters.",
-  "source": "Week 4 lecture, slide 33",
-  "flag": "",
-  "core": false
+  "flag": "The slide says inertia falls as k rises, the conclusion about not using the minimum is a standard reading."
  },
  {
   "id": "w04-015",
@@ -305,52 +54,7 @@
   ],
   "explain": "DBSCAN is density based and is good for irregular cluster shapes. K-means favours compact groups around centres.",
   "source": "Week 4 lecture, slide 13",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w04-016",
-  "week": 4,
-  "topic": "Clustering methods",
-  "type": "single",
-  "q": "A researcher wants a tree diagram showing how clusters merge or split at different levels. Which method gives this?",
-  "options": [
-   "Hierarchical clustering, which builds a dendrogram",
-   "K-means, which builds a dendrogram around centres",
-   "DBSCAN, which builds a dendrogram from densities",
-   "Principal component analysis, which builds a dendrogram of features"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "A dendrogram is the tree produced by hierarchical clustering. The other methods do not produce one.",
-  "source": "Week 4 lecture, slide 13",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w04-017",
-  "week": 4,
-  "topic": "Dimensionality reduction",
-  "type": "multi",
-  "q": "Which are benefits of reducing the number of features in a dataset?",
-  "options": [
-   "Data can be plotted in two or three dimensions",
-   "The data gains a labelled target column",
-   "Faster computation",
-   "Less noise and redundancy",
-   "Lower risk of overfitting"
-  ],
-  "answer": [
-   0,
-   2,
-   3,
-   4
-  ],
-  "explain": "Fewer features speed things up, remove noise, reduce overfitting and allow plotting. Reducing features never creates labels.",
-  "source": "Week 4 lecture, slide 35",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w04-018",
@@ -369,113 +73,7 @@
   ],
   "explain": "Principal component analysis finds new axes, the principal components, along which the data varies most, and projects the data onto them. It is not a clustering or prediction method.",
   "source": "Week 4 lecture, slide 36",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w04-019",
-  "week": 4,
-  "topic": "Dimensionality reduction",
-  "type": "single",
-  "q": "How does linear discriminant analysis differ from principal component analysis?",
-  "options": [
-   "It is unsupervised and tries to maximise the total variance kept in the data",
-   "It is non-linear and only preserves very local structure",
-   "It is supervised and tries to maximise the separation between classes",
-   "It is a clustering method that finds density based groups"
-  ],
-  "answer": [
-   2
-  ],
-  "explain": "Linear discriminant analysis uses class labels to separate classes. Principal component analysis uses no labels and keeps variance.",
-  "source": "Week 4 lecture, slide 36",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w04-020",
-  "week": 4,
-  "topic": "Principal component analysis",
-  "type": "single",
-  "q": "In principal component analysis, each eigenvalue of the covariance matrix belongs to one direction in the data. What does a large eigenvalue say about that direction?",
-  "options": [
-   "The direction is noisy, so it should be removed",
-   "The direction contains outliers that form a cluster of their own",
-   "The direction is the label that the model must predict",
-   "The direction captures a large share of the variance in the data"
-  ],
-  "answer": [
-   3
-  ],
-  "explain": "Each eigenvalue shows how much the data varies along its direction, which is what the explained variance ratio is built from. Directions with large eigenvalues are the components worth keeping.",
-  "source": "Week 4 lecture, slide 39 to 42",
-  "flag": "The link from eigenvalue size to explained variance is standard textbook linear algebra, the slides show it only through the explained variance ratio.",
-  "core": false
- },
- {
-  "id": "w04-021",
-  "week": 4,
-  "topic": "Principal component analysis",
-  "type": "single",
-  "q": "A dataset has four features. After principal component analysis, the first one or two components explain almost all the variance. What does this suggest?",
-  "options": [
-   "The features overlap a lot, so fewer dimensions can summarise them",
-   "The four original features were all completely unrelated to one another",
-   "The data must contain exactly one or two natural clusters",
-   "The remaining components must be the most important ones"
-  ],
-  "answer": [
-   0
-  ],
-  "explain": "If a few components hold most of the variance, the features overlap heavily, so a low dimensional summary loses little information. It says nothing direct about the number of clusters.",
-  "source": "Week 4 lecture, slide 44",
-  "flag": "The slide gives the variance figures, the interpretation about redundancy is standard.",
-  "core": false
- },
- {
-  "id": "w04-022",
-  "week": 4,
-  "topic": "K-means",
-  "type": "multi",
-  "q": "Which statements about k-means are correct?",
-  "options": [
-   "Each centre is moved to the mean position of its cluster",
-   "It needs a labelled target to place the centres",
-   "The user chooses the number of clusters k",
-   "It always finds clusters of any shape"
-  ],
-  "answer": [
-   0,
-   2
-  ],
-  "explain": "K-means needs k set in advance and it moves each centre to the mean of its points. It uses no labels and favours compact groups.",
-  "source": "Week 4 lecture, slide 19 to 25",
-  "flag": "",
-  "core": false
- },
- {
-  "id": "w04-023",
-  "week": 4,
-  "topic": "Dimensionality reduction",
-  "type": "multi",
-  "q": "Which of these are dimensionality reduction methods?",
-  "options": [
-   "Principal component analysis",
-   "t-SNE",
-   "Linear discriminant analysis",
-   "DBSCAN",
-   "UMAP"
-  ],
-  "answer": [
-   0,
-   1,
-   2,
-   4
-  ],
-  "explain": "Principal component analysis, t-SNE, linear discriminant analysis and UMAP all reduce the number of features. DBSCAN is a density based clustering method.",
-  "source": "Week 4 lecture, slide 13 and 36",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w04-024",
@@ -491,111 +89,7 @@
    "Gives a correct example of each, such as predicting prices and grouping customers"
   ],
   "source": "Week 4 lecture, slide 6",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w04-025",
-  "week": 4,
-  "topic": "Clustering",
-  "type": "explain",
-  "q": "Explain what clustering is and give one real application.",
-  "model": "Clustering is an unsupervised technique that groups similar data points together based on their features, without any labels or target variable. Points that are close under some measure, such as distance, end up in the same cluster. It is used as an exploratory tool to find hidden patterns. A common application is customer segmentation, where a business groups customers by behaviour and preferences so that marketing can be tailored to each group.",
-  "points": [
-   "Says clustering is unsupervised with no labels or target",
-   "Explains that similar or close points are grouped together",
-   "Describes it as exploratory for finding hidden structure",
-   "Gives a valid application such as segmentation"
-  ],
-  "source": "Week 4 lecture, slide 12 and 14",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w04-026",
-  "week": 4,
-  "topic": "K-means",
-  "type": "explain",
-  "q": "Describe how the k-means algorithm works, including when it stops.",
-  "model": "K-means divides the data into k clusters, where the user chooses k. It first places k centres at random. It then assigns every point to its closest centre and moves each centre to the mean position of the points assigned to it. These two steps repeat. The algorithm stops when no point changes its cluster membership, which is called convergence. Overall it aims to minimise the total squared distance between points and their cluster centres.",
-  "points": [
-   "Says k centres start at random",
-   "Describes assigning points to the closest centre",
-   "Describes moving each centre to its cluster mean",
-   "States that it repeats until membership stops changing",
-   "Mentions minimising squared distances"
-  ],
-  "source": "Week 4 lecture, slide 19 to 26",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w04-027",
-  "week": 4,
-  "topic": "Choosing k in k-means",
-  "type": "explain",
-  "q": "Explain how the elbow method helps you choose the number of clusters in k-means.",
-  "model": "Inertia is the sum of squared distances from each point to its cluster centre, and smaller values mean tighter clusters. Inertia falls as k increases. The elbow method plots inertia against k and looks for the point where the rate of improvement drops sharply. That bend is the elbow and suggests a good value of k, because adding more clusters beyond it gives little benefit. The elbow can be hard to see on some plots, so another measure may be needed.",
-  "points": [
-   "Defines inertia as the sum of squared distances to the cluster centre",
-   "Says inertia decreases as k grows",
-   "Identifies the elbow as where improvement drops sharply",
-   "Notes the elbow can be hard to see"
-  ],
-  "source": "Week 4 lecture, slide 29 to 31",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w04-028",
-  "week": 4,
-  "topic": "Silhouette score",
-  "type": "explain",
-  "q": "Explain what the silhouette score measures and how it is used to choose k.",
-  "model": "The silhouette score shows how well each point fits its own cluster compared with other clusters. It compares the average distance to points in the same cluster with the average distance to points in the nearest neighbouring cluster. Values run from minus one to plus one. Near plus one means well clustered, near zero means on a boundary and negative means possibly misclassified. To choose k, run k-means for several values, average the score for each and pick the k with the highest average.",
-  "points": [
-   "Describes cohesion within the cluster versus separation from the nearest cluster",
-   "States the range from minus one to plus one with meanings",
-   "States that the overall score is an average over points",
-   "Says the best k maximises the score"
-  ],
-  "source": "Week 4 lecture, slide 32 and 33",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w04-029",
-  "week": 4,
-  "topic": "Clustering methods",
-  "type": "explain",
-  "q": "Compare k-means with DBSCAN and say which suits clusters of irregular shape.",
-  "model": "K-means groups points around centres by minimising squared distance, and the user must choose k in advance. It tends to find compact, roughly round groups. DBSCAN groups points by density, so it can find clusters of arbitrary shape. For data where the clusters are curved or irregular, DBSCAN is the better choice. K-means is simpler and the most popular method, and it suits compact groups where a sensible k can be found.",
-  "points": [
-   "Describes k-means as centre and distance based with k chosen by the user",
-   "Describes DBSCAN as density based",
-   "Says DBSCAN finds arbitrary shaped clusters",
-   "Gives one situation where each method would be chosen"
-  ],
-  "source": "Week 4 lecture, slide 13 and 19",
-  "flag": "The point that k-means favours compact round groups is standard knowledge, the slide only says DBSCAN suits arbitrary shapes.",
-  "core": true
- },
- {
-  "id": "w04-030",
-  "week": 4,
-  "topic": "Dimensionality reduction",
-  "type": "explain",
-  "q": "Explain what dimensionality reduction is and why it is useful.",
-  "model": "Dimensionality reduction reduces the number of input features while keeping as much relevant information as possible. It projects the data into a lower dimensional space. This makes high dimensional data easier to visualise, analyse and process, and it helps with the curse of dimensionality. It also speeds up computation, reduces noise and redundancy and lowers the risk of overfitting. Methods include principal component analysis, linear discriminant analysis, t-SNE and UMAP.",
-  "points": [
-   "Says it reduces the number of features while preserving information",
-   "Mentions projection into a lower dimensional space",
-   "Gives at least two benefits such as speed, noise, overfitting or visualisation",
-   "Names a method"
-  ],
-  "source": "Week 4 lecture, slide 34 to 36",
-  "flag": "",
-  "core": true
+  "flag": ""
  },
  {
   "id": "w04-031",
@@ -611,24 +105,7 @@
    "Says the data is projected onto the top components"
   ],
   "source": "Week 4 lecture, slide 37 to 44",
-  "flag": "",
-  "core": true
- },
- {
-  "id": "w04-032",
-  "week": 4,
-  "topic": "Dimensionality reduction",
-  "type": "explain",
-  "q": "Compare principal component analysis with linear discriminant analysis and with t-SNE.",
-  "model": "Principal component analysis is unsupervised and linear. It projects data onto the directions of greatest variance. Linear discriminant analysis is supervised, so it uses class labels and tries to maximise the separation between classes. T-SNE is a non-linear method that preserves local structure and is mainly used to visualise data in two or three dimensions. So the choice depends on whether labels exist and whether the aim is to keep variance, separate classes or plot neighbourhoods.",
-  "points": [
-   "Says principal component analysis maximises variance and needs no labels",
-   "Says linear discriminant analysis is supervised and separates classes",
-   "Says t-SNE is non-linear and preserves local structure for visualisation"
-  ],
-  "source": "Week 4 lecture, slide 36",
-  "flag": "",
-  "core": false
+  "flag": ""
  },
  {
   "id": "w04-m01",
@@ -647,7 +124,6 @@
   "source": "Tutor's mock test, written question 4",
   "flag": "The mock gives no sample answer. This model answer was written from the slides for that week.",
   "mock": true,
-  "core": true,
   "focus": true
  },
  {
@@ -668,8 +144,7 @@
   "explain": "K-means minimises inertia, the sum of squared distances from each point to its cluster centre. It uses no labels.",
   "source": "Tutor's mock test, multiple choice question 7",
   "flag": "",
-  "mock": true,
-  "core": true
+  "mock": true
  },
  {
   "id": "w04-m03",
@@ -689,7 +164,6 @@
   "explain": "Near +1 means the point is much closer to its own cluster than to the nearest other one. Near 0 means it sits between two, and negative means it is probably in the wrong cluster.",
   "source": "Tutor's mock test, multiple choice question 8",
   "flag": "",
-  "mock": true,
-  "core": true
+  "mock": true
  }
 ]
