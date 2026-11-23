@@ -205,7 +205,6 @@ const INTRO = "I am revising for a university Artificial Intelligence in-class t
 function prompt(q, mode, mine) {
   const L = [INTRO, "", "QUESTION", q.q, ""];
   if (isEx(q)) {
-    if (mode === "hint") return L.concat(mine ? ["MY ANSWER SO FAR", mine, ""] : [], "Do not give me the full answer. Give me one hint that points me towards what a good answer covers, then ask me to try again.").join("\n");
     return L.concat("MY ANSWER", mine || "I did not write an answer.", "", "MODEL ANSWER", q.model, "", "POINTS A MARKER LOOKS FOR", q.points.map(p => "- " + p).join("\n"), "",
       "Mark my answer against those points. Say which points I made, which I missed, and correct anything I got wrong. Then ask me one follow-up question that checks I understand the idea.").join("\n");
   }
@@ -445,7 +444,6 @@ function question() {
   <div class="top"><button class="l" id="quit">${r.limit ? "Leave, clock keeps running" : "Save and leave"}</button><b>${esc(r.title)}</b>${r.limit ? `<span class="timer" id="tm" role="timer" aria-label="Time left"></span>` : `<span>Question ${r.i + 1} of ${n}</span>`}</div>
   <div class="meta"><span>Week ${q.week}, ${esc(q.topic)}</span><span>${checked ? `${got(r, q)} of ${marks(q)} ${marks(q) === 1 ? "mark" : "marks"}` : `${marks(q)} ${marks(q) === 1 ? "mark" : "marks"}`}</span></div>
   ${body}${fb}
-  ${ex && !checked && !r.exam ? aiRow([["hint", `Get a hint from ${aiName()}`]]) : ""}
   <div class="nav">
     <button id="prev" ${r.i ? "" : "disabled"}>Previous question</button>
     ${r.exam ? (r.i < n - 1 ? `<button class="p" id="next">Next question</button>` : `<button class="p" id="fin">Hand in the paper</button>`)
