@@ -53,7 +53,7 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,te
 .plot tbody th{border-top:1px solid var(--hair);padding:0 8px 0 0}
 .plot .wk{display:flex;gap:4px;width:100%;min-height:48px;align-items:center;text-align:left;border:0;border-radius:0;padding:0;font-weight:400;font-size:var(--t-s);line-height:1.3}
 .plot .wk b{font-weight:800;flex:0 0 1.7em;font-variant-numeric:tabular-nums}
-.plot .wk:hover span{text-decoration:underline}
+.plot .wk span{text-decoration:underline}
 select{max-width:100%;text-overflow:ellipsis}
 .plot td{padding:0;height:1px}
 .plot td button{width:100%;height:100%;min-height:48px;border:0;border-radius:0;padding:0;font-size:1.2rem;font-weight:800;font-variant-numeric:tabular-nums}
@@ -88,7 +88,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}legend{padding:0}
 .o input:disabled{cursor:default;opacity:1}
 .o small{display:block;font-weight:700;font-size:var(--t-xs);color:var(--wrong)}.o small.ok{color:var(--right)}
 .o .mk{width:22px;height:22px;margin-top:2px}
-.row{display:flex;flex-wrap:wrap;gap:4px 24px}.row .o{border:0;grid-template-columns:22px auto;padding:8px 0}
+.row{display:flex;flex-wrap:wrap;gap:4px 24px}.row .o{border:0;grid-template-columns:22px auto;padding:8px 0;min-height:44px}
 textarea{display:block;width:100%;min-height:168px;resize:vertical;font:400 var(--t-m)/1.5 "Atkinson Next",Verdana,sans-serif;color:var(--ink);background:var(--paper);border:1.5px solid var(--ink);border-radius:var(--r);padding:12px}
 textarea.short{min-height:96px}
 textarea::placeholder{color:var(--ink-2);opacity:1}
@@ -216,7 +216,8 @@ function cell(week, ex) {
 function home() {
   clearInterval(tick);
   const weak = pool().filter(q => q.id in st.sc && st.sc[q.id] < 1).length;
-  const resume = st.run && !st.run.done;
+  const resume = st.run && !st.run.done, toMark = st.run && st.run.done && st.run.exam;
+  const left = resume && st.run.limit ? Math.ceil(timeLeft() / 60) : 0;
   const last = st.hist.slice(-5).reverse();
   const exQ = pool().filter(isEx), mcQ = pool().filter(q => !isEx(q)), byId = (a, b) => a.id < b.id ? -1 : 1;
   const td = (w, ex) => {
@@ -233,6 +234,7 @@ function home() {
     <h1>Artificial Intelligence test practice</h1>
     <p class="s"><a href="https://faaja.space/">All three modules</a></p>
     <p>50 minutes on a computer in Week 12. Mostly written answers.</p>
+    <p class="s">Your progress saves in this browser only.</p>
   </header>
   <fieldset><legend><h2>Which questions to practise</h2></legend>
     <div class="row" style="flex-direction:column;gap:0">
@@ -242,21 +244,22 @@ function home() {
   </fieldset>
   <h2>Study, then practise</h2>
   <div class="papers">
-    ${resume ? paper("Resume " + st.run.title.toLowerCase(), "You stopped at question " + (st.run.i + 1) + ".", st.run.ids.length + " questions", [["resume", "Resume", 1]]) : ""}
+    ${resume ? paper("Resume " + st.run.title.toLowerCase(), "You stopped at question " + (st.run.i + 1) + "." + (st.run.limit ? (left ? ` ${left} min left on the clock.` : " Time has run out.") : "") + " Starting another set replaces it.", st.run.ids.length + " questions", [["resume", "Resume", 1]]) : ""}
+    ${toMark ? paper("Mark your " + st.run.title.toLowerCase(), "Handed in. Tick the points each answer made to get your mark.", st.run.ids.length + " questions", [["resume", "Mark it", 1]]) : ""}
     ${paper("Revision notes", "One sheet per lecture deck.", DATA.notes.length + " sheets", [["m-notes", "Open", 1]])}
-    ${paper("Written answers", "Each question with its model answer and marking points.", exQ.length + " questions", [["s-ex", "Study", 1], ["m-ex", "Test"]])}
-    ${paper("Multiple choice", "Each question with the right answer marked.", mcQ.length + " questions", [["s-mc", "Study", 1], ["m-mc", "Test"]])}
-    ${paper("Questions to redo", weak ? "Questions where you lost a mark last time." : "Nothing here until you miss a mark.", weak + " to redo", [["s-weak", "Study", 0, !weak], ["m-weak", "Redo", 0, !weak]])}
+    ${paper("Written answers", "Study shows each question with its model answer and marking points. Test gives you 5, weakest first.", exQ.length + " questions", [["s-ex", "Study", 1], ["m-ex", "Test"]])}
+    ${paper("Multiple choice", "Study shows each question with the right answer marked. Test gives you 10, weakest first.", mcQ.length + " questions", [["s-mc", "Study", 1], ["m-mc", "Test"]])}
+    ${paper("Questions to redo", weak ? "Questions where you lost a mark last time. Redo gives you up to 20." : "Nothing here until you miss a mark.", weak + " to redo", [["s-weak", "Study", 0, !weak], ["m-weak", "Redo", 0, !weak]])}
     ${paper("Mixed set", "10 multiple choice and 5 written, weakest first.", "15 questions", [["m-mixed", "Test"]])}
-    ${paper("Timed written paper", "8 written questions from different weeks. The tutor has not published the real format yet.", "8 questions, 50 min", [["m-timed", "Test"]])}
+    ${paper("Timed written paper", "8 written questions from different weeks. The clock keeps running if you leave. The tutor has not published the real format yet.", "8 questions, 50 min", [["m-timed", "Test"]])}
   </div>
   <h2 id="hm">Share of ${st.core ? "core" : "all"} questions marked right, by week</h2>
+  <p class="s">Each square is a button. Press one to start a short set from that week, weakest first. Press a week name for its notes, its answers and an Ask AI box.</p>
   <table class="plot" aria-labelledby="hm">
     <thead><tr><th scope="col"><span class="vh">Week</span></th><th scope="col">Multiple choice</th><th scope="col">Written answer</th></tr></thead>
     <tbody>${weeksPresent.map(w => `<tr><th scope="row"><button class="wk" data-week="${w}" aria-label="Week ${w}, ${esc(WEEKS[w] || "")}. Open notes and questions."><b>${w}</b><span>${esc(WEEKS[w] || "")}</span></button></th>${td(w, false)}${td(w, true)}</tr>`).join("")}</tbody>
   </table>
   <div class="key"><span>Colour of a square, from 0%</span><span class="sw" aria-hidden="true">${VIR.map(c => `<i style="background:${c}"></i>`).join("")}</span><span>to 100% of its questions right</span><span class="nw" aria-hidden="true"></span><span>no question tried yet</span></div>
-  <p class="s">Press a square to practise it. Press a week name for its notes and answers.</p>
   <details><summary>Ask AI settings. The buttons open ${aiName()}.</summary>
   <fieldset><legend class="vh">Assistant for the Ask AI buttons</legend>
     <div class="row">${Object.entries(AI).map(([k, t]) => `<label class="o"><input type="radio" name="ai" value="${k}" ${st.ai === k ? "checked" : ""}><span>${t.name}</span></label>`).join("")}</div>
@@ -435,7 +438,7 @@ function results() {
   app.innerHTML = `<div class="top"><button class="l" id="back">Back to the home page</button><b>${esc(r.title)}</b><span></span></div>
   <h1 style="margin-top:24px">${toMark ? "Mark your paper" : "Your marks for this set"}</h1>
   <p class="total" id="tot" aria-live="polite">${line()}</p>
-  <p class="s">${r.ids.length} questions in ${fmt(r.took)}${r.limit && r.took >= r.limit ? ". Time ran out" : ""}.${toMark ? " Read each model answer and tick the points you made. The total updates as you tick." : ""}</p>
+  <p class="s">${r.ids.length} questions in ${fmt(r.took)}${r.limit && r.took >= r.limit ? ". Time ran out" : ""}.${toMark ? " Read each model answer and tick the points you made. The total updates as you tick. Tick before you leave this page, because leaving clears the paper." : ""} Any question you lose a mark on goes into Questions to redo on the home page.</p>
   ${r.ids.map((id, i) => {
     const q = BYID[id], pk = r.ans[id] || [];
     return `<section class="rev"><div class="meta"><span>Question ${i + 1}. Week ${q.week}, ${esc(q.topic)}</span><span data-got="${id}">${got(r, q)} of ${marks(q)} ${marks(q) === 1 ? "mark" : "marks"}</span></div><h2 class="stem">${esc(q.q)}</h2>
