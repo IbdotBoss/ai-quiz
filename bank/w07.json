@@ -566,16 +566,16 @@
   "topic": "Backpropagation",
   "type": "explain",
   "q": "Explain how an artificial neural network is trained using backpropagation. Discuss how gradient descent helps optimise the network.",
-  "model": "Training starts with random weights and biases. In the forward pass the input goes through the network to give a prediction. A cost function measures the error between the predicted and actual values. Backpropagation then sends this error backwards through the network and uses the chain rule to work out the gradient of the cost with respect to each weight and bias. Gradient descent uses those gradients to update each parameter a small step in the direction that reduces the cost. The learning rate sets the size of each step. Too large a rate can overshoot the minimum and too small a rate makes training slow. The cycle repeats over many epochs until the cost stops falling.",
+  "model": "Training starts with random weights and biases. In the forward pass the input goes through the network to give a prediction. A cost function measures the error between the predicted and actual values. Backpropagation then sends this error backwards through the network and uses the chain rule to work out the gradient of the cost with respect to each weight and bias. Gradient descent uses those gradients to update each parameter a small step in the direction that reduces the cost. The learning rate sets the size of each step. Too large a rate can overshoot the minimum and too small a rate makes training slow. The cycle repeats over epochs until the error reaches the desired accuracy or the maximum number of epochs is reached.",
   "points": [
    "Forward pass gives a prediction and the cost measures the error",
    "Backpropagation sends the error back and computes gradients with the chain rule",
    "Gradient descent moves each weight and bias in the direction that lowers the cost",
-   "Learning rate sets the step size, with the risk of too large or too small",
-   "Repeats over many epochs"
+   "Learning rate sets the size of each update step",
+   "Repeats over epochs until the error reaches the desired accuracy or the maximum number of epochs"
   ],
   "source": "Tutor's mock test, written question 7",
-  "flag": "The mock gives no sample answer. This model answer was written from the slides for that week.",
+  "flag": "The mock gives no sample answer. This model answer was written from the slides for that week. That too high a learning rate overshoots and too low a rate is slow is textbook knowledge.",
   "mock": true,
   "core": true
  },

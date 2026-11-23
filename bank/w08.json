@@ -640,16 +640,16 @@
   "topic": "CNN architecture",
   "type": "explain",
   "q": "Describe the main components of a convolutional neural network and their functions. Explain how CNNs differ from ordinary feedforward networks in processing images.",
-  "model": "A convolutional layer slides small filters, or kernels, over the image to produce feature maps that detect patterns such as edges and textures. An activation function such as ReLU adds nonlinearity. A pooling layer, for example max pooling, reduces the size of the feature maps and keeps the strongest responses. Batch normalisation normalises feature maps across the mini-batch to speed up training. Fully connected layers at the end combine the features and give the class output. An ordinary feedforward network flattens the image and connects every pixel to every neuron, which needs very many weights and loses the spatial layout. A CNN shares the same filter weights across the image and keeps the spatial structure, so it needs far fewer parameters and learns local features wherever they appear.",
+  "model": "A convolutional layer slides small filters, or kernels, over the image to produce feature maps that detect patterns such as edges and textures. An activation function such as ReLU adds nonlinearity. A pooling layer, for example max pooling, reduces the size of the feature maps and keeps the strongest responses. Batch normalisation normalises feature maps across the mini-batch to speed up training. A dropout layer randomly drops neurons during training to reduce overfitting. Fully connected layers at the end combine the features and give the class output. An ordinary feedforward network is a good classifier but poor at extracting features, and does not scale well to images. It flattens the image and connects every pixel to every neuron, which needs very many weights and loses the spatial layout. A CNN shares the same filter weights across the image and keeps the spatial structure, so it exploits local features, the relationships between neighbouring pixels, with filters that are learned in training.",
   "points": [
    "Convolutional layers use filters to make feature maps",
    "Pooling reduces the size of the feature maps",
    "Fully connected layers give the final classification",
    "Feedforward networks flatten the image and need many weights",
-   "CNNs share weights and keep spatial structure"
+   "CNNs exploit local features with learned filters and scale better to images"
   ],
   "source": "Tutor's mock test, written question 8",
-  "flag": "The mock gives no sample answer. This model answer was written from the slides for that week.",
+  "flag": "The mock gives no sample answer. This model answer was written from the slides for that week. That a CNN shares filter weights across the image is textbook knowledge.",
   "mock": true,
   "core": true
  },
