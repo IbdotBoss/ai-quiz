@@ -78,7 +78,7 @@ select{max-width:100%;text-overflow:ellipsis}
 .acts{display:flex;gap:8px}.papers .acts button{display:inline-block;width:auto;border:1.5px solid var(--ink);border-radius:var(--r);padding:12px 16px;font-weight:700;text-align:center}.papers .acts button:disabled{border-color:var(--off)}
 @media (max-width:520px){.paper{grid-template-columns:minmax(0,1fr)}}
 .pl{margin:8px 0;padding-left:20px}.pl li{margin:4px 0}
-.top>b{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.top>button,.top>span{white-space:nowrap;flex:none}
+.top>b{min-width:0;overflow-wrap:anywhere}.top>button,.top>span{white-space:nowrap;flex:none}
 
 fieldset{border:0;margin:0;padding:0;min-width:0}legend{padding:0}
 .meta{display:flex;justify-content:space-between;gap:12px;margin-top:24px;font-size:var(--t-s);color:var(--ink-2)}
@@ -145,16 +145,17 @@ dialog .nav{margin-top:20px}
 .then button{display:flex;flex-direction:column;gap:4px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--hair);border-radius:0;padding:12px 0;font-weight:400}
 .then button span{color:var(--ink-2);font-size:var(--t-s)}
 .then button:hover b{text-decoration:underline}
-.sq summary{list-style:none;cursor:pointer}.sq summary::-webkit-details-marker{display:none}.sq summary h2::after{content:" +";color:var(--ink-2)}.sq[open] summary h2::after{content:" -"}
+.plot td .tr{display:block;font-size:var(--t-xs);font-weight:400}
+.sq summary{list-style:none;cursor:pointer}.sq summary::-webkit-details-marker{display:none}.sq summary{font-weight:700;padding:12px 0}.sq .pm::after{content:" +";color:var(--ink-2)}.sq[open] .pm::after{content:" -"}
 .sq{margin-top:28px}
 .more{margin-top:24px}
 .menu h2{font-size:var(--t-m);margin-top:28px}
 </style>
 </head>
 <body>
+<noscript><p style="padding:20px">This practice page needs JavaScript switched on.</p></noscript>
 <main id="app"></main>
 <dialog id="dlg" aria-labelledby="dlg-t"><p id="dlg-t"></p><div class="nav"><button id="dlg-no">Keep answering</button><button class="p" id="dlg-yes">Hand in the paper</button></div></dialog>
-<noscript><p style="padding:20px">This practice page needs JavaScript switched on.</p></noscript>
 <script>
 const DATA = /*DATA*/;
 const WEEKS = {1:"Introduction to AI, data and EDA",2:"Classification",3:"Regression",4:"Clustering and PCA",5:"Reinforcement learning and genetic algorithms",6:"Neural network basics",7:"Backpropagation",8:"Convolutional networks",9:"Segmentation and object detection",10:"Recurrent networks",11:"Natural language processing"};
@@ -234,7 +235,7 @@ const aiName = () => (AI[st.ai] || AI.claude).name;
 /* ---------- home ---------- */
 function cell(week, ex) {
   const qs = pool().filter(q => q.week === week && isEx(q) === ex), tried = qs.filter(q => q.id in st.sc);
-  const frac = qs.length ? tried.reduce((s, q) => s + st.sc[q.id], 0) / qs.length : 0;
+  const frac = tried.length ? tried.reduce((s, q) => s + st.sc[q.id], 0) / tried.length : 0;
   return {qs, tried:tried.length, frac};
 }
 const weakQ = () => pool().filter(q => q.id in st.sc && st.sc[q.id] < 1);
@@ -251,31 +252,33 @@ function home() {
   const left = resume && st.run.limit ? Math.ceil(timeLeft() / 60) : 0;
   // Stable pick so the card does not change on every visit: lowest score, then earliest week.
   const top = FOCUS.slice().sort((a, b) => ((st.sc[a.id] ?? -1) - (st.sc[b.id] ?? -1)) || a.week - b.week)[0], redo = weakQ().length;
-  const fresh = weeksPresent.find(w => !cell(w, true).tried && !cell(w, false).tried);
+
+  // An untouched week other than the one the card already points to.
+  const fresh = weeksPresent.find(w => !cell(w, true).tried && !cell(w, false).tried && !(top && !resume && !toMark && w === top.week));
   let card;
   if (resume) card = [`You stopped at question ${st.run.i + 1} of ${st.run.ids.length}${st.run.limit ? (left ? `, ${left} min left` : ", time is up") : ""}`, st.run.title, "Resume"];
   else if (toMark) card = ["Handed in and waiting for your marks", st.run.title, "Mark it"];
   else if (top && (st.sc[top.id] ?? -1) >= 1) card = ["Every test focus answer has full marks", "Timed paper, 4 written and 10 multiple choice", "Start the paper"];
   else if (top) card = [top.id in st.sc ? `Your weakest broad written answer, ${Math.round(st.sc[top.id] * 100)}% last time` : "A broad written question like the real test asks", `Week ${top.week}, ${top.topic}`, "Answer it"];
   const then = [];
-  if (redo) then.push(["t-redo", `Redo ${redo} ${redo === 1 ? "question" : "questions"} you lost marks on`, "From your earlier sets"]);
+  if (redo) then.push(["t-redo", `Redo ${Math.min(redo, 20)} ${redo === 1 ? "question" : "questions"} you lost marks on`, "From your earlier sets"]);
   if (fresh) then.push(["t-week", `Start week ${fresh}, ${WEEKS[fresh] || ""}`, "Nothing tried yet. Opens its notes and questions"]);
-  if ((resume || toMark) && top && then.length < 2) then.push(["t-focus", "Answer a broad written question", `Week ${top.week}, ${top.topic}`]);
-  if (then.length < 2) then.push(["t-timed", "Sit the timed paper", "4 written and 10 multiple choice in 50 minutes, like the real test"]);
+  if ((resume || toMark) && top && (st.sc[top.id] ?? -1) < 1 && top.week !== fresh && then.length < 2) then.push(["t-focus", "Answer a broad written question", `Week ${top.week}, ${top.topic}`]);
+  if (then.length < 2 && !(card && card[2] === "Start the paper")) then.push(["t-timed", "Sit the timed paper", "4 written and 10 multiple choice in 50 minutes, like the real test"]);
   const td = (w, ex) => {
     const c = cell(w, ex), kind = ex ? "written answer" : "multiple choice";
     if (!c.qs.length) return "<td></td>";
     const pct = Math.round(c.frac * 100), bin = Math.min(9, Math.floor(c.frac * 10));
     return c.tried
-      ? `<td><button data-w="${w}" data-ex="${ex ? 1 : 0}" style="background:${VIR[bin]};color:${bin > 4 ? "var(--ink)" : "var(--paper)"}" aria-label="Week ${w}, ${kind} questions. ${pct} percent right, ${c.tried} of ${c.qs.length} tried. Practise.">${pct}%</button></td>`
+      ? `<td><button data-w="${w}" data-ex="${ex ? 1 : 0}" style="background:${VIR[bin]};color:${bin > 4 ? "var(--ink)" : "var(--paper)"}" aria-label="Week ${w}, ${kind} questions. ${pct} percent right, ${c.tried} of ${c.qs.length} tried. Practise.">${pct}%<small class="tr">${c.tried} of ${c.qs.length}</small></button></td>`
       : `<td><button class="new" data-w="${w}" data-ex="${ex ? 1 : 0}" aria-label="Week ${w}, ${kind} questions. Not started, ${c.qs.length} questions. Practise.">new</button></td>`;
   };
   app.innerHTML = `
   <p class="kick">Week 12 test, 50 minutes</p>
   <h1>Next up</h1>
   ${card ? `<div class="next"><small>${esc(card[0])}</small><b>${esc(card[1])}</b><button id="go">${card[2]}</button></div>` : ""}
-  ${then.length ? `<div class="then"><h2>Then</h2>${then.map(t => `<button id="${t[0]}"><b>${esc(t[1])}</b><span>${t[2]}</span></button>`).join("")}</div>` : ""}
-  <details class="sq"><summary><h2 class="wh" id="hm">Marks by week</h2></summary>
+  ${then.length ? `<div class="then"><h2>Then</h2>${then.map(t => `<button id="${t[0]}"><b>${esc(t[1])}</b><span>${esc(t[2])}</span></button>`).join("")}</div>` : ""}
+  <details class="sq"><summary id="hm">Marks by week<span aria-hidden="true" class="pm"></span></summary>
   <table class="plot" aria-labelledby="hm">
     <thead><tr><th scope="col"><span class="vh">Week</span></th><th scope="col">Multiple choice</th><th scope="col">Written</th></tr></thead>
     <tbody>${weeksPresent.map(w => `<tr><th scope="row"><button class="wk" data-week="${w}" aria-label="Week ${w}, ${esc(WEEKS[w] || "")}. Open notes and questions."><b>${w}</b><span>${esc(WEEKS[w] || "")}</span></button></th>${td(w, false)}${td(w, true)}</tr>`).join("")}</tbody>
@@ -297,6 +300,8 @@ function home() {
   on("t-redo", () => start({title:"Questions to redo", ids:weakest(weakQ()).slice(0, 20).map(q => q.id)}));
   on("t-week", () => goWeek(fresh));
   on("t-timed", timed);
+  // Keep the minutes on the card current while home is open.
+  if (resume && st.run.limit) tick = setInterval(() => { const m = Math.ceil(timeLeft() / 60), el = app.querySelector(".next small"); if (el) el.textContent = `You stopped at question ${st.run.i + 1} of ${st.run.ids.length}, ${m ? m + " min left" : "time is up"}`; if (!m) clearInterval(tick); }, 15000);
   on("all", () => { menu(); window.scrollTo(0, 0); });
 }
 
@@ -310,8 +315,8 @@ function menu() {
   <h1 style="margin-top:24px">Notes, sets and papers</h1>
   <p class="s">Test sets pick your weakest questions first. Progress saves in this browser only.</p>
   <div class="papers">
-    ${resume ? paper("Resume " + st.run.title.toLowerCase(), "You stopped at question " + (st.run.i + 1) + ". Starting another set replaces it.", st.run.ids.length + " questions", [["resume", "Resume", 1]]) : ""}
-    ${toMark ? paper("Mark your " + st.run.title.toLowerCase(), "Tick the points each answer made to get your mark.", st.run.ids.length + " questions", [["resume", "Mark it", 1]]) : ""}
+    ${resume ? paper("Resume, " + st.run.title, "You stopped at question " + (st.run.i + 1) + ". Starting another set replaces it.", st.run.ids.length + " questions", [["resume", "Resume", 1]]) : ""}
+    ${toMark ? paper("Mark it, " + st.run.title, "Tick the points each answer made to get your mark.", st.run.ids.length + " questions", [["resume", "Mark it", 1]]) : ""}
     ${paper("Revision notes", "One sheet per lecture deck.", DATA.notes.length + " sheets", [["m-notes", "Open", 1]])}
     ${paper("Test focus", "One broad written question per week, like the real test. Test gives you 4 in 40 minutes.", FOCUS.length + " questions", [["s-focus", "Study", 1], ["m-focus", "Test"]])}
     ${paper("Written answers", "Study shows model answers and marking points. Test gives you 5.", exQ().length + " questions", [["s-ex", "Study", 1], ["m-ex", "Test"]])}
@@ -336,21 +341,21 @@ function menu() {
   on("resume", () => show());
   on("m-timed", timed);
   const focusTest = () => start({title:"Test focus", ids:weakest(FOCUS).slice(0, 4).map(q => q.id), exam:true, limit:40 * 60});
-  on("s-focus", () => study("Test focus", FOCUS.map(q => q.id), focusTest));
+  on("s-focus", () => study("Test focus", FOCUS.map(q => q.id), focusTest, menu, "Back to notes, sets and papers"));
   on("m-focus", focusTest);
   const mockIds = () => [...MOCK.filter(q => !isEx(q)), ...MOCK.filter(isEx)].map(q => q.id);
   const mockTest = () => start({title:"Tutor's mock test", ids:mockIds(), exam:true});
-  on("s-mock", () => study("Tutor's mock test", mockIds(), mockTest));
+  on("s-mock", () => study("Tutor's mock test", mockIds(), mockTest, menu, "Back to notes, sets and papers"));
   on("m-mock", mockTest);
   on("reset", () => { if (confirm("Clear every mark, question to redo, set left part way and handed-in paper in this browser? Your Ask AI choice stays. This cannot be undone.")) { try { localStorage.setItem(LS, JSON.stringify({ai: st.ai, aiTemp: st.aiTemp})); } catch(e) {} location.reload(); } });
   const exTest = () => start({title:"Written answers", ids:weakest(exQ()).slice(0, 5).map(q => q.id)});
   const mcTest = () => start({title:"Multiple choice", ids:weakest(mcQ()).slice(0, 10).map(q => q.id)});
   const weakTest = () => start({title:"Questions to redo", ids:weakest(weakQ()).slice(0, 20).map(q => q.id)});
-  on("s-ex", () => study("Written answers", exQ().sort(byId).map(q => q.id), exTest));
+  on("s-ex", () => study("Written answers", exQ().sort(byId).map(q => q.id), exTest, menu, "Back to notes, sets and papers"));
   on("m-ex", exTest);
-  on("s-mc", () => study("Multiple choice", mcQ().sort(byId).map(q => q.id), mcTest));
+  on("s-mc", () => study("Multiple choice", mcQ().sort(byId).map(q => q.id), mcTest, menu, "Back to notes, sets and papers"));
   on("m-mc", mcTest);
-  on("s-weak", () => study("Questions to redo", weakQ().sort(byId).map(q => q.id), weakTest));
+  on("s-weak", () => study("Questions to redo", weakQ().sort(byId).map(q => q.id), weakTest, menu, "Back to notes, sets and papers"));
   on("m-weak", weakTest);
   on("m-notes", () => notes(DATA.notes[0] && DATA.notes[0].deck));
 }
@@ -362,9 +367,9 @@ function paper(title, desc, meta, btns) {
 }
 
 // Study view. Every question on one page with its answer showing.
-function study(title, ids, test) {
+function study(title, ids, test, back = home, backLabel = "Back to the home page") {
   clearInterval(tick);
-  app.innerHTML = `<div class="top"><button class="l" id="back">Back to the home page</button><b>Study</b><span>${ids.length} questions</span></div>
+  app.innerHTML = `<div class="top"><button class="l" id="back">${esc(backLabel)}</button><b>Study</b><span>${ids.length} questions</span></div>
   <h1 style="margin-top:24px">${esc(title)}</h1>
   <p class="s">Every answer is showing. Read through, then test yourself.</p>
   <div class="nav"><span></span><button id="t1">Test me on these</button></div>
@@ -376,7 +381,7 @@ function study(title, ids, test) {
   }).join("")}
   <div class="nav"><button id="up">Back to the top</button><button class="p" id="t2">Test me on these</button></div>${FOOT}`;
   focusOn("h1"); window.scrollTo(0, 0);
-  on("back", () => { home(); window.scrollTo(0, 0); }); on("t1", test); on("t2", test); on("up", () => { window.scrollTo(0, 0); focusOn("h1"); });
+  on("back", () => { back(); window.scrollTo(0, 0); }); on("t1", test); on("t2", test); on("up", () => { window.scrollTo(0, 0); focusOn("h1"); });
 }
 
 /* ---------- a run of questions ---------- */
@@ -479,8 +484,8 @@ function question() {
 function finish() {
   clearInterval(tick);
   const r = st.run; if (r.done) return;
-  r.done = true; r.took = Math.floor((Date.now() - r.t0) / 1000);
-  if (r.exam) r.ids.forEach(id => { const q = BYID[id]; if (isEx(q)) { r.auto[id] = autoTick(q, r.text[id] || ""); r.pts[id] = []; } if (answered(r, id)) record(r, q); });
+  r.done = true; r.took = Math.floor((Date.now() - r.t0) / 1000); if (r.limit) r.took = Math.min(r.took, r.limit);
+  if (r.exam) r.ids.forEach(id => { const q = BYID[id]; if (isEx(q)) { r.auto[id] = autoTick(q, r.text[id] || ""); r.pts[id] = []; } if (!isEx(q) && (answered(r, id) || id in st.sc)) record(r, q); else if (isEx(q)) st.seen[id] = (st.seen[id] || 0) + 1; });
   st.hist.push({title:r.title, score:0, total:0, at:Date.now()}); st.hist = st.hist.slice(-30);
   tally(); save(); results(); window.scrollTo(0, 0);
 }
@@ -497,7 +502,7 @@ function results() {
   app.innerHTML = `<div class="top"><button class="l" id="back">Back to the home page</button><b>${esc(r.title)}</b><span></span></div>
   <h1 style="margin-top:24px">${toMark ? "Mark your paper" : "Your marks for this set"}</h1>
   <p class="total" id="tot" aria-live="polite">${line()}</p>
-  <p class="s">${r.ids.length} questions in ${fmt(r.took)}${r.limit && r.took >= r.limit ? ". Time ran out" : ""}.${toMark ? " Written answers score 0 until you tick the points you made in each one. The total updates as you tick. Tick before you leave this page, because leaving clears the paper." : ""} Any question you lose a mark on goes into Questions to redo on the home page.</p>
+  <p class="s">${r.ids.length} questions in ${fmt(r.took)}${r.limit && r.took >= r.limit ? ". Time ran out" : ""}.${toMark ? " Tick the points you made in each written answer to mark it. The total updates as you tick. A written answer you do not mark keeps its earlier score. Tick before you leave this page, because leaving clears the paper." : ""} Any question you lose a mark on goes into Questions to redo on the home page.</p>
   ${r.ids.map((id, i) => {
     const q = BYID[id], pk = r.ans[id] || [];
     return `<section class="rev"><div class="meta"><span>Question ${i + 1}. Week ${q.week}, ${esc(q.topic)}</span><span data-got="${id}">${got(r, q)} of ${marks(q)} ${marks(q) === 1 ? "mark" : "marks"}</span></div><h2 class="stem">${esc(q.q)}</h2>
@@ -550,7 +555,7 @@ function week(w) {
   on("back", () => { home(); window.scrollTo(0, 0); });
   const go = ex => start({title:`Week ${w}, ${ex ? "written answers" : "multiple choice"}`, ids:weakest(cell(w, ex).qs).slice(0, ex ? 5 : 10).map(q => q.id)});
   on("w-mc", () => go(false)); on("w-ex", () => go(true));
-  on("w-st", () => study(`Week ${w}, ${WEEKS[w] || ""}`, [...cell(w, true).qs, ...cell(w, false).qs].map(q => q.id), () => start({title:`Week ${w}`, ids:[...weakest(cell(w, true).qs).slice(0, 5), ...weakest(cell(w, false).qs).slice(0, 10)].map(q => q.id)})));
+  on("w-st", () => study(`Week ${w}, ${WEEKS[w] || ""}`, [...cell(w, true).qs, ...cell(w, false).qs].map(q => q.id), () => start({title:`Week ${w}`, ids:[...weakest(cell(w, true).qs).slice(0, 5), ...weakest(cell(w, false).qs).slice(0, 10)].map(q => q.id)}), () => week(w), `Back to week ${w}`));
   wireAsk(`Week ${w}, ${WEEKS[w]},`, topics);
 }
 
