@@ -126,6 +126,9 @@ table.t{border-collapse:collapse;width:100%;font-size:var(--t-s);margin-top:8px;
 .notes h3{font-size:var(--t-m);margin-top:24px}
 .notes h2{font-size:var(--t-l)}
 .notes h4{font:700 var(--t-l)/1.3 var(--font);margin:20px 0 0;border-top:1px solid var(--hair);padding-top:12px}
+/* On a week page the sheet title is an h3 and its sections are h4, so the title must be the larger one. */
+.wk-notes h3{font-size:var(--t-l);margin-top:32px}
+.wk-notes h4{font-size:var(--t-m)}
 .notes table{display:block;overflow-x:auto;border-collapse:collapse;margin:12px 0;font-size:var(--t-s);font-variant-numeric:tabular-nums}
 .notes td,.notes th{border-bottom:1px solid var(--hair);padding:8px 16px 8px 0;text-align:left;vertical-align:top}
 .notes li{margin:4px 0}
@@ -549,7 +552,7 @@ function week(w) {
     <button id="w-ex"><b>Written answers</b><span>Up to 5 questions. Type a paragraph, then mark it against a model answer.</span><i>${line(true)}</i></button>
   </div>
   <h2>Notes for Week ${w}</h2>
-  <div class="notes">${sheets.map(n => n.html.replace(/<(\/?)h2/g, "<$1h4").replace(/<(\/?)h1/g, "<$1h3")).join("") || "<p>No notes for this week yet.</p>"}</div>
+  <div class="notes wk-notes">${sheets.map(n => n.html.replace(/<(\/?)h2/g, "<$1h4").replace(/<(\/?)h1/g, "<$1h3")).join("") || "<p>No notes for this week yet.</p>"}</div>
   ${askBox("Week " + w, EXAMPLES[w] || "")}${FOOT}`;
   focusOn("h1");
   on("back", () => { home(); window.scrollTo(0, 0); });
