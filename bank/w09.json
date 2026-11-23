@@ -675,7 +675,8 @@
   "source": "Tutor's mock test, written question 9",
   "flag": "The mock gives no sample answer. This model answer was written from the slides for that week.",
   "mock": true,
-  "core": true
+  "core": true,
+  "focus": true
  },
  {
   "id": "w09-m02",

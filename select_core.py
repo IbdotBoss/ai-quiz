@@ -22,7 +22,7 @@ for path in sorted(glob.glob(os.path.join(HERE, "bank", "*.json"))):
     for q in qs:
         kind = q["type"] == "explain"
         key = (q["topic"], kind)
-        q["core"] = q.get("mock", False) or q["id"] in ALSO or (q["topic"] not in SKIP and key not in seen)
+        q["core"] = q.get("mock", False) or q.get("focus", False) or q["id"] in ALSO or (q["topic"] not in SKIP and key not in seen)
         if q["topic"] not in SKIP:
             seen.add(key)
         n[kind] += q["core"]

@@ -708,7 +708,8 @@
   "source": "Tutor's mock test, written question 1",
   "flag": "The model answer follows the tutor's sample answer in the mock test.",
   "mock": true,
-  "core": true
+  "core": true,
+  "focus": true
  },
  {
   "id": "w01b-m02",

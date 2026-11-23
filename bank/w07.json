@@ -577,7 +577,8 @@
   "source": "Tutor's mock test, written question 7",
   "flag": "The mock gives no sample answer. This model answer was written from the slides for that week. That too high a learning rate overshoots and too low a rate is slow is textbook knowledge.",
   "mock": true,
-  "core": true
+  "core": true,
+  "focus": true
  },
  {
   "id": "w07-m02",

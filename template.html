@@ -139,6 +139,7 @@ const DECKS = {w01a:"Week 1, Introduction to AI",w01b:"Week 1, Data and EDA",w02
 // Viridis in ten steps, the default colormap of the plots in the practicals. Dark text from step 5 up.
 const VIR = ["#440154","#482878","#3e4a89","#31688e","#26828e","#1f9e89","#35b779","#6ece58","#b5de2b","#fde725"];
 const Q = DATA.questions, BYID = Object.fromEntries(Q.map(q => [q.id, q]));
+const FOCUS = Q.filter(q => q.focus).sort((a, b) => a.week - b.week);
 const MOCK = Q.filter(q => q.mock).sort((a, b) => a.week - b.week || (a.id < b.id ? -1 : 1));
 const BYDECK = Object.fromEntries(Q.map(q => [q.deck, q.week]));
 const LS = "ai-quiz-v1";
@@ -247,6 +248,7 @@ function home() {
   <div class="papers">
     ${resume ? paper("Resume " + st.run.title.toLowerCase(), "You stopped at question " + (st.run.i + 1) + "." + (st.run.limit ? (left ? ` ${left} min left on the clock.` : " Time has run out.") : "") + " Starting another set replaces it.", st.run.ids.length + " questions", [["resume", "Resume", 1]]) : ""}
     ${toMark ? paper("Mark your " + st.run.title.toLowerCase(), "Handed in. Tick the points each answer made to get your mark.", st.run.ids.length + " questions", [["resume", "Mark it", 1]]) : ""}
+    ${paper("Test focus", "One broad written question per week, the kind the real test asks. Learn these first. Test gives you 4 of them in 40 minutes, weakest first.", FOCUS.length + " questions", [["s-focus", "Study", 1], ["m-focus", "Test"]])}
     ${paper("Revision notes", "One sheet per lecture deck.", DATA.notes.length + " sheets", [["m-notes", "Open", 1]])}
     ${paper("Written answers", "Study shows each question with its model answer and marking points. Test gives you 5 questions, weakest first.", exQ.length + " questions", [["s-ex", "Study", 1], ["m-ex", "Test"]])}
     ${paper("Multiple choice", "Study shows each question with the right answer marked. Test gives you 10 questions, weakest first.", mcQ.length + " questions", [["s-mc", "Study", 1], ["m-mc", "Test"]])}
@@ -285,6 +287,9 @@ function home() {
     const pick = (qs, n) => { const ids = []; shuffle(weeksPresent).forEach(w => { const q = weakest(qs.filter(q => q.week === w))[0]; if (q && ids.length < n) ids.push(q.id); }); return ids; };
     start({title:"Timed paper", ids:[...pick(pool().filter(q => !isEx(q)), 10), ...pick(pool().filter(isEx), 4)], exam:true, limit:50 * 60});
   });
+  const focusTest = () => start({title:"Test focus", ids:weakest(FOCUS).slice(0, 4).map(q => q.id), exam:true, limit:40 * 60});
+  on("s-focus", () => study("Test focus", FOCUS.map(q => q.id), focusTest));
+  on("m-focus", focusTest);
   const mockTest = () => start({title:"Tutor's mock test", ids:[...MOCK.filter(q => !isEx(q)), ...MOCK.filter(isEx)].map(q => q.id), exam:true});
   on("s-mock", () => study("Tutor's mock test", [...MOCK.filter(q => !isEx(q)), ...MOCK.filter(isEx)].map(q => q.id), mockTest));
   on("m-mock", mockTest);

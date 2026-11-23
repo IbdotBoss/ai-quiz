@@ -691,5 +691,24 @@
   "flag": "",
   "mock": true,
   "core": true
+ },
+ {
+  "id": "w11-035",
+  "week": 11,
+  "topic": "Text preprocessing",
+  "type": "explain",
+  "q": "Explain how raw text is prepared and turned into numbers for a text classification model such as a spam filter. Compare TF-IDF with word embeddings, and explain why word order matters.",
+  "model": "Raw text is first cleaned. Irrelevant characters such as punctuation, hashtags and HTML tags are removed, and the text is lowercased because casing adds little meaning. Tokenization splits sentences into tokens such as words, and stop words like and, to and the are removed. Stemming or lemmatization brings variants of a word to a common form. The text is then vectorised, because models do maths on numbers. TF-IDF scores how important a word is to a document within the corpus and gives sparse vectors. Word embeddings such as Word2Vec or GloVe give dense vectors that capture meaning, so related words like king and queen are close. A model built on word frequencies ignores order, but order and context change meaning. So the text is turned into sequences, padded to a fixed length and passed through an embedding layer into an RNN or LSTM.",
+  "points": [
+   "Cleaning removes irrelevant characters and lowercases the text",
+   "Tokenization, stop word removal and stemming or lemmatization",
+   "TF-IDF gives sparse vectors of word importance",
+   "Embeddings give dense vectors that capture meaning",
+   "Order matters, so sequences are padded and fed to an RNN or LSTM"
+  ],
+  "source": "Week 11 lecture, slide 7 to 34",
+  "flag": "",
+  "focus": true,
+  "core": true
  }
 ]

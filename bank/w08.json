@@ -651,7 +651,8 @@
   "source": "Tutor's mock test, written question 8",
   "flag": "The mock gives no sample answer. This model answer was written from the slides for that week. That a CNN shares filter weights across the image is textbook knowledge.",
   "mock": true,
-  "core": true
+  "core": true,
+  "focus": true
  },
  {
   "id": "w08-m02",
