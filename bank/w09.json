@@ -657,5 +657,66 @@
   "source": "Week 9 lecture, slide 28",
   "flag": "",
   "core": true
+ },
+ {
+  "id": "w09-m01",
+  "week": 9,
+  "topic": "U-Net",
+  "type": "explain",
+  "q": "Explain the differences between image classification, object detection and image segmentation. Describe the architecture and working principles of U-Net.",
+  "model": "Image classification gives one label for the whole image. Object detection finds each object and gives it a class and a bounding box. Image segmentation labels every pixel, so it gives the exact shape of each region. U-Net is a network for segmentation with a U-shaped encoder and decoder. Contraction blocks of two 3x3 convolutions followed by 2x2 max pooling shrink the image and extract features. A bottleneck links the contraction and expansion paths. Expansion blocks of two 3x3 convolutions followed by 2x2 up-sampling rebuild the image size. Each expansion block receives a copy and crop of the matching contraction feature map. These skip connections restore spatial detail lost during pooling, and the output is a segmentation mask.",
+  "points": [
+   "Classification gives one label per image",
+   "Detection gives classes and bounding boxes, segmentation labels each pixel",
+   "Contraction path of convolutions and max pooling",
+   "Expansion path of convolutions and up-sampling to rebuild size",
+   "Copy and crop skip connections restore detail lost in pooling"
+  ],
+  "source": "Tutor's mock test, written question 9",
+  "flag": "The mock gives no sample answer. This model answer was written from the slides for that week.",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w09-m02",
+  "week": 9,
+  "topic": "U-Net",
+  "type": "single",
+  "q": "What is the main purpose of the skip connections between the encoder and decoder in U-Net?",
+  "options": [
+   "To eliminate the need for convolutional operations",
+   "To transfer spatial information from encoder features to the matching decoder stages",
+   "To replace the output segmentation mask with a class label",
+   "To ensure that the network uses fewer trainable parameters"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "Copy and crop passes encoder feature maps to the decoder, restoring detail lost during max pooling.",
+  "source": "Tutor's mock test, multiple choice question 17",
+  "flag": "",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w09-m03",
+  "week": 9,
+  "topic": "YOLO",
+  "type": "single",
+  "q": "Which distinguishes YOLO from approaches that classify a whole image into a single category?",
+  "options": [
+   "YOLO produces only one classification score for an image",
+   "YOLO requires all images to contain exactly one object",
+   "YOLO predicts object locations and categories within an image",
+   "YOLO performs clustering before every prediction"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "YOLO is an object detector. It gives a bounding box and a class for each object it finds.",
+  "source": "Tutor's mock test, multiple choice question 18",
+  "flag": "",
+  "mock": true,
+  "core": true
  }
 ]

@@ -731,5 +731,66 @@
   "source": "Week 6 lecture, slide 36",
   "flag": "",
   "core": true
+ },
+ {
+  "id": "w06-m01",
+  "week": 6,
+  "topic": "How a network learns",
+  "type": "explain",
+  "q": "Explain how an artificial neural network works and how learning takes place during training. Discuss trainable parameters, particularly weights and biases, and their roles in determining the output.",
+  "model": "An artificial neural network is made of layers of neurons: an input layer, one or more hidden layers and an output layer. Each neuron multiplies its inputs by weights, adds them up with a bias and passes the result through an activation function. The outputs flow forward layer by layer to give a prediction. Training compares the prediction with the true value using a loss function. The error is sent back through the network and the weights and biases are adjusted to reduce it, and this repeats over many examples. Weights and biases are the trainable parameters. A weight sets how strongly an input affects a neuron. A bias shifts the weighted sum so the neuron can activate even when its inputs are zero.",
+  "points": [
+   "Layers of neurons, input, hidden and output",
+   "Each neuron takes a weighted sum plus bias and applies an activation function",
+   "Training compares predictions with targets using a loss",
+   "Weights and biases are adjusted to reduce the loss",
+   "Weights set input strength, bias shifts the sum"
+  ],
+  "source": "Tutor's mock test, written question 6",
+  "flag": "The mock gives no sample answer. This model answer was written from the slides for that week.",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w06-m02",
+  "week": 6,
+  "topic": "How a network learns",
+  "type": "single",
+  "q": "Which quantities are typically adjusted during training of a feedforward neural network?",
+  "options": [
+   "Input features and target labels",
+   "Weights and biases",
+   "Activation function names and dataset size",
+   "Number of training observations and output classes"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "Weights and biases are the trainable parameters. The data and the architecture stay fixed during training.",
+  "source": "Tutor's mock test, multiple choice question 10",
+  "flag": "",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w06-m03",
+  "week": 6,
+  "topic": "Activation functions",
+  "type": "single",
+  "q": "What is the main consequence of using only linear activation functions throughout a multilayer feedforward network?",
+  "options": [
+   "The network would automatically become a recurrent model",
+   "The network would be unable to represent nonlinear mappings through its stacked layers",
+   "The network would no longer require trainable weights",
+   "The network would always produce binary outputs"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "A stack of linear layers collapses into one linear function, so the extra layers add no power to model nonlinear patterns.",
+  "source": "Tutor's mock test, multiple choice question 11",
+  "flag": "That stacked linear layers collapse into one linear function is standard textbook reasoning.",
+  "mock": true,
+  "core": true
  }
 ]

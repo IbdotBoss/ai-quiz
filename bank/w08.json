@@ -633,5 +633,87 @@
   "source": "Week 8 lecture, slide 17, 18 and 29",
   "flag": "",
   "core": true
+ },
+ {
+  "id": "w08-m01",
+  "week": 8,
+  "topic": "CNN architecture",
+  "type": "explain",
+  "q": "Describe the main components of a convolutional neural network and their functions. Explain how CNNs differ from ordinary feedforward networks in processing images.",
+  "model": "A convolutional layer slides small filters, or kernels, over the image to produce feature maps that detect patterns such as edges and textures. An activation function such as ReLU adds nonlinearity. A pooling layer, for example max pooling, reduces the size of the feature maps and keeps the strongest responses. Batch normalisation normalises feature maps across the mini-batch to speed up training. Fully connected layers at the end combine the features and give the class output. An ordinary feedforward network flattens the image and connects every pixel to every neuron, which needs very many weights and loses the spatial layout. A CNN shares the same filter weights across the image and keeps the spatial structure, so it needs far fewer parameters and learns local features wherever they appear.",
+  "points": [
+   "Convolutional layers use filters to make feature maps",
+   "Pooling reduces the size of the feature maps",
+   "Fully connected layers give the final classification",
+   "Feedforward networks flatten the image and need many weights",
+   "CNNs share weights and keep spatial structure"
+  ],
+  "source": "Tutor's mock test, written question 8",
+  "flag": "The mock gives no sample answer. This model answer was written from the slides for that week.",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w08-m02",
+  "week": 8,
+  "topic": "Convolution",
+  "type": "single",
+  "q": "What is the output size of a valid convolution on a 32 x 32 input with a 3 x 3 kernel, stride 1 and no padding?",
+  "options": [
+   "32 x 32",
+   "30 x 30",
+   "29 x 29",
+   "34 x 34"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "Output size is (input - kernel) / stride + 1 = (32 - 3) / 1 + 1 = 30 on each side.",
+  "source": "Tutor's mock test, multiple choice question 14",
+  "flag": "",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w08-m03",
+  "week": 8,
+  "topic": "Pooling",
+  "type": "single",
+  "q": "What is the output of a 2 x 2 max pooling operation on the values [2, 7; 5, 3]?",
+  "options": [
+   "4.25",
+   "5",
+   "7",
+   "17"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "Max pooling keeps the largest value in the window, which is 7. 4.25 would be average pooling.",
+  "source": "Tutor's mock test, multiple choice question 15",
+  "flag": "",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w08-m04",
+  "week": 8,
+  "topic": "Batch normalisation",
+  "type": "single",
+  "q": "Which best describes the main function of batch normalisation in a neural network?",
+  "options": [
+   "Eliminating the need for a loss function",
+   "Normalising intermediate activations using batch statistics and learned scaling and shifting",
+   "Removing all negative activation values",
+   "Reducing the number of output classes"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "Batch normalisation subtracts the mini-batch mean and divides by its standard deviation, then applies a learned scale and shift. Removing negative values is what ReLU does.",
+  "source": "Tutor's mock test, multiple choice question 16",
+  "flag": "The learned scale and shift come from the mock test and standard references. The slides describe only the mean and standard deviation step.",
+  "mock": true,
+  "core": true
  }
 ]

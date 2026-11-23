@@ -565,5 +565,45 @@
   "source": "Week 5 reinforcement learning lecture, slide 17 to 25",
   "flag": "",
   "core": false
+ },
+ {
+  "id": "w05a-m01",
+  "week": 5,
+  "topic": "Q-learning",
+  "type": "explain",
+  "q": "Explain the principles of Q-learning and how it differs from supervised learning. Describe a real-world problem where Q-learning could be applied and how it could be formulated.",
+  "model": "In Q-learning an agent learns by interacting with an environment and receiving rewards or penalties for its actions. It keeps a Q-table where each entry Q(s, a) estimates the value of taking action a in state s. Values are updated with Q(state, action) = R(state, action) + G x max Q(next state, all actions), which combines the immediate reward with the discounted best future value. It learns from experienced transitions and needs no model of the environment. Supervised learning instead learns from labelled examples with the right answer given. Q-learning has no labels, only rewards, which can be delayed. A robot finding its way through a warehouse is one example. The states are its locations, the actions are its moves, reaching the target gives a positive reward and hitting obstacles gives a penalty.",
+  "points": [
+   "Agent learns from rewards by interacting with an environment",
+   "Q-table holds a value for each state and action pair",
+   "Update uses the immediate reward plus discounted best future value",
+   "Supervised learning uses labelled answers, Q-learning only rewards",
+   "Gives a problem with its states, actions and rewards defined"
+  ],
+  "source": "Tutor's mock test, written question 5",
+  "flag": "The mock gives no sample answer. This model answer was written from the slides for that week.",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w05a-m02",
+  "week": 5,
+  "topic": "Q-learning",
+  "type": "single",
+  "q": "In Q-learning, what is needed to update the value of a state and action pair?",
+  "options": [
+   "A labelled target class for each state",
+   "The immediate reward and an estimate of future reward",
+   "The gradient of a neural network loss function",
+   "The centroid of the nearest cluster"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "The update adds the immediate reward to the discounted best Q value of the next state.",
+  "source": "Tutor's mock test, multiple choice question 9",
+  "flag": "",
+  "mock": true,
+  "core": true
  }
 ]

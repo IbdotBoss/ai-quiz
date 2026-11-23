@@ -139,6 +139,7 @@ const DECKS = {w01a:"Week 1, Introduction to AI",w01b:"Week 1, Data and EDA",w02
 // Viridis in ten steps, the default colormap of the plots in the practicals. Dark text from step 5 up.
 const VIR = ["#440154","#482878","#3e4a89","#31688e","#26828e","#1f9e89","#35b779","#6ece58","#b5de2b","#fde725"];
 const Q = DATA.questions, BYID = Object.fromEntries(Q.map(q => [q.id, q]));
+const MOCK = Q.filter(q => q.mock).sort((a, b) => a.week - b.week || (a.id < b.id ? -1 : 1));
 const BYDECK = Object.fromEntries(Q.map(q => [q.deck, q.week]));
 const LS = "ai-quiz-v1";
 let st = {sc:{}, seen:{}, run:null, hist:[], ai:"claude", aiTemp:false, core:true};
@@ -251,7 +252,8 @@ function home() {
     ${paper("Multiple choice", "Study shows each question with the right answer marked. Test gives you 10 questions, weakest first.", mcQ.length + " questions", [["s-mc", "Study", 1], ["m-mc", "Test"]])}
     ${paper("Questions to redo", weak ? "Questions where you lost a mark last time. Redo gives you up to 20 questions." : "Nothing here until you miss a mark.", weak + " to redo", [["s-weak", "Study", 0, !weak], ["m-weak", "Redo", 0, !weak]])}
     ${paper("Mixed set", "10 multiple choice and 5 written questions, picked from your weakest.", "15 questions", [["m-mixed", "Test"]])}
-    ${paper("Timed written paper", "8 written questions from different weeks. The clock keeps running if you leave. The tutor has not published the real format yet.", "8 questions, 50 min", [["m-timed", "Test"]])}
+    ${paper("Timed paper", "The real test format: 4 written and 10 multiple choice questions from different weeks. The clock keeps running if you leave.", "14 questions, 50 min", [["m-timed", "Test"]])}
+    ${paper("Tutor's mock test", "The 10 written and 20 multiple choice questions from the mock the tutor posted on 23 November. Test has no clock.", MOCK.length + " questions", [["s-mock", "Study", 1], ["m-mock", "Test"]])}
   </div>
   <h2 id="hm">Share of ${st.core ? "core" : "all"} questions marked right, by week</h2>
   <p class="s">Each square is a button. A multiple choice square starts up to 10 questions from that week and a written square up to 5, weakest first. Press a week name for its notes, its answers and an Ask AI box.</p>
@@ -280,10 +282,12 @@ function home() {
   document.getElementById("ai-temp").onchange = e => { st.aiTemp = e.target.checked; save(); };
   on("resume", () => show());
   on("m-timed", () => {
-    const ex = pool().filter(isEx), ids = [];
-    shuffle(weeksPresent).forEach(w => { const pick = weakest(ex.filter(q => q.week === w))[0]; if (pick && ids.length < 8) ids.push(pick.id); });
-    start({title:"Timed written paper", ids, exam:true, limit:50 * 60});
+    const pick = (qs, n) => { const ids = []; shuffle(weeksPresent).forEach(w => { const q = weakest(qs.filter(q => q.week === w))[0]; if (q && ids.length < n) ids.push(q.id); }); return ids; };
+    start({title:"Timed paper", ids:[...pick(pool().filter(q => !isEx(q)), 10), ...pick(pool().filter(isEx), 4)], exam:true, limit:50 * 60});
   });
+  const mockTest = () => start({title:"Tutor's mock test", ids:[...MOCK.filter(q => !isEx(q)), ...MOCK.filter(isEx)].map(q => q.id), exam:true});
+  on("s-mock", () => study("Tutor's mock test", [...MOCK.filter(q => !isEx(q)), ...MOCK.filter(isEx)].map(q => q.id), mockTest));
+  on("m-mock", mockTest);
   on("reset", () => { if (confirm("Clear every mark, question to redo, set left part way and handed-in paper in this browser? Your Ask AI choice and question set stay. This cannot be undone.")) { try { localStorage.setItem(LS, JSON.stringify({ai: st.ai, aiTemp: st.aiTemp, core: st.core})); } catch(e) {} location.reload(); } });
   on("m-mixed", () => start({title:"Mixed set", ids:shuffle([...weakest(pool().filter(q => !isEx(q))).slice(0, 10), ...weakest(pool().filter(isEx)).slice(0, 5)]).map(q => q.id)}));
   const exTest = () => start({title:"Written answers", ids:weakest(exQ).slice(0, 5).map(q => q.id)});

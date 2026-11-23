@@ -690,5 +690,66 @@
   "source": "Week 1 data lecture, slide 11",
   "flag": "",
   "core": true
+ },
+ {
+  "id": "w01b-m01",
+  "week": 1,
+  "topic": "Exploratory data analysis",
+  "type": "explain",
+  "q": "Explain the significance of exploratory data analysis in a machine learning project. Discuss three techniques commonly used in EDA and what each shows. What are the consequences of doing too little EDA before building a model?",
+  "model": "Exploratory data analysis helps us understand the characteristics, structure and quality of a dataset before building a model. It finds patterns, relationships and problems in the data. Descriptive statistics such as mean, median, standard deviation, minimum and maximum show the distribution and spread of numerical features. Visualisation with histograms and box plots shows distributions, skewness and outliers. Correlation analysis shows relationships between numerical variables and possible multicollinearity. Too little EDA can leave missing values, outliers, wrong data types or highly correlated features undetected. These harm training, give misleading results and lower predictive performance, so EDA guides the choice of preprocessing and algorithm.",
+  "points": [
+   "EDA shows the structure, quality and patterns of the data before modelling",
+   "Descriptive statistics show distribution and spread",
+   "Histograms or box plots show skewness and outliers",
+   "Correlation analysis shows relationships and multicollinearity",
+   "Too little EDA leaves missing values, outliers or wrong types that harm the model"
+  ],
+  "source": "Tutor's mock test, written question 1",
+  "flag": "The model answer follows the tutor's sample answer in the mock test.",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w01b-m02",
+  "week": 1,
+  "topic": "Exploratory data analysis",
+  "type": "single",
+  "q": "Which is the most appropriate method for identifying possible outliers in a continuous numerical variable?",
+  "options": [
+   "Pie chart",
+   "Box plot",
+   "Bar chart",
+   "Confusion matrix"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "A box plot shows the spread of a numerical variable and marks points beyond the whiskers as possible outliers. Pie and bar charts suit categories, and a confusion matrix evaluates a classifier.",
+  "source": "Tutor's mock test, multiple choice question 1",
+  "flag": "",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w01b-m03",
+  "week": 1,
+  "topic": "Exploratory data analysis",
+  "type": "single",
+  "q": "Which statement about a correlation coefficient of -0.85 is correct?",
+  "options": [
+   "The variables have a strong negative linear relationship",
+   "One variable causes the other to decrease",
+   "The variables have a weak positive relationship",
+   "The relationship must be nonlinear"
+  ],
+  "answer": [
+   0
+  ],
+  "explain": "A value near -1 means a strong negative linear relationship. Correlation does not show cause.",
+  "source": "Tutor's mock test, multiple choice question 2",
+  "flag": "",
+  "mock": true,
+  "core": true
  }
 ]

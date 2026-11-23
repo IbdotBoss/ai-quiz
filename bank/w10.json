@@ -630,5 +630,45 @@
   "source": "Week 10 lecture, slide 32",
   "flag": "The final comparison about a separate cell state is textbook knowledge. The slide only gives the one line description of the GRU.",
   "core": true
+ },
+ {
+  "id": "w10-m01",
+  "week": 10,
+  "topic": "RNN",
+  "type": "explain",
+  "q": "Explain the architecture and working of a simple recurrent neural network. Discuss the limitations of simple RNNs on long sequences and how LSTM networks address them.",
+  "model": "A simple RNN processes a sequence one step at a time. It has a recurrent connection that forms a loop, so at each step it combines the current input with the hidden state from the previous step. The hidden state acts as memory of earlier inputs, and unfolding the loop shows the same cell repeated for each time step. Simple RNNs are trained with backpropagation through time, and on long sequences the gradients shrink as they travel back. This vanishing gradient gives the network short-term memory, so it struggles to learn long-term dependencies. An LSTM adds a cell state that runs along the chain with only minor linear interactions. Forget, input and output gates, built from sigmoid layers, decide what to remove, what to add and what to output. This lets information survive over long sequences.",
+  "points": [
+   "Recurrent loop combines the current input with the previous hidden state",
+   "Hidden state carries memory through time",
+   "Vanishing gradient causes short-term memory on long sequences",
+   "LSTM adds a cell state that carries information along",
+   "Forget, input and output gates control what is removed, added and output"
+  ],
+  "source": "Tutor's mock test, written question 10",
+  "flag": "The mock gives no sample answer. This model answer was written from the slides for that week.",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w10-m02",
+  "week": 10,
+  "topic": "LSTM gates",
+  "type": "single",
+  "q": "Which part of an LSTM mainly controls how much of the previous cell state is kept?",
+  "options": [
+   "Input gate",
+   "Forget gate",
+   "Output gate",
+   "Softmax layer"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "The forget gate gives a value from 0 to 1 for each number in the cell state. 1 keeps it and 0 removes it.",
+  "source": "Tutor's mock test, multiple choice question 19",
+  "flag": "",
+  "mock": true,
+  "core": true
  }
 ]

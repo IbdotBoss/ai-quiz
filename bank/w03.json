@@ -552,5 +552,66 @@
   "source": "Week 3 lecture, slide 23",
   "flag": "",
   "core": true
+ },
+ {
+  "id": "w03-m01",
+  "week": 3,
+  "topic": "Linear regression",
+  "type": "explain",
+  "q": "Explain how linear regression models the relationship between input variables and a continuous target. Explain how its performance can be evaluated and discuss its main advantages and limitations.",
+  "model": "Linear regression is a supervised algorithm that predicts a continuous value from one or more inputs. It assumes the relationship can be written as a linear equation. Each feature gets a coefficient for its contribution, plus an intercept. The coefficients are usually learned by minimising the sum of squared errors between predicted and actual values. Performance is measured with mean absolute error, mean squared error and R squared. MAE and MSE measure prediction error, while R squared shows how much of the variation in the target the model explains. Its advantages are simplicity, low computational cost and interpretability. It performs poorly when relationships are nonlinear and is sensitive to outliers and multicollinearity.",
+  "points": [
+   "Predicts a continuous target with a linear equation of coefficients and an intercept",
+   "Learns coefficients by minimising the sum of squared errors",
+   "Evaluated with MAE, MSE or R squared, and says what they measure",
+   "Advantages such as simplicity and interpretability",
+   "Limitations such as nonlinear data, outliers or multicollinearity"
+  ],
+  "source": "Tutor's mock test, written question 3",
+  "flag": "The model answer follows the tutor's sample answer in the mock test.",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w03-m02",
+  "week": 3,
+  "topic": "Linear regression",
+  "type": "single",
+  "q": "In ordinary least squares linear regression, which quantity is minimised when estimating the coefficients?",
+  "options": [
+   "The sum of absolute residuals",
+   "The sum of squared residuals",
+   "The sum of predicted target values",
+   "The variance of the input variables"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "Ordinary least squares picks the coefficients that make the sum of squared residuals as small as possible.",
+  "source": "Tutor's mock test, multiple choice question 5",
+  "flag": "",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w03-m03",
+  "week": 3,
+  "topic": "Linear regression",
+  "type": "single",
+  "q": "Which situation most directly violates the linearity assumption of a standard linear regression model?",
+  "options": [
+   "The target variable contains negative values",
+   "The dataset contains several input variables",
+   "The expected target response has a curved relationship with a predictor, but only a linear term is included",
+   "The estimated intercept is greater than zero"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "Linearity means the target changes in a straight line with each predictor. A curved relationship fitted with only a linear term breaks that.",
+  "source": "Tutor's mock test, multiple choice question 6",
+  "flag": "",
+  "mock": true,
+  "core": true
  }
 ]

@@ -629,5 +629,66 @@
   "source": "Week 4 lecture, slide 36",
   "flag": "",
   "core": false
+ },
+ {
+  "id": "w04-m01",
+  "week": 4,
+  "topic": "K-means",
+  "type": "explain",
+  "q": "Describe how the K-means clustering algorithm works. Explain how a suitable number of clusters can be chosen and how the quality of the clusters can be evaluated.",
+  "model": "K-means is an unsupervised algorithm that groups unlabelled data into K clusters. It places K centroids, assigns each point to its nearest centroid, then moves each centroid to the mean of the points assigned to it. These two steps repeat until the assignments stop changing. Its aim is to minimise inertia, the sum of squared distances from each point to its cluster centre. To choose K, the elbow method plots inertia against K. Inertia always falls as K grows, and the elbow is where the improvement drops sharply. The silhouette score compares how close each point is to its own cluster with how close it is to the nearest other cluster. A score near +1 means a good fit, so the K with the highest average score is a good choice.",
+  "points": [
+   "Assigns each point to the nearest of K centroids",
+   "Moves each centroid to the mean of its points and repeats until stable",
+   "Elbow method plots inertia against K and picks the bend",
+   "Silhouette score compares cohesion with separation, near +1 is good",
+   "Aim is to minimise inertia, the within-cluster sum of squared distances"
+  ],
+  "source": "Tutor's mock test, written question 4",
+  "flag": "The mock gives no sample answer. This model answer was written from the slides for that week.",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w04-m02",
+  "week": 4,
+  "topic": "K-means",
+  "type": "single",
+  "q": "What is the main objective of the K-means clustering algorithm?",
+  "options": [
+   "Maximise the distance between every pair of observations",
+   "Minimise the within-cluster sum of squared distances",
+   "Maximise classification accuracy using labelled data",
+   "Minimise the number of features in the dataset"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "K-means minimises inertia, the sum of squared distances from each point to its cluster centre. It uses no labels.",
+  "source": "Tutor's mock test, multiple choice question 7",
+  "flag": "",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w04-m03",
+  "week": 4,
+  "topic": "Silhouette score",
+  "type": "single",
+  "q": "What does a silhouette score close to +1 mean for an observation?",
+  "options": [
+   "The observation is likely assigned to an unsuitable cluster",
+   "The observation is equally close to two clusters",
+   "The observation is well matched to its cluster and separated from neighbouring clusters",
+   "The observation is an outlier in every possible clustering solution"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "Near +1 means the point is much closer to its own cluster than to the nearest other one. Near 0 means it sits between two, and negative means it is probably in the wrong cluster.",
+  "source": "Tutor's mock test, multiple choice question 8",
+  "flag": "",
+  "mock": true,
+  "core": true
  }
 ]

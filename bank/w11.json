@@ -670,5 +670,26 @@
   "source": "Week 11 lecture, slide 29 to 34",
   "flag": "",
   "core": true
+ },
+ {
+  "id": "w11-m01",
+  "week": 11,
+  "topic": "TF-IDF",
+  "type": "single",
+  "q": "Which term is expected to get a relatively high TF-IDF weight within a document?",
+  "options": [
+   "A term appearing frequently in almost every document in the corpus",
+   "A term appearing once in every document",
+   "A term appearing frequently in the document but rarely across the corpus",
+   "A term absent from the document but frequent elsewhere"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "High term frequency raises TF and rarity across the corpus raises IDF, so both push the score up.",
+  "source": "Tutor's mock test, multiple choice question 20",
+  "flag": "",
+  "mock": true,
+  "core": true
  }
 ]

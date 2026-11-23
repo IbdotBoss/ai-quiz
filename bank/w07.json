@@ -559,5 +559,66 @@
   "source": "Week 7 lecture, slide 12, 38 and 39",
   "flag": "",
   "core": false
+ },
+ {
+  "id": "w07-m01",
+  "week": 7,
+  "topic": "Backpropagation",
+  "type": "explain",
+  "q": "Explain how an artificial neural network is trained using backpropagation. Discuss how gradient descent helps optimise the network.",
+  "model": "Training starts with random weights and biases. In the forward pass the input goes through the network to give a prediction. A cost function measures the error between the predicted and actual values. Backpropagation then sends this error backwards through the network and uses the chain rule to work out the gradient of the cost with respect to each weight and bias. Gradient descent uses those gradients to update each parameter a small step in the direction that reduces the cost. The learning rate sets the size of each step. Too large a rate can overshoot the minimum and too small a rate makes training slow. The cycle repeats over many epochs until the cost stops falling.",
+  "points": [
+   "Forward pass gives a prediction and the cost measures the error",
+   "Backpropagation sends the error back and computes gradients with the chain rule",
+   "Gradient descent moves each weight and bias in the direction that lowers the cost",
+   "Learning rate sets the step size, with the risk of too large or too small",
+   "Repeats over many epochs"
+  ],
+  "source": "Tutor's mock test, written question 7",
+  "flag": "The mock gives no sample answer. This model answer was written from the slides for that week.",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w07-m02",
+  "week": 7,
+  "topic": "Backpropagation",
+  "type": "single",
+  "q": "Which correctly describes the role of backpropagation in neural network training?",
+  "options": [
+   "It directly selects the optimal number of hidden layers",
+   "It computes gradients of the loss with respect to trainable parameters",
+   "It replaces the need for an optimisation algorithm",
+   "It randomly changes weights until accuracy improves"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "Backpropagation works out the gradients. An optimiser such as gradient descent then uses them to update the weights.",
+  "source": "Tutor's mock test, multiple choice question 12",
+  "flag": "",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w07-m03",
+  "week": 7,
+  "topic": "Gradient descent",
+  "type": "single",
+  "q": "What is a likely consequence of setting the learning rate too high in gradient-based optimisation?",
+  "options": [
+   "Training is guaranteed to converge more quickly",
+   "The loss function becomes independent of the model parameters",
+   "Parameter updates may overshoot minima and cause unstable training",
+   "The neural network automatically removes unnecessary weights"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "Big steps can jump past the minimum, so the loss bounces around or grows.",
+  "source": "Tutor's mock test, multiple choice question 13",
+  "flag": "",
+  "mock": true,
+  "core": true
  }
 ]

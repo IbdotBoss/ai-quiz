@@ -1,7 +1,7 @@
 """Tag the core set in bank/*.json. Repeatable: python select_core.py
 
 Rule: for each topic in each deck, the first written-answer question and the first multiple choice
-question are core. Topics in SKIP add detail a descriptive test is unlikely to ask, so they stay out.
+question are core, and so is every question from the tutor's mock test. Topics in SKIP add detail a descriptive test is unlikely to ask, so they stay out.
 """
 import glob, json, os
 
@@ -22,7 +22,7 @@ for path in sorted(glob.glob(os.path.join(HERE, "bank", "*.json"))):
     for q in qs:
         kind = q["type"] == "explain"
         key = (q["topic"], kind)
-        q["core"] = q["id"] in ALSO or (q["topic"] not in SKIP and key not in seen)
+        q["core"] = q.get("mock", False) or q["id"] in ALSO or (q["topic"] not in SKIP and key not in seen)
         if q["topic"] not in SKIP:
             seen.add(key)
         n[kind] += q["core"]

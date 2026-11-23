@@ -714,5 +714,66 @@
   "source": "Week 2 lecture, slide 46 and 47",
   "flag": "",
   "core": false
+ },
+ {
+  "id": "w02-m01",
+  "week": 2,
+  "topic": "K nearest neighbours",
+  "type": "explain",
+  "q": "Explain how the K nearest neighbours classifier works. Discuss how the choice of K affects performance and generalisation. Explain why KNN is a lazy learning algorithm and a non-parametric model.",
+  "model": "KNN is a supervised algorithm for classification. It classifies a new observation by measuring its distance to the training observations, often with Euclidean distance, and finding the K closest. The predicted class is usually the majority vote of those neighbours. A small K such as 1 makes the model sensitive to individual points and noise, which causes overfitting and high variance. A larger K gives smoother boundaries and less sensitivity to noise, but too large a K causes underfitting and high bias. K is usually chosen by cross-validation. KNN is lazy because it builds no explicit model during training and does most of its work at prediction time. It is non-parametric because it assumes no fixed functional form between the features and the classes.",
+  "points": [
+   "Measures distance, for example Euclidean, to find the K nearest training points",
+   "Predicts by majority vote of the neighbours",
+   "Small K overfits and is sensitive to noise, large K underfits",
+   "Lazy because it builds no model in training and works at prediction time",
+   "Non-parametric because it assumes no fixed functional form"
+  ],
+  "source": "Tutor's mock test, written question 2",
+  "flag": "The model answer follows the tutor's sample answer in the mock test.",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w02-m02",
+  "week": 2,
+  "topic": "K nearest neighbours",
+  "type": "single",
+  "q": "Which is a characteristic of the K nearest neighbours algorithm?",
+  "options": [
+   "It learns a fixed set of coefficients during training",
+   "It requires a predefined number of decision rules",
+   "It retains training observations for use during prediction",
+   "It constructs a decision tree from the training data"
+  ],
+  "answer": [
+   2
+  ],
+  "explain": "KNN is lazy. It keeps the training data and compares each new point with it at prediction time.",
+  "source": "Tutor's mock test, multiple choice question 3",
+  "flag": "",
+  "mock": true,
+  "core": true
+ },
+ {
+  "id": "w02-m03",
+  "week": 2,
+  "topic": "K nearest neighbours",
+  "type": "single",
+  "q": "What is a likely consequence of choosing a very small K in KNN classification?",
+  "options": [
+   "Higher bias and lower variance",
+   "Greater sensitivity to noise in the training data",
+   "Reduced computational cost during prediction regardless of dataset size",
+   "The model becomes parametric"
+  ],
+  "answer": [
+   1
+  ],
+  "explain": "With a very small K one noisy neighbour can decide the class, so the model overfits with high variance.",
+  "source": "Tutor's mock test, multiple choice question 4",
+  "flag": "",
+  "mock": true,
+  "core": true
  }
 ]
