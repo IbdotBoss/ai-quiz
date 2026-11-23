@@ -205,6 +205,7 @@ const INTRO = "I am revising for a university Artificial Intelligence in-class t
 function prompt(q, mode, mine) {
   const L = [INTRO, "", "QUESTION", q.q, ""];
   if (isEx(q)) {
+    if (mode === "hint") return L.concat(mine ? ["MY ANSWER SO FAR", mine, ""] : [], "Do not give me the full answer. Give me one hint that points me towards what a good answer covers, then ask me to try again.").join("\n");
     return L.concat("MY ANSWER", mine || "I did not write an answer.", "", "MODEL ANSWER", q.model, "", "POINTS A MARKER LOOKS FOR", q.points.map(p => "- " + p).join("\n"), "",
       "Mark my answer against those points. Say which points I made, which I missed, and correct anything I got wrong. Then ask me one follow-up question that checks I understand the idea.").join("\n");
   }
@@ -411,6 +412,12 @@ function autoTick(q, text) {
   const mine = new Set(terms(text));
   return q.points.map((p, i) => { const t = terms(p), hit = t.filter(w => mine.has(w)); return t.length && hit.length >= Math.max(1, Math.ceil(t.length / 2)) ? i : -1; }).filter(i => i >= 0);
 }
+// A hint from the marking points, made on the page: the key words of one more point each time. Nothing is sent anywhere.
+const hintWords = p => [...new Set((p.match(/[A-Za-z][A-Za-z-]{3,}/g) || []).filter(w => !STOP.has(w.toLowerCase())))].slice(0, 4).join(", ");
+function hintBlock(q, r) {
+  const n = ((r.hint || {})[q.id]) || 0, N = q.points.length;
+  return `<div class="ai">${n < N ? `<button id="hint">${n ? "Another hint" : "Get a hint"}</button>` : ""}<span class="s">${n ? "" : `A full answer makes ${N} points.`}</span></div>${n ? `<ul class="pl hints">${q.points.slice(0, n).map((p, i) => `<li>Point ${i + 1} of ${N} uses words like: ${esc(hintWords(p))}</li>`).join("")}</ul>` : ""}`;
+}
 const stateOf = (q, k, picked) => q.answer.includes(k) ? (picked.includes(k) ? "right" : "missed") : (picked.includes(k) ? "wrong" : "");
 function optRow(q, k, sel, state, locked) {
   const label = {right:"Your answer. Right.", missed:q.type === "multi" ? "Right answer. You did not choose it." : "This is the right answer.", wrong:"Your answer. Wrong.", key:"Right answer."}[state] || "";
@@ -444,6 +451,7 @@ function question() {
   <div class="top"><button class="l" id="quit">${r.limit ? "Leave, clock keeps running" : "Save and leave"}</button><b>${esc(r.title)}</b>${r.limit ? `<span class="timer" id="tm" role="timer" aria-label="Time left"></span>` : `<span>Question ${r.i + 1} of ${n}</span>`}</div>
   <div class="meta"><span>Week ${q.week}, ${esc(q.topic)}</span><span>${checked ? `${got(r, q)} of ${marks(q)} ${marks(q) === 1 ? "mark" : "marks"}` : `${marks(q)} ${marks(q) === 1 ? "mark" : "marks"}`}</span></div>
   ${body}${fb}
+  ${ex && !checked && !r.exam ? hintBlock(q, r) : ""}
   <div class="nav">
     <button id="prev" ${r.i ? "" : "disabled"}>Previous question</button>
     ${r.exam ? (r.i < n - 1 ? `<button class="p" id="next">Next question</button>` : `<button class="p" id="fin">Hand in the paper</button>`)
@@ -464,6 +472,7 @@ function question() {
   on("quit", () => { save(); home(); window.scrollTo(0, 0); });
   on("prev", () => go(r.i - 1));
   on("next", () => r.i < n - 1 ? go(r.i + 1) : finish());
+  on("hint", () => { r.hint = r.hint || {}; r.hint[q.id] = (r.hint[q.id] || 0) + 1; save(); question(); });
   on("chk", () => { r.checked[q.id] = true; if (ex) { r.auto[q.id] = autoTick(q, r.text[q.id] || ""); r.pts[q.id] = []; } record(r, q); save(); question(); });
   const fin = () => {
     const left = r.ids.filter(id => !answered(r, id)).length;
