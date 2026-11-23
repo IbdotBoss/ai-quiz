@@ -137,6 +137,28 @@ dialog::backdrop{background:var(--veil)}
 dialog .nav{margin-top:20px}
 
 /* home */
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 16px;padding-bottom:12px;border-bottom:1.5px solid var(--ink);margin-bottom:24px}
+.bar b{display:block;font-size:var(--t-m)}.bar span{font-size:var(--t-s);color:var(--ink-2)}
+.bar nav{display:flex;gap:16px}
+.busy{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:var(--tint);border-radius:var(--r);padding:12px 16px;margin-bottom:24px}
+.deck{width:100%;border-collapse:collapse;margin-top:12px;font-variant-numeric:tabular-nums}
+.deck thead th{font-size:var(--t-xs);font-weight:400;color:var(--ink-2);text-align:left;padding:0 0 6px;border-bottom:1.5px solid var(--ink)}
+.deck .n{text-align:right;width:68px;padding-right:12px}
+.deck td,.deck tbody th{border-bottom:1px solid var(--hair);padding:0}
+.deck td.n{font-weight:700}.deck td.bad{color:var(--wrong)}
+.deck .pc{width:60px;text-align:center;font-weight:800}
+.deck thead .pc,.deck thead th:last-child{text-align:center}
+.deck .nt{background:repeating-linear-gradient(135deg,var(--paper) 0 5px,var(--hatch) 5px 6.5px)}
+.deck .wk{display:flex;flex-wrap:wrap;gap:4px 8px;width:100%;min-height:52px;align-items:center;text-align:left;border:0;border-radius:0;padding:6px 8px 6px 0;font-weight:400;line-height:1.3;background:none}
+.deck .wk b{font-weight:800;flex:0 0 1.5em}.deck .wk span{text-decoration:underline;flex:1 1 10em}
+.deck .wk:hover span{text-decoration-thickness:2px}
+.tag{font-size:var(--t-xs);font-weight:700;border:1.5px solid var(--ink);border-radius:999px;padding:0 8px}
+.mods{display:grid;gap:0;margin-top:8px}
+.mods button{display:flex;flex-direction:column;gap:2px;text-align:left;border:0;border-bottom:1px solid var(--hair);border-radius:0;padding:12px 0;font-weight:400;background:none}
+.mods button span{color:var(--ink-2);font-size:var(--t-s)}
+.mods button:hover:not(:disabled) b{text-decoration:underline}
+h2.wh{margin-top:40px}
+@media(max-width:420px){.deck .n{width:46px;padding-right:6px}.deck .pc{width:50px}.deck .wk b{flex-basis:1.2em}}
 .kick{font-size:var(--t-s);color:var(--ink-2);margin:0}
 .next{background:var(--ink);color:var(--paper);border-radius:var(--r);padding:20px;margin-top:16px}
 .next small{display:block;font-size:var(--t-s);color:var(--ink-3)}
@@ -253,59 +275,43 @@ function home() {
   clearInterval(tick);
   const resume = st.run && !st.run.done, toMark = st.run && st.run.done && st.run.exam;
   const left = resume && st.run.limit ? Math.ceil(timeLeft() / 60) : 0;
-  // Stable pick so the card does not change on every visit: lowest score, then earliest week.
-  const top = FOCUS.slice().sort((a, b) => ((st.sc[a.id] ?? -1) - (st.sc[b.id] ?? -1)) || a.week - b.week)[0], redo = weakQ().length;
-
-  // An untouched week other than the one the card already points to.
-  const fresh = weeksPresent.find(w => !cell(w, true).tried && !cell(w, false).tried && !(top && !resume && !toMark && w === top.week));
-  let card;
-  if (resume) card = [`You stopped at question ${st.run.i + 1} of ${st.run.ids.length}${st.run.limit ? (left ? `, ${left} min left` : ", time is up") : ""}`, st.run.title, "Resume"];
-  else if (toMark) card = ["Handed in and waiting for your marks", st.run.title, "Mark it"];
-  else if (top && (st.sc[top.id] ?? -1) >= 1) card = ["Every test focus answer has full marks", "Timed paper, 4 written and 10 multiple choice", "Start the paper"];
-  else if (top) card = [top.id in st.sc ? `Your weakest broad written answer, ${Math.round(st.sc[top.id] * 100)}% last time` : "A broad written question like the real test asks", `Week ${top.week}, ${top.topic}`, "Answer it"];
-  const then = [];
-  if (redo) then.push(["t-redo", `Redo ${Math.min(redo, 20)} ${redo === 1 ? "question" : "questions"} you lost marks on`, "From your earlier sets"]);
-  if (fresh) then.push(["t-week", `Start week ${fresh}, ${WEEKS[fresh] || ""}`, "Nothing tried yet. Opens its notes and questions"]);
-  if ((resume || toMark) && top && (st.sc[top.id] ?? -1) < 1 && top.week !== fresh && then.length < 2) then.push(["t-focus", "Answer a broad written question", `Week ${top.week}, ${top.topic}`]);
-  if (then.length < 2 && !(card && card[2] === "Start the paper")) then.push(["t-timed", "Sit the timed paper", "4 written and 10 multiple choice in 50 minutes, like the real test"]);
-  const td = (w, ex) => {
-    const c = cell(w, ex), kind = ex ? "written answer" : "multiple choice";
-    if (!c.qs.length) return "<td></td>";
-    const pct = Math.round(c.frac * 100), bin = Math.min(9, Math.floor(c.frac * 10));
-    return c.tried
-      ? `<td><button data-w="${w}" data-ex="${ex ? 1 : 0}" style="background:${VIR[bin]};color:${bin > 4 ? "var(--ink)" : "var(--paper)"}" aria-label="Week ${w}, ${kind} questions. ${pct} percent right, ${c.tried} of ${c.qs.length} tried. Practise.">${pct}%<small class="tr">${c.tried} of ${c.qs.length}</small></button></td>`
-      : `<td><button class="new" data-w="${w}" data-ex="${ex ? 1 : 0}" aria-label="Week ${w}, ${kind} questions. Not started, ${c.qs.length} questions. Practise.">new</button></td>`;
+  // Stable pick, lowest score then earliest week. Its week row is marked "next".
+  const top = FOCUS.slice().sort((a, b) => ((st.sc[a.id] ?? -1) - (st.sc[b.id] ?? -1)) || a.week - b.week)[0];
+  const nextW = top && (st.sc[top.id] ?? -1) < 1 ? top.week : 0, redo = weakQ().length;
+  // One row per week, like a deck list: questions not seen, questions to redo, share right.
+  const row = w => {
+    const qs = pool().filter(q => q.week === w), tried = qs.filter(q => q.id in st.sc), bad = tried.filter(q => st.sc[q.id] < 1).length;
+    const frac = tried.length ? tried.reduce((t, q) => t + st.sc[q.id], 0) / tried.length : 0, bin = Math.min(9, Math.floor(frac * 10));
+    const right = tried.length ? `<td class="pc" style="background:${VIR[bin]};color:${bin > 4 ? "var(--ink)" : "var(--paper)"}">${Math.round(frac * 100)}%</td>` : `<td class="pc nt"><span class="vh">not tried</span></td>`;
+    return `<tr${w === nextW ? ' class="nx"' : ""}><th scope="row"><button class="wk" data-week="${w}"><b>${w}</b><span>${esc(WEEKS[w] || "")}</span>${w === nextW ? `<small class="tag">next</small>` : ""}</button></th><td class="n">${qs.length - tried.length}</td><td class="n${bad ? " bad" : ""}">${bad}</td>${right}</tr>`;
   };
+  const busy = resume ? [`${esc(st.run.title)}. You stopped at question ${st.run.i + 1} of ${st.run.ids.length}${st.run.limit ? (left ? `, ${left} min left` : ", time is up") : ""}.`, "Resume"]
+    : toMark ? [`${esc(st.run.title)} is handed in and waiting for your marks.`, "Mark it"] : null;
   app.innerHTML = `
-  <p class="kick">Week 12 test, 50 minutes</p>
-  <h1>Next up</h1>
-  ${card ? `<div class="next"><small>${esc(card[0])}</small><b>${esc(card[1])}</b><button id="go">${card[2]}</button></div>` : ""}
-  ${then.length ? `<div class="then"><h2>Then</h2>${then.map(t => `<button id="${t[0]}"><b>${esc(t[1])}</b><span>${esc(t[2])}</span></button>`).join("")}</div>` : ""}
-  <details class="sq"><summary id="hm">Marks by week<span aria-hidden="true" class="pm"></span></summary>
-  <table class="plot" aria-labelledby="hm">
-    <thead><tr><th scope="col"><span class="vh">Week</span></th><th scope="col">Multiple choice</th><th scope="col">Written</th></tr></thead>
-    <tbody>${weeksPresent.map(w => `<tr><th scope="row"><button class="wk" data-week="${w}" aria-label="Week ${w}, ${esc(WEEKS[w] || "")}. Open notes and questions."><b>${w}</b><span>${esc(WEEKS[w] || "")}</span></button></th>${td(w, false)}${td(w, true)}</tr>`).join("")}</tbody>
+  <header class="bar"><div><b>AI test practice</b><span>MOD004553, test in Week 12, 50 minutes</span></div>
+    <nav aria-label="Site"><button class="l" id="all">Sets and papers</button><button class="l" id="set">Settings</button></nav></header>
+  ${busy ? `<div class="busy" role="status"><span>${busy[0]}</span><button class="p" id="go">${busy[1]}</button></div>` : ""}
+  <h1>Weeks</h1>
+  <p class="s">Open a week for its notes, then choose multiple choice or written answers. Nothing starts until you choose.</p>
+  <table class="deck">
+    <thead><tr><th scope="col">Week</th><th scope="col" class="n">Not seen</th><th scope="col" class="n">To redo</th><th scope="col" class="n">Right</th></tr></thead>
+    <tbody>${weeksPresent.map(row).join("")}</tbody>
   </table>
-  <div class="key"><span>0%</span><span class="sw" aria-hidden="true">${VIR.map(c => `<i style="background:${c}"></i>`).join("")}</span><span>100% right</span><span class="nw" aria-hidden="true"></span><span>not tried</span></div>
-  </details>
-  <p class="more"><button class="l" id="all">All notes, sets and papers</button></p>
+  <h2 class="wh">Whole module</h2>
+  <div class="mods">
+    <button id="t-redo" ${redo ? "" : "disabled"}><b>Questions to redo</b><span>${redo ? `${Math.min(redo, 20)} of your ${redo} missed questions. No clock.` : "Nothing yet. Questions you lose a mark on land here."}</span></button>
+    <button id="t-timed"><b>Timed paper</b><span>4 written and 10 multiple choice in 50 minutes. The clock starts at once.</span></button>
+    <button id="t-mock"><b>Tutor's mock test</b><span>The ${MOCK.length} questions the tutor posted. No clock.</span></button>
+  </div>
   ${FOOT}`;
   if (!first) focusOn("h1"); first = false;
   app.querySelectorAll(".wk").forEach(b => b.onclick = () => goWeek(+b.dataset.week));
-  app.querySelectorAll(".plot td button").forEach(b => b.onclick = () => {
-    const w = +b.dataset.w, ex = b.dataset.ex === "1", c = cell(w, ex);
-    start({title:`Week ${w}, ${ex ? "written answers" : "multiple choice"}`, ids:weakest(c.qs).slice(0, ex ? 5 : 10).map(q => q.id)});
-  });
-  const one = () => start({title:`Test focus, Week ${top.week}`, ids:[top.id]});
-  const allDone = !resume && !toMark && top && (st.sc[top.id] ?? -1) >= 1;
-  on("go", resume || toMark ? () => show() : allDone ? timed : one);
-  on("t-focus", one);
-  on("t-redo", () => start({title:"Questions to redo", ids:weakest(weakQ()).slice(0, 20).map(q => q.id)}));
-  on("t-week", () => goWeek(fresh));
-  on("t-timed", timed);
-  // Keep the minutes on the card current while home is open.
-  if (resume && st.run.limit) tick = setInterval(() => { const m = Math.ceil(timeLeft() / 60), el = app.querySelector(".next small"); if (el) el.textContent = `You stopped at question ${st.run.i + 1} of ${st.run.ids.length}, ${m ? m + " min left" : "time is up"}`; if (!m) clearInterval(tick); }, 15000);
+  on("go", () => show());
   on("all", () => { menu(); window.scrollTo(0, 0); });
+  on("set", () => { menu(); const h = document.getElementById("settings"); if (h) { h.tabIndex = -1; h.scrollIntoView(); h.focus({preventScroll:true}); } });
+  on("t-redo", () => start({title:"Questions to redo", ids:weakest(weakQ()).slice(0, 20).map(q => q.id)}));
+  on("t-timed", () => { if (confirm("Start the timed paper? The 50 minute clock starts now and keeps running if you leave.")) timed(); });
+  on("t-mock", () => start({title:"Tutor's mock test", ids:[...MOCK.filter(q => !isEx(q)), ...MOCK.filter(isEx)].map(q => q.id), exam:true}));
 }
 
 // Every feature on one list, one tap from home.
@@ -328,7 +334,7 @@ function menu() {
     ${paper("Timed paper", "4 written and 10 multiple choice from different weeks. The clock keeps running if you leave.", "14 questions, 50 min", [["m-timed", "Test"]])}
     ${paper("Tutor's mock test", "The mock the tutor posted on 23 November. No clock.", MOCK.length + " questions", [["s-mock", "Study", 1], ["m-mock", "Test"]])}
   </div>
-  <h2>Ask AI</h2>
+  <h2 id="settings">Settings, Ask AI</h2>
   <fieldset><legend class="s" id="ai-sum">${aiSum()}</legend>
     <div class="row">${Object.entries(AI).map(([k, t]) => `<label class="o"><input type="radio" name="ai" value="${k}" ${st.ai === k ? "checked" : ""}><span>${t.name}</span></label>`).join("")}</div>
     <label class="o" style="border:0;grid-template-columns:22px minmax(0,1fr)"><input type="checkbox" id="ai-temp" ${st.aiTemp ? "checked" : ""}><span>Open in a temporary chat. Works for Claude and ChatGPT.</span></label>
