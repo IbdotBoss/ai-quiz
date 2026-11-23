@@ -119,7 +119,7 @@ table.t{border-collapse:collapse;width:100%;font-size:var(--t-s);margin-top:8px;
 .notes strong{font-weight:700}
 .notes blockquote{margin:12px 0 20px;padding:12px 16px;border-radius:var(--r);background:var(--tint);font-size:var(--t-s)}
 .notes blockquote p{margin:0}
-.notes blockquote p::before{content:"Watch out. ";font-style:normal;font-weight:700;color:var(--wrong)}
+.notes blockquote p::before{content:"Common mistake. ";font-style:normal;font-weight:700;color:var(--wrong)}
 .notes ol,.notes ul{padding-left:24px}
 .notes h1{font-size:var(--t-xl);margin-top:28px}
 .notes h2{border-top:1px solid var(--hair);padding-top:16px;margin-top:28px}
@@ -142,14 +142,14 @@ dialog .nav{margin-top:20px}
 .bar nav{display:flex;gap:16px}
 .busy{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:var(--tint);border-radius:var(--r);padding:12px 16px;margin-bottom:24px}
 .deck{width:100%;border-collapse:collapse;margin-top:12px;font-variant-numeric:tabular-nums}
-.deck thead th{font-size:var(--t-xs);font-weight:400;color:var(--ink-2);text-align:left;padding:0 0 6px;border-bottom:1.5px solid var(--ink)}
+.deck thead th{font-size:var(--t-xs);font-weight:400;color:var(--ink-2);text-align:left;padding:0 0 8px;border-bottom:1.5px solid var(--ink)}
 .deck .n{text-align:right;width:68px;padding-right:12px}
 .deck td,.deck tbody th{border-bottom:1px solid var(--hair);padding:0}
 .deck td.n{font-weight:700}.deck td.bad{color:var(--wrong)}
 .deck .pc{width:60px;text-align:center;font-weight:800}
 .deck thead .pc,.deck thead th:last-child{text-align:center}
 .deck .nt{background:repeating-linear-gradient(135deg,var(--paper) 0 5px,var(--hatch) 5px 6.5px)}
-.deck .wk{display:flex;flex-wrap:wrap;gap:4px 8px;width:100%;min-height:52px;align-items:center;text-align:left;border:0;border-radius:0;padding:6px 8px 6px 0;font-weight:400;line-height:1.3;background:none}
+.deck .wk{display:flex;flex-wrap:wrap;gap:4px 8px;width:100%;min-height:52px;align-items:center;text-align:left;border:0;border-radius:0;padding:8px 8px 8px 0;font-weight:400;line-height:1.3;background:none}
 .deck .wk b{font-weight:800;flex:0 0 1.5em}.deck .wk span{text-decoration:underline;flex:1 1 10em}
 .deck .wk:hover span{text-decoration-thickness:2px}
 .tag{font-size:var(--t-xs);font-weight:700;border:1.5px solid var(--ink);border-radius:999px;padding:0 8px}
@@ -158,7 +158,9 @@ dialog .nav{margin-top:20px}
 .mods button span{color:var(--ink-2);font-size:var(--t-s)}
 .mods button:hover:not(:disabled) b{text-decoration:underline}
 h2.wh{margin-top:40px}
-@media(max-width:420px){.deck .n{width:46px;padding-right:6px}.deck .pc{width:50px}.deck .wk b{flex-basis:1.2em}}
+.wpn{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}.wpn button{display:flex;flex-direction:column;gap:2px;text-align:left;font-weight:400;padding:12px 16px}.wpn button:last-child{text-align:right;align-items:flex-end}.wpn span{font-size:var(--t-s);color:var(--ink-2)}
+@media(max-width:420px){.wpn{grid-template-columns:1fr}.wpn button:last-child{text-align:left;align-items:flex-start}}
+@media(max-width:420px){.deck .n{width:48px;padding-right:8px}.deck .pc{width:50px}.deck .wk b{flex-basis:1.2em}}
 .kick{font-size:var(--t-s);color:var(--ink-2);margin:0}
 .next{background:var(--ink);color:var(--paper);border-radius:var(--r);padding:20px;margin-top:16px}
 .next small{display:block;font-size:var(--t-s);color:var(--ink-3)}
@@ -566,7 +568,9 @@ function week(w) {
   </div>
   <h2>Notes for Week ${w}</h2>
   <div class="notes wk-notes">${sheets.map(n => n.html.replace(/<(\/?)h2/g, "<$1h4").replace(/<(\/?)h1/g, "<$1h3")).join("") || "<p>No notes for this week yet.</p>"}</div>
+  <nav class="wpn" aria-label="Previous and next week">${[[-1, "Previous week"], [1, "Next week"]].map(([d, t]) => { const v = weeksPresent[weeksPresent.indexOf(w) + d]; return v ? `<button data-go="${v}"><span>${t}</span><b>Week ${v}, ${esc(WEEKS[v] || "")}</b></button>` : "<span></span>"; }).join("")}</nav>
   ${askBox("Week " + w, EXAMPLES[w] || "")}${FOOT}`;
+  app.querySelectorAll("[data-go]").forEach(b => b.onclick = () => goWeek(+b.dataset.go));
   focusOn("h1");
   on("back", () => { home(); window.scrollTo(0, 0); });
   const go = ex => start({title:`Week ${w}, ${ex ? "written answers" : "multiple choice"}`, ids:weakest(cell(w, ex).qs).slice(0, ex ? 5 : 10).map(q => q.id)});
